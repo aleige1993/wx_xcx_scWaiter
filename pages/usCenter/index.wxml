@@ -1,0 +1,49 @@
+<!--pages/usCenter/index.wxml-->
+<view>
+  <view class='us-img-box'>
+    <view class='box-user'>
+      <image src='../../static/images/error.png'></image>
+      <view>
+        <text>Windir</text>
+        <text>18033441984</text>
+      </view>
+    </view>
+    <icon  class='iconfont icon-you1'></icon>
+  </view>
+
+  <view>
+    <view class='glup_box'>
+      <view>
+        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <text>今日收件</text>
+      </view>
+      <view>
+        <icon class='iconfont icon-you1'></icon>
+      </view>
+    </view>
+     <view class='glup_box'>
+      <view>
+        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <text>今日收件</text>
+      </view>
+      <view>
+        <icon class='iconfont icon-you1'></icon>
+      </view>
+    </view>
+     <view class='glup_box'>
+      <view>
+        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <text>今日收件</text>
+      </view>
+      <view>
+        <icon class='iconfont icon-you1'></icon>
+      </view>
+    </view>
+
+  </view>
+
+   <view class='marig-primary'>
+     <van-button size="normal" type="primary" custom-class="primary">退出账号</van-button>
+  </view>
+
+</view>

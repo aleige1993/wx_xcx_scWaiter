@@ -1,0 +1,11 @@
+/* pages/login/register.wxss */
+.chebox_box{
+    display: flex;
+}
+.agre_box{
+    display: flex;
+    margin-left: 20rpx;
+}
+.chebox_box{
+    padding: 30rpx;
+}

@@ -1,0 +1,134 @@
+/**app.wxss**/
+@import '/static/fonts/iconfont.wxss';
+
+navigator,button,view,input,text,icon,input,label,textarea,radio,switch,:checked,form,picker,rich-text,image{
+ font-family:Helvetica Neue,Helvetica,Roboto,Segoe UI,Arial,sans-serif;
+ box-sizing: border-box;
+ font-size:28rpx;
+}
+button{
+  margin:0;
+}
+button::after{
+  border: none;
+} 
+.container{
+  width: 100%;
+}
+input{
+  color: #333;
+}
+view{
+  overflow:initial;
+}
+.flex{
+  display:flex;
+}
+/* 颜色 */
+.c-yellow {
+    color: #ff7b20;
+}
+.c-green {
+    color: #34BD29;
+} 
+.c-purple {
+    color: #6530E0;
+}
+.c-999{
+    color: #999999;
+}
+.c-ccc{
+  color: #ccc;
+}
+.c-bf{
+  color: #bfbfbf;
+}
+.c-blue{
+  color: #3984ff;
+}
+.c-red{
+  color: #ff0000;
+}
+.b-blue{
+  border:1rpx solid #3984ff;
+}
+.backg-blue{
+  background-color:#3984ff !important;
+}
+.c-gray{
+  color: #e5e5e5;
+}
+.b-gray-bottom{
+  border-bottom:1rpx solid #e5e5e5;
+}
+.backg-gray{
+  background-color:#e5e5e5;
+}
+
+
+
+/* 省略号... */
+.overflowfont{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.overflowfont2{
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+}
+.overflowfont3{
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;
+}
+
+
+
+/* 公共样式 */
+.w-row{
+  width: 100%;
+}
+
+.w-with90{
+  width:90%;
+  margin:0 auto;
+}
+
+  /* input 默认颜色修改 */
+  .phcolor{
+    color: #bfbfbf;
+  }
+  /*模态层*/
+.layer{
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.hr{
+  width: 100%;
+  height: 12rpx;
+  background-color: #f7f7f7; 
+  margin-top: 58rpx;
+}
+.marig-primary{
+  margin:30rpx 0;
+}
+.primary{
+  width: 90%;
+  margin:0 5%;
+}
+
+.fixed-bottom{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+}

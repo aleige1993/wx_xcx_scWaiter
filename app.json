@@ -1,0 +1,20 @@
+{
+    "pages": [
+        "pages/login/register",
+        "pages/login/resetPwd",
+        "pages/login/index",
+        "pages/index/index",
+        "pages/laundryOrder/searOrder",
+        "pages/laundryOrder/index",
+        "pages/usCenter/addUser/addUser",
+        "pages/usCenter/index",
+        "pages/usCenter/setUser/index",
+        "pages/usCenter/addUser/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "颂车小站小二",
+        "navigationBarTextStyle": "black"
+    }
+}

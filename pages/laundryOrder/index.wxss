@@ -1,0 +1,61 @@
+/* pages/laundryOrder/index.wxss */
+
+.order_panl{
+  margin-top:30rpx;
+}
+.order_title{
+  padding:20rpx 30rpx;
+  border-top:1px solid #eee;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+.order_title view{
+  margin-bottom: 10rpx;
+}
+.order_title view:last-child{
+  margin-bottom: 0;
+}
+.order_box{
+
+}
+.move_box{
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding:30rpx;
+}
+.move_box:last-child{
+  border-bottom: 0;
+}
+.move_box image{
+  width:150rpx;
+  height:200rpx;
+}
+.move_box view{
+  display: flex;
+}
+.move_box view.order_vim{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+  margin-left: 20rpx;
+}
+.move_box view.order_num{
+  align-items: center;
+}
+.order_footer{
+  display: flex;
+  padding:20rpx 30rpx;
+  justify-content:space-between;
+  align-items: center;
+   border-top: 1px  solid #eee;
+  border-bottom: 1px  solid #eee;
+}
+.order_footer button{
+  color: #fff;
+  background-color: #3984ff;
+}
+.order_soso{
+
+}

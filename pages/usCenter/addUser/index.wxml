@@ -1,0 +1,28 @@
+<!--pages/usCenter/addUser/index.wxml-->
+<view>
+    <view  class='add_user_box'>
+      <view class='us_view'>
+        <image src='../../../static/images/error.png'></image>
+        <view class='us_details'>
+          <text>姓名</text>
+          <text>1350003226</text> 
+        </view>
+      </view>
+      <icon class='iconfont icon-shibai del'></icon>
+    </view>
+
+    <view  class='add_user_box'>
+      <view class='us_view'>
+        <image src='../../../static/images/error.png'></image>
+        <view class='us_details'>
+          <text>姓名</text>
+          <text>1350003226</text> 
+        </view>
+      </view>
+      <icon class='iconfont icon-shibai del'></icon>
+    </view>
+
+    <view class='marig-primary'>
+      <van-button size="normal" type="primary" custom-class="primary">+ 添加新员工</van-button>
+    </view>  
+</view>
