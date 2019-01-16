@@ -1,0 +1,35 @@
+/* pages/ schoolCar/index.wxss */
+@import '../../pages/login/register.wxss';
+.banner{
+    width: 100%;
+}
+.banner image{
+    width: 100%;
+    height: 8rem;
+}
+.Info_panl{
+    width: 100%;
+}
+.panl_title{
+    padding: 10rpx 30rpx;
+    color: #3984ff;
+    background-color: #f2f2f2;
+}
+.cell_box{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    border-bottom: 1px solid #eee;
+}
+.cell_box  .label{
+    margin-top: 6rpx;
+}
+.cell_box  .value{
+    flex: 1;
+    text-align: right;
+}
+.cell_box .picker{
+    color: #999;
+}

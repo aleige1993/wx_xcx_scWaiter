@@ -1,5 +1,8 @@
 <!--pages/login/register.wxml-->
 <view>
+    <view class='logo_box'>
+         <image class='logo' src='../../static/images/logo.png'></image>
+    </view>
     <view class='reg_panl'>
          <van-cell-group>
             <van-field
@@ -34,6 +37,11 @@
                 <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
                 <view class='agre_box'>同意《<navigator class='c-blue'>用户服务协议</navigator>》</view>
             </view>
-            
+             <view class='marig-primary'>
+                <van-button size="normal" type="primary" custom-class="primary" bind:click="next">注册</van-button>
+            </view>
+            <view class='newlogin'>
+                <navigator class='c-blue'>已有账户，立即登录</navigator>
+            </view>
     </view>
 </view>
