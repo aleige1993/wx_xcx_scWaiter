@@ -8,6 +8,8 @@
   border-top:1px solid #eee;
   border-bottom: 1px solid #eee;
   color: #666;
+  display: flex;
+  justify-content: space-between;
 }
 .order_title view{
   margin-bottom: 10rpx;
@@ -52,9 +54,24 @@
    border-top: 1px  solid #eee;
   border-bottom: 1px  solid #eee;
 }
+.but_box{
+    display: flex;
+}
+.but_box button{
+    margin-left: 30rpx;
+}
+.but_box .but_cancel{
+    background-color: #ddd;
+}
+.but_box .but_payment{
+    background-color: #ff0000;
+}
+.but_box  .but_confirm{
+    background-color: #3984ff;
+}
 .order_footer button{
   color: #fff;
-  background-color: #3984ff;
+  font-size: 12px;
 }
 .order_soso{
 

@@ -1,5 +1,5 @@
 // pages/laundryOrder/index.js
-import Toast from '../../ui-plugins/vant/toast/toast';
+import Toast from '../../../ui-plugins/vant/toast/toast';
 Page({
 
   /**

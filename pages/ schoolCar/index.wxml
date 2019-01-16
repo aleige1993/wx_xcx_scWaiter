@@ -1,0 +1,79 @@
+<!--pages/ schoolCar/index.wxml-->
+<view>
+    <view class='banner'>
+        <image src='../../static/images/error.png'></image>
+    </view>
+    <view class='schoolInfo'>
+            <view class='Info_panl'>
+                <view class='panl_title'>
+                    学习信息选择
+                </view>
+                <view class='cell_box'>
+                    <view class='label'>小站选择</view>
+                    <view class='value'>
+                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}">
+                            <view class="picker">
+                                {{shopArr[shopIndex] ? shopArr[shopIndex] : '请选择小站'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>车型学习</view>
+                    <view class='value'>
+                          <picker bindchange="carChange" value="{{carIndex}}" range="{{carArr}}">
+                            <view class="picker">
+                            {{carArr[carIndex] ? carArr[carIndex] : '请选择驾驶证类型'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+
+            </view>
+
+             <view class='Info_panl'>
+                <view class='panl_title'>
+                    学车人基本信息
+                </view>
+                <view class='cell_box'>
+                    <view class='label'>学员姓名</view>
+                    <view class='value'>
+                            <input value=''  placeholder='请输入姓名' />
+                     </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>性别</view>
+                    <view class='value'>
+                          <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexArr}}">
+                            <view class="picker">
+                            {{sexArr[sexIndex] ? sexArr[sexIndex] : '请选择性别'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <view class='cell_box'>
+                    <view class='label'>身份证号</view>
+                    <view class='value'>
+                            <input value=''  placeholder='请输入学车人的身份证号' />
+                     </view>
+                </view>
+                <view class='cell_box'>
+                    <view class='label'>手机号</view>
+                    <view class='value'>
+                            <input value=''  placeholder='请输入学车人的手机号' />
+                     </view>
+                </view>
+            </view>
+
+             <view class='chebox_box'>
+                <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
+                <view class='agre_box'>同意《<navigator class='c-blue'>用户服务协议</navigator>》</view>
+            </view>
+             <view class='marig-primary'>
+                <van-button size="normal" type="primary" custom-class="primary" bind:click="next">注册</van-button>
+            </view>
+    </view>
+</view>

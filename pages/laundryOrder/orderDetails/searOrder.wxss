@@ -1,5 +1,5 @@
 /* pages/laundryOrder/searOrder.wxss */
-@import '/pages/laundryOrder/index.wxss';
+@import '/pages/laundryOrder/orderDetails/index.wxss';
 
 .order_soso{
   position: fixed;
