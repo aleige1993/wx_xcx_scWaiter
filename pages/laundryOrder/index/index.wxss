@@ -1,0 +1,39 @@
+/* pages/laundryOrder/index/index.wxss */
+page {
+  background: #e5e5e5;
+}
+
+.laundry-list {
+  padding: 15rpx;
+}
+.laundry-item {
+  display: inline-block;
+  width: 33.33%;
+  text-align: center;
+}
+.laundry-item-inner {
+  margin: 15rpx;
+  padding: 15rpx;
+  border-radius: 3rpx;
+  background: #fff;
+}
+.laundry-item-inner image {
+  width: 100%;
+  height: 200rpx;
+}
+.laundry-item-inner view:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.laundry-button {
+  position: fixed;
+  right: 0;
+  bottom: 20%;
+  padding: 15rpx;
+  color: #fff;
+  background: #3984FF;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+}

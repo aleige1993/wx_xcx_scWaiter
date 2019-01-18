@@ -1,4 +1,76 @@
 <!--index.wxml-->
-<view class="container">
- 1231231
+<view class="dashboard">
+  <swiper class='banner' circular indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
+    <block wx:key="{{banner.imgUrls}}" wx:for="{{banner.imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" style='width: 100%' />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='header-news'>
+    <view>
+      <image class='img' src='/static/images/dashboard-headnews.png'></image>
+      <swiper class="text" circular vertical autoplay="{{headNews.autoplay}}" interval="{{headNews.interval}}" duration="{{headNews.duration}}">
+        <block wx:key="{{headNews.list}}" wx:for="{{headNews.list}}">
+          <swiper-item>
+            <navigator url="/pages/common/webview/index?src={{item.url}}">{{item.title}}</navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+      <navigator class="more">
+        <van-icon name="arrow"></van-icon>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- <view class='sales-data'>
+    <text>1000元\n总收入</text>
+    <text>1000单\n总订单数</text>
+    <text>100元\n今日收入</text>
+    <text>100单\n今日订单</text>
+  </view> -->
+
+  <view class='dashboard-grid'>
+    <view>
+      <navigator>
+        <van-icon class='icon' name="records"></van-icon>
+        <view>我的快递</view>
+      </navigator>
+      <navigator>
+        <van-icon class='icon' name="records"></van-icon>
+        <view>小站洗衣</view>
+      </navigator>
+      <navigator>
+        <van-icon class='icon' name="records"></van-icon>
+        <view>小站学车</view>
+      </navigator>
+      <navigator>
+        <van-icon class='icon' name="records"></van-icon>
+        <view>小站活动</view>
+      </navigator>
+    </view>
+  
+  </view>
+
+  <view class='new-express'>
+    <view>新到快递</view>
+    <view class='new-express-list'>
+      <view class="flex">
+        <view><text>顺丰速运：</text>25227283784871623</view>
+        <view><text>取件码：</text>8879083</view>
+      </view>
+      <view class="flex"><text>取件地址：</text><text>民信佳园3号门店民信佳园3号门店民信佳园3号门店民信佳园3号门店</text></view>
+      <view><text>派件人员：</text><text>18725269987</text></view>
+    </view>
+    <view class='new-express-list'>
+      <view class="flex">
+        <view><text>顺丰速运：</text>25227283784871623</view>
+        <view><text>取件码：</text>8879083</view>
+      </view>
+      <view class="flex"><text>取件地址：</text><text>民信佳园3号门店民信佳园3号门店民信佳园3号门店民信佳园3号门店</text></view>
+      <view><text>派件人员：</text><text>18725269987</text></view>
+    </view>
+  </view>
+
 </view>

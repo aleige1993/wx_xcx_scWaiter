@@ -1,1 +1,79 @@
 /**index.wxss**/
+page {
+  background: #e5e5e5;
+}
+.banner, .header-news, .sales-data, .dashboard-grid {
+  margin-bottom: 10px;
+}
+.banner, .banner image {
+  height: 360rpx;
+}
+
+.header-news {
+  padding: 30rpx 20rpx;
+  background: #fff;
+}
+.header-news > view {
+  position: relative;
+  padding: 10rpx 30rpx 10rpx 122rpx;
+}
+.header-news .img, .header-news .more {
+  position: absolute;
+  top: 15rpx;
+}
+.header-news .img {
+  left: 0;
+  width: 112rpx;
+  height: 28rpx;
+}
+.header-news .more {
+  right: 0
+}
+.header-news .text {
+  height: 40rpx;
+}
+
+.sales-data {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx; 
+  text-align: center;
+  line-height: 50rpx;
+  background: #fff;
+}
+
+.dashboard-grid {
+  padding: 20rpx; 
+  background: #fff;
+}
+.dashboard-grid > view {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0; 
+  text-align: center;
+}
+.dashboard-grid .icon {
+  font-size: 48rpx;
+}
+
+.new-express {
+  padding: 10px 20rpx;
+  background: #fff;
+}
+.new-express-list {
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 10rpx;
+  border: 1px solid #eee;
+  border-radius: 20rpx;
+}
+.new-express-list > view {
+  margin-bottom: 10rpx;
+}
+.new-express-list view > text:first-child {
+  white-space: nowrap;
+  color: gray;
+}
+.new-express-list .flex {
+  display: flex;
+  justify-content: space-between;   
+}
