@@ -3,7 +3,7 @@
     <view class='detaTitle'>
         <view class='order_panl'>
             <view class='waiter'>
-                <view>小站选择</view>
+                <view class='c-333 font-w6'>小站选择</view>
                 <view>
                     <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}">
                         <view class="picker">

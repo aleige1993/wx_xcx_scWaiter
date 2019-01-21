@@ -1,29 +1,29 @@
 <!--pages/laundryOrder/orderDetails/details.wxml-->
 <view class='main'>
     <view class='detaTitle'>
-        <view class='title_type' wx:if="{{styleNum==1}}">
-            <view>
-                <icon class='iconfont'></icon>等待付款
+        <view class='title_type backg-grad' wx:if="{{styleNum==1}}">
+            <view class='type_text'>
+                <icon class='iconfont icon-shijian'></icon>等待付款
             </view>
             <view>剩余：59分59秒</view>
         </view>
-         <view class='title_type' wx:if="{{styleNum==2}}">
-            <view>
-                <icon class='iconfont'></icon>等待取衣
+         <view class='title_type backg-grad' wx:if="{{styleNum==2}}">
+            <view class='type_text'>
+                <icon class='iconfont icon-tiaobochuku'></icon>等待取衣
             </view>
         </view>
-         <view class='title_type backgColor ' wx:if="{{styleNum==3}}">
-            <view>
-                <icon class='iconfont'></icon>
+         <view class='title_type backg-grad2 ' wx:if="{{styleNum==3}}">
+            <view class='type_text'>
+                <icon class='iconfont icon-wancheng1'></icon>
                     <view>
                         <view>洗衣完成</view>
                         <view>感谢您在颂车小站洗衣，欢迎再次光临</view>
                     </view>
             </view>
         </view>
-          <view class='title_type backgColor ' wx:if="{{styleNum==4}}">
-            <view>
-                <icon class='iconfont'></icon>
+          <view class='title_type  backg-grad2' wx:if="{{styleNum==4}}">
+            <view class='type_text'>
+                <icon class='iconfont icon-warning'></icon>
                     <view>
                         <view>交易关闭</view>
                     </view>
@@ -72,7 +72,7 @@
         </view>
 
         <view class='waiter' wx:if="{{styleNum==1}}">
-            <view>服务小站</view>
+            <view class='font-w6'>服务小站</view>
             <view>民信佳园1号门店
                 <icon class='iconfont icon-you1'></icon>
             </view>
@@ -110,7 +110,7 @@
 </view>
  <view class='footer'>
         <view class='order_footer' wx:if="{{styleNum==1}}">
-            <view>应付金额：
+            <view class='font-w6'>应付金额：
                 <text class='c-red'>¥180.00</text>
             </view>
             <view class='but_box'>

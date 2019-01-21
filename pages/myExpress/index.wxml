@@ -1,6 +1,6 @@
 <!--pages/checkExpress/index.wxml-->
 <view>
-    <van-search value="{{ value }}" placeholder="请输入快递单号" use-action-slot bind:search="onSearch">
+    <van-search value="{{ value }}" placeholder="请输入快递单号" use-action-slot bind:search="onSearch" >
         <view slot="action" bind:tap="onSearch">搜索</view>
     </van-search>
     <view class='order_panl'>
@@ -10,12 +10,12 @@
                     <scroll-view style="height:{{scrollHeight}}" scroll-y scroll-top="{{scrollTop}}" bindscrolltolower="binddown" bindscrolltoupper="bindtop">
                         <view class='order_box'>
                             <view class='order_title'>
-                                <view class='exName'>
+                                <view class='exName font-w6'>
                                     <text>顺丰速运</text>
                                     <text>25227283784871623</text>
                                 </view>
                                 <view>
-                                    <text>取件码：887908</text>
+                                    <text>取件码：<text class='c-red'>887908</text></text>
                                 </view>
                             </view>
                             <view class='order_detail'>
@@ -33,12 +33,12 @@
                         </view>
                         <view class='order_box'>
                             <view class='order_title'>
-                                <view class='exName'>
+                                <view class='exName font-w6'>
                                     <text>顺丰速运</text>
                                     <text>25227283784871623</text>
                                 </view>
                                 <view>
-                                    <text>取件码：887908</text>
+                                   <text>取件码：<text class='c-red'>887908</text></text>
                                 </view>
                             </view>
                             <view class='order_detail'>

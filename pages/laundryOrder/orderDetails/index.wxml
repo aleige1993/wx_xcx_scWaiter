@@ -31,7 +31,7 @@
                                 </view>
                             </view>
                             <view class='order_footer'>
-                                <view>应付金额：
+                                <view class='font-w6'>应付金额：
                                     <text class='c-red'>¥180.00</text>
                                 </view>
                               <view class='but_box'>

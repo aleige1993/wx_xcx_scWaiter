@@ -16,7 +16,7 @@
             </view>
 
             <view class='order_but'  wx:if="{{isShow}}">
-                <navigator class='active' >查看订单</navigator>
+                <navigator class='backg-grad' >查看订单</navigator>
                  <navigator>返回首页</navigator>
             </view>
              <view class='order_but'  wx:else>

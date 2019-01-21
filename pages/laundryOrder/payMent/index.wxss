@@ -17,12 +17,11 @@
     font-size: 40px;
 }
 .payBut{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     color: #fff;
-    line-height: 90rpx;
+    border-radius:10rpx; 
+    line-height: 80rpx;
     text-align: center;
-    background-color: #3984ff;
+    font-size: 16px;
 }

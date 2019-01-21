@@ -33,7 +33,7 @@
     background-color: #ff7b20;
 }
 .r-barg{
-    background-color: #ff0000;
+    background-color: #ff4c5e;
 }
 .waiter{
     border-bottom: 1px solid #eee;
@@ -50,5 +50,5 @@
     border-radius:10rpx; 
 }
 .top-border .c-red{
-    color: #ff0000 !important;
+    color: #ea857d !important;
 }

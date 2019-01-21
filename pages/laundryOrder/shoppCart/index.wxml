@@ -5,6 +5,7 @@
                 <view class='change_panl' wx:for="{{list}}" wx:key="{{index}}">
                         <view class='check_box'>
                             <van-checkbox
+                                checked-color="#ea857d"
                                 name="{{item.id}}"
                             >
                              </van-checkbox>
@@ -29,6 +30,7 @@
                          <van-checkbox-group value="{{ isAll }}" bind:change="allCheckbox">
                                     <van-checkbox
                                         name="all"
+                                         checked-color="#ea857d"
                                     >
                                     全选
                                     </van-checkbox>

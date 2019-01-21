@@ -1,11 +1,13 @@
 //app.js
+import util from '/utils/util.js'
 App({
   onLaunch: function () {
+      this.utils = util;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+      this.utils.screenSize();
     // 登录
     wx.login({
       success: res => {

@@ -15,7 +15,7 @@
     </view>
 
     <view class='marig-primary'>
-      <van-button size="normal" type="primary" custom-class="primary">登录</van-button>
+      <van-button size="normal" type="primary" custom-class="primary  backg-grad shadow-just">登录</van-button>
     </view>
     <view class='findpwd'>
 	    <navigator class='c-blue'>注册新密码</navigator>

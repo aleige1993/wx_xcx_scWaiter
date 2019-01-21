@@ -17,7 +17,7 @@ page{
       color: #3984ff;
 }
 .icon-shibai{
-      color: #3984ff;
+      color: #ea857d;
 }
 .result_box .p1{
     font-weight: 700;
@@ -34,8 +34,8 @@ page{
     margin-bottom: 30rpx;
     text-align: center;
     line-height: 80rpx;
-    border: 1px solid #3984ff;
-    color: #3984ff;
+    border: 1px solid #94b0ff;
+    color: #5f8aff;
     border-radius: 10rpx;
 }
 .order_but navigator.active{

@@ -1,31 +1,48 @@
 /**index.wxss**/
+view,text{
+    color: #666;
+}
 page {
-  background: #e5e5e5;
+  background: #f2f2f2;
 }
 .banner, .header-news, .sales-data, .dashboard-grid {
-  margin-bottom: 10px;
+  margin-bottom: 10rpx;
 }
 .banner, .banner image {
   height: 360rpx;
 }
 
 .header-news {
-  padding: 30rpx 20rpx;
+  padding: 20rpx 30rpx;
   background: #fff;
 }
+.swiper-news{
+   
+}
+
 .header-news > view {
   position: relative;
-  padding: 10rpx 30rpx 10rpx 122rpx;
+  padding: 10rpx 30rpx 10rpx 60rpx;
 }
 .header-news .img, .header-news .more {
   position: absolute;
   top: 15rpx;
 }
+.header-news .more icon{
+    margin-top: -26rpx;
+    color: #4a7bff;
+}
 .header-news .img {
   left: 0;
-  width: 112rpx;
-  height: 28rpx;
+  width: 60rpx;
 }
+.header-news .img icon{
+    vertical-align: middle;
+    margin-top: -16rpx;
+    font-size: 20px;
+    color: #4a7bff;
+}
+
 .header-news .more {
   right: 0
 }
@@ -43,19 +60,37 @@ page {
 }
 
 .dashboard-grid {
-  padding: 20rpx; 
+  padding: 20rpx 30rpx; 
   background: #fff;
 }
 .dashboard-grid > view {
   display: flex;
   justify-content: space-between;
-  padding: 20rpx 0; 
-  text-align: center;
+  /* padding: 20rpx 0;  */
 }
 .dashboard-grid .icon {
   font-size: 48rpx;
 }
-
+.dashboard-grid .grid_box navigator{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.iconN{
+    width:80rpx;
+    height: 80rpx;
+    border-radius:100%;
+    background-color: #4a7bff; 
+    text-align: center;
+    line-height: 80rpx;
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+    color: #fff;
+}
+.icontext{
+    font-size: 12px;
+    color: #666;
+}
 .new-express {
   padding: 10px 20rpx;
   background: #fff;
@@ -63,7 +98,7 @@ page {
 .new-express-list {
   margin-top: 20rpx;
   padding: 20rpx 20rpx 10rpx;
-  border: 1px solid #eee;
+  border: 1px solid #c4e7f2;
   border-radius: 20rpx;
 }
 .new-express-list > view {
@@ -71,9 +106,33 @@ page {
 }
 .new-express-list view > text:first-child {
   white-space: nowrap;
-  color: gray;
+  color: #050505;
 }
 .new-express-list .flex {
   display: flex;
   justify-content: space-between;   
+}
+.icon_one .iconN{
+    background-color: #ea857d;
+}
+.icon_two .iconN{
+    background-color: #7cc983;
+}
+.icon_three .iconN{
+    background-color: #e1b260;
+}
+.icon_four .iconN{
+    background-color: #07a1ff;
+}
+.icon_one .iconN icon{
+    font-size: 26px;
+}
+.icon_two .iconN icon{
+    font-size: 20px;
+}
+.icon_three .iconN icon{
+    font-size: 24px;
+}
+.icon_four .iconN icon{
+    font-size: 24px;
 }

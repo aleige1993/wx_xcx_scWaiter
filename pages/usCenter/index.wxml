@@ -1,54 +1,46 @@
 <!--pages/usCenter/index.wxml-->
 <view>
-    <view class='us-img-box'>
-        <view class='box-user'>
+    <view class='us-img-box backg-grad'>
+        <view class='box-user '>
             <image src='../../static/images/error.png'></image>
             <view>
-                <text>Windir</text>
-                <text>18033441984</text>
+                <text  class='font-w6'>Windir</text>
+                <!-- <text>18033441984</text> -->
             </view>
         </view>
         <icon class='iconfont icon-you1'></icon>
     </view>
 
     <view>
-        <view class='glup_box'>
+        <navigator class='glup_box'>
             <view>
-                <icon class='iconfont icon-ico_meiyoushuju'></icon>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
                 <text>我的快递</text>
             </view>
-            <view>
                 <icon class='iconfont icon-you1'></icon>
-            </view>
-        </view>
-        <view class='glup_box'>
+        </navigator>
+       <navigator class='glup_box'>
             <view>
-                <icon class='iconfont icon-ico_meiyoushuju'></icon>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
                 <text>洗衣订单</text>
             </view>
-            <view>
                 <icon class='iconfont icon-you1'></icon>
-            </view>
-        </view>
-        <view class='glup_box'>
+        </navigator>
+       <navigator class='glup_box'>
             <view>
-                <icon class='iconfont icon-ico_meiyoushuju'></icon>
-                <text>学车s申请</text>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>学车申请</text>
             </view>
-            <view>
                 <icon class='iconfont icon-you1'></icon>
-            </view>
-        </view>
+         </navigator>
 
-        <view class='glup_box'>
+        <navigator class='glup_box'>
             <view>
-                <icon class='iconfont icon-ico_meiyoushuju'></icon>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
                 <text>修改手机</text>
             </view>
-            <view>
                 <icon class='iconfont icon-you1'></icon>
-            </view>
-        </view>
+        </navigator>
     </view>
 
     <!-- <view class='marig-primary'>

@@ -25,9 +25,6 @@ view{
   display:flex;
 }
 /* 颜色 */
-.c-yellow {
-    color: #ff7b20;
-}
 .c-green {
     color: #34BD29;
 } 
@@ -40,6 +37,12 @@ view{
 .c-ccc{
   color: #ccc;
 }
+.c-333{
+      color: #333 !important;
+}
+.c-666{
+    color: #666666;
+}
 .c-bf{
   color: #bfbfbf;
 }
@@ -47,7 +50,7 @@ view{
   color: #3984ff;
 }
 .c-red{
-  color: #ff0000;
+  color: #ea857d;
 }
 .b-blue{
   border:1rpx solid #3984ff;
@@ -55,8 +58,14 @@ view{
 .backg-blue{
   background-color:#3984ff !important;
 }
+.backg-gray2{
+  background-color:#d4d9eb !important;
+}
 .c-gray{
   color: #e5e5e5;
+}
+.c-gray2{
+  color: #d4d9eb;
 }
 .b-gray-bottom{
   border-bottom:1rpx solid #e5e5e5;
@@ -64,9 +73,47 @@ view{
 .backg-gray{
   background-color:#e5e5e5;
 }
+.backg-grad{
+     background-image: linear-gradient(45deg, #5578f6, #35e1c8) !important; 
+     color: #fff !important;
+     border: 0 !important;
+}
+.backg-grad2{
+     background-image: linear-gradient(45deg, #ea857d, #e1b260) !important; 
+     color: #fff !important;
+     border: 0 !important;
+}
 
-
-
+.border-gray{
+    border: 1px solid #d4d9eb !important;
+}
+.border-violet{
+    border: 1px solid #5f8aff !important;
+}
+.border-powder{
+    border: 1px solid #ff4c5e !important;
+}
+.border-yellow{
+    border: 1px solid #ff7b20 !important;
+}
+.c-violet{
+    color: #5f8aff !important;
+}
+.c-powder{
+      color: #ff4c5e !important;
+}
+.c-yellow {
+    color: #ff7b20;
+}
+.shadow-just{
+    box-shadow:10rpx 10rpx 10rpx #ccc; 
+}
+.icon-you1{
+    color: #5578f6 !important;
+}
+.font-w6{
+    font-weight: 600;
+}
 /* 省略号... */
 .overflowfont{
   overflow: hidden;

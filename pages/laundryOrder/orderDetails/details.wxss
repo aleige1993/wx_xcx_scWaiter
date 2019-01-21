@@ -7,7 +7,6 @@ page{
     background-color: #fff;
 }
 .title_type{
-    background-color: rgb(105,152, 255);
     padding: 60rpx 30rpx;
     display: flex;
     color: #fff;
@@ -74,4 +73,12 @@ page{
 }
 .backgColor{
     background-color: rgb(26, 188,156);
+}
+.icon-shijian,.icon-tiaobochuku,.icon-wancheng1,.icon-warning{
+    font-size: 24px;
+    margin-right: 20rpx;
+}
+.type_text{
+    display: flex;
+    align-items: center;
 }
