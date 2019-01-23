@@ -1,15 +1,15 @@
 {
     "pages": [
-        "pages/login/register",
+        "pages/ schoolCar/index",
         "pages/login/resetPwd",
-        "pages/index/index",
         "pages/login/index",
+        "pages/login/register",
+        "pages/index/index",
         "pages/laundryOrder/index/index",
         "pages/laundryOrder/shoppCart/index",
         "pages/usCenter/index",
         "pages/usCenter/upInfo/index",
         "pages/myExpress/index",
-        "pages/ schoolCar/index",
         "pages/laundryOrder/orderDetails/searOrder",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",

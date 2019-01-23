@@ -17,7 +17,6 @@ App({
       this.utils.screenSize();
     // 判断是否登录or是否点击获取权限
       let wxInfo = this.UserLogin.get('wxUserInfo');
-      console.log('app', wxInfo)
       if (wxInfo== "") {
           wx.switchTab({
               url: '/pages/index/index',

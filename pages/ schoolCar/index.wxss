@@ -24,6 +24,7 @@
     padding: 20rpx 30rpx;
     border-bottom: 1px solid #eee;
 }
+
 .cell_box  .label{
     margin-top: 6rpx;
     font-weight: 600;

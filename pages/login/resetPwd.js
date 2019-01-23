@@ -52,15 +52,16 @@ Page({
       }
       app.Formdata.post('/openapi/express/wechatapplet/express/user/resetPsw', parms,(res)=>{
           if(res.code=="0000"){
-              wx.showModal({
-                  title: '修改成功',
-                  showCancel:false,
-                  success(res) {
-                      if (res.confirm) {
+              wx.showToast({
+                  title: '修改成功！',
+                  icon: 'success',
+                  duration: 2000,
+                  success: (res)=>{
+                      setTimeout(()=>{
                           wx.navigateTo({
                               url: '/pages/login/index',
                           })
-                      }  
+                      },2000)
                   }
               })
           }
@@ -68,7 +69,6 @@ Page({
   },
     //获取电话
     getMobile(e) {
-        console.log(e);
         this.setData({
             [e.target.dataset.name]: e.detail
         })
@@ -85,7 +85,6 @@ Page({
         }
         app.Formdata.post('/openapi/members/express/sms/smsCaptcha', parms, (res) => {
             if (res.code == '0000') {
-                console.log(res)
                 app.Date.VerifCode(this, 'isShow', this.data.tiemNum)
             }
         })

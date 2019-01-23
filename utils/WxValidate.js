@@ -308,7 +308,6 @@ class WxValidate {
      * @param {Object} event 表单数据对象
      */
     checkParam(param, rules, event) {
-        console.log(param)
         // 缓存表单数据对象
         this.scope = event
 

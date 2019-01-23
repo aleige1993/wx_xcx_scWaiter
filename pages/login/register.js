@@ -31,21 +31,58 @@ Page({
             "userType": "1"
         }
         app.Formdata.post('/openapi/members/express/sms/smsCaptcha', parms,(res)=>{
-            console.log(res);
             if(res.code=='0000'){
-                // app.Date.VerifCode(this, 'isShow', this.data.tiemNum)
+                 app.Date.VerifCode(this, 'isShow', this.data.tiemNum)
             }
         })
     },
-    getMobile(e){
+    getChange(e){
         this.setData({
-            mobile: e.detail
+            [e.target.dataset.name]: e.detail
+        })
+    },
+    formSubmit(e){
+        if (!this.WxValidate.checkForm(e)) {
+            const error = this.WxValidate.errorList[0];
+            wx.showToast({
+                title: error.msg,
+                icon: 'none',
+                duration: 2000
+            })
+            return false
+        }
+        if (!this.data.checked){
+            app.Tools.showToast('请同意《用户服务协议》');
+            return false;
+        }
+        let parms = {
+            mobile:this.data.mobile,
+            verfiCode:this.data.code,
+            pwd: this.data.oldPaswd,
+            confirmPsw:this.data.newPaswd
+        }
+        app.Formdata.post('/openapi/express/wechatapplet/express/user/register', parms, (res)=>{
+            if (res.code == "0000") {
+                wx.showToast({
+                    title: '注册成功！',
+                    icon: 'success',
+                    duration: 2000,
+                    success: (res) => {
+                        setTimeout(()=>{
+                            wx.redirectTo({
+                                url: '/pages/login/index',
+                            })
+                        },2000)
+                    }
+                })
+            }
         })
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.initValidate();
         console.log(this.data)  
     },
 
@@ -96,5 +133,43 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    initValidate() {
+        const rules = {
+            mobile: {
+                required: true,
+                tel: true
+            },
+            code: {
+                required: true
+            },
+            oldPaswd: {
+                required: true
+            },
+            newPaswd: {
+                required: true,
+                equalTo:'oldPaswd'
+            }
+        }
+
+        const messages = {
+            mobile: {
+                required: "请输入手机号",
+                tel: "请输入正确的手机号"
+            },
+            code: {
+                required: "请输入验证码"
+            },
+            oldPaswd: {
+                required: "请输入6-20位密码"
+            },
+            newPaswd: {
+                required: "请再次输入密码",
+                equalTo:'两次密码不一致'
+            }
+        }
+        // 创建实例对象 
+        this.WxValidate = new app.WxValidate(rules, messages)
     }
+
 })

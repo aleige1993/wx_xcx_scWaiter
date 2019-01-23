@@ -15,11 +15,11 @@ Page({
         let account = e.detail.value.account;
         let password = e.detail.value.password;
         if (account === '') {
-            app.Toast('请输入手机号码');
+            app.Tools.showToast('请输入手机号码');
             return false;
         }
         if (password === '') {
-            app.Toast('请输入密码');
+            app.Tools.showToast('请输入密码');
             return false;
         }
         app.Formdata.post('/openapi/common/user/login', {
