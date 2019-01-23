@@ -1,16 +1,16 @@
 {
     "pages": [
+        "pages/login/register",
+        "pages/login/resetPwd",
+        "pages/index/index",
+        "pages/login/index",
         "pages/laundryOrder/index/index",
         "pages/laundryOrder/shoppCart/index",
-        "pages/login/resetPwd",
         "pages/usCenter/index",
-        "pages/login/index",
         "pages/usCenter/upInfo/index",
         "pages/myExpress/index",
         "pages/ schoolCar/index",
-        "pages/index/index",
         "pages/laundryOrder/orderDetails/searOrder",
-        "pages/login/register",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",
         "pages/laundryOrder/setTlement/index",
@@ -22,5 +22,23 @@
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "颂车小站小二",
         "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "selectedIconPath": "/static/images/tab_home_b.png",
+                "iconPath": "/static/images/tab_home_a.png"
+            }, {
+                "pagePath": "pages/usCenter/index",
+                "text": "我的",
+                "selectedIconPath": "/static/images/tab_user_b.png",
+                "iconPath": "/static/images/tab_user_a.png"
+            }
+        ],
+        "color": "#BFBFBF",
+        "selectedColor": "#3984ff",
+        "borderStyle": "#e5e5e5"
     }
 }

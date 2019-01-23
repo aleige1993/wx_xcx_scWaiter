@@ -1,11 +1,18 @@
 // pages/login/register.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        checked:false
+        checked:false,
+        mobile:'',
+        code:'',
+        oldPaswd:'',
+        newPaswd:'',
+        isShow:true,
+        tiemNum:60
     },
     onChange(e){
         console.log(e)
@@ -13,11 +20,33 @@ Page({
             checked: e.detail
         });
     },
+    onCaptcha(e){
+        if (this.data.mobile==""){
+            app.Tools.showToast('请输入手机号码');
+            return false;
+        }
+        let  parms = {
+            'mobile': this.data.mobile,
+            'busiType':"0",
+            "userType": "1"
+        }
+        app.Formdata.post('/openapi/members/express/sms/smsCaptcha', parms,(res)=>{
+            console.log(res);
+            if(res.code=='0000'){
+                // app.Date.VerifCode(this, 'isShow', this.data.tiemNum)
+            }
+        })
+    },
+    getMobile(e){
+        this.setData({
+            mobile: e.detail
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(this.data)  
     },
 
     /**

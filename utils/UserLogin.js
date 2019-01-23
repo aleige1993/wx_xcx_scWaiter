@@ -1,26 +1,30 @@
 
 let app = getApp();
 if (!app) {
-  setTimeout(function () {
-    app = getApp();
-  })
-}
-let LOGININFO = 'logininfo';
-
-const SET = (data) => {
-  wx.setStorageSync(LOGININFO, data);
+    setTimeout(function () {
+        app = getApp();
+    })
 }
 
-const GET = () => {
-  return wx.getStorageSync(LOGININFO);
+const set = (keys,data) => {
+    wx.setStorage({
+        key: keys,
+        data: data,
+    })
+    // app.globalData.userInfo = data;
 }
 
-const DEL = () => {
-  wx.removeStorageSync(LOGININFO);
+const get = (keys) => {
+    return wx.getStorageSync(keys);
+    // return app.globalData.userInfo;
+}
+
+const remove = (keys) => {
+    return  wx.removeStorageSync(keys)
 }
 
 module.exports = {
-  SET: SET,
-  GET: GET,
-  DEL: DEL
+    set: set,
+    get: get,
+    remove: remove
 } 

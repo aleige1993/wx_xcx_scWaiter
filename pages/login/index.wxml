@@ -3,20 +3,22 @@
     <view class='logo'>
         <image node="aspectFill" src='../../static/images/logo.png'></image>
     </view>
-    <view  class='login-box'>
-      <view  class='login-cell'>
-         <icon class='iconfont icon-shouji01'></icon>
-         <input type='text' placeholder='手机号码'></input>
-      </view>
-      <view class='login-cell'>
-         <icon class='iconfont icon-mima'></icon>
-         <input password placeholder='输入密码'></input>
-      </view>
-    </view>
+    <form bindsubmit='submitForm'>
+         <view  class='login-box'>
+            <view  class='login-cell'>
+                <icon class='iconfont icon-shouji01'></icon>
+                <input type='text' placeholder='手机号码'  name="account" value="12345678901"></input>
+            </view>
+            <view class='login-cell'>
+                <icon class='iconfont icon-mima'></icon>
+                <input password placeholder='输入密码' name="password" value='111111'></input>
+            </view>
+            </view>
+            <view class='marig-primary'>
+                <button class="primary  backg-grad shadow-just" form-type='submit' size="normal" >登录</button>
+            </view>
+    </form>
 
-    <view class='marig-primary'>
-      <van-button size="normal" type="primary" custom-class="primary  backg-grad shadow-just">登录</van-button>
-    </view>
     <view class='findpwd'>
 	    <navigator class='c-blue'>注册新密码</navigator>
         <navigator class='c-blue'>找回密码</navigator>

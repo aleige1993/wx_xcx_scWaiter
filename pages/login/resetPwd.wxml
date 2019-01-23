@@ -14,19 +14,26 @@
           <view class='step'>
             <van-cell-group>
             <van-field
-                value="{{ username }}"
+                value="{{ mobile }}"
                 clearable
                 placeholder="请输入手机号"
+                name="mobile"
+                data-name="mobile"
+                bind:change="getMobile"
               />
               <van-field
-                value="{{ sms }}"
+                value="{{ code }}"
                 center
                 clearable
                 placeholder="请输入短信验证码"
                 border="{{ false }}"
                 use-button-slot
+                name="code"
+                data-name="code"
+                bind:change="getMobile"
               >
-                <van-button slot="button" size="small" type="primary">发送验证码</van-button>
+                <van-button wx:if="{{ isShow }}" slot="button" size="small" type="primary" bind:click="onCaptcha">发送验证码</van-button>
+                <van-button wx:else slot="button"  disabled  size="small" type="primary">{{tiemNum}}秒后重发</van-button>
               </van-field>
             </van-cell-group>  
           </view>
@@ -38,21 +45,27 @@
           <view class='step'>
             <van-cell-group>
             <van-field
-                value="{{ username }}"
+                value="{{ oldPaswd }}"
                 clearable
                  type="password"
+                 name="oldPaswd"
+                 data-name="oldPaswd"
                 placeholder="请设置6-20位的新密码"
+                bind:change="getMobile"
               />
               <van-field
                 value="{{ username }}"
                 clearable
                  type="password"
+                 name="newPaswd"
+                 data-name="newPaswd"
                 placeholder="请再次输入密码"
+                bind:change="getMobile"
               />
             </van-cell-group>  
           </view>
           <view class='marig-primary'>
-            <van-button size="normal" type="primary" custom-class="primary backg-grad shadow-just">提交</van-button>
+            <van-button size="normal" type="primary" custom-class="primary backg-grad shadow-just" bind:click="onSubmit">提交</van-button>
           </view>
         </view>
     </view>

@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    isShow: true,
     banner: {
         imgUrls: [
             'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548386640&di=466e70e7237799a21cd250500d5fc6e0&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F543797a594fe7.jpg',
@@ -13,7 +14,7 @@ Page({
       indicatorDots: true,
       autoplay: true,
       interval: 5000,
-      duration: 1000
+      duration: 1000,
     },
     headNews: {
       list: [{
@@ -28,14 +29,33 @@ Page({
       duration: 1000
     }
   },
-
+onGotUserInfo(e) {
+    let wxUserInfo = e.detail.userInfo
+    if (wxUserInfo){
+        app.UserLogin.set('wxUserInfo', wxUserInfo);
+        wx.showToast({
+            title: '授权成功',
+            icon: 'success',
+            duration: 2000
+        })
+        this.setData({
+            isShow:false
+        })
+    }
+    },
   onReady: function () {
-    // app.Formdata.post('/openapi/common/cms/banners', {}, (res) => {
-    //   console.log(res);
-    // });
   },
 
   onLoad: function () {
-
+    let  wxInfo =  app.UserLogin.get('wxUserInfo');
+      if (wxInfo==''){
+          this.setData({
+              isShow:true
+          })
+      }else{
+          this.setData({
+              isShow: false
+          })
+      }
   }
 })
