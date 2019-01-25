@@ -13,6 +13,7 @@ let PROD_CONFIG = {
 let CONFIG = DEV_CONFIG; // 选取当前环境配置
 
 module.exports = {
+    PAGE_SIZE: 10,
     HTTPHEADER_APPID: '100006',
     HTTPHEADER_APPVERSION: '',
     HTTPHEADER_APPSIGN: 'SONGCHE',
