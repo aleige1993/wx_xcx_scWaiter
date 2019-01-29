@@ -1,5 +1,6 @@
 // pages/usCenter/index.js
 let app = getApp();
+import Dialog from '../../ui-plugins/vant/dialog/dialog';
 
 Page({
 
@@ -11,10 +12,18 @@ Page({
   },
 
   loginout() {
-    app.UserLogin.remove('userInfo');
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
+    Dialog.confirm({
+      title: '提示',
+      message: '确定要退出当前账号？'
+    }).then(() => {
+      // on confirm
+      app.UserLogin.remove('userInfo');
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }).catch(() => {
+      // on cancel
+    });
   },
 
   /**
