@@ -60,32 +60,37 @@
   <view class='new-express'>
     <view class='c-violet'>新到快递</view>
 
-    <view wx:if="{{!expressList || !expressList.length}}" class='new-express-list shadow-just'>
+    <navigator url='/pages/login/index' wx:if="{{!isLogin}}" class='new-express-list shadow-just'>
       <view class="center">
-        <view>亲，未收到您得包裹信息哦~</view>
+        <view>亲，您还没登录哦~</view>
       </view>
-    </view>
+    </navigator>
 
     <view wx:else>
-      <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
-        <view class="flex">
-          <view>
-            <text>顺丰速运：</text>{{item.company}}</view>
-          <view>
-            <text>取件码：</text>{{item.qrcode}}</view>
+      <view wx:if="{{!expressList || !expressList.length}}" class='new-express-list shadow-just'>
+        <view class="center">
+          <view>亲，未收到您的包裹信息哦~</view>
         </view>
-        <view>
-          <text>取件地址：</text>
-          <text>{{item.address}}</text>
-        </view>
-        <view>
-          <text>派件人员：</text>
-          <text>{{item.mobile}}</text>
+      </view>
+      <view wx:else>
+        <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
+          <view class="flex">
+            <view>
+              <text>顺丰速运：</text>{{item.company}}</view>
+            <view>
+              <text>取件码：</text>{{item.qrcode}}</view>
+          </view>
+          <view>
+            <text>取件地址：</text>
+            <text>{{item.address}}</text>
+          </view>
+          <view>
+            <text>派件人员：</text>
+            <text>{{item.mobile}}</text>
+          </view>
         </view>
       </view>
     </view>
-
-
 
   </view>
 

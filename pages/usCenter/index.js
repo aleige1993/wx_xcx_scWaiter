@@ -1,18 +1,27 @@
 // pages/usCenter/index.js
+let app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {}
+  },
 
+  loginout() {
+    app.UserLogin.remove('userInfo');
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -26,7 +35,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let _this = this;
+    app.Formdata.get('/openapi/express/wechatapplet/express/user/personal', {}, function (res) {
+      if (res.success && res.success === 'true') {
+        _this.setData({
+          userInfo: res.data
+        })
+      }
+    })
   },
 
   /**
