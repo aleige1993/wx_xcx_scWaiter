@@ -112,6 +112,11 @@ page {
   display: flex;
   justify-content: space-between;   
 }
+.new-express-list .center {
+  padding: 20rpx 0;
+  text-align: center;
+}
+
 .icon_one .iconN{
     background-color: #ea857d;
 }

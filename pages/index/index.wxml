@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="dashboard">
-  <swiper class='banner' circular  indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
+  <swiper class='banner' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
     <block wx:key="{{banner.imgUrls}}" wx:for="{{banner.imgUrls}}">
       <swiper-item>
         <image src="{{item}}" class="slide-image" style='width: 100%' />
@@ -11,7 +11,9 @@
   <view class='header-news'>
     <view class='swiper-news'>
       <!-- <image class='img' src='/static/images/dashboard-headnews.png'></image> -->
-    <view class='img'> <icon class='iconfont icon-iconxx2'></icon></view>
+      <view class='img'>
+        <icon class='iconfont icon-iconxx2'></icon>
+      </view>
       <swiper class="text" circular vertical autoplay="{{headNews.autoplay}}" interval="{{headNews.interval}}" duration="{{headNews.duration}}">
         <block wx:key="{{headNews.list}}" wx:for="{{headNews.list}}">
           <swiper-item>
@@ -25,62 +27,75 @@
     </view>
   </view>
 
-  <!-- <view class='sales-data'>
-    <text>1000元\n总收入</text>
-    <text>1000单\n总订单数</text>
-    <text>100元\n今日收入</text>
-    <text>100单\n今日订单</text>
-  </view> -->
-
   <view class='dashboard-grid'>
     <view class='grid_box'>
-      <navigator class='icon_one'>
-        <view class='iconN shadow-just'><icon class='iconfont icon-kuaidi'></icon></view>
-        <view  class='icontext'>我的快递</view>
+      <navigator url='/pages/myExpress/index' class='icon_one'>
+        <view class='iconN shadow-just'>
+          <icon class='iconfont icon-kuaidi'></icon>
+        </view>
+        <view class='icontext'>我的快递</view>
       </navigator>
       <navigator class='icon_two'>
-         <view class='iconN shadow-just'><icon class='iconfont icon-yifupifu'></icon></view>
+        <view class='iconN shadow-just'>
+          <icon class='iconfont icon-yifupifu'></icon>
+        </view>
         <view class='icontext'>小站洗衣</view>
       </navigator>
       <navigator class='icon_three'>
-          <view class='iconN shadow-just'><icon class='iconfont icon-chezhufuwu'></icon></view>
+        <view class='iconN shadow-just'>
+          <icon class='iconfont icon-chezhufuwu'></icon>
+        </view>
         <view class='icontext'>小站学车</view>
       </navigator>
       <navigator class='icon_four'>
-         <view class='iconN shadow-just'><icon class='iconfont icon-huodong'></icon></view>
+        <view class='iconN shadow-just'>
+          <icon class='iconfont icon-huodong'></icon>
+        </view>
         <view class='icontext'>小站活动</view>
       </navigator>
     </view>
-  
+
   </view>
 
   <view class='new-express'>
     <view class='c-violet'>新到快递</view>
-    <view class='new-express-list shadow-just'>
-      <view class="flex">
-        <view><text>顺丰速运：</text>25227283784871623</view>
-        <view><text>取件码：</text>8879083</view>
+
+    <view wx:if="{{!expressList || !expressList.length}}" class='new-express-list shadow-just'>
+      <view class="center">
+        <view>亲，未收到您得包裹信息哦~</view>
       </view>
-      <view class="flex"><text>取件地址：</text><text>民信佳园3号门店民信佳园3号门店民信佳园3号门店民信佳园3号门店</text></view>
-      <view><text>派件人员：</text><text>18725269987</text></view>
     </view>
-    <view class='new-express-list shadow-just'>
-      <view class="flex">
-        <view><text>顺丰速运：</text>25227283784871623</view>
-        <view><text>取件码：</text>8879083</view>
+
+    <view wx:else>
+      <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
+        <view class="flex">
+          <view>
+            <text>顺丰速运：</text>{{item.company}}</view>
+          <view>
+            <text>取件码：</text>{{item.qrcode}}</view>
+        </view>
+        <view>
+          <text>取件地址：</text>
+          <text>{{item.address}}</text>
+        </view>
+        <view>
+          <text>派件人员：</text>
+          <text>{{item.mobile}}</text>
+        </view>
       </view>
-      <view class="flex"><text>取件地址：</text><text>民信佳园3号门店民信佳园3号门店民信佳园3号门店民信佳园3号门店</text></view>
-      <view><text>派件人员：</text><text>18725269987</text></view>
     </view>
+
+
+
   </view>
 
 </view>
 
-<view class='layer'  wx:if="{{isShow}}"></view>
-<view class='getInfo_box'  wx:if="{{isShow}}">
-    <view class='title_p'>颂车小二小程序</view>
-    <image src='/static/images/error.png'></image>
-    <view class='but_box'>
-        <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
-    </view>
+<view class='layer' wx:if="{{isShow}}"></view>
+<view class='getInfo_box' wx:if="{{isShow}}">
+  <view class='title_p'>颂车小二小程序</view>
+  <image src='/static/images/error.png'></image>
+  <view class='but_box'>
+    <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
+  </view>
 </view>
