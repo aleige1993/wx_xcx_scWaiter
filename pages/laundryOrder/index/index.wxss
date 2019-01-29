@@ -55,7 +55,6 @@ page {
 .ceng_box{
     margin-top: 10rpx;
     background-color: #fff;
-    padding: 20rpx 0;
 }
 .pirce_box{
     display: flex;
@@ -75,4 +74,17 @@ page {
   top: 50%;
   z-index: 99;
   background-image: linear-gradient(45deg, #5578f6, #35e1c8); 
+}
+.childListStyle .van-tabs__line{
+    display: none  !important;
+}
+.null-data{
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+
+.null-data icon{
+    font-size: 100px;
+    color: #999;
 }

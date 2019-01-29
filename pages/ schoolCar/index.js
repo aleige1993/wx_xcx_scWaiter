@@ -1,19 +1,12 @@
 // pages/ schoolCar/index.js
+let app =getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        shopArr: [{
-                name: '店铺1',
-                id: "1"
-            },
-            {
-                name: '店铺2',
-                id: "2"
-            }
-        ],
+        shopArr: [],
         shopIndex: '',
         carArr: [{
                 name: 'A1',
@@ -63,7 +56,7 @@ Page({
                 id: "2"
             }
         ],
-        checked: '',
+        checked:false,
         shopItem: '',
         carIitem: '',
         sexItem: ''
@@ -75,32 +68,90 @@ Page({
     },
     // 选择店铺
     shoprChange(e) {
-        console.log(e)
         this.setData({
-            shopIndex: e.detail.value
+            'shopIndex': e.detail.value,
+            'shopItem': this.data.shopArr[e.detail.value].stationNo
         })
     },
     // 选择车型
-    carChange() {
+    carChange(e) {
         this.setData({
-            carIndex: e.detail.value
+            'carIndex': e.detail.value,
+            carIitem: this.data.carArr[e.detail.value].id
         })
     },
     // 选择性别
     sexChange(e) {
         this.setData({
-            sexIndex: e.detail.value
+            'sexIndex': e.detail.value,
+            sexItem: this.data.sexArr[e.detail.value].id
         })
     },
     //提交
     formSubmit(e) {
         console.log(e)
+        if (this.data.shopItem == '') {
+            app.Tools.showToast('请选择小站');
+            return false;
+        }
+        if (this.data.carIitem == '') {
+            app.Tools.showToast('请选择学习车型');
+            return false;
+        }
+        if (this.data.sexItem == '') {
+            app.Tools.showToast('请选择性别');
+            return false;
+        }
+        if (!this.WxValidate.checkForm(e)) {
+            const error = this.WxValidate.errorList[0];
+            wx.showToast({
+                title: error.msg,
+                icon: 'none',
+                duration: 2000
+            })
+            return false
+        }
+        if (!this.data.checked) {
+            app.Tools.showToast('请同意《用户服务协议》');
+            return false;
+        }
+        let parms = {
+            stationNo: this.data.shopItem,
+            type: this.data.carIitem,
+            userName: e.detail.value.username,
+            gender: this.data.sexItem,
+            card: e.detail.value.idcard,
+            mobile: e.detail.value.mobile
+        }
+        app.Formdata.post('/openapi/express/wechatapplet/express/drive/save', parms, (res)=>{
+            console.log(res);
+            if (res.code == "0000") {
+                wx.showToast({
+                    title: '报名成功！',
+                    icon:'success',
+                    duration: 2000,
+                    success:(res)=>{
+                        setTimeout(()=>{
+                            wx.navigateBack({ delta:1});
+                        },2000)
+                    }
+                })
+            }
+        });
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        this.initValidate();
+        app.Formdata.get('/openapi/express/wechatapplet/express/station/query',{},(res)=>{
+            console.log(res);
+            if (res.code=='0000') {
+                    this.setData({
+                        shopArr:res.data
+                    })
+            }
+        })
     },
 
     /**
@@ -150,5 +201,28 @@ Page({
      */
     onShareAppMessage: function() {
 
+    },
+    initValidate() {
+        const rules = {
+            username: {
+                required: true
+            },
+            mobile: {
+                required: true,
+                tel: true
+            }
+        }
+
+        const messages = {
+            username: {
+                required: "请输入姓名"
+            },
+            mobile: {
+                required: "请输入手机号",
+                tel: "请输入正确的手机号"
+            }
+        }
+        // 创建实例对象 
+        this.WxValidate = new app.WxValidate(rules, messages)
     }
 })

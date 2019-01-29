@@ -19,16 +19,43 @@ Page({
     },
     activeFirst: 0,
     activeSecond: 0,
-    count: 1,
+    count: 0,
     needAni: false,
     hide_good_box: true,
+    menuItem:[],
+    queryList:{
+        page:1,
+        limit:15,
+        secondCategoryNo:''
+    },
+      producList:[],
+      boxHeight:0,
+      resHeight:''
   },
 
-  onChangeFirst() {
-
+  onChangeFirst(e) {
+      let index = e.detail.index;
+      let childlist = this.data.menuItem[index].childList.length > 0 ? this.data.menuItem[index].childList[0] : false;
+      if (childlist) {
+          this.setData({
+             'queryList.secondCategoryNo': childlist.categoryNo
+          })
+          this.setData({
+              'producList': []
+          })
+          this.getShopdata();
+      }
   },
-  onChangeSecond() {
-
+  onChangeSecond(e) {
+      let index = e.detail.index;
+      let childlist = e.target.dataset.childlist;
+      this.setData({
+        'queryList.secondCategoryNo':childlist[index].categoryNo
+      })
+      this.setData({
+          'producList':[]
+      })
+      this.getShopdata();
   },
     touchOnGoods: function (e) {
         // 如果good_box正在运动
@@ -70,14 +97,76 @@ Page({
             }
         }, 33);
     },
+    //上拉刷新
+    onUpper(){
+        this.setData({
+            'queryList.page':1,
+            'producList':[]
+        })
+        this.getShopdata();
+    },
+    //下拉加载
+    onLower(){
+        this.setData({
+            'queryList.page': this.data.queryList.page+1
+        })
+        this.getShopdata();
+    },
   /**
    * 生命周期函数--监听页面加载
    */
+  getShopdata(){
+      wx.showLoading({
+          title: '加载中',
+          mask: true
+      })
+      app.Formdata.get('/openapi/express/wechatapplet/wash/good/query', this.data.queryList,(res)=>{
+         if(res.code='0000'){
+             if(res.data.length >0){
+                 this.setData({
+                     producList: this.data.producList.concat(res.data)
+                 }, () => {
+                     wx.hideLoading()
+                 })
+             }else{
+                 wx.hideLoading()
+                 wx.showToast({
+                     title: '哎呀~没有更多数据了',
+                     icon:'none'
+                 })
+             }
+         }
+      })
+  },
   onLoad: function (options) {
       var that = this;
       this.busPos = {};
       this.busPos['x'] = app.globalData.ww * 1;
       this.busPos['y'] = app.globalData.hh * 0.8;
+    //设置滚动高度
+      let wheight = wx.getSystemInfoSync();
+      wx.createSelectorQuery().selectAll('#auto-view').boundingClientRect( (res) => {
+          that.setData({
+              'boxHeight': wheight.windowHeight - res[0].height
+          })
+      }).exec();
+      app.Formdata.get('/openapi/express/wechatapplet/wash/productcategory/queryall',{},(res)=>{
+        if(res.code=='0000') {
+         const  resData =  res.data.filter((item,index)=>{
+                return item.childList.length > 0
+            })
+            this.setData({
+                menuItem: resData
+            })
+            if (res.data.length>0){
+                this.setData({
+                    'queryList.secondCategoryNo': resData[0].childList[0].categoryNo
+                })
+                this.getShopdata();
+            }
+        }
+          
+      })
   },
 
   /**

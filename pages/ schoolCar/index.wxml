@@ -12,9 +12,9 @@
                 <view class='cell_box'>
                     <view class='label'>小站选择</view>
                     <view class='value'>
-                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="name">
+                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
                             <view class="picker">
-                                {{shopArr[shopIndex].name ? shopArr[shopIndex].name : '请选择小站'}}
+                                {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
                             <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
@@ -25,7 +25,7 @@
                     <view class='value'>
                           <picker bindchange="carChange" value="{{carIndex}}" range="{{carArr}}" range-key="name">
                             <view class="picker">
-                            {{carArr[carIndex] ? carArr[carIndex] : '请选择驾驶证类型'}}
+                            {{carArr[carIndex].name ? carArr[carIndex].name : '请选择驾驶证类型'}}
                             <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
@@ -49,7 +49,7 @@
                     <view class='value'>
                           <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexArr}}" range-key="name">
                             <view class="picker">
-                            {{sexArr[sexIndex] ? sexArr[sexIndex] : '请选择性别'}}
+                            {{sexArr[sexIndex].name ? sexArr[sexIndex].name : '请选择性别'}}
                             <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
@@ -74,7 +74,7 @@
                 <view class='agre_box'>同意《<navigator class='c-blue'>用户服务协议</navigator>》</view>
             </view>
              <view class='marig-primary'>
-                <button size="normal" type="primary" round="ture"  form-type='submit' class="primary backg-grad" >注册</button>
+                <button size="normal" type="primary" round="ture"  form-type='submit' class="primary backg-grad" >报名</button>
             </view>
     </view>
     </form>

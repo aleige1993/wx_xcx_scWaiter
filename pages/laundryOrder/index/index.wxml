@@ -1,105 +1,49 @@
 <!--pages/laundryOrder/index/index.wxml-->
-
-<swiper class='banner' circular indicator-dots="{{banner.indicatorDots}}" indicator-active-color="#5f8aff" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
+<view id='auto-view'>
+    <swiper class='banner' circular indicator-dots="{{banner.indicatorDots}}" indicator-active-color="#5f8aff" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
     <block wx:key="{{banner.imgUrls}}" wx:for="{{banner.imgUrls}}">
         <swiper-item>
             <image src="{{item}}" class="slide-image" style='width: 100%' />
         </swiper-item>
     </block>
 </swiper>
-
-<van-tabs active="{{ activeFirst }}" bind:change="onChangeFirst">
-    <van-tab title="标签 1">
+<van-tabs  active="{{ activeFirst }}"    bind:change="onChangeFirst">
+    <van-tab   wx:for="{{menuItem}}"  wx:key="menuOne"  title="{{item.categoryName}}">
         <view class='ceng_box'>
-            <van-tabs type="card" active="{{ activeSecond }}" bind:change="onChangeSecond">
-                <van-tab title="标签 a"></van-tab>
-                <van-tab title="标签 b"></van-tab>
-                <van-tab title="标签 c"></van-tab>
-                <van-tab title="标签 d"></van-tab>
+            <van-tabs custom-class="childListStyle" wx:if="{{item.childList.length>0}}"  active="{{ activeSecond }}" bind:change="onChangeSecond" data-childList="{{item.childList}}" >
+                <van-tab   wx:for="{{item.childList}}" wx:for-item="list" wx:key="childList"   title="{{list.categoryName}}" ></van-tab>
             </van-tabs>
         </view>
     </van-tab>
-    <van-tab title="标签 2"></van-tab>
-    <van-tab title="标签 3"></van-tab>
-    <van-tab title="标签 4"></van-tab>
-    <van-tab title="标签 5"></van-tab>
 </van-tabs>
-
-<view class='laundry-list'>
-    <view class='laundry-item'>
+</view>
+<scroll-view
+    scroll-y
+    style="height:{{boxHeight}}px;"
+    bindscrolltoupper="onUpper"
+    bindscrolltolower="onLower"
+    upper-threshold="20"
+    lower-threshold="20"
+  >
+    <view class='laundry-list' wx:if="{{producList.length>0}}">
+    <view class='laundry-item' wx:for="{{producList}}" wx:key="produc">
         <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
+            <view class='c-violet font-w6'>{{item.goodName}}</view>
             <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
+                <image src='{{item.picUrl}}' />
             </view>
             <view class='pirce_box' >
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
+                <text class='c-yellow'>￥{{item.price}}</text>
+                <icon class='iconfont icon-tianjia1' data-goodNo="{{item.goodNo}}" bindtap="touchOnGoods"></icon>
             </view>
         </view>
     </view>
-    <view class='laundry-item '>
-        <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
-            <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
-            </view>
-            <view class='pirce_box'>
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
-            </view>
-        </view>
-    </view>
-    <view class='laundry-item'>
-        <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
-            <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
-            </view>
-            <view class='pirce_box'>
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
-            </view>
-        </view>
-    </view>
-    <view class='laundry-item'>
-        <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
-            <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
-            </view>
-            <view class='pirce_box'>
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
-            </view>
-        </view>
-    </view>
-     <view class='laundry-item'>
-        <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
-            <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
-            </view>
-            <view class='pirce_box'>
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
-            </view>
-        </view>
-    </view>
-     <view class='laundry-item'>
-        <view class='laundry-item-inner shadow-just'>
-            <view class='c-violet font-w6'>衬衣衬衣衬衣</view>
-            <view>
-                <image src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3399114037,3660860962&fm=27&gp=0.jpg' />
-            </view>
-            <view class='pirce_box'>
-                <text class='c-yellow'>￥2000.00</text>
-                <icon class='iconfont icon-tianjia1' bindtap="touchOnGoods"></icon>
-            </view>
-        </view>
-    </view>
-    
 </view>
+<view class='laundry-list null-data'  wx:else>
+    <icon class='iconfont  icon-tiaobochuku'></icon>
+   <view>暂无数据~~~</view> 
+</view>
+  </scroll-view>
 
 <navigator class="laundry-button">
     <icon class='iconfont icon-gouwuchekong'></icon>
