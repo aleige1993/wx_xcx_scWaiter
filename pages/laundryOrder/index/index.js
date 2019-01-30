@@ -58,6 +58,18 @@ Page({
       this.getShopdata();
   },
     touchOnGoods: function (e) {
+        const goodNo = e.target.dataset.goodno;
+        if (goodNo){
+            app.Formdata.post('/openapi/express/wechatapplet/wash/cart/add', { 'productNo': goodNo, 'num': 1 }, (res) => {
+                if (res.success === 'true') {
+                    wx.showToast({
+                        title: '购物车添加成功~',
+                    })
+                }
+            })
+        }else{
+            return false
+        }
         // 如果good_box正在运动
         if (!this.data.hide_good_box) return;
         this.finger = {};
@@ -92,7 +104,7 @@ Page({
                 clearInterval(that.timer);
                 that.setData({
                     hide_good_box: true,
-                    count: that.data.count += 1
+                    count:that.data.count/1+1
                 })
             }
         }, 33);
@@ -180,7 +192,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      app.Formdata.get('/openapi/express/wechatapplet/wash/cart/query', { page: 1, limit:15 },(res)=>{
+          if(res.code=='0000'){
+              this.setData({
+                  count: res.count
+              })
+          }
+      })
   },
 
   /**

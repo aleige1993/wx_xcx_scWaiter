@@ -1,17 +1,17 @@
-{
+X{
     "pages": [
+        "pages/index/index",
+        "pages/laundryOrder/shoppCart/index",
         "pages/laundryOrder/index/index",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/payMent/index",
         "pages/laundryOrder/setTlement/index",
         "pages/laundryOrder/orderDetails/details",
         "pages/laundryOrder/orderDetails/searOrder",
-        "pages/ schoolCar/index",
+        "pages/schoolCar/index",
         "pages/login/index",
         "pages/login/resetPwd",
         "pages/login/register",
-        "pages/index/index",
-        "pages/laundryOrder/shoppCart/index",
         "pages/usCenter/index",
         "pages/usCenter/upInfo/index",
         "pages/myExpress/index",

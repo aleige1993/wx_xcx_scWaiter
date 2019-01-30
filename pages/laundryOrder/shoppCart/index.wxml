@@ -2,7 +2,7 @@
 <view>
     <view>
         <van-checkbox-group value="{{ result }}" bind:change="onCheckbox">
-                <view class='change_panl' wx:for="{{list}}" wx:key="{{index}}">
+                <view class='change_panl' wx:for="{{resData}}" wx:key="{{index}}">
                         <view class='check_box'>
                             <van-checkbox
                                 checked-color="#ea857d"
@@ -11,39 +11,42 @@
                              </van-checkbox>
                         </view>
                         <view class='order_panl'>
-                            <image src='/static/images/error.png'></image>
+                            <image src='{{item.picUrl}}'></image>
                             <view class='order_data'>
-                                <view>{{item.title}}</view>
-                                <view class='c-red'>￥{{item.pirce}}</view>
+                                <view>{{item.goodName}}</view>
+                                <view class='c-red'>￥{{item.price}}</view>
                             </view>
                         </view>
                         <view class='stepper_panl'>
-                            <van-stepper value="{{ item.val }}" data-index="{{index}}" bind:change="onStepper" />
+                            <van-stepper value="{{ item.num }}" data-index="{{index}}"  data-goodNo="{{item.productNo}}"   bind:change="onStepper" />
                         </view>
                 </view>
         </van-checkbox-group>
     </view>
 
+    <view wx:if="{{resData.length<=0}}"  class="resNull">
+        <icon class='iconfont icon-gouwuchekong'></icon>
+       <view class='title'>购物车空空如也，<navigator  open-type="redirect" url="/pages/laundryOrder/index/index">快快去添加</navigator></view> 
+    </view>
     <view class='sumbit_box'>
         <view class='sumbit_pirce'>
                 <view class=''>
-                         <van-checkbox-group value="{{ isAll }}" bind:change="allCheckbox">
                                     <van-checkbox
-                                        name="all"
+                                        value="{{ isAll }}"
                                          checked-color="#ea857d"
+                                         bind:change="allCheckbox"
                                     >
                                     全选
                                     </van-checkbox>
-                        </van-checkbox-group>
                 </view>
                   <view class='sumbit_data'>
-                        <view class='c-red'>￥60.00</view>
-                        <view class='c-ccc'>优惠￥24.00</view>
+                        <view class='c-red'>￥{{allPirce ? allPirce : 0 }}</view>
+                        <!-- <view class='c-ccc'>优惠￥24.00</view> -->
                   </view>
         </view>
 
         <view class='sumbit_but'>
-                <view class='y-barg'>删除</view>
+                <view class='y-barg' bindtap='onCaler'>删除</view>
                 <view class='r-barg'>去洗衣</view>
         </view>
     </view>

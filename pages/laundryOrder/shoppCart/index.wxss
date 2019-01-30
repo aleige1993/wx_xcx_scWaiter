@@ -62,3 +62,21 @@ page{
 .r-barg{
     background-color: #ff4c5e;
 }
+.resNull{
+    text-align: center;
+}
+.resNull icon{
+    font-size: 100px;
+    color: #999;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.resNull .title{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #999;
+}
+.resNull .title navigator{
+    color: #3984ff;
+}
