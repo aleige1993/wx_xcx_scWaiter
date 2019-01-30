@@ -81,7 +81,7 @@ Page({
 
   onShow: function() {
     this.setData({
-      // isShow: !app.UserLogin.get('wxUserInfo'),
+      isShow: !app.UserLogin.get('wxUserInfo'),
       isLogin: app.UserLogin.get('userInfo')
     })
     if (this.data.isLogin) {
