@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    isShow: true,
+    isLogin: false,
+    isShow: false,
     banner: {
       imgUrls: [
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548386640&di=466e70e7237799a21cd250500d5fc6e0&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F543797a594fe7.jpg',
@@ -63,8 +64,6 @@ Page({
     })
   },
 
-
-
   onGotUserInfo(e) {
     let wxUserInfo = e.detail.userInfo
     if (wxUserInfo) {
@@ -79,28 +78,27 @@ Page({
       })
     }
   },
-  onReady: function () {
+
+  onShow: function() {
+    this.setData({
+      isShow: !app.UserLogin.get('wxUserInfo'),
+      isLogin: app.UserLogin.get('userInfo')
+    })
+    if (this.data.isLogin) {
+      this.loadExpressList();
+    }
   },
 
   onLoad: function () {
-    let wxInfo = app.UserLogin.get('wxUserInfo');
-    if (wxInfo == '') {
-      this.setData({
-        isShow: true
-      })
-    } else {
-      this.setData({
-        isShow: false
-      })
-    }
-
-    this.loadExpressList();
+    
   },
 
   onReachBottom: function () {
-    this.setData({
-      "sreachForm.page": ++this.data.sreachForm.page
-    })
-    this.loadExpressList();
+    if (this.data.isLogin) {
+      this.setData({
+        "sreachForm.page": ++this.data.sreachForm.page
+      })
+      this.loadExpressList();
+    }
   }
 })

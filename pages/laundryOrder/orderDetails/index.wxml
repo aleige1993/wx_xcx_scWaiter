@@ -2,57 +2,78 @@
 <view class='laundryOrder'>
     <view class='order-panl'>
         <van-tabs animated bind:click="getIndex">
-            <van-tab title="全部">
-                <view class="section">
-                    <scroll-view style="height:{{scrollHeight}}" scroll-y scroll-top="{{scrollTop}}" upper-threshold="1px" lower-threshold="10px" bindscrolltolower="binddown" bindscrolltoupper="bindtop">
-                        <view class='order_panl'>
-                            <view class='order_title'>
-                                <view>订单编号：11977240</view>
-                                <view>
-                                    <text class='c-red'>等待付款</text>
-                                </view>
-                            </view>
-                            <view class='order_box'>
-                                <view class='move_box'>
-                                    <image src='../../../static/images/error.png'></image>
-                                    <view class='order_vim'>
-                                        <view>西装</view>
-                                        <view class='c-red'>￥28.00</view>
-                                    </view>
-                                    <view class='order_num'>×4</view>
-                                </view>
-                                <view class='move_box'>
-                                    <image src='../../../static/images/error.png'></image>
-                                    <view class='order_vim'>
-                                        <view>西装</view>
-                                        <view class='c-red'>￥28.00</view>
-                                    </view>
-                                    <view class='order_num'>×4</view>
-                                </view>
-                            </view>
-                            <view class='order_footer'>
-                                <view class='font-w6'>应付金额：
-                                    <text class='c-red'>¥180.00</text>
-                                </view>
-                              <view class='but_box'>
-                                      <button class='but_cancel'>取消订单</button>
-                                      <button class='but_payment'>立即付款</button>
-                                      <!-- <button class='but_question'>清洗问题</button>
-                                      <button class='but_confirm'>确认取衣</button>
-                                      <button class='but_payment'>再次购买</button>
-                                      <button class='but_payment'>重新下单</button>
-                                       <button class='but_cancel'>删除订单</button> -->
-                              </view>
-                            </view>
-                        </view>
-                    </scroll-view>
-                </view>
-            </van-tab>
-            <van-tab title="待付款">内容 2</van-tab>
-            <van-tab title="待签收">内容 3</van-tab>
-            <van-tab title="已完成">内容 4</van-tab>
-            <van-tab title="已取消">内容 5</van-tab>
+            <van-tab title="待付款" data-order="1"> </van-tab>
+            <van-tab title="待签收" data-order="2"></van-tab>
+            <van-tab title="已完成"></van-tab>
+            <van-tab title="已取消"></van-tab>
         </van-tabs>
+        <view class="section" wx:if="{{listItme.length>0}}">
+            <scroll-view style="height:{{scrollHeight}}" scroll-y scroll-top="{{scrollTop}}" upper-threshold="1px" lower-threshold="10px" bindscrolltolower="binddown" bindscrolltoupper="bindtop">
+                <view class='order_panl' wx:for="{{listItme}}" wx:key="order_panl">
+                    <view class='order_title'  data-orderNo="{{item.orderNo}}"  bindtap='goOrderDetails'>
+                        <view>订单编号：{{item.orderNo}}</view>
+                        <view>
+                            <text class='c-red' wx:if="{{status==1}}">等待付款</text>
+                             <text class='c-red' wx:if="{{status==2}}">请送衣服至小站</text>
+                              <text class='c-red' wx:if="{{status==8}}">交易成功</text>
+                               <text class='c-red' wx:if="{{status==10}}">交易关闭</text>
+                        </view>
+                    </view>
+                    
+                    <view class='order_box'>
+                        <view class='move_box' wx:for="{{item.orderGoods}}"  wx:for-item="itemGoods"  wx:key="orderGoods">
+                            <image src='{{itemGoods.picUrl}}'></image>
+                            <view class='order_vim'>
+                                <view>{{itemGoods.goodName}}</view>
+                                <view class='c-red'>￥{{itemGoods.price}}</view>
+                            </view>
+                            <view class='order_num'>×{{ itemGoods.num}}</view>
+                        </view>
+                      
+                    </view>
+                    <view class='order_footer' wx:if="{{item.status==1}}">
+                        <view class='font-w6'>应付金额：
+                            <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        </view>
+                        <view class='but_box'>
+                            <button class='but_cancel' bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="10" >取消订单</button>
+                            <button class='but_payment'>立即付款</button>
+                        </view>
+                    </view>
+                     <view class='order_footer' wx:if="{{item.status==2}}">
+                        <view class='font-w6'>已付金额：
+                            <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        </view>
+                        <view class='but_box'>
+                            <button class='but_question' bindtap='clickQuestion'>清洗问题</button>
+                            <button class='but_confirm'  bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="8" >确认取衣</button>
+                        </view>
+                    </view>
+                     <view class='order_footer' wx:if="{{item.status==8}}">
+                        <view class='font-w6'>已付金额：
+                            <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        </view>
+                        <view class='but_box'>
+                             <button class='but_payment'  bindtap='golaundryOrder'>再次购买</button>
+                        </view>
+                     </view>
+                    <view class='order_footer' wx:if="{{item.status==10}}">
+                        <view class='font-w6'>应付金额：
+                            <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        </view>
+                        <view class='but_box'>
+                            <button class='but_cancel'  data-orderNo="{{item.orderNo}}"  bindtap='delOrder'>删除订单</button>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+
+        <view class='laundry-list null-data marginTop'  wx:else>
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+        <view>暂无数据~~~</view> 
+        </view>
     </view>
     <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
 </view>

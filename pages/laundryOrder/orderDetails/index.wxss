@@ -86,3 +86,6 @@ background-color: #fff;
 .order_soso{
 
 }
+.marginTop{
+    margin-top: 20%;
+}
