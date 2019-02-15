@@ -41,7 +41,7 @@
         </view>
         <view class='icontext'>小站洗衣</view>
       </navigator>
-      <navigator class='icon_three'>
+      <navigator class='icon_three' url="/pages/schoolCar/index">
         <view class='iconN shadow-just'>
           <icon class='iconfont icon-chezhufuwu'></icon>
         </view>

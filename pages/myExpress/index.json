@@ -1,5 +1,5 @@
 {
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "van-search": "/ui-plugins/vant/search/index",
     "van-tab": "/ui-plugins/vant/tab/index",
