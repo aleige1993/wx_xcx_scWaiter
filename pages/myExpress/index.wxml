@@ -10,7 +10,7 @@
   </van-tabs>
 </view>
 
-<view wx:key="{{index}}" wx:for="{{expressList}}" class='order_box'>
+<view wx:key="{{index}}" wx:for="{{expressList}}"  wx:if="{{expressList.length>0}}" class='order_box'>
   <view class='order_title'>
     <view class='exName font-w6'>
       <text>{{item.company}}</text>

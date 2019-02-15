@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/myExpress/index",
     "pages/index/index",
+    "pages/schoolCar/index",
     "pages/laundryOrder/shoppCart/index",
     "pages/laundryOrder/orderDetails/index",
     "pages/laundryOrder/orderDetails/details",
@@ -8,13 +10,11 @@
     "pages/laundryOrder/payMent/index",
     "pages/laundryOrder/setTlement/index",
     "pages/laundryOrder/orderDetails/searOrder",
-    "pages/schoolCar/index",
     "pages/login/index",
     "pages/login/resetPwd",
     "pages/login/register",
     "pages/usCenter/index",
     "pages/usCenter/upInfo/index",
-    "pages/myExpress/index",
     "pages/laundryOrder/payMent/resultMsg/index"
   ],
   "window": {
