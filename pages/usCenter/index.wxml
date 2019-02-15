@@ -1,58 +1,120 @@
 <!--pages/usCenter/index.wxml-->
 <view>
   <view class='us-img-box backg-grad'>
-    <view class='box-user '>
+    <view wx:if="{{isLogin}}" class='box-user '>
       <image src='{{wxUserInfo.avatarUrl}}'></image>
       <view>
         <text class='font-w6'>{{wxUserInfo.nickName}}</text>
-        <!-- <text>18033441984</text> -->
+      </view>
+    </view>
+    <view wx:else class='box-user '>
+      <image src='../../static/images/error.png'></image>
+      <view>
+        <navigator url='/pages/login/index'>
+          <van-button size="small" type="default">登录/注册</van-button>
+        </navigator>
       </view>
     </view>
     <!-- <icon class='iconfont icon-you1'></icon> -->
   </view>
 
   <view>
-    <navigator url='/pages/myExpress/index' class='glup_box'>
+    <!-- 我的快递 -->
+    <navigator wx:if="{{isLogin}}" url='/pages/myExpress/index' class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>我的快递</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-    <navigator url='/pages/laundryOrder/orderDetails/index' class='glup_box'>
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>我的快递</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+
+    <!-- 洗衣订单 -->
+    <navigator wx:if="{{isLogin}}" url='/pages/laundryOrder/orderDetails/index' class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>洗衣订单</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-    <navigator class='glup_box'>
+
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>洗衣订单</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+
+    <!-- 学车申请 -->
+    <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>学车申请</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-     <navigator class='glup_box'>
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>学车申请</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+
+    <!-- 修改会员信息 -->
+    <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改会员信息</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-    <navigator class='glup_box'>
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>修改会员信息</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+
+    <!-- 修改手机 -->
+    <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改手机</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>修改手机</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+
   </view>
 
-  <view class='marig-primary'>
+  <view wx:if="{{isLogin}}" class='marig-primary'>
     <button bindtap='loginout' class="primary  backg-grad shadow-just" form-type='submit' size="normal">退出登录</button>
   </view>
 
 </view>
 
 <van-dialog id="van-dialog" />
+
+<view class='layer' wx:if="{{isShow}}"></view>
+<view class='getInfo_box' wx:if="{{isShow}}">
+  <view class='title_p'>颂车小二小程序</view>
+  <image src='/static/images/error.png'></image>
+  <view class='but_box'>
+    <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
+  </view>
+</view>

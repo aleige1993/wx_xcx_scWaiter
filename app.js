@@ -25,12 +25,12 @@ App({
     // wx.setStorageSync('logs', logs)
     this.utils.screenSize();
     // 判断是否登录or是否点击获取权限
-    let wxInfo = this.UserLogin.get('wxUserInfo');
-    if (wxInfo == "") {
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }
+    // let wxInfo = this.UserLogin.get('wxUserInfo');
+    // if (!wxInfo) {
+    //   wx.switchTab({
+    //     url: '/pages/index/index',
+    //   })
+    // }
   },
   globalData: {
     userInfo: null,
