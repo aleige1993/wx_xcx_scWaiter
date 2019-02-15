@@ -20,7 +20,7 @@ Page({
     }).then(() => {
       // on confirm
       app.UserLogin.remove('userInfo');
-      // app.UserLogin.remove('wxUserInfo');
+      app.UserLogin.remove('wxUserInfo');
       wx.switchTab({
         url: '/pages/index/index',
       })
@@ -70,7 +70,7 @@ Page({
     })
     if (wxInfo) {
       this.setData({
-        wxUserInfo: app.UserLogin.get('wxUserInfo')
+        wxUserInfo: app.UserLogin.get('userInfo')
       })
     } 
   },

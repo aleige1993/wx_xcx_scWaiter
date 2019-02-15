@@ -40,9 +40,9 @@ Page({
 
   loadExpressList() {
     let _this = this;
-    wx.showLoading({
-      title: '加载中...',
-    });
+    // wx.showLoading({
+    //   title: '加载中...',
+    // });
     app.Formdata.get('/openapi/express/wechatapplet/express/order/queryForUser', this.data.sreachForm, function (res) {
       if (res.success && res.success === 'true') {
         if (!res.data || !res.data.length) {
@@ -54,9 +54,9 @@ Page({
             expressList: _this.data.expressList.concat(res.data)
           })
         }
-        setTimeout(function () {
-          wx.hideLoading();
-        }, 500);
+        // setTimeout(function () {
+        //   wx.hideLoading();
+        // }, 500);
         setTimeout(function () {
           wx.stopPullDownRefresh();
         }, 1000);
@@ -78,20 +78,20 @@ Page({
       })
     }
   },
-    clickTost(){
-        console.log(123)
-        wx.showModal({
-            content: '客官,我们正在建设敬请期待',
-            showCancel:false,
-            confirmText:'我知道了',
-            success(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                } 
-            }
-        })
-    },
-  onShow: function() {
+  clickTost() {
+    console.log(123)
+    wx.showModal({
+      content: '客官,我们正在建设敬请期待',
+      showCancel: false,
+      confirmText: '我知道了',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    })
+  },
+  onShow: function () {
     this.setData({
       isShow: !app.UserLogin.get('wxUserInfo'),
       isLogin: app.UserLogin.get('userInfo')
@@ -102,7 +102,7 @@ Page({
   },
 
   onLoad: function () {
-    
+
   },
 
   onReachBottom: function () {

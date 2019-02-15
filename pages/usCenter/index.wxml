@@ -2,9 +2,10 @@
 <view>
   <view class='us-img-box backg-grad'>
     <view wx:if="{{isLogin}}" class='box-user '>
-      <image src='{{wxUserInfo.avatarUrl}}'></image>
+      <!-- <image src='{{wxUserInfo.avatarUrl}}'></image> -->
+      <image src='../../static/images/error.png'></image>
       <view>
-        <text class='font-w6'>{{wxUserInfo.nickName}}</text>
+        <text class='font-w6'>{{wxUserInfo.mobile}}</text>
       </view>
     </view>
     <view wx:else class='box-user '>
