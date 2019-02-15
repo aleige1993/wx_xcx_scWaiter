@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShow: false,
+    isLogin: false,
     wxUserInfo: {}
   },
 
@@ -18,7 +20,7 @@ Page({
     }).then(() => {
       // on confirm
       app.UserLogin.remove('userInfo');
-      app.UserLogin.remove('wxUserInfo');
+      // app.UserLogin.remove('wxUserInfo');
       wx.switchTab({
         url: '/pages/index/index',
       })
@@ -27,13 +29,26 @@ Page({
     });
   },
 
+  onGotUserInfo(e) {
+    let wxUserInfo = e.detail.userInfo
+    if (wxUserInfo) {
+      app.UserLogin.set('wxUserInfo', wxUserInfo);
+      wx.showToast({
+        title: '授权成功',
+        icon: 'success',
+        duration: 2000
+      })
+      this.setData({
+        isShow: false
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        wxUserInfo: app.UserLogin.get('wxUserInfo')
-      })
+    
   },
 
   /**
@@ -47,14 +62,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let _this = this;
-    app.Formdata.get('/openapi/express/wechatapplet/express/user/personal', {}, function (res) {
-      if (res.success && res.success === 'true') {
-        _this.setData({
-          userInfo: res.data
-        })
-      }
+    let wxInfo = app.UserLogin.get('wxUserInfo');
+    let userInfo = app.UserLogin.get('userInfo');
+    this.setData({
+      isShow: !wxInfo,
+      isLogin: userInfo
     })
+    if (wxInfo) {
+      this.setData({
+        wxUserInfo: app.UserLogin.get('wxUserInfo')
+      })
+    } 
   },
 
   /**
