@@ -26,9 +26,9 @@ Page({
             })
             this.getOrder();
         }
-        if (e.detail.title == "待签收") {
+        if (e.detail.title == "待取衣") {
             this.setData({
-                status: "2"
+                status: "-1"
             })
             this.getOrder();
         }

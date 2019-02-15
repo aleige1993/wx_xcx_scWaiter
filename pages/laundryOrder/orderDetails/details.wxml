@@ -7,9 +7,32 @@
             </view>
             <!-- <view>剩余：59分59秒</view> -->
         </view>
-         <view class='title_type backg-grad' wx:if="{{listItme.status==2}}">
-            <view class='type_text'>
-                <icon class='iconfont icon-tiaobochuku'></icon>等待取衣
+
+        <!-- <text class='c-red' wx:if="{{item.status==2}}">已付款</text>
+                              <text class='c-red' wx:if="{{item.status==3}}">已接单</text>
+                                <text class='c-red' wx:if="{{item.status==4}}">清洗中</text>
+                                 <text class='c-red' wx:if="{{item.status==5}}">清洗完成</text>
+                                  <text class='c-red' wx:if="{{item.status==6}}">衣物送至小站</text>
+                                    <text class='c-red' wx:if="{{item.status==7}}">待取衣</text> -->
+
+         <view class='title_type backg-grad' wx:if="{{1<listItme.status && listItme.status<=7}}">
+            <view class='type_text' wx:if="{{listItme.status==2}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>已付款
+            </view>
+            <view class='type_text' wx:if="{{listItme.status==3}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>已接单
+            </view>
+            <view class='type_text' wx:if="{{listItme.status==4}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>清洗中
+            </view>
+          <view class='type_text' wx:if="{{listItme.status==5}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>清洗完成
+            </view>
+            <view class='type_text' wx:if="{{listItme.status==6}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>衣物送至小站
+            </view>
+           <view class='type_text' wx:if="{{listItme.status==7}}">
+                <icon class='iconfont icon-tiaobochuku' ></icon>待取衣
             </view>
         </view>
          <view class='title_type backg-grad2 ' wx:if="{{listItme.status==8}}">
@@ -87,12 +110,12 @@
                 <text>微信支付</text>
             </view>
 
-             <view class='v-li' wx:if="{{listItme.status==2||listItme.status==8}}">
+             <view class='v-li' wx:if="{{1<listItme.status==7||listItme.status==8}}">
                 <text>实付金额：</text>
                 <text>¥{{listItme.paymentAmount}}</text>
             </view>
 
-             <view class='v-li' wx:if="{{listItme.status==2||listItme.status==8}}">
+             <view class='v-li' wx:if="{{1<listItme.status==7||listItme.status==8}}">
                 <text>付款时间：</text>
                 <text>{{listItme.payTime}}</text>
             </view>
@@ -110,7 +133,7 @@
                 <button class='but_payment' bindtap='goOrderPeyMent' data-orderNo="{{listItme.orderNo}}" >立即付款</button>
             </view>
         </view>
-          <view class='order_footer' wx:if="{{listItme.status==2}}">
+          <view class='order_footer' wx:if="{{listItme.status==7}}">
             <view></view>
             <view class='but_box'>
                <button class='but_confirm' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" data-status="8" >确认取衣</button>

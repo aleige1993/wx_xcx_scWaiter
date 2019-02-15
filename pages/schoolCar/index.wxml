@@ -1,4 +1,4 @@
-<!--pages/ schoolCar/index.wxml-->
+<!--pages/schoolCar/index.wxml-->
 <view>
     <view class='banner'>
         <image src='../../static/images/error.png'></image>

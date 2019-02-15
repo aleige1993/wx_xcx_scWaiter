@@ -53,7 +53,7 @@ Page({
         app.Formdata.post('/openapi/express/wechatapplet/express/wash/order/add', parman ,(res) =>{
             console.log(res)
             if(res.code=="0000") {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo
                 })
             }

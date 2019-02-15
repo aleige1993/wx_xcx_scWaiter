@@ -78,7 +78,19 @@ Page({
       })
     }
   },
-
+    clickTost(){
+        console.log(123)
+        wx.showModal({
+            content: '客官,我们正在建设敬请期待',
+            showCancel:false,
+            confirmText:'我知道了',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                } 
+            }
+        })
+    },
   onShow: function() {
     this.setData({
       isShow: !app.UserLogin.get('wxUserInfo'),

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/myExpress/index",
     "pages/index/index",
+    "pages/myExpress/index",
     "pages/schoolCar/index",
     "pages/laundryOrder/shoppCart/index",
     "pages/laundryOrder/orderDetails/index",

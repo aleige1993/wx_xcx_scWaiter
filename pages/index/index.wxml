@@ -41,13 +41,13 @@
         </view>
         <view class='icontext'>小站洗衣</view>
       </navigator>
-      <navigator class='icon_three'>
+      <navigator class='icon_three' url="/pages/schoolCar/index">
         <view class='iconN shadow-just'>
           <icon class='iconfont icon-chezhufuwu'></icon>
         </view>
         <view class='icontext'>小站学车</view>
       </navigator>
-      <navigator class='icon_four'>
+      <navigator class='icon_four' bindtap='clickTost'>
         <view class='iconN shadow-just'>
           <icon class='iconfont icon-huodong'></icon>
         </view>
@@ -79,7 +79,7 @@
         <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
           <view class="flex">
             <view>
-              <text>顺丰速运：</text>{{item.company}}</view>
+              <text>快递公司：</text>{{item.company}}</view>
             <view>
               <text>取件码：</text>{{item.qrcode}}</view>
           </view>

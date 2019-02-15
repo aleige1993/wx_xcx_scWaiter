@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    wxUserInfo: {}
   },
 
   loginout() {
@@ -18,6 +18,7 @@ Page({
     }).then(() => {
       // on confirm
       app.UserLogin.remove('userInfo');
+      app.UserLogin.remove('wxUserInfo');
       wx.switchTab({
         url: '/pages/index/index',
       })
@@ -30,7 +31,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+      this.setData({
+        wxUserInfo: app.UserLogin.get('wxUserInfo')
+      })
   },
 
   /**

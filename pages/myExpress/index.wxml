@@ -1,6 +1,6 @@
 <!--pages/checkExpress/index.wxml-->
 
-<van-search  value="{{sreachForm.expressNo}}" placeholder="请输入快递单号" use-action-slot bind:change="onChange">
+<van-search value="{{sreachForm.expressNo}}" placeholder="请输入快递单号" use-action-slot bind:change="onChange">
   <view slot="action" bind:tap="onSearch">搜索</view>
 </van-search>
 <view class='order_panl'>
@@ -10,14 +10,19 @@
   </van-tabs>
 </view>
 
-<view wx:key="{{index}}" wx:for="{{expressList}}"  wx:if="{{expressList.length>0}}" class='order_box'>
+<view class='laundry-list null-data marginTop' wx:if="{{expressList && !expressList.length}}">
+  <icon class='iconfont  icon-tiaobochuku'></icon>
+  <view>暂无数据~~~</view>
+</view>
+
+<view wx:if="{{expressList && expressList.length}}" wx:key="{{index}}" wx:for="{{expressList}}" class='order_box'>
   <view class='order_title'>
     <view class='exName font-w6'>
       <text>{{item.company}}</text>
       <text>{{item.expressNo}}</text>
     </view>
     <view>
-      <text wx:if="{{sreachForm.status === 1}}" >取件码：<text class='c-red'>{{item.qrcode}}</text></text>
+      <text wx:if="{{sreachForm.status === 1}}">取件码：<text class='c-red'>{{item.qrcode}}</text></text>
       <text wx:else class="c-yellow">已取件</text>
     </view>
   </view>
@@ -29,7 +34,7 @@
         <text class='c-blue'>{{item.mobile}}</text>
       </view>
       <view wx:if="{{sreachForm.status === 1}}">{{item.inTime}}</view>
-      <view wx:else >{{item.outTime}}</view>
+      <view wx:else>{{item.outTime}}</view>
     </view>
   </view>
 </view>
