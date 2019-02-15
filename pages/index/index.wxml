@@ -21,9 +21,9 @@
           </swiper-item>
         </block>
       </swiper>
-      <navigator class="more">
+      <!-- <navigator class="more">
         <icon class='iconfont icon-you1'></icon>
-      </navigator>
+      </navigator> -->
     </view>
   </view>
 
@@ -51,14 +51,17 @@
         <view class='iconN shadow-just'>
           <icon class='iconfont icon-huodong'></icon>
         </view>
-        <view class='icontext'>小站活动</view>
+        <view class='icontext'>小站商城</view>
       </navigator>
     </view>
-
   </view>
 
+<!-- <navigator class='meber_box'>
+    <image src='../../static/images/error.png'></image>
+</navigator> -->
+
   <view class='new-express'>
-    <view class='c-violet'>新到快递</view>
+    <view class='c-violet'>您的新快递</view>
 
     <navigator url='/pages/login/index' wx:if="{{!isLogin}}" class='new-express-list shadow-just'>
       <view class="center">
