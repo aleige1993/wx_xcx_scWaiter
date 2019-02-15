@@ -47,7 +47,7 @@
 
         <view class='sumbit_but'>
                 <view class='y-barg' bindtap='onCaler'>删除</view>
-                <view class='r-barg'>去洗衣</view>
+                <view class='r-barg' bindtap='setOrder'>去洗衣</view>
         </view>
     </view>
 </view>

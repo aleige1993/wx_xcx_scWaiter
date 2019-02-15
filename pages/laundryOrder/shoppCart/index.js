@@ -116,6 +116,19 @@ Page({
             })
         }
     },
+    //去洗衣
+    setOrder(){
+        if (this.data.result.length > 0) {
+            wx.navigateTo({
+                url: '/pages/laundryOrder/setTlement/index?ids=' + this.data.result
+            })
+        }else{
+            wx.showToast({
+                title: '请勾选商品',
+                icon: 'none'
+            })
+        }
+    },
     onLoad: function (options) {
         this.getGoodshop();
     },

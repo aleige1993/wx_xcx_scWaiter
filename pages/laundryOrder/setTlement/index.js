@@ -1,15 +1,20 @@
 // pages/laundryOrder/setTlement/index.js
+let app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        shopArr: ['店铺1', '店铺2', '店铺3', '店铺4'],
-        shopIndex: ''
+        shopArr: [],
+        shopIndex: '',
+        listItme:[],
+        val:'',
+        ids:[]
     },
     // 选择店铺
     shoprChange(e) {
+        console.log(e.detail.value)
         this.setData({
             shopIndex: e.detail.value
         })
@@ -18,8 +23,58 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
+    //获取小站列表
+    //获取多输入框
+    blurtext(e){
+        this.setData({
+            val: e.detail.value
+        })
+    },
+    getAdderquery() {
+        app.Formdata.get('/openapi/express/wechatapplet/express/station/query',{},(res) =>{
+            this.setData({
+                shopArr:res.data
+            })
+        })
+    },
+    orderAdd() {
+        if (!this.data.shopIndex){
+            wx.showToast({
+                title: '请选择小站',
+                icon:'none'
+            })
+            return false
+        }
+        let parman = {
+            message: this.data.val,
+            ids: this.data.ids,
+            stationNo: this.data.shopArr[this.data.shopIndex].stationNo
+        }
+        app.Formdata.post('/openapi/express/wechatapplet/express/wash/order/add', parman ,(res) =>{
+            console.log(res)
+            if(res.code=="0000") {
+                wx.navigateTo({
+                    url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo
+                })
+            }
+        })
+    },
     onLoad: function (options) {
-
+        wx.showLoading({
+            title: '加载中...',
+        })
+        let ids = options.ids.split(',');
+        this.getAdderquery();
+        app.Formdata.get('/openapi/express/wechatapplet/express/wash/order/showPre', { ids: ids},(res)=>{
+            console.log(res)
+            if(res.code=="0000") {
+                this.setData({
+                    listItme:res.data,
+                    ids: ids
+                })
+            }
+        });
+        wx.hideLoading();
     },
 
     /**

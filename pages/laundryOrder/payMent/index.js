@@ -1,25 +1,36 @@
 // pages/laundryOrder/payMent/index.js
+let app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        orderno:'',
+        listItme:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options)
+        this.setData({
+            orderno: options.orderno
+        })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        app.Formdata.get('/openapi/express/wechatapplet/express/wash/order/payPage', { orderNo: this.data.orderno},(res)=>{
+            if(res.code=="0000") {
+                this.setData({
+                    listItme:res.data
+                })
+            }
+        })
     },
 
     /**

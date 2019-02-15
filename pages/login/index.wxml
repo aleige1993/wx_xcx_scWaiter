@@ -21,7 +21,7 @@
     </form>
 
     <view class='findpwd'>
-	    <navigator class='c-blue'>注册新用户</navigator>
-        <navigator class='c-blue'>找回密码</navigator>
+	    <navigator class='c-blue' url='/pages/login/register'>注册新用户</navigator>
+        <navigator class='c-blue' url='/pages/login/resetPwd'>找回密码</navigator>
     </view>
 </view>

@@ -56,6 +56,13 @@ Page({
             url: '/pages/laundryOrder/index/index'
         })
     },
+    //跳转支付
+    goOrderPeyMent(e) {
+        let orderno = e.target.dataset.orderno;
+        wx.navigateTo({
+            url: '/pages/laundryOrder/payMent/index?orderno=' + orderno
+        })
+    },
     //删除
     delOrder(e) {
         let _this = this;

@@ -131,6 +131,12 @@ Page({
             url: '/pages/laundryOrder/orderDetails/details?orderno=' + orderno
         })
     },
+    goOrderPeyMent(e) {
+        let orderno = e.target.dataset.orderno;
+        wx.navigateTo({
+            url: '/pages/laundryOrder/payMent/index?orderno=' + orderno
+        })
+    },
     binddown(e) {
         this.setData({
             page: ++this.data.page

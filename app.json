@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/laundryOrder/shoppCart/index",
     "pages/laundryOrder/orderDetails/index",
     "pages/laundryOrder/orderDetails/details",
     "pages/laundryOrder/index/index",
-    "pages/laundryOrder/shoppCart/index",
-    "pages/index/index",
     "pages/laundryOrder/payMent/index",
     "pages/laundryOrder/setTlement/index",
     "pages/laundryOrder/orderDetails/searOrder",

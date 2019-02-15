@@ -37,7 +37,7 @@
                         </view>
                         <view class='but_box'>
                             <button class='but_cancel' bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="10" >取消订单</button>
-                            <button class='but_payment'>立即付款</button>
+                            <button class='but_payment' bindtap='goOrderPeyMent' data-orderNo="{{item.orderNo}}" >立即付款</button>
                         </view>
                     </view>
                      <view class='order_footer' wx:if="{{item.status==2}}">

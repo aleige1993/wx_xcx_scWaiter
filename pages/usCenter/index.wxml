@@ -33,7 +33,13 @@
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-
+     <navigator class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>修改会员信息</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
     <navigator class='glup_box'>
       <view>
         <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
