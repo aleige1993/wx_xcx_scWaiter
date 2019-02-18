@@ -54,52 +54,46 @@
     </navigator>
 
     <!-- 学车申请 -->
-    <navigator wx:if="{{isLogin}}" class='glup_box'>
+    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>学车申请</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
     <navigator wx:else url='/pages/login/index' class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>学车申请</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
-    </navigator>
+    </navigator> -->
 
     <!-- 修改会员信息 -->
-    <navigator wx:if="{{isLogin}}" class='glup_box'>
+    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改会员信息</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
     <navigator wx:else url='/pages/login/index' class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改会员信息</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
-    </navigator>
+    </navigator> -->
 
     <!-- 修改手机 -->
-    <navigator wx:if="{{isLogin}}" class='glup_box'>
+    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改手机</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
     <navigator wx:else url='/pages/login/index' class='glup_box'>
       <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>修改手机</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
-    </navigator>
+    </navigator> -->
 
   </view>
 
