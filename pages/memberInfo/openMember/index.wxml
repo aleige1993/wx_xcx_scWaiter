@@ -1,0 +1,74 @@
+<!--pages/memberInfo/openMember/index.wxml-->
+<view>
+    <view class='banner'>
+        <image src='../../../static/images/error.png'></image>
+    </view>
+    <form  bindsubmit="formSubmit" >
+        <view class='schoolInfo'>
+            <view class='Info_panl'>
+                <!-- <view class='panl_title'>
+                    学习信息选择
+                </view> -->
+                <view class='cell_box'>
+                    <view class='label'>小站选择</view>
+                    <view class='value'>
+                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                            <view class="picker">
+                                {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+             <view class='Info_panl'>
+                <view class='cell_box'>
+                    <view class='label'>姓名</view>
+                    <view class='value'>
+                            <input value=''  placeholder='请输入姓名' name="username" />
+                     </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>添加地址</view>
+                    <view class='value'>
+                            <text>123123132</text>
+                           <icon class='iconfont icon-you1'></icon>
+                    </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>生日信息</view>
+                    <view class='value'>
+                        <picker
+                            mode="date"
+                            value=""
+                            end="{{endTime}}"
+                            bindchange="onDateChange"
+                        >
+                            <view class="picker">
+                             {{dateTime}} <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+
+                          <!-- <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                            <view class="picker">
+                                {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker> -->
+                    </view>
+                </view>
+            </view>
+
+             <view class='chebox_box'>
+                <van-checkbox  checked-color="#5f8aff"  value="{{ checked }}" bind:change="onChange"></van-checkbox>
+                <view class='agre_box'>同意《<navigator class='c-blue'>用户服务协议</navigator>》</view>
+            </view>
+             <view class='marig-primary'>
+                <button size="normal" type="primary" round="ture"  form-type='submit' class="primary backg-grad" >开通会员(￥1.00元）</button>
+            </view>
+    </view>
+    </form>
+    
+</view>
+

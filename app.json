@@ -1,45 +1,46 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/laundryOrder/shoppCart/index",
-    "pages/laundryOrder/orderDetails/index",
-    "pages/laundryOrder/orderDetails/details",
-    "pages/laundryOrder/index/index",
-    "pages/laundryOrder/payMent/index",
-    "pages/laundryOrder/setTlement/index",
-    "pages/laundryOrder/orderDetails/searOrder",
-    "pages/schoolCar/index",
-    "pages/login/index",
-    "pages/login/resetPwd",
-    "pages/login/register",
-    "pages/usCenter/index",
-    "pages/usCenter/upInfo/index",
-    "pages/myExpress/index",
-    "pages/laundryOrder/payMent/resultMsg/index"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "颂车小站小二",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "selectedIconPath": "/static/images/tab_home_b.png",
-        "iconPath": "/static/images/tab_home_a.png"
-      },
-      {
-        "pagePath": "pages/usCenter/index",
-        "text": "我的",
-        "selectedIconPath": "/static/images/tab_user_b.png",
-        "iconPath": "/static/images/tab_user_a.png"
-      }
+    "pages": [
+        "pages/laundryOrder/payMent/index",
+        "pages/memberInfo/openMember/index",
+        "pages/index/index",
+        "pages/laundryOrder/shoppCart/index",
+        "pages/laundryOrder/orderDetails/index",
+        "pages/laundryOrder/orderDetails/details",
+        "pages/laundryOrder/index/index",
+        "pages/laundryOrder/setTlement/index",
+        "pages/laundryOrder/orderDetails/searOrder",
+        "pages/schoolCar/index",
+        "pages/login/index",
+        "pages/login/resetPwd",
+        "pages/login/register",
+        "pages/usCenter/index",
+        "pages/usCenter/upInfo/index",
+        "pages/myExpress/index",
+        "pages/laundryOrder/payMent/resultMsg/index"
     ],
-    "color": "#BFBFBF",
-    "selectedColor": "#3984ff",
-    "borderStyle": "#e5e5e5"
-  }
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "颂车小站小二",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "selectedIconPath": "/static/images/tab_home_b.png",
+                "iconPath": "/static/images/tab_home_a.png"
+            },
+            {
+                "pagePath": "pages/usCenter/index",
+                "text": "我的",
+                "selectedIconPath": "/static/images/tab_user_b.png",
+                "iconPath": "/static/images/tab_user_a.png"
+            }
+        ],
+        "color": "#BFBFBF",
+        "selectedColor": "#3984ff",
+        "borderStyle": "#e5e5e5"
+    }
 }

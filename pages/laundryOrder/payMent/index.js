@@ -9,7 +9,21 @@ Page({
         orderno:'',
         listItme:[]
     },
-
+    payment(e){
+        wx.requestPayment({
+            timeStamp: '1550476450',
+            nonceStr: '6967739600917534337124595306044',
+            package: 'prepay_id=wx181554080742275b9e0f13410901786223',
+            signType: 'MD5',
+            paySign: 'D1A9DFB6A629036CA4E92A611D469A9E',
+            success(res) { 
+                console.log('res',res)
+            },
+            fail(err) {
+                console.log('err',err)
+             }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

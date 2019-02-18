@@ -5,5 +5,5 @@
         <view class='p2'>￥60.00</view>
     </view>
 
-    <view class='payBut backg-grad'>确认支付</view>
+    <view class='payBut backg-grad' bindtap='payment'>确认支付</view>
 </view>
