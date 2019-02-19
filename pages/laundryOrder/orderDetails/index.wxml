@@ -14,11 +14,11 @@
                         <view>订单编号：{{item.orderNo}}</view>
                         <view>
                             <text class='c-red' wx:if="{{item.status==1}}">等待付款</text>
-                             <text class='c-red' wx:if="{{item.status==2}}">已付款</text>
-                              <text class='c-red' wx:if="{{item.status==3}}">已接单</text>
+                             <text class='c-red' wx:if="{{item.status==2}}">清洗中</text>
+                              <text class='c-red' wx:if="{{item.status==3}}">清洗中</text>
                                 <text class='c-red' wx:if="{{item.status==4}}">清洗中</text>
-                                 <text class='c-red' wx:if="{{item.status==5}}">清洗完成</text>
-                                  <text class='c-red' wx:if="{{item.status==6}}">衣物送至小站</text>
+                                 <text class='c-red' wx:if="{{item.status==5}}">清洗中</text>
+                                  <text class='c-red' wx:if="{{item.status==6}}">清洗中</text>
                                     <text class='c-red' wx:if="{{item.status==7}}">待取衣</text>
                               <text class='c-red' wx:if="{{item.status==8}}">交易成功</text>
                                <text class='c-red' wx:if="{{item.status==10}}">交易关闭</text>

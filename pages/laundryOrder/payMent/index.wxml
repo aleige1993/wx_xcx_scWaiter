@@ -2,8 +2,8 @@
 <view>
     <view class='pay shadow-just'>
         <view class='p1'>支付金额</view>
-        <view class='p2'>￥60.00</view>
+        <view class='p2'>￥{{listItme.paymentAmount}}</view>
     </view>
 
-    <view class='payBut backg-grad'>确认支付</view>
+    <view class='payBut backg-grad' bindtap='payment'>确认支付</view>
 </view>

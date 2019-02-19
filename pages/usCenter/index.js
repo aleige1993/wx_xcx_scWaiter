@@ -20,11 +20,11 @@ Page({
     }).then(() => {
       // on confirm
       app.UserLogin.remove('userInfo');
-      app.UserLogin.remove('wxUserInfo');
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }).catch(() => {
+    app.UserLogin.remove('wxUserInfo');
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  }).catch(() => {
       // on cancel
     });
   },
@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -72,7 +72,7 @@ Page({
       this.setData({
         wxUserInfo: app.UserLogin.get('userInfo')
       })
-    } 
+    }
   },
 
   /**

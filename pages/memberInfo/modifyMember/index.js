@@ -1,67 +1,65 @@
-// pages/ schoolCar/index.js
-let app =getApp();
+// pages/memberInfo/modifyMember/index.js
+let app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        sheetShow:false, 
         shopArr: [],
         shopIndex: '',
         carArr: [{
-                name: 'A1',
-                id: '5'
-            },
-            {
-                name: 'A2',
-                id: '6'
-            },
-            {
-                name: 'A3',
-                id: '7'
-            },
-            {
-                name: 'B1',
-                id: '8'
-            },
-            {
-                name: 'B2',
-                id: '9'
-            },
-            {
-                name: 'C1',
-                id: '1'
-            },
-            {
-                name: 'C2',
-                id: '2'
-            },
-            {
-                name: 'C3',
-                id: '3'
-            },
-            {
-                name: 'C4',
-                id: '4'
-            }
+            name: 'A1',
+            id: '5'
+        },
+        {
+            name: 'A2',
+            id: '6'
+        },
+        {
+            name: 'A3',
+            id: '7'
+        },
+        {
+            name: 'B1',
+            id: '8'
+        },
+        {
+            name: 'B2',
+            id: '9'
+        },
+        {
+            name: 'C1',
+            id: '1'
+        },
+        {
+            name: 'C2',
+            id: '2'
+        },
+        {
+            name: 'C3',
+            id: '3'
+        },
+        {
+            name: 'C4',
+            id: '4'
+        }
         ],
         carIndex: '',
         sexIndex: '',
         sexArr: [{
-                name: '男',
-                id: "1"
-            },
-            {
-                name: '女',
-                id: "2"
-            }
+            name: '男',
+            id: "1"
+        },
+        {
+            name: '女',
+            id: "2"
+        }
         ],
-        checked:false,
+        checked: false,
         shopItem: '',
         carIitem: '',
-        sexItem: '',
-        repeatItem:''
+        sexItem: ''
     },
     onChange(e) {
         this.setData({
@@ -125,57 +123,33 @@ Page({
             card: e.detail.value.idcard,
             mobile: e.detail.value.mobile
         }
-        app.Formdata.post('/openapi/express/wechatapplet/express/drive/save', parms, (res)=>{
-            let _this = this;
+        app.Formdata.post('/openapi/express/wechatapplet/express/drive/save', parms, (res) => {
+            console.log(res);
             if (res.code == "0000") {
-                wx.showModal({
-                    title: '报名成功',
-                    content: '请前往小站登记领取报名资料',
-                    showCancel:false,
-                    confirmText:'我知道了',
-                    success(res) {
-                        if (res.confirm) {
+                wx.showToast({
+                    title: '报名成功！',
+                    icon: 'success',
+                    duration: 2000,
+                    success: (res) => {
+                        setTimeout(() => {
                             wx.navigateBack({ delta: 1 });
-                        }
-                    }
-                })
-            } else if (res.code == "0001" && res.data != null){
-                wx.showModal({
-                    title: '温馨提示',
-                    content: '您已经报名成功，不可重复报名',
-                    showCancel: false,
-                    confirmText: '查看信息',
-                    success(rult) {
-                         _this.data.carArr.filter((item)=>{
-                             console.log(item)
-                            if (item.id == res.data.type){
-                                console.log(item.id == res.data.type)
-                                return res.data.type = item.name
-                            }
-                        })
-                        _this.setData({
-                            sheetShow: true ,
-                            repeatItem:res.data
-                        })
+                        }, 2000)
                     }
                 })
             }
         });
     },
-    onClose(e){
-        this.setData({ sheetShow: false });
-    },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         this.initValidate();
-        app.Formdata.get('/openapi/express/wechatapplet/express/station/query',{},(res)=>{
+        app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
             console.log(res);
-            if (res.code=='0000') {
-                    this.setData({
-                        shopArr:res.data
-                    })
+            if (res.code == '0000') {
+                this.setData({
+                    shopArr: res.data
+                })
             }
         })
     },
@@ -183,49 +157,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     },
     initValidate() {

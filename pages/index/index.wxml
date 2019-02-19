@@ -101,9 +101,10 @@
 
 <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
-  <view class='title_p'>颂车小二小程序</view>
+  <view class='title_p'>颂小二小程序</view>
   <image src='/static/images/error.png'></image>
   <view class='but_box'>
-    <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
+    <button class='backg-grad shadow-just' wx:if="{{state==1}}"  open-type="getUserInfo"   bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
+     <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber"  bindgetphonenumber="onGetphonenum">免注册登录</button>
   </view>
 </view>

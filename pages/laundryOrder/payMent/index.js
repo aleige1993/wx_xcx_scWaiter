@@ -7,17 +7,53 @@ Page({
      */
     data: {
         orderno:'',
+        payType:'',
         listItme:[]
     },
-
+    payment(e){
+        let _this = this;
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    console.log(res.code)
+                    let prmes = {
+                        code: res.code,
+                        clientIp: '127.0.0.1',
+                        type: _this.data.payType,
+                        out_trade_no: _this.data.orderno
+                    }
+                    app.Formdata.post('/openapi/express/wechatapplet/express/wxpay/launch', prmes, (rult) => {
+                        console.log(rult)
+                    })
+                }
+            }
+        })
+      
+       
+       
+        // wx.requestPayment({
+        //     timeStamp: '1550476450',
+        //     nonceStr: '6967739600917534337124595306044',
+        //     package: 'prepay_id=wx181554080742275b9e0f13410901786223',
+        //     signType: 'MD5',
+        //     paySign: 'D1A9DFB6A629036CA4E92A611D469A9E',
+        //     success(res) { 
+        //         console.log('res',res)
+        //     },
+        //     fail(err) {
+        //         console.log('err',err)
+        //      }
+        // })
+    },
     /**
-     * 生命周期函数--监听页面加载
+     * 生命周期函数--监听页面加载 
      */
     onLoad: function (options) {
-        console.log(options)
         this.setData({
-            orderno: options.orderno
+            orderno: options.orderno,
+            payType: options.payType
         })
+      
     },
 
     /**

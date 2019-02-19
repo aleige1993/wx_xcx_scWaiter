@@ -159,7 +159,9 @@ Page({
                     listItme: this.data.listItme.concat(res.data)
                 })
             }
-            wx.hideLoading()
+            setTimeout(()=>{
+               wx.hideLoading()
+            },2000)
             if(res.data.length<=0){
                 wx.showToast({
                     title: '没有更多数据',

@@ -12,13 +12,21 @@ App({
     this.WxValidate = WxValidate;
     //获取登录的code
     let _this = this;
-      wx.login({
-          success(res) {
-            if(res.code){
-                _this.UserLogin.set('code', res.code)
-            }
-          }
-      })
+    //   wx.checkSession({
+    //       success(e) {
+    //         console.log(e)
+    //       },
+    //       fail() {
+    //           wx.login({
+    //               success(res) {
+    //                   if (res.code) {
+    //                       _this.UserLogin.set('code', res.code)
+    //                   }
+    //               }
+    //           })
+    //       }
+    //   })
+      
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())

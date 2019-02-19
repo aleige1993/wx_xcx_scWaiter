@@ -1,0 +1,48 @@
+<!--pages/memberInfo/modifyMember/index.wxml-->
+<view>
+    <view class='banner'>
+        <image src='../../../static/images/error.png'></image>
+    </view>
+    <form  bindsubmit="formSubmit" >
+        <view class='schoolInfo'>
+             <view class='Info_panl'>
+                <view class='cell_box'>
+                    <view class='label'>姓名</view>
+                    <view class='value'>
+                            <input value='123'  placeholder='请输入姓名' name="username" />
+                     </view>
+                </view>
+                 <view class='cell_box'>
+                    <view class='label'>电话</view>
+                    <view class='value'>
+                         <text>13500353625</text>
+                    </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>性别</view>
+                    <view class='value'>
+                         <text>男</text>
+                    </view>
+                </view>
+                   <view class='cell_box'>
+                    <view class='label'>生日信息</view>
+                    <view class='value'>
+                         <text>2078-25-15</text>
+                    </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>地址</view>
+                    <view class='value'>
+                        <text>地址000000</text>
+                        <icon class='iconfont icon-you1'></icon>
+                    </view>
+                </view>
+            </view>
+             <view class='marig-primary'>
+                <button size="normal" type="primary" round="ture"  form-type='submit' class="primary backg-grad" >保存</button>
+            </view>
+    </view>
+    </form>
+    
+</view>
+
