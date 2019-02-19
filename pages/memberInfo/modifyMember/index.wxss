@@ -1,0 +1,2 @@
+/* pages/memberInfo/modifyMember/index.wxss */
+@import '../../../pages/schoolCar/index.wxss';

@@ -1,6 +1,6 @@
 'use strict';
 let DEV_CONFIG = {
-    HTTPOPENAPIURL: 'http://192.168.202.145:10016'
+    HTTPOPENAPIURL: 'http://192.168.202.145:10036'
     // HTTPOPENAPIURL: 'http://192.168.200.247:10001' // 请求OPENAPI的接口
 };
 let SIT_CONFIG = {

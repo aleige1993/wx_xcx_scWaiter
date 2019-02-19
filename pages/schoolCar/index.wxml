@@ -80,3 +80,34 @@
     </form>
     
 </view>
+
+<van-action-sheet show="{{ sheetShow }}" title="报名信息" overlay="ture"  bind:close="onClose">
+ <van-cell-group>
+  <van-cell
+    title="小站地址"
+    value="{{repeatItem.stationName}}"
+  />
+  <van-cell
+    title="学员姓名"
+    value="{{repeatItem.userName}}"
+  />
+  <van-cell
+    title="车型学习"
+    value="{{repeatItem.type}}"
+  />
+   <van-cell
+    title="性别"
+    value="{{repeatItem.gender == '1' ? '男' : '女'}}"
+  />
+  <van-cell
+    title="身份证"
+    value="{{repeatItem.card ? repeatItem.card : '未填写'}}"
+  />
+  <van-cell
+    title="手机号"
+    value="{{repeatItem.mobile}}"
+  />
+</van-cell-group>
+</van-action-sheet>
+
+

@@ -54,7 +54,7 @@ Page({
             console.log(res)
             if(res.code=="0000") {
                 wx.redirectTo({
-                    url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo
+                    url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo+'&payType=1'
                 })
             }
         })

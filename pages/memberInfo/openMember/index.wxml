@@ -49,20 +49,13 @@
                              {{dateTime}} <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
-
-                          <!-- <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
-                            <view class="picker">
-                                {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
-                            <icon class='iconfont icon-you1'></icon>
-                            </view>
-                        </picker> -->
                     </view>
                 </view>
             </view>
 
              <view class='chebox_box'>
                 <van-checkbox  checked-color="#5f8aff"  value="{{ checked }}" bind:change="onChange"></van-checkbox>
-                <view class='agre_box'>同意《<navigator class='c-blue'>用户服务协议</navigator>》</view>
+                <view class='agre_box'>同意《<navigator class='c-blue'>会员服务协议</navigator>》</view>
             </view>
              <view class='marig-primary'>
                 <button size="normal" type="primary" round="ture"  form-type='submit' class="primary backg-grad" >开通会员(￥1.00元）</button>
