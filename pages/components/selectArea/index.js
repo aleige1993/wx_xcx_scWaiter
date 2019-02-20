@@ -35,7 +35,6 @@ Component({
   ready() {
     // console.log(this.data.code);
     this.setData({
-      selectedCode: this.data.code,
       loading: true
     });
     app.Formdata.post('/openapi/common/regions', {}, (res) => {
@@ -62,11 +61,10 @@ Component({
             province_list,
             city_list,
             county_list
-          }
-        })
-        this.setData({
+          },
+          selectedCode: this.data.code,
           loading: false
-        });
+        })
       }
     });
   }
