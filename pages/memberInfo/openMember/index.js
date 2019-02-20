@@ -148,6 +148,12 @@ Page({
             }
         });
     },
+    //跳转管理地址
+    goToadrment(e) {
+        wx.navigateTo({
+            url: '/pages/memberInfo/modifyMember/adrMent',
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

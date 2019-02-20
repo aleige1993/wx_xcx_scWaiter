@@ -126,7 +126,8 @@ Page({
         })
     },
     goOrderDetails(e) {
-        let orderno = e.target.dataset.orderno;
+        console.log(e)
+        let orderno = e.currentTarget.dataset.orderno;
         wx.navigateTo({
             url: '/pages/laundryOrder/orderDetails/details?orderno=' + orderno
         })
@@ -134,7 +135,7 @@ Page({
     goOrderPeyMent(e) {
         let orderno = e.target.dataset.orderno;
         wx.navigateTo({
-            url: '/pages/laundryOrder/payMent/index?orderno=' + orderno
+            url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo + '&payType=1'
         })
     },
     binddown(e) {

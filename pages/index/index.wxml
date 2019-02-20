@@ -56,9 +56,9 @@
     </view>
   </view>
 
-<!-- <navigator class='meber_box'>
+<navigator class='meber_box' url="/pages/memberInfo/openMember/index">
     <image src='../../static/images/error.png'></image>
-</navigator> -->
+</navigator>
 
   <view class='new-express'>
     <view class='c-violet'>您的新快递</view>

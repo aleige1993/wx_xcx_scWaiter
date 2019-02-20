@@ -1,1 +1,64 @@
 /* pages/memberInfo/modifyMember/adrMent.wxss */
+page{
+    background-color: #f2f2f2;
+}
+.addressPanl{
+    width: 95%;
+    background-color: #fff;
+    margin: 20rpx auto 0 auto ;
+    border-radius: 10rpx;
+}
+.haderaff{
+    display: flex;
+    justify-content: space-between;
+    padding:20rpx 30rpx 0 30rpx;
+ 
+}
+.haderaff text:first-child{
+    font-weight: 600;
+}
+.centeraff{
+    color: #666;
+    padding:30rpx 30rpx;
+}
+.footeraff{
+    display: flex;
+    justify-content: space-between;
+    padding:20rpx 30rpx;
+}
+.radio_viw{
+    display: flex;
+    align-items: center;
+    margin-top: -5px;
+}
+.radio_viw view{
+    margin-left: 40rpx;
+}
+.radio_viw view text{
+    margin-left: 10rpx;
+    font-size: 24rpx;
+    color: #666;
+}
+.radio_but .van-radio__label{
+    font-size: 14px;
+}
+.footeraff{
+    border-top:1px solid #eee; 
+}
+.radio_viw view icon{
+    font-size: 28rpx;
+}
+.radio_viw view:first-child icon{
+    font-size: 34rpx;
+   margin-bottom: -12rpx;
+}
+.flex-but{
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    z-index: 100;
+    background-color: #f2f2f2;
+}
+.adrMent{
+    margin-bottom: 150rpx;
+}

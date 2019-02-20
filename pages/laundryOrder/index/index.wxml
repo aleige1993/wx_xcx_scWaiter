@@ -26,8 +26,8 @@
     lower-threshold="20"
   >
     <view class='laundry-list' wx:if="{{producList.length>0}}">
-    <view class='laundry-item' wx:for="{{producList}}" wx:key="produc">
-        <view class='laundry-item-inner shadow-just'>
+    <view class='laundry-item' wx:for="{{producList}}" wx:key="produc" >
+        <view class='laundry-item-inner shadow-just'   >
             <view class='c-violet font-w6'>{{item.goodName}}</view>
             <view>
                 <image src='{{item.picUrl}}' />

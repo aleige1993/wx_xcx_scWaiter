@@ -32,7 +32,7 @@
                 </view>
                   <view class='cell_box'>
                     <view class='label'>地址</view>
-                    <view class='value'>
+                    <view class='value' bindtap='goToadrment' >
                         <text>地址000000</text>
                         <icon class='iconfont icon-you1'></icon>
                     </view>

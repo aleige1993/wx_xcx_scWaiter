@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "van-radio": "/ui-plugins/vant/radio/index",
+        "van-radio-group": "/ui-plugins/vant/radio-group/index"
+    }
 }

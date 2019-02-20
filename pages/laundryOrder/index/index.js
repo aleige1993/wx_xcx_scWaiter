@@ -57,7 +57,7 @@ Page({
       })
       this.getShopdata();
   },
-    touchOnGoods: function (e) {
+    touchOnGoods(e) {
         const goodNo = e.target.dataset.goodno;
         if (goodNo){
             app.Formdata.post('/openapi/express/wechatapplet/wash/cart/add', { 'productNo': goodNo, 'num': 1 }, (res) => {
@@ -162,6 +162,9 @@ Page({
               'boxHeight': wheight.windowHeight - res[0].height
           })
       }).exec();
+      wx.showLoading({
+          title: '加载中...',
+      })
       app.Formdata.get('/openapi/express/wechatapplet/wash/productcategory/queryall',{},(res)=>{
         if(res.code=='0000') {
          const  resData =  res.data.filter((item,index)=>{

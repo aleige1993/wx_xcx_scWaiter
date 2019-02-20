@@ -1,11 +1,12 @@
 <!--pages/laundryOrder/payMent/resultMsg/index.wxml-->
 <view>
-            <view class='result_box'  wx:if='{{ isShow }}'>
+            <view class='result_box'  wx:if="{{ result == 'success' }}">
                 <view>
                      <icon class='iconfont icon-chenggong'></icon>
                 </view>
                 <view class='p1'>订单支付成功</view>
-                <view class='p2'>将衣物交给小站人员~</view>
+                <view class='p2' wx:if="{{payType == '1'}}">将衣物交给小站人员~</view>
+                <view class='p2' wx:if="{{payType == '2'}}">会员开通成功~</view>
             </view>
 
             <view class='result_box'  wx:else>
@@ -15,11 +16,11 @@
                 <view class='p1 c-yellow'>订单支付失败~</view>
             </view>
 
-            <view class='order_but'  wx:if="{{isShow}}">
-                <navigator class='backg-grad' >查看订单</navigator>
-                 <navigator>返回首页</navigator>
+            <view class='order_but'  wx:if="{{ result == 'success' }}">
+                <navigator class='backg-grad'  bindtap='goOrderDetails'>查看订单</navigator>
+                 <navigator  url="/pages/index/index">返回首页</navigator>
             </view>
              <view class='order_but'  wx:else>
-                 <navigator>返回首页</navigator>
+                 <navigator url="/pages/index/index">返回首页</navigator>
             </view>
 </view>

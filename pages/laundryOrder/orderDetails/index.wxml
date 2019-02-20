@@ -10,7 +10,8 @@
         <view class="section" wx:if="{{listItme.length>0}}">
             <scroll-view style="height:{{scrollHeight}}" scroll-y scroll-top="{{scrollTop}}" upper-threshold="1px" lower-threshold="10px" bindscrolltolower="binddown" bindscrolltoupper="bindtop">
                 <view class='order_panl' wx:for="{{listItme}}" wx:key="order_panl">
-                    <view class='order_title'  data-orderNo="{{item.orderNo}}"  bindtap='goOrderDetails'>
+                 <view  data-orderNo="{{item.orderNo}}"  bindtap='goOrderDetails'>
+                           <view class='order_title'  >
                         <view>订单编号：{{item.orderNo}}</view>
                         <view>
                             <text class='c-red' wx:if="{{item.status==1}}">等待付款</text>
@@ -36,6 +37,7 @@
                         </view>
                       
                     </view>
+                 </view>
                     <view class='order_footer' wx:if="{{item.status==1}}">
                         <view class='font-w6'>应付金额：
                             <text class='c-red'>¥{{item.paymentAmount}}</text>

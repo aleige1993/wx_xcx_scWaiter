@@ -87,6 +87,13 @@ Page({
             sexItem: this.data.sexArr[e.detail.value].id
         })
     },
+    //跳转选择地址
+    goToadrment(e){
+        console.log(e)
+        wx.navigateTo({
+            url: '/pages/memberInfo/modifyMember/adrMent',
+        })
+    },
     //提交
     formSubmit(e) {
         console.log(e)

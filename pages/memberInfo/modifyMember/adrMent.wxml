@@ -1,2 +1,59 @@
 <!--pages/memberInfo/modifyMember/adrMent.wxml-->
-<text>地址管理</text>
+<view class='adrMent'>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+         <view class='addressPanl shadow-just'>
+        <view class='haderaff'>
+            <text>张三</text>
+            <text>180000000</text>
+        </view>
+        <view  class='centeraff'>
+            重庆重庆市南山区科兴科学园
+        </view>
+        <view class='footeraff'>
+            <view class='radio_but'><van-radio name="1">设为默认</van-radio></view>
+            <view class='radio_viw'>
+                    <view>
+                        <icon class='iconfont icon-bianji'></icon>
+                        <text>编辑</text>
+                    </view>
+                    <view>
+                        <icon class='iconfont icon-jiufuqianbaoicon05'></icon>
+                        <text>删除</text>
+                    </view>
+            </view>
+        </view>
+    </view>
+
+     <view class='addressPanl shadow-just'>
+        <view class='haderaff'>
+            <text>张三</text>
+            <text>180000000</text>
+        </view>
+        <view  class='centeraff'>
+            重庆重庆市南山区科兴科学园
+        </view>
+        <view class='footeraff'>
+            <view class='radio_but'><van-radio name="2">设为默认</van-radio></view>
+            <view  class='radio_viw'>
+                    <view>
+                        <icon class='iconfont icon-bianji'></icon>
+                        <text>编辑</text>
+                    </view>
+                    <view>
+                        <icon class='iconfont icon-jiufuqianbaoicon05'></icon>
+                        <text>删除</text>
+                    </view>
+            </view>
+        </view>
+    </view>
+    
+
+    </van-radio-group>
+   
+
+</view>
+<view class='flex-but'>
+    <view class='marig-primary'>
+                <button size="normal" type="primary"  class="primary backg-grad" >新增地址</button>
+            </view>
+</view>

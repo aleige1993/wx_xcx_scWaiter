@@ -60,7 +60,7 @@ Page({
     goOrderPeyMent(e) {
         let orderno = e.target.dataset.orderno;
         wx.navigateTo({
-            url: '/pages/laundryOrder/payMent/index?orderno=' + orderno
+            url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo + '&payType=1'
         })
     },
     //删除

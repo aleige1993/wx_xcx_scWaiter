@@ -31,7 +31,7 @@
                 </view>
                   <view class='cell_box'>
                     <view class='label'>添加地址</view>
-                    <view class='value'>
+                    <view class='value' bindtap='goToadrment'>
                             <text>123123132</text>
                            <icon class='iconfont icon-you1'></icon>
                     </view>

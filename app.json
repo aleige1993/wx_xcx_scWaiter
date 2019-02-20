@@ -1,15 +1,16 @@
 {
     "pages": [
-        "pages/index/index",
-        "pages/laundryOrder/shoppCart/index",
-        "pages/laundryOrder/payMent/index",
-        "pages/schoolCar/index",
         "pages/memberInfo/modifyMember/index",
+        "pages/memberInfo/modifyMember/adrMent",
         "pages/memberInfo/openMember/index",
+        "pages/laundryOrder/setTlement/index",
+        "pages/index/index",
+        "pages/laundryOrder/payMent/index",
+        "pages/laundryOrder/shoppCart/index",
+        "pages/schoolCar/index",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",
         "pages/laundryOrder/index/index",
-        "pages/laundryOrder/setTlement/index",
         "pages/laundryOrder/orderDetails/searOrder",
         "pages/login/index",
         "pages/login/resetPwd",
@@ -17,8 +18,7 @@
         "pages/usCenter/index",
         "pages/usCenter/upInfo/index",
         "pages/myExpress/index",
-        "pages/laundryOrder/payMent/resultMsg/index",
-        "pages/memberInfo/modifyMember/adrMent"
+        "pages/laundryOrder/payMent/resultMsg/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -5,14 +5,26 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isShow:true
+        isShow:true,
+        orderno:'',
+        payType:'',
+        result:''
     },
-
+    goOrderDetails(e) {
+        wx.navigateTo({
+            url: '/pages/laundryOrder/orderDetails/details?orderno=' + this.data.orderno
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options)
+        this.setData({
+            orderno: options.orderno,
+            payType: options.payType,
+            result: options.result
+        })
     },
 
     /**
