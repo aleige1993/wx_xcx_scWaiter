@@ -1,0 +1,14 @@
+<!--pages/components/selectArea/index.wxml-->
+
+<van-popup 
+  show="{{ showArea }}" 
+  position="bottom" 
+  bind:cancel="onClose" >
+    <van-area 
+      loading="{{loading}}"
+      bind:cancel="onClose"
+      bind:confirm="onConfirm"
+      area-list="{{ areaList }}"
+      value="{{ selectedCode }}" />
+</van-popup>
+
