@@ -1,4 +1,5 @@
 {
+    "navigationBarTitleText": "购物车",
   "usingComponents": {
       "van-checkbox": "/ui-plugins/vant/checkbox/index",
     "van-checkbox-group": "/ui-plugins/vant/checkbox-group/index",

@@ -1,0 +1,22 @@
+/* pages/memberInfo/modifyAddress/modify.wxss */
+@import '../../../pages/schoolCar/index.wxss';
+/* page{
+    background-color: #f2f2f2;
+} */
+.checked-viw{
+    padding:20rpx 30rpx;
+    border-bottom: 1px solid #eee;
+}
+.checked-viw  .van-checkbox__label{
+    font-weight: 600;
+}
+.districtName{
+    display: flex;
+   align-items: flex-end;
+}
+.districtName input{
+    flex: 1;
+}
+.districtName  icon{
+    line-height:52rpx;
+}

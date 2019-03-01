@@ -1,12 +1,8 @@
 <!--pages/laundryOrder/index/index.wxml-->
 <view id='auto-view'>
-    <swiper class='banner' circular indicator-dots="{{banner.indicatorDots}}" indicator-active-color="#5f8aff" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
-    <block wx:key="{{banner.imgUrls}}" wx:for="{{banner.imgUrls}}">
-        <swiper-item>
-            <image src="{{item}}" class="slide-image" style='width: 100%' />
-        </swiper-item>
-    </block>
-</swiper>
+<view class='banner'>
+    <image src='{{imgArr[0].advImage? imgArr[0].advImage : "/static/images/error.png" }}'></image>
+</view>
 <van-tabs  active="{{ activeFirst }}"    bind:change="onChangeFirst">
     <van-tab   wx:for="{{menuItem}}"  wx:key="menuOne"  title="{{item.categoryName}}">
         <view class='ceng_box'>
@@ -17,10 +13,10 @@
     </van-tab>
 </van-tabs>
 </view>
+  <!-- bindscrolltoupper="onUpper" -->
 <scroll-view
     scroll-y
     style="height:{{boxHeight}}px;"
-    bindscrolltoupper="onUpper"
     bindscrolltolower="onLower"
     upper-threshold="20"
     lower-threshold="20"
@@ -28,13 +24,18 @@
     <view class='laundry-list' wx:if="{{producList.length>0}}">
     <view class='laundry-item' wx:for="{{producList}}" wx:key="produc" >
         <view class='laundry-item-inner shadow-just'   >
-            <view class='c-violet font-w6'>{{item.goodName}}</view>
+            <view class='c-333 font-w6'>{{item.goodName}}</view>
             <view>
                 <image src='{{item.picUrl}}' />
             </view>
             <view class='pirce_box' >
-                <text class='c-yellow'>￥{{item.price}}</text>
-                <icon class='iconfont icon-tianjia1' data-goodNo="{{item.goodNo}}" bindtap="touchOnGoods"></icon>
+                <view>
+                      <text class='c-999 decoration'>￥{{item.price}}</text>
+                     <text class='c-yellow'>￥{{item.realPrice}}</text>
+                </view>
+                <view>
+                     <icon class='iconfont icon-tianjia1' data-goodNo="{{item.goodNo}}" bindtap="touchOnGoods"></icon>
+                </view>
             </view>
         </view>
     </view>
@@ -45,7 +46,7 @@
 </view>
   </scroll-view>
 
-<navigator class="laundry-button" url='/pages/laundryOrder/shoppCart/index'>
+<navigator class="laundry-button backg-grad" url='/pages/laundryOrder/shoppCart/index'>
     <icon class='iconfont icon-gouwuchekong'></icon>
     <text> {{count>0?count:''}}</text>
 </navigator>

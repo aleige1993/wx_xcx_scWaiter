@@ -1,10 +1,10 @@
 
 let app = getApp();
-if (!app) {
-    setTimeout(function () {
-        app = getApp();
-    })
-}
+// if (!app) {
+//     setTimeout(function () {
+//         app = getApp();
+//     },3000)
+// }
 
 const set = (keys,data) => {
     wx.setStorage({

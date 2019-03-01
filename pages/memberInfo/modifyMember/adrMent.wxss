@@ -62,3 +62,6 @@ page{
 .adrMent{
     margin-bottom: 150rpx;
 }
+.null-data{
+    margin-top: 100rpx;
+}

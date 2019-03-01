@@ -7,11 +7,11 @@
          <view  class='login-box'>
             <view  class='login-cell'>
                 <icon class='iconfont icon-shouji01'></icon>
-                <input type='text' placeholder='手机号码'  name="account" value="13500353625"></input>
+                <input type='text' placeholder='手机号码'  name="account" value=""></input>
             </view>
             <view class='login-cell'>
                 <icon class='iconfont icon-mima'></icon>
-                <input password placeholder='输入密码' name="password" value='123456'></input>
+                <input password placeholder='输入密码' name="password" value=''></input>
             </view>
             </view>
             <view class='marig-primary'>
@@ -22,6 +22,6 @@
 
     <view class='findpwd'>
 	    <navigator class='c-blue' url='/pages/login/register'>注册新用户</navigator>
-        <navigator class='c-blue' url='/pages/login/resetPwd'>找回密码</navigator>
+        <navigator class='c-blue' url='/pages/login/resetPwd' >找回密码</navigator>
     </view>
 </view>

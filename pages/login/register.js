@@ -41,6 +41,16 @@ Page({
             [e.target.dataset.name]: e.detail
         })
     },
+    //跳转web-view详情
+    goToViewDetails(e) {
+        let weburl = encodeURIComponent('https://cms.songchewang.com/#/index/articleDetail?noaction=true&showall=false&id=107')
+        if (weburl) {
+            console.log(weburl)
+            wx.navigateTo({
+                url: '/pages/webView/viewDetails?url=' + weburl
+            })
+        }
+    },
     formSubmit(e){
         if (!this.WxValidate.checkForm(e)) {
             const error = this.WxValidate.errorList[0];

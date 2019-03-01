@@ -1,5 +1,6 @@
 
 let FormdataConfig = require('../config/index.js');
+let UserLogin = require('../utils/UserLogin.js');
 let HTTPOPENAPIURL = FormdataConfig.HTTPOPENAPIURL;
 let HTTPHEADER_APPID = FormdataConfig.HTTPHEADER_APPID;
 let HTTPHEADER_APPVERSION = FormdataConfig.HTTPHEADER_APPVERSION;
@@ -24,7 +25,7 @@ let post = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': app.UserLogin.get('userInfo').token || ''
+      'token': UserLogin.get('userInfo').token || ''
     },
     success(res) {
       let data = res.data;
@@ -32,9 +33,9 @@ let post = (url, data, callback) => {
         data = JSON.parse(data);
       }
       if (data.code === '0004') {
-        // app.Tools.showToast('登录失效，请重新登录');
+          app.Tools.showToast('客官还未登录，请登录浏览');
         setTimeout(function () {
-          wx.redirectTo({
+          wx.navigateTo({
             url: '/pages/login/index',
           })
         }, 2000);
@@ -49,7 +50,7 @@ let post = (url, data, callback) => {
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('系统繁忙, 请稍后再试');
+      app.Tools.showToast('客官系统繁忙, 请稍后再试');
     }
   });
 }
@@ -66,7 +67,7 @@ let get = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': app.UserLogin.get('userInfo').token || ''
+      'token': UserLogin.get('userInfo').token || ''
     },
     success(res) {
       let data = res.data;
@@ -74,7 +75,7 @@ let get = (url, data, callback) => {
         data = JSON.parse(data);
       }
       if (data.code === '0004') {
-        // app.Tools.showToast('登录失效，请重新登录');
+         app.Tools.showToast('客官还未登录，请登录浏览');
         setTimeout(function () {
           wx.redirectTo({
             url: '/pages/login/index',
@@ -86,12 +87,16 @@ let get = (url, data, callback) => {
         data.success = data.success ? 'true' : 'false';
       }
       if (data.success && data.success === 'false') {
-        app.Tools.showToast(data.message);
+          if (data.message == ''){
+
+          }else{
+              app.Tools.showToast(data.message);
+          }
       }
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('系统繁忙, 请稍后再试');
+      app.Tools.showToast('客官系统繁忙, 请稍后再试');
     }
   });
 }

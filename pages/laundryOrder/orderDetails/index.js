@@ -81,14 +81,18 @@ Page({
         })
     },
     clickQuestion(e){
+        let mobile = e.currentTarget.dataset.mobile;
+        if (!mobile){
+            return false
+        }
         wx.showModal({
             title: '客服电话',
-            content: '400-230-28173',
+            content: mobile,
             confirmText:'拨打',
             success(res) {
                 if (res.confirm) {
                     wx.makePhoneCall({
-                        phoneNumber: '400-230-28173' 
+                        phoneNumber: mobile
                     })
                 } else if (res.cancel) {
                 }
@@ -135,7 +139,7 @@ Page({
     goOrderPeyMent(e) {
         let orderno = e.target.dataset.orderno;
         wx.navigateTo({
-            url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo + '&payType=1'
+            url: '/pages/laundryOrder/payMent/index?orderno=' + orderno + '&payType=1'
         })
     },
     binddown(e) {

@@ -32,17 +32,18 @@ Page({
       'password': md5.hexMD5(password),
       "code": "5"
     }, function (res) {
-      // console.log(res);
-      _this.setData({
-        submitLoading: false
-      })
       if (res.success && res.success === 'true') {
         app.UserLogin.set('userInfo', res.data);
         wx.switchTab({
           url: '/pages/index/index',
         })
+      }else{
+          _this.setData({
+              submitLoading: false
+          }) 
       }
     });
+     
   },
 
   /**

@@ -8,6 +8,7 @@ page {
 .banner, .header-news, .sales-data, .dashboard-grid {
   margin-bottom: 10rpx;
 }
+
 .banner, .banner image {
   height: 360rpx;
 }
@@ -60,7 +61,7 @@ page {
 }
 
 .dashboard-grid {
-  padding: 20rpx 30rpx; 
+  padding: 20rpx 0rpx; 
   background: #fff;
 }
 .dashboard-grid > view {
@@ -71,13 +72,23 @@ page {
 .dashboard-grid .icon {
   font-size: 48rpx;
 }
+.dashboard-grid .grid_box{
+    display: flex;
+    justify-content: space-around;
+}
 .dashboard-grid .grid_box navigator{
+    text-align: center;
+}
+.grid_box .icontext{
+    display: block;
+}
+/* .dashboard-grid .grid_box navigator{
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
+} */
 .iconN{
-    width:80rpx;
+    /* width:80rpx;
     height: 80rpx;
     border-radius:100%;
     background-color: #4a7bff; 
@@ -85,7 +96,12 @@ page {
     line-height: 80rpx;
     margin-left: 10rpx;
     margin-bottom: 10rpx;
-    color: #fff;
+    color: #fff; */
+    width:80rpx;
+    height: 80rpx;
+}
+.iconN image{
+
 }
 .icontext{
     font-size: 12px;
@@ -94,6 +110,9 @@ page {
 .new-express {
   padding: 10px 20rpx;
   background: #fff;
+}
+.new-express .c-violet{
+padding-left: 20rpx;
 }
 .new-express-list {
   margin-top: 20rpx;
@@ -116,7 +135,7 @@ page {
   padding: 10rpx 0;
   text-align: center;
 }
-
+/* 
 .icon_one .iconN{
     background-color: #ea857d;
 }
@@ -140,7 +159,8 @@ page {
 }
 .icon_four .iconN icon{
     font-size: 24px;
-}
+} */
+
 
 .getInfo_box{
     position: fixed;
@@ -168,10 +188,33 @@ page {
 }
 .meber_box{
     width: 100%;
-    height: 120rpx;
+    height: 200rpx;
     margin: 20rpx 0;
 }
 .meber_box image{
+    margin: 0 auto;
     width: 100%;
     height: 100%;
+}
+.img-box{
+    width:80rpx;
+    height:80rpx;
+}
+.img-box image{
+    width: 100%;
+    height: 100%;
+}
+.icon_one .img-box {
+    width: 60rpx;
+    height: 60rpx;
+    margin-bottom: 20rpx;
+}
+
+.img-box image{
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+}
+.icon_one .img-box image{
+     margin-left: 20rpx;
+     margin-top: 10rpx;
 }

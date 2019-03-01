@@ -1,4 +1,43 @@
 // pages/ schoolCar/index.js
+// carArr: [{
+//     name: 'A1',
+//     id: '5'
+// },
+// {
+//     name: 'A2',
+//     id: '6'
+// },
+// {
+//     name: 'A3',
+//     id: '7'
+// },
+// {
+//     name: 'B1',
+//     id: '8'
+// },
+// {
+//     name: 'B2-10800元',
+//     id: '9'
+// },
+// {
+//     name: 'C1-3280元',
+//     id: '1'
+// },
+// {
+//     name: 'C2-3780元',
+//     id: '2'
+// },
+// {
+//     name: 'C3',
+//     id: '3'
+// },
+// {
+//     name: 'C4',
+//     id: '4'
+// }
+// ],
+
+
 let app =getApp();
 Page({
 
@@ -9,41 +48,18 @@ Page({
         sheetShow:false, 
         shopArr: [],
         shopIndex: '',
-        carArr: [{
-                name: 'A1',
-                id: '5'
-            },
+        carArr: [
             {
-                name: 'A2',
-                id: '6'
-            },
-            {
-                name: 'A3',
-                id: '7'
-            },
-            {
-                name: 'B1',
-                id: '8'
-            },
-            {
-                name: 'B2',
+                name: 'B2-10800元',
                 id: '9'
             },
             {
-                name: 'C1',
+                name: 'C1-3280元',
                 id: '1'
             },
             {
-                name: 'C2',
+                name: 'C2-3780元',
                 id: '2'
-            },
-            {
-                name: 'C3',
-                id: '3'
-            },
-            {
-                name: 'C4',
-                id: '4'
             }
         ],
         carIndex: '',
@@ -61,7 +77,9 @@ Page({
         shopItem: '',
         carIitem: '',
         sexItem: '',
-        repeatItem:''
+        repeatItem:'',
+        imgArr:'',
+        mobile:''
     },
     onChange(e) {
         this.setData({
@@ -89,6 +107,16 @@ Page({
             sexItem: this.data.sexArr[e.detail.value].id
         })
     },
+    //跳转web-view详情
+    goToViewDetails(e) {
+        let weburl = encodeURIComponent('https://cms.songchewang.com/#/index/articleDetail?noaction=true&showall=false&id=107')
+        if (weburl) {
+            console.log(weburl)
+            wx.navigateTo({
+                url: '/pages/webView/viewDetails?url=' + weburl
+            })
+        }
+    },
     //提交
     formSubmit(e) {
         console.log(e)
@@ -113,10 +141,10 @@ Page({
             })
             return false
         }
-        if (!this.data.checked) {
-            app.Tools.showToast('请同意《用户服务协议》');
-            return false;
-        }
+        // if (!this.data.checked) {
+        //     app.Tools.showToast('请同意《用户服务协议》');
+        //     return false;
+        // }
         let parms = {
             stationNo: this.data.shopItem,
             type: this.data.carIitem,
@@ -139,25 +167,10 @@ Page({
                         }
                     }
                 })
-            } else if (res.code == "0001" && res.data != null){
-                wx.showModal({
-                    title: '温馨提示',
-                    content: '您已经报名成功，不可重复报名',
-                    showCancel: false,
-                    confirmText: '查看信息',
-                    success(rult) {
-                         _this.data.carArr.filter((item)=>{
-                             console.log(item)
-                            if (item.id == res.data.type){
-                                console.log(item.id == res.data.type)
-                                return res.data.type = item.name
-                            }
-                        })
-                        _this.setData({
-                            sheetShow: true ,
-                            repeatItem:res.data
-                        })
-                    }
+            } else if (res.code == "0001" || res.data != null){
+                wx.showToast({
+                    title:'报名失败，不可重复报名',
+                    icon:'none'
                 })
             }
         });
@@ -165,19 +178,63 @@ Page({
     onClose(e){
         this.setData({ sheetShow: false });
     },
+    //查询报名
+    getPaomin(e){
+        let  _this = this;
+        app.Formdata.get('/openapi/express/wechatapplet/express/drive/detail', {}, (res) => {
+            if(res.code == '0000'){
+                wx.showModal({
+                    title: '温馨提示',
+                    content: '您已经报名成功，不可重复报名',
+                    showCancel: false,
+                    confirmText: '查看信息',
+                    success(rult) {
+                        _this.data.carArr.filter((item) => {
+                            if (item.id == res.data[0].type) {
+                                return res.data[0].type = item.name
+                            }
+                        })
+                        _this.setData({
+                            sheetShow: true,
+                            repeatItem: res.data[0]
+                        })
+                    }
+                })
+            }else{
+                _this.setData({
+                    mobile: app.UserLogin.get('userInfo').mobile
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-        this.initValidate();
-        app.Formdata.get('/openapi/express/wechatapplet/express/station/query',{},(res)=>{
+    shoplist(){
+        app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
             console.log(res);
-            if (res.code=='0000') {
-                    this.setData({
-                        shopArr:res.data
-                    })
+            if (res.code == '0000') {
+                this.setData({
+                    shopArr: res.data
+                })
             }
         })
+    },
+    onLoad: function(options) {
+        this.initValidate();
+        this.shoplist();
+        app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: '3' }, (res) => {
+            console.log(res)
+            if (res.code == "0000") {
+                this.setData({
+                    'imgArr': res.data
+                })
+            }
+        })
+        this.setData({
+            mobile: app.UserLogin.get('userInfo').mobile
+        })
+    
     },
 
     /**
@@ -191,7 +248,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        this.getPaomin();
     },
 
     /**

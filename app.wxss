@@ -190,3 +190,10 @@ overflow: hidden;
     font-size: 100px;
     color: #999;
 }
+.decoration{
+    text-decoration:line-through;
+}
+.back_view{
+    display:block;
+    flex-direction: column;
+}

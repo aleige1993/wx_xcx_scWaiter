@@ -31,7 +31,11 @@
                             <image src='{{itemGoods.picUrl}}'></image>
                             <view class='order_vim'>
                                 <view>{{itemGoods.goodName}}</view>
-                                <view class='c-red'>￥{{itemGoods.price}}</view>
+                                <view class='back_view'>
+                                    <view class='c-999 decoration'>￥{{itemGoods.price}}</view>
+                                     <view class='c-red'>￥{{itemGoods.realPrice}}</view>
+                                </view>
+                               
                             </view>
                             <view class='order_num'>×{{ itemGoods.num}}</view>
                         </view>
@@ -52,7 +56,7 @@
                             <text class='c-red'>¥{{item.paymentAmount}}</text>
                         </view>
                         <view class='but_box'>
-                            <button class='but_question' bindtap='clickQuestion'>清洗问题</button>
+                            <button class='but_question' data-mobile="{{item.stationMobile}}" bindtap='clickQuestion'>清洗问题</button>
                             <button class='but_confirm'  bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="8" >确认取衣</button>
                         </view>
                     </view>

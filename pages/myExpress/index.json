@@ -1,5 +1,6 @@
 {
   "enablePullDownRefresh": false,
+  "navigationBarTitleText":"我的快递",
   "usingComponents": {
     "van-search": "/ui-plugins/vant/search/index",
     "van-tab": "/ui-plugins/vant/tab/index",

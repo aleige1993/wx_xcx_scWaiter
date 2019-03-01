@@ -50,12 +50,19 @@ Component({
               city_list[cityItem.cityId] = cityItem.cityName;
               if (cityItem.districtList) {
                 cityItem.districtList.map(districtItem => {
-                  county_list[districtItem.districtId] = districtItem.districtName;
+                  if (districtItem.districtId < 820009) {
+                    county_list[districtItem.districtId] = districtItem.districtName;
+                  }
                 })
               }
             });
           }
         });
+        // console.log(JSON.stringify({
+        //   province_list,
+        //   city_list,
+        //   county_list
+        // }))
         this.setData({
           areaList: {
             province_list,

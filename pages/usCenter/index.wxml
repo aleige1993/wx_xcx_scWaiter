@@ -3,13 +3,14 @@
   <view class='us-img-box backg-grad'>
     <view wx:if="{{isLogin}}" class='box-user '>
       <!-- <image src='{{wxUserInfo.avatarUrl}}'></image> -->
-      <image src='../../static/images/error.png'></image>
+      <image src="{{wxInfo.avatarUrl ?  wxInfo.avatarUrl : '../../static/images/hader.png'}}"></image>
       <view>
         <text class='font-w6'>{{wxUserInfo.mobile}}</text>
       </view>
+        <image class='vipImg' wx:if="{{rechargeMember == 'true'}}" src='../../static/images/tagVip.png'></image>
     </view>
     <view wx:else class='box-user '>
-      <image src='../../static/images/error.png'></image>
+      <image src='../../static/images/hader.png'></image>
       <view>
         <navigator url='/pages/login/index'>
           <van-button size="small" type="default">登录/注册</van-button>
@@ -68,19 +69,12 @@
     </navigator> -->
 
     <!-- 修改会员信息 -->
-    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
+    <navigator wx:if="{{ rechargeMember == 'true'}}" url='/pages/memberInfo/modifyMember/index'  class='glup_box'>
       <view>
         <text>修改会员信息</text>
       </view>
       <icon class='iconfont icon-you1'></icon>
     </navigator>
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <text>修改会员信息</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator> -->
-
     <!-- 修改手机 -->
     <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
@@ -107,8 +101,8 @@
 
 <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
-  <view class='title_p'>颂车小二小程序</view>
-  <image src='/static/images/error.png'></image>
+  <view class='title_p'>颂小二为你服务</view>
+  <image src='/static/images/index.png'></image>
   <view class='but_box'>
     <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
   </view>

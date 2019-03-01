@@ -8,11 +8,7 @@ Page({
         isShow: false,
         state: 1,
         banner: {
-            imgUrls: [
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548386640&di=466e70e7237799a21cd250500d5fc6e0&imgtype=jpg&er=1&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F8%2F543797a594fe7.jpg',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548386741&di=129d92bb474496f163ab73cd653a44de&imgtype=jpg&er=1&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ffaf42968817f1f52cc0f22bae3c3d6761d630c0b1a501-XvH11G_fw658',
-                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548386777&di=b8065cba980c34f48d08fb50db614872&imgtype=jpg&er=1&src=http%3A%2F%2Fseopic.699pic.com%2Fphoto%2F10029%2F9682.jpg_wh1200.jpg'
-            ],
+            bannerArr:[],
             indicatorDots: true,
             autoplay: true,
             interval: 5000,
@@ -32,11 +28,13 @@ Page({
         },
         sreachForm: {
             page: 1,
-            limit: app.Config.PAGE_SIZE,
+            limit: 1000,
             status: 1,
             expressNo: ''
         },
-        expressList: []
+        expressList: [],
+        openmenber:[],
+        rechargeMember:''
     },
 
     loadExpressList() {
@@ -46,10 +44,9 @@ Page({
         // });
         app.Formdata.get('/openapi/express/wechatapplet/express/order/queryForUser', this.data.sreachForm, function (res) {
             if (res.success && res.success === 'true') {
-                console.log(res.data);
                 if (!res.data || !res.data.length) {
                     if (_this.data.sreachForm.page > 1) {
-                        app.Tools.showToast('没有更多的数据了')
+                        // app.Tools.showToast('没有更多的数据了')
                     }
                 } else {
                     _this.setData({
@@ -64,45 +61,32 @@ Page({
                 }, 1000);
             }
         })
+        },
+    //跳转banner详情
+    goToViewDetails(e){
+        if (e.currentTarget.dataset.url){
+            let weburl = e.currentTarget.dataset.url;
+            wx.navigateTo({
+                url: '/pages/webView/viewInstions?url=' + encodeURIComponent(weburl),
+            })
+        }
     },
-
     onGotUserInfo(e) {
         let wxUserInfo = e.detail.userInfo
         if (wxUserInfo) {
-            app.UserLogin.set('wxUserInfo', wxUserInfo);
-            this.setData({
-                state: 2
-            })
-            //   wx.showToast({
-            //     title: '授权成功',
-            //     icon: 'success',
-            //     duration: 2000
-            //   })
-            //   this.setData({
-            //     isShow: false
-            //   })
+                app.UserLogin.set('wxUserInfo', wxUserInfo);
+                this.setData({
+                    isShow: false
+                })
         }
     },
-    onGetphonenum(e) {
-        console.log(e.detail.errMsg)
-        console.log(e.detail.iv)
-        console.log(e.detail.encryptedData)
-        // success(e){
-
-        // }
-        this.setData({
-            isShow: false
-        })
-    },
     clickTost() {
-        console.log(123)
         wx.showModal({
             content: '客官,我们正在建设敬请期待',
             showCancel: false,
             confirmText: '我知道了',
             success(res) {
                 if (res.confirm) {
-                    console.log('用户点击确定')
                 }
             }
         })
@@ -114,22 +98,68 @@ Page({
         })
         if (this.data.isLogin) {
             this.setData({
-                expressList: []
+                expressList: [],
+                'sreachForm.page': 1
             });
             this.loadExpressList();
         }
+       
     },
-
-    onLoad: function () {
-
+    onHide:function(){
     },
-
-    onReachBottom: function () {
-        if (this.data.isLogin) {
-            this.setData({
-                "sreachForm.page": ++this.data.sreachForm.page
+    getImgList(position,arr){
+        app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: position }, (res) => {
+            if (res.code == "0000") {
+                this.setData({
+                    [arr]: res.data
+                })
+            }
+        })
+    },
+    //获取是否是会员
+    getIFmenber(e){
+        let userInfo = app.UserLogin.get('userInfo');
+        console.log(userInfo)
+        if (userInfo.userNo){
+            app.Formdata.get('/openapi/express/wechatapplet/express/user/rechargeUserInfo', { userNo: userInfo.userNo }, (res) => {
+                if (res.code == "0000" && res.data) {
+                    this.setData({
+                        rechargeMember: res.data.rechargeMember
+                    },()=>{
+                        if (res.data.rechargeMember == 'true') {
+                            wx.navigateTo({
+                                url: '/pages/webView/viewAgreement?rechargeMember=1'
+                            })
+                        } else {
+                            wx.navigateTo({
+                                url: '/pages/memberInfo/openMember/index'
+                            })
+                        }
+                    })
+                }
             })
-            this.loadExpressList();
+        }else{
+            wx.showToast({
+                title: '客官还未登录，请登录浏览',
+                icon:'none',
+                success(e){
+                    return false
+                }
+            })
         }
-    }
+       
+    },
+    onLoad: function () {
+        this.getImgList('1','banner.bannerArr');
+        this.getImgList('7', 'openmenber');
+    },
+
+    // onReachBottom: function () {
+    //     if (this.data.isLogin) {
+    //         this.setData({
+    //             "sreachForm.page": ++this.data.sreachForm.page
+    //         })
+    //         this.loadExpressList();
+    //     }
+    // }
 })

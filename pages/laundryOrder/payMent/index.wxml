@@ -4,6 +4,7 @@
         <view class='p1'>支付金额</view>
         <view class='p2'>￥{{listItme.paymentAmount}}</view>
     </view>
-
-    <view class='payBut backg-grad' bindtap='payment'>确认支付</view>
+ 
+    <view class='payBut backg-grad' bindtap='payment' wx:if="{{loading}}">确认支付</view>
+     <view class='payBut backg-grad'  wx:else ><van-loading size="20px" type="spinner" /></view>
 </view>

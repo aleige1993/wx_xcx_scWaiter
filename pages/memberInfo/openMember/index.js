@@ -62,12 +62,24 @@ Page({
         checked: false,
         shopItem: '',
         carIitem: '',
-        sexItem: ''
+        sexItem: '',
+        imgArr: [],
+        address:[]
     },
     onChange(e) {
         this.setData({
             checked: !this.data.checked
         })
+    },
+    //跳转banner详情
+    goToViewDetails(e) {
+        console.log(e)
+        let weburl = e.currentTarget.dataset.url;
+        if (weburl) {
+            wx.navigateTo({
+                url: '/pages/webView/viewDetails?url=' + weburl,
+            })
+        }
     },
     // 选择店铺
     shoprChange(e) {
@@ -77,13 +89,13 @@ Page({
         })
     },
     // 选择车型
-    carChange(e) {
-        this.setData({
-            'carIndex': e.detail.value,
-            carIitem: this.data.carArr[e.detail.value].id
-        })
-    },
-    // 选择性别
+    // carChange(e) {
+    //     this.setData({
+    //         'carIndex': e.detail.value,
+    //         carIitem: this.data.carArr[e.detail.value].id
+    //     })
+    // },
+    // // 选择性别
     sexChange(e) {
         this.setData({
             'sexIndex': e.detail.value,
@@ -103,48 +115,32 @@ Page({
             app.Tools.showToast('请选择小站');
             return false;
         }
-        if (this.data.carIitem == '') {
-            app.Tools.showToast('请选择学习车型');
+        if (e.detail.value.username == '') {
+            app.Tools.showToast('请输入姓名');
             return false;
         }
         if (this.data.sexItem == '') {
             app.Tools.showToast('请选择性别');
             return false;
         }
-        if (!this.WxValidate.checkForm(e)) {
-            const error = this.WxValidate.errorList[0];
-            wx.showToast({
-                title: error.msg,
-                icon: 'none',
-                duration: 2000
-            })
-            return false
-        }
-        if (!this.data.checked) {
-            app.Tools.showToast('请同意《用户服务协议》');
+        
+        if (this.data.dateTime == '') {
+            app.Tools.showToast('请选择生日日期');
             return false;
         }
         let parms = {
             stationNo: this.data.shopItem,
-            type: this.data.carIitem,
-            userName: e.detail.value.username,
-            gender: this.data.sexItem,
-            card: e.detail.value.idcard,
-            mobile: e.detail.value.mobile
+            nickName: e.detail.value.username,
+            birth: e.detail.value.dateTime,
+            sex: this.data.sexItem
         }
-        app.Formdata.post('/openapi/express/wechatapplet/express/drive/save', parms, (res) => {
+        app.Formdata.post('/openapi/express/wechatapplet/express/user/saveRechargeUser', parms, (res) => {
             console.log(res);
             if (res.code == "0000") {
-                wx.showToast({
-                    title: '报名成功！',
-                    icon: 'success',
-                    duration: 2000,
-                    success: (res) => {
-                        setTimeout(() => {
-                            wx.navigateBack({ delta: 1 });
-                        }, 2000)
-                    }
+                wx.redirectTo({
+                    url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo + '&payType=2'
                 })
+               
             }
         });
     },
@@ -154,16 +150,44 @@ Page({
             url: '/pages/memberInfo/modifyMember/adrMent',
         })
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.initValidate();
+    //获取小站列表
+    shoplist(){
         app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
             console.log(res);
             if (res.code == '0000') {
                 this.setData({
                     shopArr: res.data
+                })
+            }
+        })
+    },
+    //跳转会员说明
+    goToAgrment(){
+        wx.navigateTo({
+            url: '/pages/webView/viewAgreement',
+        })
+    },
+    //获取地址信息
+    getAddress(){
+        app.Formdata.get('/openapi/express/wechatapplet/express/userAddr/detail', { flag:"1"}, (res)=>{
+            if(res.code == "0000"){
+                console.log(res)
+                this.setData({
+                    address: res.data.provinceName ? [res.data.provinceName, res.data.cityName, res.data.districtName] :'未设置地址'
+                })
+            }
+        })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        this.shoplist();
+        app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: '4' }, (res) => {
+            console.log(res)
+            if (res.code == "0000") {
+                this.setData({
+                    'imgArr': res.data
                 })
             }
         })
@@ -179,7 +203,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getAddress();
     },
 
     /**
@@ -215,28 +239,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-    initValidate() {
-        const rules = {
-            username: {
-                required: true
-            },
-            mobile: {
-                required: true,
-                tel: true
-            }
-        }
-
-        const messages = {
-            username: {
-                required: "请输入姓名"
-            },
-            mobile: {
-                required: "请输入手机号",
-                tel: "请输入正确的手机号"
-            }
-        }
-        // 创建实例对象 
-        this.WxValidate = new app.WxValidate(rules, messages)
     }
 })

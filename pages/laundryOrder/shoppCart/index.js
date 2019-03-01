@@ -14,7 +14,8 @@ Page({
             limit:15
         },
         resData:[],
-        allPirce:0
+        allPirce:0,
+        discount:0
     },
     onCheckbox(e){
         this.setData({
@@ -27,12 +28,20 @@ Page({
         }else{
             this.setData({
                 isAll: false,
-                allPirce: 0
+                allPirce: 0,
+                discount:0
             });
         }
         this.getAllprice();
     },
     allCheckbox(e) {
+        // if (this.data.resData.length<=0){
+        //     wx.showToast({
+        //         title: '请勾选商品',
+        //         icon: 'none'
+        //     })
+        //     return false
+        // }
         this.setData({
             isAll: !this.data.isAll
         })
@@ -48,7 +57,8 @@ Page({
         }else{
             this.setData({
                 result: [],
-                allPirce:0
+                allPirce:0,
+                discount:0
             })
         }
     },
@@ -66,7 +76,8 @@ Page({
         app.Formdata.get('/openapi/express/wechatapplet/wash/cart/total', { ids: this.data.result},(res)=>{
             if(res.code=='0000'){
                 this.setData({
-                    allPirce: res.data.totalAmount
+                    allPirce: parseFloat(res.data.realTotalAmount).toFixed(2),
+                    discount: parseFloat(res.data.totalDiscountAmount).toFixed(2)
                 })
             }
         })
@@ -98,6 +109,7 @@ Page({
                     this.setData({
                         result: [],
                         allPirce: 0,
+                        discount:0,
                         isAll:false
                     })
                     wx.showToast({

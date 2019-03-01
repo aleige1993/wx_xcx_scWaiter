@@ -1,29 +1,33 @@
 {
     "pages": [
-        "pages/memberInfo/modifyMember/index",
-        "pages/memberInfo/modifyMember/adrMent",
-        "pages/memberInfo/openMember/index",
-        "pages/laundryOrder/setTlement/index",
         "pages/index/index",
+        "pages/laundryOrder/index/index",
+        "pages/login/index",
+        "pages/login/resetPwd",
+        "pages/usCenter/index",
+        "pages/webView/viewInstions",
+        "pages/webView/viewAgreement",
+        "pages/memberInfo/modifyMember/index",
+        "pages/memberInfo/openMember/index",
+        "pages/memberInfo/modifyMember/modify",
+        "pages/memberInfo/modifyMember/adrMent",
+        "pages/laundryOrder/setTlement/index",
         "pages/laundryOrder/payMent/index",
         "pages/laundryOrder/shoppCart/index",
         "pages/schoolCar/index",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",
-        "pages/laundryOrder/index/index",
         "pages/laundryOrder/orderDetails/searOrder",
-        "pages/login/index",
-        "pages/login/resetPwd",
         "pages/login/register",
-        "pages/usCenter/index",
         "pages/usCenter/upInfo/index",
         "pages/myExpress/index",
-        "pages/laundryOrder/payMent/resultMsg/index"
+        "pages/laundryOrder/payMent/resultMsg/index",
+        "pages/webView/viewDetails"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "颂车小站小二",
+        "navigationBarTitleText": "颂小二",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {

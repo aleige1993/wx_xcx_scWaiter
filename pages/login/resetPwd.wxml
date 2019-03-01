@@ -1,12 +1,11 @@
-<!--pages/login/resetPwd.wxml-->
-
 <view>
     <view class='step_panl'>
-      <van-steps
+      <!-- <van-steps
         steps="{{ steps }}"
         active="{{ active }}"
         active-color="#3984ff"
-      />
+      /> -->
+      <view class='steps'>{{active == 0 ? '1.验证手机号码' : '2.设置新密码'}}</view>
     </view>
     
     <view class='steps_view'>
@@ -38,7 +37,7 @@
             </van-cell-group>  
           </view>
           <view class='marig-primary'>
-            <van-button size="normal" type="primary" custom-class="primary  backg-grad shadow-just" bind:click="next">下一步</van-button>
+          <button size="normal" type="primary" class="primary  backg-grad shadow-just"  bindtap="next" >下一步</button>
           </view>
         </view>
         <view wx:if="{{active == 1}}">
@@ -65,7 +64,8 @@
             </van-cell-group>  
           </view>
           <view class='marig-primary'>
-            <van-button size="normal" type="primary" custom-class="primary backg-grad shadow-just" bind:click="onSubmit">提交</van-button>
+           <button size="normal" type="primary" class="primary  backg-grad shadow-just"  bindtap="onSubmit" >提交</button>
+
           </view>
         </view>
     </view>

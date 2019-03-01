@@ -18,7 +18,8 @@
                     <image src='{{item.picUrl}}'></image>
                     <view class='order_vim'>
                         <view>{{item.goodName}}</view>
-                        <view class='c-red'>￥{{item.price}}</view>
+                         <view class='c-ccc decoration'>￥{{item.price}}</view>
+                        <view class='c-red'>￥{{item.realPrice}}</view>
                     </view>
                     <view class='order_num'>×{{item.num}}</view>
                 </view>
@@ -32,7 +33,7 @@
                         <text>￥0.00</text>
                     </view> -->
                     <view class='v-li'>
-                        <text>活动优惠</text>
+                        <text>优惠折扣</text>
                         <text>￥{{listItme.discounts}}</text>
                     </view>
                      <view class='v-li top-border'>

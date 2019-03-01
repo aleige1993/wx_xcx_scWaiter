@@ -17,10 +17,10 @@
             </view>
 
             <view class='order_but'  wx:if="{{ result == 'success' }}">
-                <navigator class='backg-grad'  bindtap='goOrderDetails'>查看订单</navigator>
-                 <navigator  url="/pages/index/index">返回首页</navigator>
+                <navigator  wx:if="{{payType == '1'}}" class='backg-grad'  bindtap='goOrderDetails'>查看订单</navigator>
+                 <navigator  open-type="switchTab"  url="/pages/index/index">返回首页</navigator>
             </view>
              <view class='order_but'  wx:else>
-                 <navigator url="/pages/index/index">返回首页</navigator>
+                 <navigator open-type="switchTab" url="/pages/index/index">返回首页</navigator>
             </view>
 </view>

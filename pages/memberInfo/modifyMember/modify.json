@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "添加地址",
+  "usingComponents": {
+    "select-area": "../../components/selectArea/index",
+    "van-checkbox": "/ui-plugins/vant/checkbox/index"
+  }
+}

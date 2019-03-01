@@ -46,7 +46,7 @@ Page({
             return false
         }
         let parman = {
-            message: this.data.val,
+            memo: this.data.val,
             ids: this.data.ids,
             stationNo: this.data.shopArr[this.data.shopIndex].stationNo
         }

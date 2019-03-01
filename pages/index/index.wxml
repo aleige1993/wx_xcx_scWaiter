@@ -1,16 +1,16 @@
 <!--index.wxml-->
 <view class="dashboard">
   <swiper class='banner' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
-    <block wx:key="{{banner.imgUrls}}" wx:for="{{banner.imgUrls}}">
+    <block wx:key="{{bannerArr}}" wx:for="{{banner.bannerArr}}">
       <swiper-item>
-        <image src="{{item}}" class="slide-image" style='width: 100%' />
+         <image src="{{item.advImage}}" class="slide-image" style='width: 100%' data-url='{{item.advUrl}}' bindtap='goToViewDetails'/>
       </swiper-item>
     </block>
   </swiper>
 
-  <view class='header-news'>
+  <!-- <view class='header-news'>
     <view class='swiper-news'>
-      <!-- <image class='img' src='/static/images/dashboard-headnews.png'></image> -->
+
       <view class='img'>
         <icon class='iconfont icon-iconxx2'></icon>
       </view>
@@ -21,44 +21,42 @@
           </swiper-item>
         </block>
       </swiper>
-      <!-- <navigator class="more">
-        <icon class='iconfont icon-you1'></icon>
-      </navigator> -->
     </view>
-  </view>
+  </view> -->
 
   <view class='dashboard-grid'>
     <view class='grid_box'>
-      <navigator url='/pages/myExpress/index' class='icon_one'>
-        <view class='iconN shadow-just'>
-          <icon class='iconfont icon-kuaidi'></icon>
+      <navigator url='/pages/myExpress/index' class='icon_one' hover-class="none">
+        <view class='img-box'>
+        <image src='/static/images/kuaidi.png'></image>
+          <!-- <icon class='iconfont icon-kuaidi'></icon> -->
         </view>
         <view class='icontext'>我的快递</view>
       </navigator>
-      <navigator class='icon_two' url='/pages/laundryOrder/index/index'>
-        <view class='iconN shadow-just'>
-          <icon class='iconfont icon-yifupifu'></icon>
+      <navigator class='icon_two' url='/pages/laundryOrder/index/index' hover-class="none">
+        <view class='img-box'>
+          <image src='/static/images/weiyi.png'></image>
         </view>
         <view class='icontext'>小站洗衣</view>
       </navigator>
-      <navigator class='icon_three' url="/pages/schoolCar/index">
-        <view class='iconN shadow-just'>
-          <icon class='iconfont icon-chezhufuwu'></icon>
+      <navigator class='icon_three' url="/pages/schoolCar/index" hover-class="none">
+        <view class='img-box'>
+            <image src='/static/images/wanjuqiche.png'></image>
         </view>
         <view class='icontext'>小站学车</view>
       </navigator>
-      <navigator class='icon_four' bindtap='clickTost'>
-        <view class='iconN shadow-just'>
-          <icon class='iconfont icon-huodong'></icon>
+      <navigator class='icon_four' bindtap='clickTost' hover-class="none">
+        <view class='img-box'>
+          <image src='/static/images/shangcheng.png'></image>
         </view>
         <view class='icontext'>小站商城</view>
       </navigator>
     </view>
   </view>
 
-<navigator class='meber_box' url="/pages/memberInfo/openMember/index">
-    <image src='../../static/images/error.png'></image>
-</navigator>
+<view class='meber_box'  bindtap='getIFmenber'>
+    <image src='{{openmenber[0].advImage}}'></image>
+</view>
 
   <view class='new-express'>
     <view class='c-violet'>您的新快递</view>
@@ -101,8 +99,8 @@
 
 <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
-  <view class='title_p'>颂小二小程序</view>
-  <image src='/static/images/error.png'></image>
+  <view class='title_p'>颂小二为你服务</view>
+  <image src='/static/images/index.png'></image>
   <view class='but_box'>
     <button class='backg-grad shadow-just' wx:if="{{state==1}}"  open-type="getUserInfo"   bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
      <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber"  bindgetphonenumber="onGetphonenum">免注册登录</button>

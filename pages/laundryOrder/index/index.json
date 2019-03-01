@@ -1,4 +1,5 @@
 {
+"navigationBarTitleText": "小站洗衣服务", 
   "usingComponents": {
     "van-tab": "/ui-plugins/vant/tab/index",
     "van-tabs": "/ui-plugins/vant/tabs/index",

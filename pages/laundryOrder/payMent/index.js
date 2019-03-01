@@ -8,45 +8,71 @@ Page({
     data: {
         orderno: '',
         payType: '',
-        listItme: []
+        listItme: [],
+        loading:true
     },
-    // wx.login({
-    //     success(res) {
-    //         if (res.code) {
-    //             console.log(res.code)
-
-    //         }
-    //     }
-    // })  
     payment(e) {
         let _this = this;
-        let prmes = {
-            code: app.UserLogin.get('code'),
-            type: _this.data.payType,
-            out_trade_no: _this.data.orderno
-        }
-        app.Formdata.post('/openapi/express/wechatapplet/express/wxpay/launch', prmes, (rult) => {
-            if (rult.code == '0000') {
-                wx.requestPayment({
-                    timeStamp: rult.data.timeStamp,
-                    nonceStr: rult.data.nonceStr,
-                    package: rult.data.repay_id,
-                    signType: rult.data.signType,
-                    paySign: rult.data.paySign,
-                    success(res) {
-                        wx.redirectTo({
-                            url: '/pages/laundryOrder/payMent/resultMsg/index?orderno=' + _this.data.orderno + '&payType=' + _this.data.payType + '&result=success',
-                        })
-                    },
-                    fail(err) {
-                        wx.redirectTo({
-                            url: '/pages/laundryOrder/payMent/resultMsg/index?orderno=' + _this.data.orderno + '&payType=' + _this.data.payType + '&result=fail',
-                        })
+        _this.setData({
+            loading:false
+        })
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    let prmes = {
+                        code: res.code,
+                        type: _this.data.payType,
+                        out_trade_no: _this.data.orderno
                     }
+                    app.Formdata.post('/openapi/express/wechatapplet/express/wxpay/launch', prmes, (rult) => {
+                        if (rult.code == '0000') {
+                            wx.requestPayment({
+                                timeStamp: rult.data.timeStamp,
+                                nonceStr: rult.data.nonceStr,
+                                package: rult.data.repay_id,
+                                signType: rult.data.signType,
+                                paySign: rult.data.paySign,
+                                success(res) {
+                                    wx.redirectTo({
+                                        url: '/pages/laundryOrder/payMent/resultMsg/index?orderno=' + _this.data.orderno + '&payType=' + _this.data.payType + '&result=success',
+                                    })
+                                },
+                                fail(err) {
+                                    wx.redirectTo({
+                                        url: '/pages/laundryOrder/payMent/resultMsg/index?orderno=' + _this.data.orderno + '&payType=' + _this.data.payType + '&result=fail',
+                                    })
+                                },
+                                complete(data){
+                                    _this.setData({
+                                        loading: true
+                                    })
+                                }
+                            })
+                        } else {
+                            wx.showModal({
+                                content: '支付失败',
+                                showCancel: false,
+                                confirmText: '我知道了',
+                                success(res) {
+                                    if (res.confirm) {
+                                        wx.navigateBack({
+                                            delta: 1
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
+                }
+            },
+            fail(err){
+                wx.showToast({
+                    title: 'code获取失败',
+                    icon:'none'
                 })
+                return false
             }
         })
-
     },
     /**
      * 生命周期函数--监听页面加载 
@@ -64,7 +90,8 @@ Page({
      */
     onReady: function() {
         app.Formdata.get('/openapi/express/wechatapplet/express/wash/order/payPage', {
-            orderNo: this.data.orderno
+            orderNo: this.data.orderno,
+            type: this.data.payType
         }, (res) => {
             if (res.code == "0000") {
                 this.setData({

@@ -1,0 +1,24 @@
+/* pages/webView/viewAgreement.wxss */
+.hader{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30rpx;
+    color: #ea857d;
+}
+
+.miancenter {
+    padding: 0 30rpx;
+}
+.miancenter view{
+    margin-bottom: 20rpx;
+    color: #666;
+}
+.footer{
+    padding: 0 30rpx;
+}
+.footer view{
+    margin-bottom: 10rpx;
+    font-weight: 600;
+    color: #e1b260;
+}

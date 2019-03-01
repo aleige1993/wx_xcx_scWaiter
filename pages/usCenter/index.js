@@ -10,7 +10,8 @@ Page({
   data: {
     isShow: false,
     isLogin: false,
-    wxUserInfo: {}
+    wxUserInfo: {},
+      rechargeMember:''
   },
 
   loginout() {
@@ -48,7 +49,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let userInfo = app.UserLogin.get('userInfo')
+      
   },
 
   /**
@@ -70,9 +72,17 @@ Page({
     })
     if (wxInfo) {
       this.setData({
-        wxUserInfo: app.UserLogin.get('userInfo')
+        wxUserInfo: app.UserLogin.get('userInfo'),
+          wxInfo: app.UserLogin.get('wxUserInfo'),
       })
     }
+      app.Formdata.get('/openapi/express/wechatapplet/express/user/rechargeUserInfo', { userNo: userInfo.userNo }, (res) => {
+          if (res.code == "0000" && res.data) {
+              this.setData({
+                  rechargeMember: res.data.rechargeMember
+              })
+          }
+      })
   },
 
   /**

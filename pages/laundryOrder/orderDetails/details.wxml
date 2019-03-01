@@ -65,7 +65,10 @@
                     <image src='{{item.picUrl}}'></image>
                     <view class='order_vim'>
                         <view>{{item.goodName}}</view>
-                        <view class='c-red'>￥{{item.price}}</view>
+                        <view class='back_view'>
+                                    <view class='c-999 decoration'>￥{{item.price}}</view>
+                                     <view class='c-red'>￥{{item.realPrice}}</view>
+                        </view>
                     </view>
                     <view class='order_num'>×{{item.num}}</view>
                 </view>
@@ -88,12 +91,12 @@
 
         <view class='waiter' wx:if="{{listItme.status==1}}">
             <view class='font-w6'>服务小站</view>
-            <view>{{listItme.stationAddr}}，{{listItme.stationName}}
+            <view>{{listItme.stationName}}
                 <!-- <icon class='iconfont icon-you1'></icon> -->
             </view>
         </view>
         <view class='waiter' wx:else>
-            <view>洗衣地址：{{listItme.stationAddr}}，{{listItme.stationName}}</view>
+            <view>洗衣地址：{{listItme.stationAddr}}</view>
         </view>
 
         <view class='ptenm_box'>
@@ -105,19 +108,23 @@
                 <text>提交时间：</text>
                 <text>{{listItme.modifyTime}}</text>
             </view>
-            <view class='v-li' >
+            <!-- <view class='v-li' >
                 <text>支付方式：</text>
                 <text>微信支付</text>
-            </view>
+            </view> -->
 
-             <view class='v-li' wx:if="{{1<listItme.status==7||listItme.status==8}}">
+             <view class='v-li' wx:if="{{1<listItme.status<=8}}">
                 <text>实付金额：</text>
                 <text>¥{{listItme.paymentAmount}}</text>
             </view>
 
-             <view class='v-li' wx:if="{{1<listItme.status==7||listItme.status==8}}">
+             <view class='v-li' wx:if="{{1<listItme.status<=8}}">
                 <text>付款时间：</text>
-                <text>{{listItme.payTime}}</text>
+                <text>{{listItme.payTime ? listItme.payTime : '无' }}</text>
+            </view>
+            <view class='v-li' >
+                <text>备注：</text>
+                <text>{{listItme.memo ? listItme.memo : '暂无备注'}}</text>
             </view>
         </view>
 

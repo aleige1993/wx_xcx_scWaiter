@@ -30,7 +30,8 @@ Page({
     },
       producList:[],
       boxHeight:0,
-      resHeight:''
+      resHeight:'',
+      imgArr:[]
   },
 
   onChangeFirst(e) {
@@ -41,6 +42,7 @@ Page({
              'queryList.secondCategoryNo': childlist.categoryNo
           })
           this.setData({
+              'queryList.page': 1,
               'producList': []
           })
           this.getShopdata();
@@ -53,7 +55,8 @@ Page({
         'queryList.secondCategoryNo':childlist[index].categoryNo
       })
       this.setData({
-          'producList':[]
+          'queryList.page': 1,
+          'producList': []
       })
       this.getShopdata();
   },
@@ -181,6 +184,14 @@ Page({
             }
         }
           
+      });
+      app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: '2' }, (res) => {
+          console.log(res)
+          if (res.code == "0000") {
+              this.setData({
+                  'imgArr': res.data
+              })
+          }
       })
   },
 
