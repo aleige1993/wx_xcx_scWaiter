@@ -33,7 +33,6 @@ Page({
       resHeight:'',
       imgArr:[]
   },
-
   onChangeFirst(e) {
       let index = e.detail.index;
       let childlist = this.data.menuItem[index].childList.length > 0 ? this.data.menuItem[index].childList[0] : false;
@@ -43,7 +42,8 @@ Page({
           })
           this.setData({
               'queryList.page': 1,
-              'producList': []
+              'producList': [],
+              'activeSecond':0
           })
           this.getShopdata();
       }

@@ -23,7 +23,7 @@ Page({
     newPaswd: ''
   },
   next(){
-      if (!(/^1[34578]\d{9}$/.test(this.data.mobile))){
+      if (!(/^1\d{10}$/.test(this.data.mobile))){
           app.Tools.showToast('请输入正确的手机号');
           return false;
       }

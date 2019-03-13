@@ -45,12 +45,18 @@
         </view>
         <view class='icontext'>小站学车</view>
       </navigator>
-      <navigator class='icon_four' bindtap='clickTost' hover-class="none">
+      <navigator class='icon_four'   url="/pages/leaseCar/index"  hover-class="none">
+        <view class='img-box'>
+          <image src='/static/images/levsCar.png'></image>
+        </view>
+        <view class='icontext'>小站租车</view>
+      </navigator>
+      <!-- <navigator class='icon_four'  url="/packageA/pages/index"  hover-class="none">
         <view class='img-box'>
           <image src='/static/images/shangcheng.png'></image>
         </view>
         <view class='icontext'>小站商城</view>
-      </navigator>
+      </navigator> -->
     </view>
   </view>
 
@@ -61,11 +67,11 @@
   <view class='new-express'>
     <view class='c-violet'>您的新快递</view>
 
-    <navigator url='/pages/login/index' wx:if="{{!isLogin}}" class='new-express-list shadow-just'>
+    <view wx:if="{{!isLogin}}" class='new-express-list shadow-just'>
       <view class="center">
         <view>亲，您还没登录哦~</view>
       </view>
-    </navigator>
+    </view>
 
     <view wx:else>
       <view wx:if="{{!expressList || !expressList.length}}" class='new-express-list shadow-just'>
@@ -103,6 +109,6 @@
   <image src='/static/images/index.png'></image>
   <view class='but_box'>
     <button class='backg-grad shadow-just' wx:if="{{state==1}}"  open-type="getUserInfo"   bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
-     <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber"  bindgetphonenumber="onGetphonenum">免注册登录</button>
+     <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber"  bindgetphonenumber="onGetphonenum">一键登录</button>
   </view>
 </view>

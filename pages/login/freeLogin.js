@@ -1,35 +1,18 @@
-// pages/laundryOrder/payMent/resultMsg/index.js
+// pages/login/freeLogin.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        isShow:true,
-        orderno:'',
-        payType:'',
-        result:''
+        submitLoading: false
     },
-    goOrderDetails(e) {
-        wx.redirectTo({
-            url: '/pages/laundryOrder/orderDetails/details?orderno=' + this.data.orderno
-        })
-    },
-    goCarDetails(e) {
-        wx.redirectTo({
-            url: '/pages/leaseCar/leaseDetails/index'
-        })
-    },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
-        this.setData({
-            orderno: options.orderno,
-            payType: options.payType,
-            result: options.result
-        })
+
     },
 
     /**

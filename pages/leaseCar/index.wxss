@@ -1,0 +1,111 @@
+/* pages/ schoolCar/index.wxss */
+@import '../../pages/login/register.wxss';
+.banner{
+    width: 100%;
+    height: 9rem;
+}
+.banner image{
+    width: 100%;
+    height: 9rem;
+}
+.Info_panl{
+    width: 100%;
+}
+.panl_title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 30rpx;
+    color: #3984ff;
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+.panl_title .explain{
+     color: #f5a74f;
+     font-weight: 400;
+     font-size: 24rpx;
+     display: flex;
+}
+.panl_title .explain icon{
+    margin-left: 10rpx;
+    font-size: 20rpx;
+}
+.cell_box{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.cell_box  .label{
+    margin-top: 6rpx;
+    font-weight: 600;
+    color:#333;
+}
+.cell_box  .value{
+    flex: 1;
+    text-align: right;
+}
+.cell_box .picker{
+    color: #999;
+}
+.panl_ben{
+    padding:  30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.tilte_benl{
+    flex: 1;
+}
+.tilte_benl .title_p1 text{
+    background-color: #3984ff;
+    color: #fff;
+    border-radius:20rpx;
+    font-size: 22rpx;
+    padding: 4rpx 10rpx;
+    margin-left: 20rpx;
+}
+.tilte_benl .title_p2{
+    margin-top: 20rpx;
+}
+
+.panl_ben  .pice{
+    font-weight: 700;
+    font-size: 30rpx;
+}
+.panl_ben  .pice view{
+    display: flex;
+   justify-content: flex-end;
+}
+.changeTime {
+    padding:30rpx 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.changeTime .time_panl{
+    width: 40%;
+    display: inline-block;
+}
+.whoisDay{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+.picker_panl{
+    text-align: center;
+    padding:10rpx 20rpx 26rpx 20rpx;
+    border: 1px solid #fd8700;
+    border-radius:5px; 
+}
+.picker_panl .picker{
+    color: #fd8700;
+}
+.picker_panl .picker  .icon-you1 {
+        color:#fd8700 !important;
+}
+
+.magtext{
+    padding: 20rpx;
+}

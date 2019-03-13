@@ -34,9 +34,11 @@ let post = (url, data, callback) => {
       }
       if (data.code === '0004') {
           app.Tools.showToast('客官还未登录，请登录浏览');
+          app.UserLogin.remove('userInfo');
+          app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
-          wx.navigateTo({
-            url: '/pages/login/index',
+            wx.switchTab({
+            url: '/pages/index/index',
           })
         }, 2000);
         return false;
@@ -76,9 +78,11 @@ let get = (url, data, callback) => {
       }
       if (data.code === '0004') {
          app.Tools.showToast('客官还未登录，请登录浏览');
+          app.UserLogin.remove('userInfo');
+          app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
-          wx.redirectTo({
-            url: '/pages/login/index',
+          wx.switchTab({
+            url: '/pages/index/index',
           })
         }, 2000);
         return false;

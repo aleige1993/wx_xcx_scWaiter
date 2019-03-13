@@ -1,0 +1,107 @@
+<!--pages/schoolCar/index.wxml-->
+<view>
+    <view class='banner'>
+     <image src='{{imgArr[0].advImage? imgArr[0].advImage : "../../static/images/error.png" }}'></image>
+    </view>
+    <form  bindsubmit="formSubmit" >
+        <view class='schoolInfo'>
+            <view class='Info_panl'>
+                <view class='panl_title'>
+                    <view>租车信息</view>
+                    <view class='explain' hover-class='none' bindtap='goToViewDetails'   >业务说明 <icon type='info' size="14" color="#e6ae6d"></icon></view>
+                </view>
+                <view class='panl_ben'>
+                     <view class='tilte_benl'>
+                        <view class="title_p1">{{carInfo.carName}}<text>{{carInfo.attr1}}</text></view>
+                        <view class='c-999 title_p2'>{{carInfo.attr2}}  {{carInfo.attr3}}  {{carInfo.attr4}}{{carInfo.attr5}}</view>
+                    </view>
+                    <view class='pice' >
+                            <view class=' c-red'>非会员：￥{{carInfo.price}}/日</view>
+                        <view class='c-violet' >会员：￥{{carInfo.memberPrice}}/日</view>
+                    </view>
+                </view>
+                 <view class='panl_title'>
+                    选择租车时间
+                </view>
+               <view class='changeTime'>
+                    <view class='time_panl'>
+                        <picker
+                             class='picker_panl'
+                            mode="date"
+                            value=""
+                            start="{{newTime}}"
+                            name="startTime"
+                            bindchange="onstartChange"
+                        >
+                            <view class="picker">
+                             {{startTime ? startTime : "请选择取车时间"}}<icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                        <view class='whoisDay  c-666'>{{iDays?iDays:0}}天</view>
+                      <view class='time_panl'>
+                        <picker
+                        class='picker_panl'
+                            mode="date"
+                            value=""
+                            start="{{startTime}}"
+                            name="endTime"
+                            bindchange="onendChange"
+                        >
+                            <view class="picker">
+                            {{endTime ? endTime: "请选择还车时间"}}<icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+               </view>
+
+                  <view class='panl_title'>
+                    小站信息
+                </view>
+                <view class='cell_box'>
+                    <view class='label'>小站选择</view>
+                    <view class='value'>
+                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                            <view class="picker">
+                                {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
+                            <icon class='iconfont icon-you1'></icon>
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                  <view class='cell_box'>
+                    <view class='label'>小站地址</view>
+                    <view class='value'>
+                            <input value='{{shopArr[shopIndex].address}}'  disabled='true'   name="address" />
+                     </view>
+                </view>
+               <view class='cell_box'>
+                    <view class='label'>小站电话</view>
+                    <view class='value'>
+                            <input value='{{shopArr[shopIndex].mobile}}'  disabled='true'   name="mobile" />
+                     </view>
+                </view>
+                 <view class='cell_box'>
+                    <view class='label'>取车时间</view>
+                    <view class='value'>
+                            <input value='09:00 ~ 21:00'  disabled='true'   name="shopTims" />
+                     </view>
+                </view>
+            </view>
+
+             <view class='c-yellow magtext'>
+                提示：请携带本人身份证、驾驶证前往小站取车;
+                            此订单为租车费用，租车押金499元到店支付;
+             </view>
+             <view class='marig-primary' wx:if="{{rechargeMember == 'true'}}">
+                <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad shadow-just" >会员租车（合计金额：￥{{iDays*carInfo.memberPrice}}）</button>
+            </view>
+             <view class='marig-primary' wx:else>
+                <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad shadow-just" >立即租车（合计金额：￥{{iDays*carInfo.price}}）</button>
+            </view>
+        </view>
+    </form>
+    
+</view>
+
+

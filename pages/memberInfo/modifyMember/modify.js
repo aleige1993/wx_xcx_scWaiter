@@ -8,7 +8,7 @@ Page({
   data: {
       id:'',
     showArea: false,
-    selectedAreaCode: '',
+    selectedAreaCode: '500103',
     selectedAreaName:'',
     checked:false,
     values:'',

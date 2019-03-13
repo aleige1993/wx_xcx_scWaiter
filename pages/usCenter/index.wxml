@@ -9,14 +9,14 @@
       </view>
         <image class='vipImg' wx:if="{{rechargeMember == 'true'}}" src='../../static/images/tagVip.png'></image>
     </view>
-    <view wx:else class='box-user '>
+    <!-- <view wx:else class='box-user '>
       <image src='../../static/images/hader.png'></image>
       <view>
         <navigator url='/pages/login/index'>
           <van-button size="small" type="default">登录/注册</van-button>
         </navigator>
       </view>
-    </view>
+    </view> -->
     <!-- <icon class='iconfont icon-you1'></icon> -->
   </view>
 
@@ -54,6 +54,21 @@
       <icon class='iconfont icon-you1'></icon>
     </navigator>
 
+
+    <navigator wx:if="{{isLogin}}" url='/pages/leaseCar/leaseDetails/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>租车订单</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
+    <navigator wx:else url='/pages/login/index' class='glup_box'>
+      <view>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>租车订单</text>
+      </view>
+      <icon class='iconfont icon-you1'></icon>
+    </navigator>
     <!-- 学车申请 -->
     <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
       <view>
@@ -91,19 +106,19 @@
 
   </view>
 
-  <view wx:if="{{isLogin}}" class='marig-primary'>
+  <!-- <view wx:if="{{isLogin}}" class='marig-primary'>
     <button bindtap='loginout' class="primary  backg-grad shadow-just" form-type='submit' size="normal">退出登录</button>
-  </view>
+  </view> -->
 
 </view>
 
 <van-dialog id="van-dialog" />
 
-<view class='layer' wx:if="{{isShow}}"></view>
+<!-- <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
   <view class='title_p'>颂小二为你服务</view>
   <image src='/static/images/index.png'></image>
   <view class='but_box'>
     <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
   </view>
-</view>
+</view> -->

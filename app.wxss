@@ -64,6 +64,9 @@ view{
 .c-gray{
   color: #e5e5e5;
 }
+c-orange{
+    color: #fd8700;
+}
 .c-gray2{
   color: #d4d9eb;
 }

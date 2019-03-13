@@ -46,7 +46,7 @@
 </view>
   </scroll-view>
 
-<navigator class="laundry-button backg-grad" url='/pages/laundryOrder/shoppCart/index'>
+<navigator class="laundry-button backg-grad"  url='/pages/laundryOrder/shoppCart/index'>
     <icon class='iconfont icon-gouwuchekong'></icon>
     <text> {{count>0?count:''}}</text>
 </navigator>

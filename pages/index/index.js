@@ -76,26 +76,69 @@ Page({
         if (wxUserInfo) {
                 app.UserLogin.set('wxUserInfo', wxUserInfo);
                 this.setData({
-                    isShow: false
+                    state:2
                 })
         }
     },
-    clickTost() {
-        wx.showModal({
-            content: '客官,我们正在建设敬请期待',
-            showCancel: false,
-            confirmText: '我知道了',
-            success(res) {
-                if (res.confirm) {
-                }
+    onGetphonenum(e) {
+        let _this = this;
+        wx.login({
+            success(data) {
+                if(data.code){
+                    app.Formdata.post('/openapi/common/user/login', {
+                        "wxCode": data.code,
+                        "wxEncData": e.detail.encryptedData,
+                        "wxIv": e.detail.iv,
+                        "code": "5",
+                        "password":"123456",
+                        "account":"account"
+                    }, (res) => {
+                        console.log('login',res)
+                        if (res.success && res.success === 'true') {
+                            _this.setData({
+                                isShow:false,
+                                isLogin:true
+                            },()=>{
+                                wx.showToast({
+                                    title: '登录成功',
+                                })
+                            })
+                            app.UserLogin.set('userInfo', res.data);
+                            wx.switchTab({
+                                url: '/pages/index/index',
+                                success:()=>{
+                                    if (_this.data.isLogin) {
+                                        _this.setData({
+                                            expressList: [],
+                                            'sreachForm.page': 1
+                                        });
+                                        _this.loadExpressList();
+                                    }
+                                }
+                            })
+                        }
+                })
+            }
             }
         })
     },
     onShow: function () {
-        this.setData({
-            isShow: !app.UserLogin.get('wxUserInfo'),
-            isLogin: app.UserLogin.get('userInfo')
-        })
+        if (!app.UserLogin.get('wxUserInfo')){
+            this.setData({
+                isShow:true,
+                state:1
+            })
+        } else if (!app.UserLogin.get('userInfo')) {
+            this.setData({
+                isShow: true,
+                state: 2
+            })
+        }else{
+            this.setData({
+                isShow: !app.UserLogin.get('wxUserInfo'),
+                isLogin: app.UserLogin.get('userInfo')
+            })
+        }
         if (this.data.isLogin) {
             this.setData({
                 expressList: [],

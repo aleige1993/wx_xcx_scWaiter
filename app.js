@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 //app.js
 import WxValidate from '/utils/WxValidate.js';
 

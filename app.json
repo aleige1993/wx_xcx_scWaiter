@@ -1,6 +1,9 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/login/freeLogin",
+        "pages/leaseCar/index",
+        "pages/leaseCar/leaseDetails/index",
         "pages/laundryOrder/index/index",
         "pages/login/index",
         "pages/login/resetPwd",

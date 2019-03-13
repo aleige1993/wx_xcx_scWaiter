@@ -1,0 +1,11 @@
+<!--pages/login/freeLogin.wxml-->
+<view>
+    <view>
+        
+    </view>
+<view class='marig-primary'>
+                <button wx:if="{{!submitLoading}}" class="primary  backg-grad shadow-just" form-type='submit' size="normal" >登录</button>
+                <button wx:else class="primary  backg-grad shadow-just" size="normal" ><van-loading size="20px" type="spinner" /></button>
+            </view>
+
+</view>

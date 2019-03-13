@@ -7,9 +7,6 @@
     <form  bindsubmit="formSubmit" >
         <view class='schoolInfo'>
             <view class='Info_panl'>
-                <!-- <view class='panl_title'>
-                    学习信息选择
-                </view> -->
                 <view class='cell_box'>
                     <view class='label'>小站选择</view>
                     <view class='value'>
@@ -71,7 +68,7 @@
                 <view class='agre_box'>同意《<navigator class='c-blue'>会员服务协议</navigator>》</view>
             </view> -->
              <view class='marig-primary'>
-                <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad" >9.9元/3个月（限时优惠）</button>
+                <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad" >9.9元/月（限时优惠）</button>
             </view>
     </view>
     </form>
