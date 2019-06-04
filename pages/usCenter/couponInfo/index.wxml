@@ -1,0 +1,158 @@
+<!--pages/usCenter/couponInfo/index.wxml-->
+<view>
+    <view class='tab_panl'>
+        <van-tabs active="{{ active }}" bind:change="onChange">
+        <van-tab title="未使用"> </van-tab>
+        <van-tab title="已使用"> </van-tab>
+        <van-tab title="已过期"> </van-tab>
+    </van-tabs>
+    </view>
+    
+
+    <view class='scorll_view' wx:if="{{couponList.length>0}}">
+        <view class='coupon_model' wx:for="{{couponList}}" wx:key="couponList"  wx:if="{{status==1}}" >
+            <view class='cou_bg {{service ==1?"bg_violet" : service==2 ? "bg_pink" : "bg_blue" }} '>
+                <label>{{item.reduce_info}}</label>
+                <text>{{item.rule_info}}</text>
+            </view>
+            <view class='cou_title'>
+                <view class='title_conter'>
+                    <view class="name_text  {{ service ==1 ? 'text_violet' : service== 2 ? 'text_pink' : 'text_blue' }} ">{{item.coup_name}}</view>
+                    <view class='type_text'>{{item.use_mode}}</view>
+                    <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                    <view class='p_text exp_text'>有效期：{{item.expiry_date}}</view>
+                </view>
+                <!-- <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view> -->
+                <view class='tag_text bg_red' wx:if="{{item.expiry_status==1}}">
+                   将过期
+                </view>
+            </view>
+        </view>
+
+        <view class='coupon_model' wx:for="{{couponList}}" wx:key="couponList"  wx:if="{{status==2}}">
+             <view class='cou_bg bg_gray'>
+                <label>{{item.reduce_info}}</label>
+                <text>{{item.rule_info}}</text>
+            </view>
+             <view class='cou_title bg_used'>
+                <view class='title_conter'>
+                    <view class='name_text text_gray'>{{item.coup_name}}</view>
+                    <view class='type_text text_gray'>{{item.use_mode}}</view>
+                   <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                    <view class='p_text exp_text'>有效期：{{item.expiry_date}}</view>
+                </view>
+                <!-- <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view> -->
+                <view class='tag_text bg_red' wx:if="{{item.expiry_status==1}}">
+                   将过期
+                </view>
+            </view>
+        </view>
+
+         <view class='coupon_model' wx:for="{{couponList}}" wx:key="couponList"  wx:if="{{status==3}}">
+             <view class='cou_bg bg_gray'>
+                <label>{{item.reduce_info}}</label>
+                <text>{{item.rule_info}}</text>
+            </view>
+             <view class='cou_title bg_expired'>
+                <view class='title_conter'>
+                    <view class='name_text text_gray'>{{item.coup_name}}</view>
+                    <view class='type_text text_gray'>{{item.use_mode}}</view>
+                   <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                    <view class='p_text exp_text'>有效期：{{item.expiry_date}}</view>
+                </view>
+                <!-- <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view> -->
+                <view class='tag_text bg_red' wx:if="{{item.expiry_status==1}}">
+                   将过期
+                </view>
+            </view>
+        </view>
+
+
+        <!-- <view class='coupon_model'>
+            <view class='cou_bg bg_pink'>
+                <label>￥10</label>
+                <text>满100可用</text>
+            </view>
+            <view class='cou_title'>
+                <view class='title_conter'>
+                    <view class='name_text text_pink'>衣物-上衣</view>
+                    <view class='type_text'>洗衣品类劵</view>
+                    <view class='p_text'>适用平台：全平台</view>
+                    <view class='p_text'>有效期：2017-01-01</view>
+                </view>
+                <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+                <view class='tag_text bg_yeller'>
+                    新
+                </view>
+            </view>
+        </view>
+
+        <view class='coupon_model'>
+            <view class='cou_bg bg_blue'>
+                <label>￥10</label>
+                <text>满100可用</text>
+            </view>
+            <view class='cou_title'>
+                <view class='title_conter'>
+                    <view class='name_text text_blue'>衣物-上衣</view>
+                    <view class='type_text'>洗衣品类劵</view>
+                    <view class='p_text'>适用平台：全平台</view>
+                    <view class='p_text'>有效期：2017-01-01</view>
+                </view>
+                <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </view>
+        </view> -->
+
+         <!-- <view class='coupon_model'>
+            <view class='cou_bg bg_gray'>
+                <label>￥10</label>
+                <text>满100可用</text>
+            </view>
+            <view class='cou_title bg_used'>
+                <view class='title_conter'>
+                    <view class='name_text text_gray'>衣物-上衣</view>
+                    <view class='type_text text_gray'>洗衣品类劵</view>
+                    <view class='p_text'>适用平台：全平台</view>
+                    <view class='p_text'>有效期：2017-01-01</view>
+                </view>
+                <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </view>
+        </view>
+
+         <view class='coupon_model'>
+            <view class='cou_bg bg_gray'>
+                <label>￥10</label>
+                <text>满100可用</text>
+            </view>
+            <view class='cou_title bg_expired'>
+                <view class='title_conter'>
+                    <view class='name_text text_gray'>衣物-上衣</view>
+                    <view class='type_text text_gray'>洗衣品类劵</view>
+                    <view class='p_text'>适用平台：全平台</view>
+                    <view class='p_text'>有效期：2017-01-01</view>
+                </view>
+                <view class='icon_right'>
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </view>
+        </view> -->
+    </view> 
+
+<view class='laundry-list null-data marginTop'  wx:if="{{couponList.length<=0}}">
+    <icon class='iconfont  icon-tiaobochuku'></icon>
+    <view>暂无数据~~~</view>
+</view>
+
+</view>

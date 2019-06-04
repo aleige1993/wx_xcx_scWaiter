@@ -1,77 +1,76 @@
 <!--pages/memberInfo/openMember/index.wxml-->
 <view>
-     <view class='banner'>
-        <image src='{{imgArr[0].advImage? imgArr[0].advImage : "/static/images/error.png" }}'  bindtap='goToAgrment'></image>
+    <view class='banner'>
+        <image src='{{imgArr[0].advImage? imgArr[0].advImage : "/static/images/error.png" }}' bindtap='goToAgrment'></image>
         <!-- data-url='{{imgArr[0].advUrl}}' bindtap='goToViewDetails'  -->
     </view>
-    <form  bindsubmit="formSubmit" >
+    <form bindsubmit="formSubmit">
         <view class='schoolInfo'>
             <view class='Info_panl'>
                 <view class='cell_box'>
                     <view class='label'>小站选择</view>
                     <view class='value'>
-                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                        <input wx:if="{{rechargeUserInfo.stationName}}" value='{{rechargeUserInfo.stationName}}' disabled></input>
+                          <navigator wx:else  class="picker" hover-class='none' url='/pages/shopList/index?stationType=stationMember'>{{stationMember.stationName?stationMember.stationName : '请选择小站'}}  <icon class='iconfont icon-you1'></icon></navigator>
+                        <!-- <picker wx:else bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
                             <view class="picker">
                                 {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
-                            <icon class='iconfont icon-you1'></icon>
+                                <icon class='iconfont icon-you1'></icon>
                             </view>
-                        </picker>
+                        </picker> -->
                     </view>
                 </view>
             </view>
 
-             <view class='Info_panl'>
+            <view class='Info_panl'>
                 <view class='cell_box'>
                     <view class='label'>姓名</view>
                     <view class='value'>
-                            <input value=''  placeholder='请输入姓名' name="username" />
-                     </view>
+                        <input wx:if="{{rechargeUserInfo.nickName}}" value='{{rechargeUserInfo.nickName}}' disabled></input>
+                        <input wx:else value='' placeholder='请输入姓名' name="username" />
+                    </view>
                 </view>
-                   <view class='cell_box'>
+                <!-- <view class='cell_box'>
                     <view class='label'>性别</view>
                     <view class='value'>
-                          <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexArr}}" range-key="name">
+                        <input wx:if="{{rechargeUserInfo.sex}}" value="{{rechargeUserInfo.sex == 1? '男':'女' }}" disabled></input>
+                        <picker wx:else bindchange="sexChange" value="{{sexIndex}}" range="{{sexArr}}" range-key="name">
                             <view class="picker">
-                            {{sexArr[sexIndex].name ? sexArr[sexIndex].name : '请选择性别'}}
-                            <icon class='iconfont icon-you1'></icon>
+                                {{sexArr[sexIndex].name ? sexArr[sexIndex].name : '请选择性别'}}
+                                <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
                     </view>
-                </view>
-                  <view class='cell_box'>
+                </view> -->
+                <!-- <view class='cell_box'>
                     <view class='label'>添加地址</view>
                     <view class='value' bindtap='goToadrment'>
-                            <text>{{address}}</text>
-                           <icon class='iconfont icon-you1'></icon>
+                        <text>{{address}}</text>
+                        <icon class='iconfont icon-you1'></icon>
                     </view>
-                </view>
-                  <view class='cell_box'>
+                </view> -->
+                <view class='cell_box'>
                     <view class='label'>生日信息</view>
                     <view class='value'>
-                        <picker
-                            mode="date"
-                            value=""
-                            end="{{endTime}}"
-                            name="dateTime"
-                            bindchange="onDateChange"
-                        >
+                        <input wx:if="{{rechargeUserInfo.birth}}" value='{{rechargeUserInfo.birth}}' disabled></input>
+                        <picker wx:else mode="date" value="" end="{{endTime}}" name="dateTime" bindchange="onDateChange">
                             <view class="picker">
-                             {{dateTime}} <icon class='iconfont icon-you1'></icon>
+                                {{dateTime}}
+                                <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>
                     </view>
                 </view>
             </view>
 
-             <!-- <view class='chebox_box'>
+            <!-- <view class='chebox_box'>
                 <van-checkbox  checked-color="#5f8aff"  value="{{ checked }}" bind:change="onChange"></van-checkbox>
                 <view class='agre_box'>同意《<navigator class='c-blue'>会员服务协议</navigator>》</view>
             </view> -->
-             <view class='marig-primary'>
-                <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad" >9.9元/月（限时优惠）</button>
+            <view class='marig-primary'>
+                <button size="normal" type="primary" round="true" form-type='submit' class="primary backg-grad shadow-just"> {{rechargeUserInfo? '续费：9.9元/月（限时优惠）' : '9.9元/月（限时优惠）'}}</button>
             </view>
-    </view>
+        </view>
     </form>
-    
-</view>
 
+</view>

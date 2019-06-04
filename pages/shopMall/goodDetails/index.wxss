@@ -1,0 +1,112 @@
+/* pages/shopMall/goodDetails/index.wxss */
+@import '/pages/shopMall/index.wxss';
+
+page{
+    background-color: #f2f2f2;
+}
+.swiper_panl{
+    background-color: #fff;
+}
+.swiper_panl swiper{
+    width: 100%;
+    height: 400rpx;
+}
+.swiper_panl image{
+    width: 100%;
+    height: 100%;
+}
+
+.goodDeta{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+}
+.detaleft{
+    flex: 1;
+}
+.addCat{
+    background-color: #FFC939;
+    padding: 6rpx 10rpx;
+    color: #fff;
+    border-radius:30rpx; 
+    text-align: center;
+}
+.menberPire{
+    background-color: #FF3939;
+    color: #fff;
+    font-size: 22rpx;
+    padding: 2rpx 10rpx;
+    border-radius:20rpx; 
+}
+.notice_panl{
+    display: flex;
+    background-color: #fff;
+    color:#3984FF;
+    padding: 20rpx 30rpx;
+    /* margin-top: 20rpx; */
+}
+.notice_panl icon{
+    font-size: 28rpx;
+    margin-top: -16rpx;
+    margin-right: 10rpx;
+}
+.shopDeta{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20rpx 30rpx;
+}
+
+.addres icon{
+    color: #FF3939;
+}
+.addres{
+    color: #434343;
+}
+.lianxishop{
+    border: 1px solid #434343;
+    color: #434343;
+    padding: 6rpx 10rpx;
+    border-radius:40rpx; 
+}
+.lianxishop icon{
+    color: #FFC939;
+    margin-top: -20rpx;
+}
+.noData{
+    text-align: center;
+    margin: 50rpx 0;
+    color: #777;
+}
+.goodDetalis{
+    background-color: #fff;
+    padding:70rpx 30rpx 30rpx 30rpx;
+    min-height:20vh;
+    position: relative;
+    margin-bottom: 120rpx;
+    margin-top: 20rpx;
+}
+.tig_text{
+    position: absolute;
+    top: 0;
+    left: 42%;
+    background-color: #3984FF;
+    color: #fff;
+    z-index: 3;
+    padding:10rpx 20rpx;
+    text-align: center;
+    border-bottom-left-radius:20rpx;
+    border-bottom-right-radius:20rpx;  
+
+}
+.goodsmaigto{
+    margin-top: 10rpx;
+}
+.goodsmaigto view{
+    margin-top: 10rpx;
+}
+.selleMag{
+    margin-top: 10rpx;
+}

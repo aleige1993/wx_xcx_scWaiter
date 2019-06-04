@@ -1,0 +1,44 @@
+/* pages/shopMall/shopList/index.wxss */
+page{
+    background-color: #f2f2f2;
+}
+.soso_view{
+    display: flex;
+}
+
+.soso_view .soso{
+    flex: 1;
+}
+.soso_view .map{
+    width: 80rpx;
+}
+.soso_view .map icon{
+    font-size: 26px;
+    margin-top: 10rpx;
+    color: #3984FF;
+}
+.list_panl{
+    background-color: #fff;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+}
+.shopName{
+    flex: 1;
+}
+.shopName view{
+    margin-top: 20rpx;
+}
+.shopName view:first-child{
+    font-size: 30rpx;
+    margin-top: 0;
+}
+.shopList .active{
+    background-color: #3984FF;
+}
+.shopList view.active .shopName view{
+    color: #fff;
+}
+.shopList view.active .shopKm{
+    color: #fff;
+}

@@ -1,28 +1,29 @@
 <!--pages/laundryOrder/payMent/resultMsg/index.wxml-->
 <view>
-            <view class='result_box'  wx:if="{{ result == 'success' }}">
-                <view>
-                     <icon class='iconfont icon-chenggong'></icon>
-                </view>
-                <view class='p1'>订单支付成功</view>
-                <view class='p2' wx:if="{{payType == '1'}}">将衣物交给小站人员~</view>
-                <view class='p2' wx:if="{{payType == '2'}}">会员开通成功~</view>
-                  <view class='p2' wx:if="{{payType == '3'}}">【提请携带本人身份证、驾驶证前往小站取车】</view>
-            </view>
+    <view class='result_box' wx:if="{{ result == 'success' }}">
+        <view>
+            <icon class='iconfont icon-chenggong'></icon>
+        </view>
+        <view class='p1'>订单支付成功</view>
+        <view class='p2' wx:if="{{payType == '1'}}">将衣物交给小站人员~</view>
+        <view class='p2' wx:if="{{payType == '2'}}">会员开通成功~</view>
+        <view class='p2' wx:if="{{payType == '3'}}">【提请携带本人身份证、驾驶证前往小站取车】</view>
+        
+    </view>
 
-            <view class='result_box'  wx:else>
-                <view>
-                     <icon class='iconfont icon-shibai'></icon>
-                </view>
-                <view class='p1 c-yellow'>订单支付失败~</view>
-            </view>
+    <view class='result_box' wx:else>
+        <view>
+            <icon class='iconfont icon-shibai'></icon>
+        </view>
+        <view class='p1 c-yellow'>订单支付失败~</view>
+    </view>
 
-            <view class='order_but'  wx:if="{{ result == 'success' }}">
-                <navigator  wx:if="{{payType == '1'}}" class='backg-grad'  bindtap='goOrderDetails'>查看订单</navigator>
-                 <navigator  wx:if="{{payType == '3'}}" class='backg-grad'  bindtap='goCarDetails'>查看订单</navigator>
-                 <navigator  open-type="switchTab"  url="/pages/index/index">返回首页</navigator>
-            </view>
-             <view class='order_but'  wx:else>
-                 <navigator open-type="switchTab" url="/pages/index/index">返回首页</navigator>
-            </view>
+    <view class='order_but' wx:if="{{ result == 'success' }}">
+        <navigator wx:if="{{payType == '1'}}" class='backg-grad' bindtap='goOrderDetails'>查看订单</navigator>
+        <navigator wx:if="{{payType == '3'}}" class='backg-grad' bindtap='goCarDetails'>查看订单</navigator>
+        <navigator open-type="switchTab" url="/pages/index/index">返回首页</navigator>
+    </view>
+    <view class='order_but' wx:else>
+        <navigator open-type="switchTab" url="/pages/index/index">返回首页</navigator>
+    </view>
 </view>

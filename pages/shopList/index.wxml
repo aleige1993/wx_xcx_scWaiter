@@ -1,0 +1,25 @@
+<!--pages/shopMall/shopList/index.wxml-->
+<view class='soso_view'>
+    <view class='soso'>
+        <van-search  value=""  bind:change="onSearc" placeholder="输入小站名称  " />
+    </view>
+    <view class='map' bindtap='goBack'>
+        <icon class='iconfont icon-Map-'></icon>
+    </view>
+</view>
+<view class='shopList' wx:if="{{shopArr.length>0}}">
+    <!-- {{index == indexNo?'active':''}} -->
+    <view class="list_panl" wx:for="{{shopArr}}" wx:key="shop" data-index="{{index}}" bindtap='changShop'>
+        <view class='shopName'>
+            <view class='font-w6'>{{item.stationName}}</view>
+            <view class='c-999'>{{item.address}}</view>
+        </view>
+        <view class='shopKm c-666'>
+            {{item.distance}}km
+        </view>
+    </view>
+</view>
+<view class='laundry-list null-data'  wx:else>
+    <icon class='iconfont  icon-tiaobochuku'></icon>
+   <view>暂无数据~~~</view> 
+</view>

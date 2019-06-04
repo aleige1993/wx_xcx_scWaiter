@@ -1,0 +1,229 @@
+<!--pages/text/index.wxml-->
+<view>
+    <view class="shop_panl  {{isCanscoll == 'slideDown' ? 'slideDown' : 'slideUp' }}" >
+        <view class='shopShowPanl' hover-class='none' bindtap='getAreess'>
+            <view class='shopName'>
+                <view class='font-w6 font-z16 mairg-bottm'>{{store_info.st_name}}</view>
+                <view class='c-999'>{{store_info.address}}</view>
+            </view>
+            <view class='distance'>
+                <view class='distanKM c-666'>
+                    {{store_info.distance?store_info.distance:'0Km'}}
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='soso_panl'>
+        <view class='search_panl'>
+            <icon class='iconfont icon-sousuo-copy'></icon>
+            <input value='' placeholder='搜索商品' bindconfirm="confirmForm"></input>
+        </view>
+        <view bindtap='getUserCouponList'  class='couckino'>领券</view>
+    </view>
+    <view class='shopList_panl' bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+        <view class='oneCate'>
+            <scroll-view scroll-y style="height: {{isCanscoll == 'slideDown'?boxHeight:boxHeightCan}}px;">
+                <view wx:for="{{category_list[0]}}" wx:key="category_list" class="{{activeOne == index ?'active':''}}" data-indone="{{index}}" data-idone="{{item.id}}" bindtap='hdChangeOne'>{{item.name}}</view>
+            </scroll-view>
+        </view>
+        <view class='Vate_panl'>
+            <!-- <icon class='iconfont icon-tuanduicankaoxian-'></icon>
+          <view class=''></view> -->
+            <view class='twoCate'>
+                <scroll-view scroll-x scroll-with-animation style="width:{{boxWidth}}px">
+                    <view data-indtwo="{{index}}" class="{{activeTwo == index?'active':''}}" wx:for="{{category_listTwo}}" data-idtwo="{{item.id}}" wx:key="category_listTwo" bindtap='hdChangeTwo'>
+                        {{item.name}}
+                        <text class='line_bottom'></text>
+                    </view>
+                    <!-- <view wx:if="{{category_listTwo.length<=0}}" class='active'>全部
+                        <text class='line_bottom'></text>
+                    </view> -->
+                </scroll-view>
+            </view>
+            <view class='goodList'>
+                <scroll-view scroll-y scroll-with-animation style="height:{{isCanscoll == 'slideDown'?boxHeightTwo:boxHeightTwoCan}}px">
+                    <view class='panl_goods' wx:for="{{goods_list}}" wx:key="goods_list">
+                        <view class='goods_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+                           <view class='self_panl'>
+                                 <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
+                                 <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                           </view>
+                            <view class='gooddetail'>
+                                <view class='font-w6'>{{item.name}}</view>
+                                <!-- <view class='c-666'>销量:12</view> -->
+                                <view wx:if="{{user_info.is_vip == 1}}">
+                                    <view class='c-666 decoration'>原价：¥{{item.price}}</view>
+                                    <view class='c-powder'>¥{{item.vip_price}}
+                                        <!-- <text class='menberPire'>会员价</text> -->
+                                    </view>
+                                </view>
+                                <view wx:else>
+                                    <view class='c-666' wx:if="{{isTest}}">
+                                        <text class='menberPire'>会员价</text>¥{{item.vip_price}}
+                                    </view>
+                                    <view class='c-powder'>¥{{item.price}}</view>
+                                </view>
+                                <!-- <view class='c-666 decoration'>¥{{item.price}}</view>
+                            <view class='c-powder'>¥{{item.vip_price}}
+                                <text class='menberPire'>会员价</text>
+                            </view> -->
+                            </view>
+                        </view>
+                        <icon class='iconfont icon-out-column column' data-operate="inc" data-item="{{item}}" bindtap='touchOnGoods'></icon>
+                    </view>
+                    <view class='null_data' wx:if="{{goods_list.length <= 0}}">
+                        <icon class='iconfont icon-tiaobochuku'></icon>
+                        <view class='c-999'>暂无数据...</view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class="shopcart">
+    <view class="content">
+        <view class="content-left" bindtap="showShopCartFn">
+            <view class="logo-wrapper">
+                <image class="logo" src="{{(cart_info.total_price > 0)?'/static/images/icon_selected.png':'/static/images/icon_normal.png'}}">
+                    <!-- <i class="icon-shopping_cart"></i> -->
+                </image>
+                <view class="num" wx:if="{{cart_info.total_num}}">{{cart_info.total_num}}</view>
+            </view>
+            <view class="price {{(cart_info.total_price > 0)? 'highlight':''}}">￥{{cart_info.total_price}}</view>
+        </view>
+        <view class="content-right">
+            <view wx:if="{{cart_info.total_price <=0}}" class="pay">去结算
+            </view>
+            <view wx:else bindtap="goPayFn" class="pay payClass">去结算
+            </view>
+        </view>
+    </view>
+
+
+    <view class="shopcart-list" wx:if="{{shopcart_panl}}">
+        <view class="list-header">
+            <view class="title">
+                <text class="title-line">已选商品</text>
+                <text class="empty" bindtap="clearShopCartFn">清空</text>
+            </view>
+        </view>
+       <view class='notice_panl' wx:if="{{cart_info.free_freight}}">
+            <icon class='iconfont icon-tongzhi'></icon>
+            <text>{{isTest?'会员':''}}订单满{{cart_info.free_freight}}元提供配送上门服务</text>
+        </view>
+        <scroll-view scroll-y style="max-height: 257px;">
+            <view class='panl_goods' wx:for="{{cart_info.list}}" wx:key="cart_info_list">
+                <view class='goods_panl  ShopCart_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+                    <view class='self_panl'>
+                                 <label class='self' wx:if="{{item.is_self == 1}}">直营</label> 
+                                 <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                           </view> 
+                    <view class='gooddetail'>
+                        <view class='font-w6'>{{item.name}}</view>
+                        <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
+                        <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
+                        <view wx:if="{{user_info.is_vip == 1}}">
+                            <view class='c-666 decoration'>原价：¥{{item.price}}</view>
+                            <view class='c-powder'>¥{{item.vip_price}}
+                                <!-- <text class='menberPire'>会员价</text> -->
+                            </view>
+                        </view>
+                        <view wx:else>
+                            <view class='c-666' wx:if="{{isTest}}">
+                                <text class='menberPire'>会员价</text>¥{{item.vip_price}}
+                            </view>
+                            <view class='c-powder'>¥{{item.price}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class='Calcu_panl'>
+                    <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
+                    <input value='{{item.num}}' disabled="true"></input>
+                    <block wx:if="{{item.can_buy}}">
+                        <icon wx:if="{{item.num != item.amount}}" class='iconfont icon-out-column outcolumn' data-operate="inc" data-item="{{item}}" bindtap='addGoods'></icon>
+                        <icon wx:if="{{item.num == item.amount}}" class='iconfont icon-out-column outcolumn nocolumn'></icon>
+                    </block>
+                    <block wx:else>
+                        <icon class='iconfont icon-out-column outcolumn outcolumn nocolumn'></icon>
+                    </block>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class='layer' wx:if="{{layer}}" bindtap='clearAll'></view>
+<!--小球的实现-->
+<view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+</view>
+<!-- 搜索列表 -->
+<view class='sosoList' wx:if="{{soso_panl}}" style='height:80%'>
+    <view class='notice_panl soso_notice'>
+        客官,您的搜索结果
+        <!-- <icon class='iconfont icon-tongzhi'></icon>
+        <text>会员订单满{{cart_info.free_freight}}元提供配送上门服务</text> -->
+    </view>
+    <scroll-view scroll-y  style="max-height: {{boxHeightThree}}px;">
+        <view class='panl_goods ' wx:for="{{search_list}}" wx:key="search_list">
+            <view class='goods_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+               <view class='self_panl'>
+                                 <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
+                                 <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                           </view> 
+                <view class='gooddetail'>
+                    <view class='font-w6'>{{item.name}}</view>
+                    <!-- <view class='c-666'>销量:12</view> -->
+                    <!-- <view class='c-666 decoration'>¥{{item.price}}</view>
+                            <view class='c-powder'>¥{{item.vip_price}}
+                                <text class='menberPire'>会员价</text>
+                            </view> -->
+                    <view wx:if="{{user_info.is_vip == 1}}">
+                        <view class='c-666 decoration'>原价：¥{{item.price}}</view>
+                        <view class='c-powder'>¥{{item.vip_price}}
+                            <!-- <text class='menberPire'>会员价</text> -->
+                        </view>
+                    </view>
+                    <view wx:else>
+                        <view class='c-666' wx:if="{{isTest}}">
+                            <text class='menberPire'>会员价</text>¥{{item.vip_price}}
+                        </view>
+                        <view class='c-powder'>¥{{item.price}}</view>
+                    </view>
+                </view>
+            </view>
+            <icon class='iconfont icon-out-column column' data-operate="inc" data-item="{{item}}" bindtap='touchOnGoods'></icon>
+        </view>
+    </scroll-view>
+</view>
+
+
+<view class='layer' wx:if="{{isConbox}}"></view>
+<view class='conPan_box' wx:if="{{isConbox}}">
+    <view class='conbox_panl'>
+        <image  class='matpimg' src='/static/images/yingbin.png'></image>
+        <view class='bg_hader'>一份小站专享大礼包赠送给您！</view>
+        <view class='con_boxMore'>
+             <view class='bg_bf' wx:for="{{conpunList}}" wx:key="conpunList">
+                <view class='pice_box'>
+                    <view class='head'><label class='c-o'>{{item.reduce_info}}</label><text class='c-o'>{{item.reduce_info_type}}</text></view>
+                    <view class='teltex c-z'>{{item.rule_info}}</view>
+                </view>
+                <view class='about'>
+                    <view class='c-333 titel'>{{item.coup_name}}</view>
+                    <view class='c-y'>适用小站：{{item.use_st_name}}</view>
+                    <view class='ma_exp'>
+                        <view class='c-so expiry_date'>{{item.expiry_date}}</view>
+                        <view wx:if="{{item.status == 1}}" class='bintop c-f' data-index="{{index}}" data-id="{{item.coup_id}}"  bindtap='getReceive'>领取</view>
+                        <view wx:if="{{item.status == 0}}" class='yescon'>已领取</view>
+                    </view>
+                </view> 
+                <view  class='tap_r'>{{item.use_mode}}</view>
+            </view>
+        </view> 
+    </view>
+    <view class='cloes'>
+        <label class='hideCopbox' bindtap='hideCopbox'>×</label>
+    </view>
+</view>

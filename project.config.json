@@ -12,13 +12,15 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.0",
+	"libVersion": "2.6.2",
 	"appid": "wxc44c991391834266",
 	"projectname": "wx_xcx_scWaiter",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,13 +30,39 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 2,
+			"list": [
+				{
+					"id": 0,
+					"name": "强制更新",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "强制更新",
+					"pathName": "pages/index/index",
+					"query": "scene=123",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "强制更新",
+					"pathName": "pages/index/index",
+					"query": "scene=123",
+					"scene": 1011
+				}
+			]
 		}
 	}
 }

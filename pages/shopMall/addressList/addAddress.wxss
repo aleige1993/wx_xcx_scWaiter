@@ -1,0 +1,4 @@
+/* pages/shopMall/addressList/addAddress.wxss */
+page{
+    background-color: #f2f2f2;
+}

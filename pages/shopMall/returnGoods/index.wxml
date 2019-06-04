@@ -1,0 +1,61 @@
+<!--pages/shopMall/returnGoods/index.wxml-->
+<view>
+    <form bindsubmit="formSubmit">
+        <view class='titel'>退货原因</view>
+        <view class='flex'>
+            <view class='c-999'>
+                请选择退货原因
+            </view>
+            <view>
+                <picker bindchange="typeChange" value="{{typeIndex}}" range="{{typeInfo}}" range-key="value">
+                    <view class="picker">
+                        {{typeInfo[typeIndex].value ? typeInfo[typeIndex].value : '选择退货原因'}}
+                        <icon class='iconfont icon-you1'></icon>
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class='titel'>退货信息</view>
+        <view>
+            <view class='flex'>
+                <view>请选择退货数量</view>
+                <van-stepper value="{{ goodInfo.amount }}" integer disable-input="{{true}}" min="1" max="{{goodInfo.amount}}" step="1" bind:change="onChange" />
+            </view>
+            <view class='flex'>
+                <view>退货金额</view>
+                <view class='c-powder'>￥{{pay_fee}}</view>
+            </view>
+        </view>
+
+        <view class='titel'>问题描述</view>
+        <view class='areaText'>
+            <textarea placeholder="请描述退货问题" name="textarea" />
+        </view>
+
+        <view class='titel'>联系方式</view>
+        <view>
+            <van-cell-group>
+                <van-field value="{{goodInfo.user_name}}" clearable label="联系人" placeholder="请输入联系人" name="name" />
+                <van-field value="{{goodInfo.user_phone}}" clearable label="联系电话" placeholder="请输入联系电话" name="ipone" />
+            </van-cell-group>
+        </view>
+
+         <view class='marig-primary'>
+                <button size="normal" type="primary" round="true" form-type='submit' class="primary backg-grad shadow-just"> 提交申请</button>
+            </view>
+    </form>
+    <view class='panl_li'>
+        <view>
+            温馨提示：
+        </view>
+        <view>
+            • 商品寄回地址将在审核通过后以短信形式告知，或在申请记录中查询。
+        </view>
+        <view>
+            • 提交服务单后，售后专员可能与您电话沟通，请保持手机畅通。
+        </view>
+        <view>
+            • 退货处理成功后退款金额将原路返回到您的支持账户中。
+        </view>
+    </view>
+</view>

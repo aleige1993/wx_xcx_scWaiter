@@ -1,0 +1,62 @@
+<!--pages/laundryOrder/index.wxml-->
+<view class='laundryOrder'>
+    <view class='order-panl'>
+        <view class="section" wx:if="{{listItme.length>0}}">
+            <scroll-view style="height:{{scrollHeight}}" scroll-y scroll-top="{{scrollTop}}" upper-threshold="1px" lower-threshold="10px" bindscrolltolower="binddown" bindscrolltoupper="bindtop">
+                <view class='order_panl' wx:for="{{listItme}}" wx:key="order_panl">
+                 <view  data-orderNo="{{item.cancel_no}}"  bindtap='goOrderDetails'>
+                           <view class='order_title'  >
+                        <view>
+                            <view>{{item.store_name}}</view>
+                             <view>
+                                 <text wx:if="{{item.der_type == 1}}" class='c-yellow'>【自提】</text> 
+                                 <text  wx:if="{{item.der_type == 2}}" class='c-violet'>【配送】</text>
+                                <text>{{item.add_tm}}</text>
+                            </view>
+                        </view>
+                        <view>
+                            <text class='c-red'  wx:if="{{item.status == '-1'}}">已拒绝</text>
+                              <text class='c-red'  wx:if="{{item.status == '0'}}">已取消</text>
+                                <text class='c-red'  wx:if="{{item.status == '1'}}">已申请</text>
+                                  <text class='c-red'  wx:if="{{item.status == '2'}}">申请受理</text>
+                                    <text class='c-red'  wx:if="{{item.status == '3'}}">处理完成</text>
+                        </view>
+                    </view>
+                    
+                    <view class='order_box'>
+                        <view class='move_box'>
+                            <image src='{{item.good_logo}}'></image>
+                            <view class='order_vim'>
+                                <view>{{item.good_name}}</view>
+                                <view class='back_view'>
+                                    <!-- <view class='c-999'>销量12</view> -->
+                                    <!-- <view class='c-999 decoration'>￥{{itemGoods.price}}</view> -->
+                                     <view class='c-red'>￥{{item.pay_fee}}</view>
+                                </view>
+                               
+                            </view>
+                            <view class='order_num'>×{{ item.amount}}</view>
+                        </view>
+                      
+                    </view>
+                 </view>
+                    <view class='order_footer' >
+                        <view class='font-w6'>退款金额：
+                            <text class='c-red'>¥{{item.refund_price}}</text>
+                        </view>
+                        <view class='but_box'>
+                            <button wx:if="{{item.status == 1}}" class='but_cancel' bindtap='editStatus' data-orderNo="{{item.cancel_no}}" >取消退货</button>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+
+        <view class='laundry-list null-data marginTop'  wx:else>
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+        <view>暂无数据~~~</view> 
+        </view>
+    </view>
+    <van-toast id="van-toast" />
+    <van-dialog id="van-dialog" />
+</view>

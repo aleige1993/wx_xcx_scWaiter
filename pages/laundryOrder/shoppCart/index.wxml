@@ -11,7 +11,11 @@
                              </van-checkbox>
                         </view>
                         <view class='order_panl'>
-                            <image src='{{item.picUrl}}'></image>
+                             <view class='action_panl'>
+                        <image src='{{item.picUrl}}'></image>
+                        <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
+                    </view>
+                            <!-- <image src='{{item.picUrl}}'></image> -->
                             <view class='order_data'>
                                 <view>{{item.goodName}}</view>
                                 <view class='c-ccc decoration'>￥{{item.price ? item.price : 0}}</view>

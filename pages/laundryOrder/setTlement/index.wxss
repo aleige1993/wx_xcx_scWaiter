@@ -1,6 +1,6 @@
 /* pages/laundryOrder/setTlement/index.wxss */
 @import '/pages/laundryOrder/orderDetails/details.wxss';
-
+@import '/pages/shopMall/orderList/index.wxss';
 .sumbit_box{
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,10 @@
     left: 0;
     width: 100%;
     background-color:#fff;
-    z-index: 101;
+    z-index: 11;
+}
+.bottom_model{
+    position: fixed;
 }
 .sumbit_pirce{
     display: flex;
@@ -53,3 +56,33 @@
 .top-border .c-red{
     color: #ea857d !important;
 }
+.cuopon_model{
+    margin-top: 10rpx;
+    color: #999;
+    display: flex;
+    align-items: center;
+}
+.cuopon_model text{
+    line-height: 10rpx;
+}
+
+/* .conpun_hd{
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    align-items: center;
+    background-color: #fff;
+}
+.conpun_hd .label_title{
+    font-size: 34rpx;
+    color: #414141;
+}
+.conpun_hd .icon-shanchu{
+    font-size: 50rpx;
+    font-weight: 600;
+    color: #999;
+}
+.scorll_tab{
+    height: 52vh;
+    overflow-y: scroll;
+} */

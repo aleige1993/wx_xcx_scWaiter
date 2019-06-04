@@ -1,13 +1,32 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/usCenter/index",
+        "pages/shopMall/orderList/index",
+        "pages/usCenter/couponInfo/index",
+        "pages/shopMall/index",
+        "pages/usCenter/couponInfo/details",
+        "pages/myExpress/index",
+        "pages/login/register",
+        "pages/shopMall/addressList/index",
+        "pages/shopMall/orderDetails/index",
+        "pages/shopMall/returnOrder/index",
+        "pages/shopMall/orderDetails/details",
+        "pages/shopMall/returnOrder/details",
+        "pages/shopMall/returnGoods/index",
+        "pages/shopMall/shopList/map",
+        "pages/shopMall/goodDetails/index",
+        "pages/laundryOrder/payMent/index",
+        "pages/shopMall/addressList/addAddress",
+        "pages/shopMall/shopList/index",
+        "pages/shopList/map",
+        "pages/shopList/index",
+        "pages/laundryOrder/index/index",
         "pages/login/freeLogin",
         "pages/leaseCar/index",
         "pages/leaseCar/leaseDetails/index",
-        "pages/laundryOrder/index/index",
         "pages/login/index",
         "pages/login/resetPwd",
-        "pages/usCenter/index",
         "pages/webView/viewInstions",
         "pages/webView/viewAgreement",
         "pages/memberInfo/modifyMember/index",
@@ -15,15 +34,12 @@
         "pages/memberInfo/modifyMember/modify",
         "pages/memberInfo/modifyMember/adrMent",
         "pages/laundryOrder/setTlement/index",
-        "pages/laundryOrder/payMent/index",
         "pages/laundryOrder/shoppCart/index",
         "pages/schoolCar/index",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",
         "pages/laundryOrder/orderDetails/searOrder",
-        "pages/login/register",
         "pages/usCenter/upInfo/index",
-        "pages/myExpress/index",
         "pages/laundryOrder/payMent/resultMsg/index",
         "pages/webView/viewDetails"
     ],
@@ -38,18 +54,24 @@
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "selectedIconPath": "/static/images/tab_home_b.png",
-                "iconPath": "/static/images/tab_home_a.png"
+                "selectedIconPath": "/static/images/home_b.png",
+                "iconPath": "/static/images/home_a.png"
             },
             {
                 "pagePath": "pages/usCenter/index",
                 "text": "我的",
-                "selectedIconPath": "/static/images/tab_user_b.png",
-                "iconPath": "/static/images/tab_user_a.png"
+                "selectedIconPath": "/static/images/user_b.png",
+                "iconPath": "/static/images/user_a.png"
             }
         ],
         "color": "#BFBFBF",
         "selectedColor": "#3984ff",
         "borderStyle": "white"
-    }
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "获取你的位置信息将为您提供最近的小站服务"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
 }

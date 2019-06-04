@@ -1,0 +1,56 @@
+<!--pages/shopMall/addressList/index.wxml-->
+<view class='hove_bottom'>
+    <!-- <view  class='thisAddress'>
+        <view>
+            <view class='c-blue font-w6 bigfize'>{{addressInfo.name?addressInfo.name:'请重新获取前定位地址'}}</view>
+             <view class='c-666'>{{addressInfo.address}}</view>
+        </view>
+        <view class='repeat' bindtap='openAddress'>
+            <icon class='iconfont icon-dingwei1'></icon>重新地位
+        </view>
+    </view> -->
+
+
+    <!-- 暂无信息 -->
+    <!-- <view class='noData'>
+        暂无 请新建收货地址喔~
+    </view> -->
+    <!-- 收货地址 -->
+    <view>
+        <view class='title_panl'>可用收货地址</view>
+        <view class='allList' wx:if="{{can_use.length>0}}" wx:for="{{can_use}}" wx:key="can_use">
+            <view class='addressList' data-items="{{item}}"  bindtap="goReturn">
+               <view class='font-w6 bigfize'>{{item.location}}</view>
+                <view class='c-43'>{{item.name}} {{item.phone}}</view>
+                <view class='c-999'>{{item.addr}}</view>
+            </view>
+              <icon class='iconfont icon-bianji'  data-items="{{item}}" bindtap='goBact'></icon>
+               <icon class='iconfont icon-shanchu1'  data-items="{{item}}" bindtap='delAddre'></icon>
+        </view>
+        <view class='null-data' wx:if="{{can_use.length<=0}}">
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+            <view>暂无数据~~~</view>
+        </view>
+    </view>
+
+    <view>
+        <view class='title_panl'>不可用收货地址</view>
+        <view class='allList' wx:if="{{forbidden.length>0}}" wx:for="{{forbidden}}" wx:key="forbidden">
+            <view class='addressList'>
+                 <view class='font-w6 bigfize'>{{item.location}}</view>
+                <view class='c-43'>{{item.name}} {{item.phone}}</view>
+                <view class='c-999'>{{item.addr}}</view>
+            </view>
+             <icon class='iconfont icon-bianji' data-items="{{item}}" bindtap='goBact'></icon>
+              <icon class='iconfont icon-shanchu1'  data-items="{{item}}" bindtap='delAddre'></icon>
+        </view>
+        <view class='null-data'  wx:if="{{forbidden.length<=0}}">
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+            <view>暂无数据~~~</view>
+        </view>
+    </view>
+</view>
+
+<view class='marig-primary'>
+    <navigator open-type='navigateTo' url='/pages/shopMall/addressList/addAddress?state=1' class="primary  backg-grad shadow-just newButton">+新建收货地址</navigator>
+</view>

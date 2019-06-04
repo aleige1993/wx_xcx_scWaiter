@@ -14,18 +14,23 @@ if (!app) {
 }
 
 let post = (url, data, callback) => {
+    if (url.indexOf('https://')  < 0) {
+        
+    }
+    https://sadad/ + /user/login
   wx.request({
     method: 'POST',
     url: HTTPOPENAPIURL + url,
     data: {
-      'message': JSON.stringify(data)
+      'message':JSON.stringify(data)
     },
     header: {
       'content-type': 'application/x-www-form-urlencoded',
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': UserLogin.get('userInfo').token || ''
+      'token': UserLogin.get('userInfo') ? UserLogin.get('userInfo').token : '',
+      'userPhone': UserLogin.get('userInfo') ? UserLogin.get('userInfo').mobile : ''
     },
     success(res) {
       let data = res.data;
@@ -33,9 +38,9 @@ let post = (url, data, callback) => {
         data = JSON.parse(data);
       }
       if (data.code === '0004') {
-          app.Tools.showToast('客官还未登录，请登录浏览');
-          app.UserLogin.remove('userInfo');
-          app.UserLogin.remove('wxUserInfo');
+          app.Tools.showToast(data.message);
+        //   app.UserLogin.remove('userInfo');
+        //   app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
             wx.switchTab({
             url: '/pages/index/index',
@@ -52,8 +57,14 @@ let post = (url, data, callback) => {
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('客官系统繁忙, 请稍后再试');
+      app.Tools.showToast('网络异常, 请稍后再试');
     }
+    // ,
+    //   complete(data) {
+    //       console.log('post', data)
+    //       console.log(UserLogin.get('userInfo').token)
+
+    //   }
   });
 }
 
@@ -69,7 +80,8 @@ let get = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': UserLogin.get('userInfo').token || ''
+        'token': UserLogin.get('userInfo') ? UserLogin.get('userInfo').token : '',
+        'userPhone': UserLogin.get('userInfo') ? UserLogin.get('userInfo').mobile : ''
     },
     success(res) {
       let data = res.data;
@@ -77,9 +89,9 @@ let get = (url, data, callback) => {
         data = JSON.parse(data);
       }
       if (data.code === '0004') {
-         app.Tools.showToast('客官还未登录，请登录浏览');
-          app.UserLogin.remove('userInfo');
-          app.UserLogin.remove('wxUserInfo');
+          app.Tools.showToast(data.message);
+        //   app.UserLogin.remove('userInfo');
+        //   app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
           wx.switchTab({
             url: '/pages/index/index',
@@ -100,8 +112,13 @@ let get = (url, data, callback) => {
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('客官系统繁忙, 请稍后再试');
+      app.Tools.showToast('网络异常, 请稍后再试');
     }
+    // ,
+    //   complete(data){
+    //       console.log('get',data)
+    //       console.log(UserLogin.get('userInfo').token)
+    //   }
   });
 }
 

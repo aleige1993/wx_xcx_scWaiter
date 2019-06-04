@@ -1,0 +1,143 @@
+<!--pages/shopMall/goodDetails/index.wxml-->
+<view>
+    <view class='swiper_panl'>
+        <swiper
+            indicator-dots="{{true}}"
+            autoplay="{{true}}"
+            interval="3000"
+            indicator-active-color="#3984FF"
+            > 
+                <swiper-item wx:for="{{goods_info.image}}" wx:key="image" >
+                    <image  mode='aspectFit' src="{{item?item:'/static/images/error.png'}}" />
+                </swiper-item>
+            </swiper>
+    </view>
+
+    <view class='goodDeta'> 
+        <view class='detaleft'>
+            <view  class='font-w6 bigfize'>{{goods_info.name}}</view>
+            <view class='c-999'>{{goods_info.subname}}</view>
+            <!-- <view class='c-999 decoration'>¥{{goods_info.price}}</view>
+            <view class='c-powder'>¥{{goods_info.vip_price}}  <text class='menberPire'>会员价</text> </view> -->
+            <view class='goodsmaigto' wx:if="{{user_info.is_vip == 1}}">
+                <view class='c-666 decoration'>原价：¥{{goods_info.price}}</view>
+                <view class='c-powder'>¥{{goods_info.vip_price}}
+                    <!-- <text class='menberPire'>会员价</text> -->
+                </view>
+            </view>
+            <view  class='goodsmaigto' wx:else>
+                <view class='c-666'>
+                    <text class='menberPire'>会员价</text>¥{{goods_info.vip_price}}
+                </view>
+                <view class='c-powder'>¥{{goods_info.price}}</view>
+            </view>
+
+
+        </view>
+        <view class='detaright'>
+            <view class='addCat' data-operate="inc" data-item="{{goods_info}}" bindtap='addGoods'>+ 加入购物车</view>
+             <view  class='c-999 selleMag'>库存:{{goods_info.amount}}</view>
+              <view class='c-999 selleMag'>支持退货：{{goods_info.cancel == 1? '是':'否'}}</view>
+              <!-- <view  class='c-999'>销量:12单</view> -->
+        </view> 
+    </view>
+
+    <view class='notice_panl' wx:if="{{cart_info.free_freight}}">
+        <icon class='iconfont icon-tongzhi'></icon><text>会员订单满{{cart_info.free_freight}}元提供配送上门服务</text>
+    </view>
+
+    <view class='shopDeta'>
+        <view class='addres'>
+            <icon class='iconfont icon-dingwei'></icon>
+            <text>{{store_info.st_name}}</text>
+        </view>
+        <view class='lianxishop' data-phone="{{store_info.phone}}"  bindtap='makePhoneCall'>
+            <view class='c-666'>联系商家<icon class="iconfont icon-phone-channel"></icon></view>
+        </view>
+    </view>
+
+    <!-- 没有详情 -->
+    <!-- <view class='noData'>
+        暂无—商品详情
+    </view> -->
+    <view class='goodDetalis'>
+        <view class='tig_text'>商品详情</view>
+      <rich-text nodes="{{goods_info.details}}"></rich-text>
+    </view>
+</view>
+
+
+<view class='layer' wx:if="{{layer}}" bindtap='clearAll'></view>
+<!-- 购物车 -->
+<view class="shopcart">
+    <view class="content">
+        <view class="content-left" bindtap="showShopCartFn">
+            <view class="logo-wrapper">
+                <image class="logo" src="{{(cart_info.total_price > 0)?'/static/images/icon_selected.png':'/static/images/icon_normal.png'}}">
+                    <!-- <i class="icon-shopping_cart"></i> -->
+                </image>
+                <view class="num" wx:if="{{cart_info.total_num}}">{{cart_info.total_num}}</view>
+            </view>
+            <view class="price {{(cart_info.total_price > 0)? 'highlight':''}}">￥{{cart_info.total_price}}</view>
+        </view>
+        <view class="content-right">
+            <view bindtap="goPayFn" class="pay {{(cart_info.total_price > 0) ? 'payClass':''}}">去结算
+            </view>
+        </view>
+    </view>
+
+
+    <view class="shopcart-list" wx:if="{{shopcart_panl}}">
+        <view class="list-header">
+            <view class="title">
+                <text class="title-line">已选商品</text>
+                <text class="empty" bindtap="clearShopCartFn">清空</text>
+            </view>
+        </view>
+        <!-- <view class='notice_panl'  wx:if="{{cart_info.free_freight}}">
+            <icon class='iconfont icon-tongzhi'></icon>
+            <text>会员订单满{{cart_info.free_freight}}元提供配送上门服务</text>
+        </view> -->
+        <scroll-view scroll-y style="max-height: 257px;">
+            <view class='panl_goods' wx:for="{{cart_info.list}}" wx:key="cart_info_list">
+                <view class='goods_panl  ShopCart_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+                    <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                    <view class='gooddetail'>
+                        <view class='font-w6'>{{item.name}}</view>
+                          <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
+                         <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
+                        <!-- <view class='c-666'>{{item.can_buy?'':'暂无库存'}}</view> -->
+                        <view wx:if="{{user_info.is_vip == 1}}">
+                            <view class='c-666 decoration'>原价：¥{{item.price}}</view>
+                            <view class='c-powder'>¥{{item.vip_price}}
+                                <!-- <text class='menberPire'>会员价</text> -->
+                            </view>
+                        </view>
+                        <view wx:else>
+                            <view class='c-666'>
+                                <text class='menberPire'>会员价</text>¥{{item.vip_price}}
+                            </view>
+                            <view class='c-powder'>¥{{item.price}}</view>
+                        </view>
+                    </view>
+                </view>
+                 <view class='Calcu_panl' >
+                    <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
+                    <input value='{{item.num}}' disabled="true"></input>
+                    <block wx:if="{{item.can_buy}}">
+                        <icon wx:if="{{item.num != item.amount}}" class='iconfont icon-out-column outcolumn' data-operate="inc" data-item="{{item}}" bindtap='addGoods'></icon>
+                    <icon wx:if="{{item.num == item.amount}}" class='iconfont icon-out-column outcolumn nocolumn' data-operate="inc"></icon>
+                    </block>
+                    <block wx:else>
+                        <icon class='iconfont icon-out-column outcolumn nocolumn'></icon>
+                    </block>
+                </view>
+                <!-- <view class='Calcu_panl' wx:if="{{item.can_buy}}">
+                    <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
+                    <input value='{{item.num}}' disabled="true"></input>
+                    <icon wx:if="{{item.num != item.amount}}" class='iconfont icon-out-column outcolumn' data-operate="inc" data-item="{{item}}" bindtap='addGoods'></icon>
+                </view> -->
+            </view>
+        </scroll-view>
+    </view>
+</view>

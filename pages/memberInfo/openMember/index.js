@@ -64,7 +64,9 @@ Page({
         carIitem: '',
         sexItem: '',
         imgArr: [],
-        address:[]
+        address:[],
+        rechargeUserInfo:'',
+        stationMember:''
     },
     onChange(e) {
         this.setData({
@@ -82,12 +84,12 @@ Page({
         }
     },
     // 选择店铺
-    shoprChange(e) {
-        this.setData({
-            'shopIndex': e.detail.value,
-            'shopItem': this.data.shopArr[e.detail.value].stationNo
-        })
-    },
+    // shoprChange(e) {
+    //     this.setData({
+    //         'shopIndex': e.detail.value,
+    //         'shopItem': this.data.shopArr[e.detail.value].stationNo
+    //     })
+    // },
     // 选择车型
     // carChange(e) {
     //     this.setData({
@@ -110,37 +112,48 @@ Page({
     },
     //提交
     formSubmit(e) {
-        console.log(e)
-        if (this.data.shopItem == '') {
-            app.Tools.showToast('请选择小站');
-            return false;
+        console.log(typeof this.data.rechargeUserInfo)
+        let parms = '';
+        if (this.data.rechargeUserInfo){
+             parms = {
+                stationNo: this.data.rechargeUserInfo.stationNo,
+                nickName: this.data.rechargeUserInfo.nickName,
+                birth: this.data.rechargeUserInfo.birth,
+                sex: this.data.rechargeUserInfo.sex
+            }
+        }else{
+            if (this.data.stationMember == '') {
+                app.Tools.showToast('请选择小站');
+                return false;
+            }
+            if (e.detail.value.username == '') {
+                app.Tools.showToast('请输入姓名');
+                return false;
+            }
+            if (this.data.dateTime == '') {
+                app.Tools.showToast('请选择生日日期');
+                return false;
+            }
+             parms = {
+                 stationNo: this.data.stationMember.stationNo,
+                nickName: e.detail.value.username,
+                birth: e.detail.value.dateTime,
+                 sex: app.UserLogin.get('wxUserInfo').gender
+            }
         }
-        if (e.detail.value.username == '') {
-            app.Tools.showToast('请输入姓名');
-            return false;
-        }
-        if (this.data.sexItem == '') {
-            app.Tools.showToast('请选择性别');
-            return false;
-        }
-        
-        if (this.data.dateTime == '') {
-            app.Tools.showToast('请选择生日日期');
-            return false;
-        }
-        let parms = {
-            stationNo: this.data.shopItem,
-            nickName: e.detail.value.username,
-            birth: e.detail.value.dateTime,
-            sex: this.data.sexItem
-        }
+
+        // let parms = {
+        //     stationNo: this.data.shopItem,
+        //     nickName: e.detail.value.username,
+        //     birth: e.detail.value.dateTime,
+        //     sex: this.data.sexItem
+        // }
         app.Formdata.post('/openapi/express/wechatapplet/express/user/saveRechargeUser', parms, (res) => {
             console.log(res);
             if (res.code == "0000") {
                 wx.redirectTo({
                     url: '/pages/laundryOrder/payMent/index?orderno=' + res.data.orderNo + '&payType=2'
                 })
-               
             }
         });
     },
@@ -151,16 +164,17 @@ Page({
         })
     },
     //获取小站列表
-    shoplist(){
-        app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
-            console.log(res);
-            if (res.code == '0000') {
-                this.setData({
-                    shopArr: res.data
-                })
-            }
-        })
-    },
+    // shoplist(){
+    //     console.log(123);
+    //     app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
+    //         console.log(res);
+    //         if (res.code == '0000') {
+    //             this.setData({
+    //                 shopArr: res.data
+    //             })
+    //         }
+    //     })
+    // },
     //跳转会员说明
     goToAgrment(){
         wx.navigateTo({
@@ -182,7 +196,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.shoplist();
+        if (options.rechargeUserInfo){
+            this.setData({
+                rechargeUserInfo: JSON.parse(options.rechargeUserInfo)
+            })
+        }
+        // this.shoplist();
         app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: '4' }, (res) => {
             console.log(res)
             if (res.code == "0000") {
@@ -203,7 +222,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        if (app.globalData.stationMember) {
+            this.setData({
+                stationMember: app.globalData.stationMember
+            })
+        }
         this.getAddress();
+
     },
 
     /**

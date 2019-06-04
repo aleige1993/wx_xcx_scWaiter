@@ -61,26 +61,24 @@ Page({
             })
             return false
         }
-        if (!this.data.checked){
-            app.Tools.showToast('请同意《用户服务协议》');
-            return false;
-        }
+
         let parms = {
-            mobile:this.data.mobile,
-            verfiCode:this.data.code,
-            pwd: this.data.oldPaswd,
-            confirmPsw:this.data.newPaswd
+            account:this.data.mobile,
+            verifyCode:this.data.code,
+            code:'9',
+            password:'123456'
         }
-        app.Formdata.post('/openapi/express/wechatapplet/express/user/register', parms, (res)=>{
+        app.Formdata.post('/openapi/common/user/login', parms, (res)=>{
             if (res.code == "0000") {
+                app.UserLogin.set('userInfo', res.data);
                 wx.showToast({
-                    title: '注册成功！',
+                    title: '登录成功！',
                     icon: 'success',
                     duration: 2000,
-                    success: (res) => {
+                    success: (rult) => {
                         setTimeout(()=>{
-                            wx.redirectTo({
-                                url: '/pages/login/index',
+                            wx.switchTab({
+                                url: '/pages/index/index',
                             })
                         },2000)
                     }
@@ -152,13 +150,6 @@ Page({
             },
             code: {
                 required: true
-            },
-            oldPaswd: {
-                required: true
-            },
-            newPaswd: {
-                required: true,
-                equalTo:'oldPaswd'
             }
         }
 
@@ -169,13 +160,6 @@ Page({
             },
             code: {
                 required: "请输入验证码"
-            },
-            oldPaswd: {
-                required: "请输入6-20位密码"
-            },
-            newPaswd: {
-                required: "请再次输入密码",
-                equalTo:'两次密码不一致'
             }
         }
         // 创建实例对象 

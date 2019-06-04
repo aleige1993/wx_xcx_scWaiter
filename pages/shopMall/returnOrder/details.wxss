@@ -1,0 +1,119 @@
+/* pages/shopMall/orderDetails/details.wxss */
+@import '/pages/shopMall/orderList/index.wxss';
+@import '/pages/laundryOrder/orderDetails/details.wxss';
+
+.detahader{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    align-content: center;
+    align-items: center;
+}
+.bg-yller{
+    background-color: #FFC939;
+}
+.bg-blue{
+    background-color: #3984FF;
+}
+.bg-gray{
+     background-color: #DCDCDC;
+}
+.detahader view{
+    display: flex;
+    align-items: center;
+}
+.detahader view icon{
+    margin-top: -6rpx;
+    margin-right: 10rpx;
+    font-size: 42rpx;
+}
+.waymode{
+    padding: 20rpx;
+    background-color: #fff;
+}
+.ad_info{
+    padding: 20rpx 0;
+}
+.c-danl{
+    color: #BCD5FF;
+}
+.ad_shop{
+    display: flex;
+    color: #434343;
+    justify-content: space-between;
+}
+.ad_shop icon{
+    margin-right: 10rpx;
+}
+.orderInfo{
+    padding: 20rpx;
+    background-color: #fff;
+    color: #434343;
+    margin-top: 20rpx;
+}
+.h2{
+    font-size: 32rpx;
+    margin: 20rpx 0;
+    font-weight: 600;
+}
+.infogood,infoorder{
+  margin:40rpx 0;
+}
+.infogood .li,.infoorder .li{
+    display: flex;
+    margin: 10rpx 0;
+    align-content: center;
+    align-items: center;
+}
+.infogood .li view:first-child{
+width: 200rpx;
+color: #000;
+font-weight: 500;
+}
+.infogood .li view:last-child{
+color: #999;
+}
+
+.infoorder .li view:first-child{
+width: 200rpx;
+color: #000;
+font-weight: 500;
+}
+.infoorder .li view:last-child{
+color: #999;
+}
+
+.main-center{
+    margin-bottom: 120rpx;
+}
+.takeDeliv{
+    text-align: center;
+    margin: 40rpx 0;
+}
+.takeDeliv image{
+    width: 360rpx;
+    height: 200rpx;
+}
+.takeDeliv .maigTop{
+    margin-top:20rpx;
+}
+.good_right{
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.good_right .apply{
+    border-radius:30rpx;
+    border: 1px solid #E5E5E5;
+    padding:4rpx 16rpx; 
+    color: #434343;
+}
+.good_right  view.active{
+    background-color: #FF3939;
+    color: #fff;
+    border: 1px solid #FF3939;
+}
+.good_right  view.refuse{
+    color: #FF3939;
+}

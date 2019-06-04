@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "注册",
+    "navigationBarTitleText": "快速登录",
   "usingComponents": {
         "van-steps": "/ui-plugins/vant/steps/index",
         "van-field": "/ui-plugins/vant/field/index",

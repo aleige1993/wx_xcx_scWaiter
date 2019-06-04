@@ -1,42 +1,3 @@
-// pages/ schoolCar/index.js
-// carArr: [{
-//     name: 'A1',
-//     id: '5'
-// },
-// {
-//     name: 'A2',
-//     id: '6'
-// },
-// {
-//     name: 'A3',
-//     id: '7'
-// },
-// {
-//     name: 'B1',
-//     id: '8'
-// },
-// {
-//     name: 'B2-10800元',
-//     id: '9'
-// },
-// {
-//     name: 'C1-3280元',
-//     id: '1'
-// },
-// {
-//     name: 'C2-3780元',
-//     id: '2'
-// },
-// {
-//     name: 'C3',
-//     id: '3'
-// },
-// {
-//     name: 'C4',
-//     id: '4'
-// }
-// ],
-
 
 let app =getApp();
 Page({
@@ -79,7 +40,8 @@ Page({
         sexItem: '',
         repeatItem:'',
         imgArr:'',
-        mobile:''
+        mobile:'',
+        stationSchool:''
     },
     onChange(e) {
         this.setData({
@@ -120,7 +82,7 @@ Page({
     //提交
     formSubmit(e) {
         console.log(e)
-        if (this.data.shopItem == '') {
+        if (this.data.stationSchool.stationNo == '') {
             app.Tools.showToast('请选择小站');
             return false;
         }
@@ -146,11 +108,10 @@ Page({
         //     return false;
         // }
         let parms = {
-            stationNo: this.data.shopItem,
+            stationNo: this.data.stationSchool.stationNo,
             type: this.data.carIitem,
             userName: e.detail.value.username,
             gender: this.data.sexItem,
-            card: e.detail.value.idcard,
             mobile: e.detail.value.mobile
         }
         app.Formdata.post('/openapi/express/wechatapplet/express/drive/save', parms, (res)=>{
@@ -210,19 +171,19 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    shoplist(){
-        app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
-            console.log(res);
-            if (res.code == '0000') {
-                this.setData({
-                    shopArr: res.data
-                })
-            }
-        })
-    },
+    // shoplist(){
+    //     app.Formdata.get('/openapi/express/wechatapplet/express/station/query', {}, (res) => {
+    //         console.log(res);
+    //         if (res.code == '0000') {
+    //             this.setData({
+    //                 shopArr: res.data
+    //             })
+    //         }
+    //     })
+    // },
     onLoad: function(options) {
         this.initValidate();
-        this.shoplist();
+        // this.shoplist();
         app.Formdata.get('/openapi/express/wechatapplet/express/advert/queryByPosition', { advPosition: '3' }, (res) => {
             console.log(res)
             if (res.code == "0000") {
@@ -248,6 +209,12 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        console.log(app.globalData.stationSchool);
+        if (app.globalData.stationSchool) {
+            this.setData({
+                stationSchool: app.globalData.stationSchool
+            })
+        }
         this.getPaomin();
     },
 

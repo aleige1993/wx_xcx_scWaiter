@@ -24,6 +24,7 @@
     <view class='laundry-list' wx:if="{{producList.length>0}}">
     <view class='laundry-item' wx:for="{{producList}}" wx:key="produc" >
         <view class='laundry-item-inner shadow-just'   >
+            <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
             <view class='c-333 font-w6'>{{item.goodName}}</view>
             <view>
                 <image src='{{item.picUrl}}' />

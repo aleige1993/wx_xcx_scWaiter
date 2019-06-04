@@ -130,7 +130,13 @@ Page({
     },
     //去洗衣
     setOrder(){
+        console.log(this.data.allPirce)
+        if (this.data.allPirce <= 0){
+            app.Tools.showToast('金额不正确,请确认勾选的产品');
+            return false
+        }
         if (this.data.result.length > 0) {
+
             wx.navigateTo({
                 url: '/pages/laundryOrder/setTlement/index?ids=' + this.data.result
             })

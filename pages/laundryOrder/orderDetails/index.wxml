@@ -1,7 +1,7 @@
 <!--pages/laundryOrder/index.wxml-->
 <view class='laundryOrder'>
     <view class='order-panl'>
-        <van-tabs animated bind:click="getIndex">
+        <van-tabs active="{{ active }}" animated bind:click="getIndex">
             <van-tab title="待付款" data-order="1"> </van-tab>
             <van-tab title="待取衣" data-order="2"></van-tab>
             <van-tab title="已完成"></van-tab>
@@ -28,7 +28,11 @@
                     
                     <view class='order_box'>
                         <view class='move_box' wx:for="{{item.orderGoods}}"  wx:for-item="itemGoods"  wx:key="orderGoods">
-                            <image src='{{itemGoods.picUrl}}'></image>
+                          <view class='action_panl'>
+                        <image src='{{itemGoods.picUrl}}'></image>
+                        <view class='activity' wx:if="{{itemGoods.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
+                    </view>
+                            <!-- <image src='{{itemGoods.picUrl}}'></image> -->
                             <view class='order_vim'>
                                 <view>{{itemGoods.goodName}}</view>
                                 <view class='back_view'>
@@ -37,7 +41,11 @@
                                 </view>
                                
                             </view>
-                            <view class='order_num'>×{{ itemGoods.num}}</view>
+                             <view class='order_num'>
+                        <text>×{{itemGoods.num}}</text>
+                        <text class='c-red' wx:if="{{itemGoods.isCountActivity == 1}}">已参与活动</text>
+                    </view>
+                           
                         </view>
                       
                     </view>

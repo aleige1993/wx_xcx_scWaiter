@@ -1,0 +1,227 @@
+<!--pages/shopMall/orderDetails/details.wxml-->
+<!-- 头部状态 -->
+<view class='main-center'>
+    <view class='detahader bg-yller' wx:if="{{detailInfo.status == 1}}">
+        <view>
+            <icon class='iconfont icon-shijian1 '></icon>
+            <text>等待付款...</text>
+        </view>
+        <view>
+            <text>剩余{{detaText}}</text>
+        </view>
+    </view>
+    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 2}}">
+        <view>
+            <icon class='iconfont icon-shijian1 '></icon>
+            <text>等待收货...</text>
+        </view>
+    </view>
+    <view class='detahader bg-red' wx:if="{{detailInfo.status == 3}}">
+        <view>
+            <icon class='iconfont icon-gouxuan '></icon>
+            <text>订单退款中...</text>
+        </view>
+    </view>
+    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 4}}">
+        <view>
+            <icon class='iconfont icon-gouxuan '></icon>
+            <text>订单退款完成...</text>
+        </view>
+    </view>
+    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 5}}">
+        <view>
+            <icon class='iconfont icon-gouxuan '></icon>
+            <text>订单已完成...</text>
+        </view>
+    </view>
+
+    <!-- <view class='detahader bg-blue'  wx:if="{{detailInfo.type == 4}}">
+    <view>
+        <icon class='iconfont icon-Order '></icon>
+        <text>退货订单</text>
+    </view>
+</view> -->
+    <view class='detahader bg-gray' wx:if="{{detailInfo.status == 0}}">
+        <view>
+            <icon class='iconfont icon-guanbi '></icon>
+            <text>订单已取消...</text>
+        </view>
+    </view>
+
+    <!-- 提货——配送 -->
+    <view class='waymode' wx:if="{{detailInfo.deliver == 2}}">
+        <view class='ad_info'>
+            <view class='font-w6'> {{detailInfo.addr.name}} {{detailInfo.addr.phone}}</view>
+            <view class='c-999'>{{detailInfo.addr.address}}</view>
+        </view>
+        <view class='ad_shop' wx:if="{{detailInfo.derse_phone}}">
+            <view>
+                <icon class='iconfont icon-wo c-danl'></icon>配送员：{{detailInfo.derse_name}}</view>
+            <view data-phone="{{detailInfo.derse_phone}}" bindtap='clickQuestion'>
+                <icon class='iconfont icon-phone-channel c-danl'></icon>电话：{{detailInfo.derse_phone}}</view>
+        </view>
+    </view>
+    <view class='waymode' wx:if="{{detailInfo.deliver == 1}}">
+        <view class='ad_info'>
+            <view class='font-w6'> 支付后 {{detailInfo.date}} - {{detailInfo.time}}可至门店提货</view>
+            <view class='c-999'>{{detailInfo.store_address}}</view>
+        </view>
+    </view>
+    <!-- <view class='waymode'>
+    <view class='takeDeliv'>
+            <view>
+                    <image src='/static/images/error.png'></image>
+                    <view class='c-999 maigTop'>请向店员出示提货码：235646485</view>
+            </view>
+    </view>
+    <view class='ad_info'>
+        <view class='font-w6'> {{detailInfo.time}}可至门店提货</view>
+        <view class='c-999'>{{detailInfo.store_address}}</view>
+    </view>
+</view> -->
+    <!-- 商品 -->
+    <view class='shopStore'>
+        <view class='shopData'>
+            <view class='shoname'>
+                <icon class='iconfont icon-dingwei2'></icon>{{detailInfo.store_name}}</view>
+            <view class='phoneha' data-phone="{{detailInfo.store_phone}}" bindtap='clickQuestion'>
+                <view>联系商家
+                    <icon class='iconfont icon-phone-channel'></icon>
+                </view>
+            </view>
+        </view>
+        <view class='goodlist'>
+            <view class='goods' wx:for="{{detailInfo.goods}}" wx:key="goods">
+                <view class='good_left'>
+                    <view class='self_panl'>
+                        <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
+                        <image class='good_img' src="{{item.logo ? item.logo : '/static/images/error.png'}}"></image>
+                    </view>
+                    <view class='goodDeta'>
+                        <view class='font-w6 bigfize'>{{item.name}}</view>
+                        <view class='c-999'>{{item.subname}}</view>
+                        <!-- <view class='c-999 decoration'>¥3.98</view> -->
+                        <view class='c-powder'>¥{{item.price}}
+                            <!-- <text class='menberPire'>会员价</text> </view> -->
+                        </view>
+                    </view>
+                </view>
+                <view class='good_right'>
+                    <view>×{{item.amount}}</view>
+                    <view wx:if="{{item.cancel == 1 && item.refund_status == '-2' }}" data-orderno="{{detailInfo.order_no}}" data-goodid="{{item.good_id}}" class='apply refuse' bindtap='goBack'>申请退货</view>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '0'}}" class='active apply'>
+                        申请已取消
+                    </view>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '1'}}" class='active apply'>
+                        退货审核中
+                    </view>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '2'}}" class='active apply'>
+                        审核已受理
+                    </view>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '3'}}" class='active apply'>
+                        退货已完成
+                    </view>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '-1'}}" class='active apply'>
+                        退货已拒绝
+                    </view>
+                </view>
+            </view>
+            <!-- <view class='goods'>
+                <view class='good_left'>
+                    <image class='good_img' src='/static/images/error.png'></image>
+                    <view class='goodDeta'>
+                        <view class='font-w6 bigfize'>精品西蓝花 500g</view>
+                        <view class='c-999'>有机蔬菜 精挑细选</view>
+                        <view class='c-999 decoration'>¥3.98</view>
+                        <view class='c-powder'>¥2.35
+                            <text class='menberPire'>会员价</text> </view>
+                    </view>
+                </view>
+                <view class='good_right'>
+                      <view>×1</view>
+                    <view class='apply'>申请退货</view>
+                </view>
+            </view> -->
+        </view>
+    </view>
+
+    <!-- 订单信息 -->
+    <view class='orderInfo'>
+        <view class='h2'>订单信息</view>
+        <view class='infogood'>
+            <view class='li'>
+                <view>商品合计</view>
+                <view>¥{{detailInfo.goods_fee}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.deliver == 2}}">
+                <view>配送费</view>
+                <view>¥{{detailInfo.freight}}</view>
+            </view>
+            <view class='li'>
+                <view>活动优惠</view>
+                <view>{{detailInfo.discount ? detailInfo.discount : '暂无优惠'}}</view>
+            </view>
+
+        </view>
+        <view class='infoorder'>
+            <view class='li'>
+                <view>订单编号</view>
+                <view>{{detailInfo.order_no}}</view>
+            </view>
+            <view class='li'>
+                <view>提交时间</view>
+                <view>{{detailInfo.add_tm}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.date}}">
+                <view>预约时间</view>
+                <view>{{detailInfo.date}} {{detailInfo.time}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.pay_fee}}">
+                <view>支付方式</view>
+                <view>{{detailInfo.pay_mode_name}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.pay_fee}}">
+                <view>实付金额</view>
+                <view>¥{{detailInfo.money}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.pay_fee}}">
+                <view>付款时间</view>
+                <view>{{detailInfo.pay_tm}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 底部 -->
+<view class='footer'>
+    <view class='order_footer' wx:if="{{detailInfo.status == 1}}">
+        <view class='font-w6'>应付金额：
+            <text class='c-red'>¥{{detailInfo.money}}</text>
+        </view>
+        <view class='but_box'>
+            <button class='but_cancel' bindtap='editStatus' data-stutes='1' data-orderNo="{{detailInfo.order_no}}">取消订单</button>
+            <button class='but_payment' bindtap='goOrderPeyMent' data-orderNo="{{detailInfo.order_no}}">立即付款</button>
+        </view>
+    </view>
+    <view class='order_footer' wx:if="{{detailInfo.status == 2}}">
+        <view></view>
+        <view class='but_box'>
+            <button class='but_confirm' wx:if="{{detailInfo.deliver == 1}}" bindtap='editStatus' data-stutes="2" data-orderNo="{{detailInfo.order_no}}">确认收货</button>
+            <button class='but_confirm' wx:if="{{detailInfo.deliver == 2 }}" bindtap='editStatus' data-stutes="2" data-orderNo="{{detailInfo.order_no}}" disabled='{{detailInfo.der_status != 1}}'>{{detailInfo.der_status == 1?'确认收货':'暂无配送'}}</button>
+            <!-- <button wx:if="{{detailInfo.deliver == 1}}" class='but_confirm' data-stutes='1' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" >确认收货1</button>
+             <button wx:if="{{detailInfo.deliver == 2 && der_status == 1}}" class='but_confirm' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" >确认收货2</button> -->
+        </view>
+    </view>
+    <view class='order_footer' wx:if="{{detailInfo.status == 5}}">
+        <view></view>
+        <view class='but_box'>
+            <button class='but_payment' bindtap='golaundryOrder'>再次选购</button>
+        </view>
+    </view>
+    <!-- <view class='order_footer' wx:if="{{detailInfo.status == 5}}">
+        <view></view>
+        <view class='but_box'>
+            <button class='but_cancel' data-orderNo="{{listItme.orderNo}}" bindtap='delOrder'>删除订单</button>
+        </view>
+    </view> -->
+</view>

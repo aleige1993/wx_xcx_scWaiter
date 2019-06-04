@@ -1,0 +1,201 @@
+<!--pages/shopMall/orderList/index.wxml-->
+<view class='orderPage'>
+    <view class='menber-tabs'>
+        <view data-index="1" catchtap='changTab' class="ind_tab {{indexTab == 1 ? 'active' : '' }}">
+            <view data-index="1">配送上门</view>
+            <view data-index="1">{{isTest?'会员':''}}订单满{{cart_info.free_freight}}元免费配送</view>
+        </view>
+        <view data-index="0" catchtap='changTab' class="ind_tab {{indexTab == 0?'active':'' }}">
+            <view data-index="0">门店自提</view>
+        </view>
+    </view>
+    <view class='addrDetail'>
+        <view class='addrInfo' wx:if="{{indexTab == 1}}">
+            <view class='leftInfo' wx:if="{{addresInfo}}">
+                <view class='font-w6'>
+                    {{addresInfo.name}} {{addresInfo.phone}}
+                </view>
+                <view class='c-999'>
+                    {{addresInfo.addr}}
+                </view>
+            </view>
+            <view class='leftInfo' wx:else>
+                <view class='font-w6'>
+                    <icon class='iconfont icon-gantanhao-yuankuang'></icon>请选择收货地址
+                </view>
+            </view>
+            <view class='rightInfo' bindtap='goBack'>
+                <view>默认
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </view>
+        </view>
+        <view class='timeInfo' wx:if="{{indexTab == 1}}">
+            <view>配送时间</view>
+            <view>
+                <view class='c-violet' bindtap='onshow'>
+                    {{ textTime ? textTime : '请选择时间'}}
+                    <view class='iconfont icon-you1'></view>
+                </view>
+            </view>
+        </view>
+         <view class='timeInfo' wx:else>
+            <view>营业时间</view>
+            <view>
+                <view class='c-violet'>
+                   {{store_info.sale_time}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='shopStore'>
+        <view class='shopData'>
+            <view class='shoname'>
+                <icon class='iconfont icon-dingwei2'></icon>{{store_info.st_name}}</view>
+            <view class='phoneha'>
+                <view data-phone="{{store_info.phone}}" data-phone="{{store_info.phone}}"  bindtap='makePhoneCall'>联系电话
+                    <icon class='iconfont icon-phone-channel'></icon>
+                </view>
+            </view>
+        </view>
+        <view class='goodlist'>
+            <view class='panl_goods' wx:for="{{cart_info.list}}" wx:key="cart_info_list" >
+            <view class='goods_panl  ShopCart_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+                  <view class='self_panl'>
+                                 <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
+                                  <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                           </view> 
+               
+
+                <view class='gooddetail'>
+                    <view class='font-w6'>{{item.name}}</view>
+                      <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
+                         <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
+                    <!-- <view class='c-powder' wx:if="{{!item.can_buy || !item.iscan}}">{{item.can_buy?'':'库存不足'}}</view> -->
+                    <view wx:if="{{is_vip == 1}}">
+                        <view class='c-666 decoration'>原价：¥{{item.price}}</view>
+                        <view class='c-powder'>¥{{item.vip_price}}
+                            <!-- <text class='menberPire'>会员价</text> -->
+                        </view>
+                    </view>
+                    <view wx:else>
+                        <view class='c-666' wx:if="{{isTest}}">
+                            <text class='menberPire'>会员价</text>¥{{item.vip_price}}
+                        </view>
+                        <view class='c-powder'>¥{{item.price}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class='Calcu_panl' wx:if="{{item.can_buy}}">
+                <input value='{{item.num}}' disabled="true"></input>
+                        <!-- <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
+                        <input value='{{item.num}}' disabled="true"></input>
+                        <icon wx:if="{{item.num != item.amount}}" class='iconfont icon-out-column outcolumn' data-operate="inc" data-item="{{item}}" bindtap='addGoods'></icon>
+                         <icon wx:if="{{item.num == item.amount}}" class='iconfont icon-out-column outcolumn nocolumn' ></icon> -->
+                    </view>
+            </view>
+        </view>
+    </view>
+
+    <view class='shangpin'>
+        <view class='li'>
+            <view>优惠券</view>
+            <view class='c-violet flex_Name' bindtap='topConIshow'>
+                    {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
+                    <view class='iconfont icon-you1'></view>
+                </view>
+        </view>
+         <view class='li' wx:if="{{conpunPice}}">
+            <view>优惠券抵扣金额</view>
+            <view>-￥{{conpunPice}}</view>
+        </view>
+        <view class='li' wx:if="{{indexTab != 0}}">
+            <view>配送费</view>
+            <view>
+                <text class='menberPire'>会员满{{settlement_info.free_freight}}元免配送费</text>¥{{settlement_info.freight?settlement_info.freight:'0.00'}}</view>
+        </view>
+        <view class='li'>
+            <view>活动优惠</view>
+            <view>暂无活动</view>
+        </view>
+        <view class='li'>
+            <view>商品合计</view>
+            <view>¥{{settlement_info.total_price2?settlement_info.total_price2:settlement_info.total_price}}</view>
+        </view>
+
+    </view>
+</view>
+<view class='bottom_view' wx:if="{{indexTab != 0}}">
+    <view class='prie'>
+        应付金额：
+        <text>￥{{settlement_info.pay_price2?settlement_info.pay_price2:settlement_info.pay_price}}</text>
+    </view>
+    <button class='one_but' disabled='{{isDis}}' bindtap='createOrder'>
+        提交订单
+    </button>
+</view>
+
+<view class='bottom_view' wx:if="{{indexTab == 0}}">
+    <view class='prie'>
+        应付金额：
+        <text>￥{{settlement_info.total_price2?settlement_info.total_price2:settlement_info.total_price}}</text>
+    </view>
+    <button class='one_but' disabled='{{isDis}}' bindtap='createOrder'>
+        提交订单
+    </button>
+</view>
+
+<!-- total_price -->
+
+<van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
+    <van-tree-select items="{{ multiArray }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+</van-popup>
+ 
+<view class='layer' wx:if="{{conpunIshow}}"></view>
+<view class='conpun_model' wx:if="{{conpunIshow}}">
+    <view class='conpun_hd'>
+        <view class='label_title c-blue'>优惠券</view>
+        <view bindtap='hideConIshow' class='iconfont icon-shanchu'></view>
+    </view>
+    <van-tabs active="{{ active }}" bind:change="onChange" sticky>
+        <van-tab title="可用优惠券({{usableList.length}})">
+            <view class='scorll_tab'>
+                <view class='coupon_model' wx:for="{{usableList}}" wx:key="usableList" data-index="{{index}}" bindtap='changCoupon'>
+                    <view class='cou_bg bg_pink'>
+                        <label>{{item.reduce_info}}</label>
+                        <text>{{item.rule_info}}</text>
+                    </view>
+                    <view class='cou_title'>
+                        <view class='title_conter'>
+                            <view class='name_text  text_pink'>{{item.coup_name}}</view>
+                            <view class='type_text'>{{item.use_mode}}</view>
+                            <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                            <view class='p_text'>{{item.expiry_date}}</view>
+                        </view>
+                        <view class='icon_right'>
+                            <icon class='iconfont icon-chenggong' wx:if="{{conpunIndex == index}}"></icon>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="不可用优惠券({{disableList.length}})">
+            <view class='scorll_tab'>
+                <view class='coupon_model' wx:for="{{disableList}}" wx:key="disableList" data-index="{{index}}">
+                    <view class='cou_bg bg_gray'>
+                        <label>{{item.reduce_info}}</label>
+                        <text>{{item.rule_info}}</text>
+                    </view>
+                    <view class='cou_title'>
+                        <view class='title_conter'>
+                            <view class='name_text  text_gray'>{{item.coup_name}}</view>
+                            <view class='type_text text_gray'>{{item.use_mode}}</view>
+                            <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                            <view class='p_text'>{{item.expiry_date}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>

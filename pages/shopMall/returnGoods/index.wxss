@@ -1,0 +1,35 @@
+/* pages/shopMall/returnGoods/index.wxss */
+page{
+    background-color: #f2f2f2;
+}
+.titel{
+    padding: 30rpx 20rpx;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20rpx;
+}
+.flex .picker{
+    margin-top: -10rpx;
+}
+.areaText{
+    background-color: #fff;
+    padding: 20rpx;
+}
+.areaText textarea{
+    width: 95%;
+     margin: 0 20rpx;
+    border-radius:20rpx; 
+}
+.panl_li{
+    padding: 20rpx;
+}
+.panl_li view{
+    color: #999;
+    margin-top: 10rpx;
+    font-size: 12px;
+}

@@ -1,4 +1,7 @@
 {
 "navigationBarTitleText": "洗衣下单",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tab": "/ui-plugins/vant/tab/index",
+    "van-tabs": "/ui-plugins/vant/tabs/index"
+  }
 }

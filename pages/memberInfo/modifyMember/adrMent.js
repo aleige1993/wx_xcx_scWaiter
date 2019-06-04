@@ -69,6 +69,10 @@ Page({
     },
     //获取列表
     getListitme() {
+        wx.showLoading({
+            title: '加载中...',
+            mask:true
+        })
         app.Formdata.get('/openapi/express/wechatapplet/express/userAddr/list', {
             'page': this.data.page,
             'limit': 10000
@@ -87,6 +91,9 @@ Page({
                 })
             }
         })
+       setTimeout(()=>{
+           wx.hideLoading();
+       },2000)
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

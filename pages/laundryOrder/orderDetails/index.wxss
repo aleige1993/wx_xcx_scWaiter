@@ -27,6 +27,7 @@ background-color: #fff;
   display: flex;
   border-bottom: 1px solid #eee;
   padding:30rpx;
+  position: relative;
 }
 .move_box:last-child{
   border-bottom: 0;
@@ -36,7 +37,7 @@ background-color: #fff;
   height:200rpx;
 }
 .move_box view{
-  display: flex;
+  /* display: flex; */
 }
 .move_box view.order_vim{
   display: flex;
@@ -45,13 +46,18 @@ background-color: #fff;
   justify-content: space-around;
   align-content: space-around;
   margin-left: 20rpx;
+  width: 100%;
 }
 .move_box view.order_vim view:first-child{
     font-weight: 600;
 }
 
 .move_box view.order_num{
-  align-items: center;
+  justify-content: space-around;
+  align-content: space-around;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 }
 .order_footer{
   display: flex;

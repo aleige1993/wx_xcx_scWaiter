@@ -12,7 +12,9 @@ Page({
         page: 1,
         limit: 15,
         status: '1',
-        listItme: []
+        listItme: [],
+        active:0,
+        typeArr:['1','-1','8','10']
     },
     getIndex(e) {
         this.setData({
@@ -20,7 +22,7 @@ Page({
             listItme: [],
             scrollTop: 0
         })
-        if (e.detail.title == "待付款") {
+        if (e.detail.title == "待付款" ) {
             this.setData({
                 status: "1"
             })
@@ -32,7 +34,7 @@ Page({
             })
             this.getOrder();
         }
-        if (e.detail.title == "已完成") {
+        if (e.detail.title == "已完成" ) {
             this.setData({
                 status: "8"
             })
@@ -180,7 +182,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-       // this.getOrder();
+       let _this = this;
+        if (options.active){
+            this.setData({
+                active: options.active,
+                status: _this.data.typeArr[options.active]
+             })
+        }   
     },
 
     /**

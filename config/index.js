@@ -1,6 +1,7 @@
 'use strict';
+let app = getApp();
 let DEV_CONFIG = {
-    HTTPOPENAPIURL: 'http://192.168.203.174:10001'
+    HTTPOPENAPIURL: 'http://192.168.203.175:10036'//田怀志
 };
 let SIT_CONFIG = {
     HTTPOPENAPIURL: 'https://dev.api.songchejr.com' // 请求OPENAPI的接口
@@ -11,8 +12,11 @@ let PRE_CONFIG = {
 let PROD_CONFIG = {
     HTTPOPENAPIURL: 'https://openapi.songchewang.com' // 请求OPENAPI的接口
 };
+let OPEN_API = {
+    HTTPOPENAPIURL: app.OPEN_API //切换域名
+}
 
-let CONFIG = PROD_CONFIG; // 选取当前环境配置
+let CONFIG = OPEN_API; // 选取当前环境配置
 
 module.exports = {
     PAGE_SIZE: 10,

@@ -1,0 +1,22 @@
+<!--pages/shopList/map.wxml-->
+<map 
+id="map"
+style="width:{{ww}}px; height:{{hh}}px;"
+scale="14"
+longitude="{{longitude}}"
+latitude="{{latitude}}"
+show-location
+markers="{{markers}}"
+bindregionchange="getCenterLocation"
+bindcallouttap="callLocation"
+>
+<cover-view  class='location' bindtap='getLocation'>
+    <cover-image src="/static/images/location.png"></cover-image>
+</cover-view>
+<!-- <cover-view  class='refresh' bindtap='getCenterLocation'>
+     <cover-image src="/static/images/refresh.png"></cover-image>
+</cover-view> -->
+<cover-view  class='centerMank {{notification?"notification":""}}'>
+     <cover-image src="/static/images/centerMank.png"></cover-image>
+</cover-view>
+</map>

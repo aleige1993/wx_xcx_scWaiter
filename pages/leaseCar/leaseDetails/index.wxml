@@ -1,7 +1,7 @@
 <!--pages/laundryOrder/index.wxml-->
 <view class='laundryOrder'>
     <view class='order-panl'>
-        <van-tabs animated bind:click="getIndex">
+        <van-tabs  active="{{ active }}"  animated bind:click="getIndex">
             <van-tab title="待付款" data-order="1"></van-tab>
             <van-tab title="已付款" data-order="2"></van-tab>
             <van-tab title="已完成"  data-order="4"></van-tab>
@@ -38,6 +38,14 @@
                                     <text  class='c-666'>{{item.startShortTime}} ~{{item.endShortTime}}</text>
                                     <text class='c-blue'>{{item.days}}天</text>
                                 </view>
+                                <view wx:if="{{item.couponInfo.couponDiscount}}">
+                                    <text  class='c-666'> 优惠劵</text>
+                                    <text class='c-blue'> -￥{{item.couponInfo.couponDiscount}}</text>
+                                </view> 
+                                 <view>
+                                    <text  class='c-666'> 合计</text>
+                                    <text class='c-blue'> ￥{{item.paymentAmount}}</text>
+                                </view> 
                                 <view class='c-666'>服务小站：{{item.stationList[0].stationName}}</view>
                                  <view class='c-666'>小站地址：{{item.stationList[0].address}}</view>
                           </view>

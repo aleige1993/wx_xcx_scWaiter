@@ -1,37 +1,50 @@
 let app = getApp();
 
 const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
 const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+    n = n.toString()
+    return n[1] ? n : '0' + n
 }
 
 const screenSize = () => {
     var that = this;
-     wx.getSystemInfo({
-         success: function (res) {
-             setTimeout(function () {
-                 app = getApp();
-                 var ww = res.windowWidth;
-                 var hh = res.windowHeight;
-                 app.globalData.ww = ww;
-                 app.globalData.hh = hh;
-             })
-         }
-     })
+    wx.getSystemInfo({
+        success: function(res) {
+            setTimeout(function() {
+                app = getApp();
+                var ww = res.windowWidth;
+                var hh = res.windowHeight;
+                app.globalData.ww = ww;
+                app.globalData.hh = hh;
+            })
+        }
+    })
 }
-
- const bezier = (points, times) => {
+const GetDateStr = (index) => {
+    var dd = new Date();
+    dd.setDate(dd.getDate() + index);
+    var y = dd.getFullYear();
+    var m = dd.getMonth() + 1;
+    var d = dd.getDate();
+    if (m < 10) {
+        m = '0' + m
+    }
+    if (d < 10) {
+        d = '0' + d
+    }
+    return y + "-" + m + "-" + d;
+}
+const bezier = (points, times) => {
     var bezier_points = [];
     var points_D = [];
     var points_E = [];
@@ -67,9 +80,116 @@ const screenSize = () => {
         'bezier_points': bezier_points
     };
 }
+const updateManager = () => {
+    if (wx.canIUse('getUpdateManager')) {
+        const updateManager = wx.getUpdateManager();
+        updateManager.onCheckForUpdate(function(res) {
+            if (res.hasUpdate) {
+                updateManager.onUpdateReady(function() {
+                    wx.showModal({
+                        title: '更新提示',
+                        content: '新版本已经准备好，是否重启应用？',
+                        success: function(res) {
+                            if (res.confirm) {
+                                updateManager.applyUpdate()
+                            } else if (res.cancel) {
+                                wx.showModal({
+                                    title: '已经有新版本',
+                                    content: '不更新将会影响使用，删除当前小程序，重新搜索打开哟~',
+                                    showCancel: false
+                                })
+                            }
+                        }
+                    })
+                })
+                updateManager.onUpdateFailed(function() {
+                    wx.showModal({
+                        title: '已经有新版本了哟~',
+                        content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~',
+                        showCancel: false
+                    })
+                })
+            }
+        })
+    } else {
+        wx.showModal({
+            title: '提示',
+            content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。',
+            showCancel: false
+        })
+    }
+}
+var touchStartX = 0; //触摸时的原点  
+var touchStartY = 0; //触摸时的原点  
+var time = 0; // 时间记录，用于滑动时且时间小于1s则执行左右滑动  
+var interval = ""; // 记录/清理时间记录  
+var touchMoveX = 0; // x轴方向移动的距离
+var touchMoveY = 0; // y轴方向移动的距离
+var isScroll = 0;//是否滑动一定距离
+// 触摸开始事件  
+const touchStart = (e) => {
+    touchStartX = e.touches[0].pageX; // 获取触摸时的原点  
+    touchStartY = e.touches[0].pageY; // 获取触摸时的原点  
+    // 使用js计时器记录时间    
+    interval = setInterval(function() {
+        time++;
+    }, 100);
+}
+// 触摸移动事件  
+const touchMove = (e) => {
+        touchMoveX = e.touches[0].pageX;
+        touchMoveY = e.touches[0].pageY;
+    }
+// 触摸结束事件  
+const touchEnd = (e) => {
+    let istext = '';
+    if (touchMoveX == 0 || touchMoveY == 0 ){
+
+    }else{
+        var moveX = touchMoveX - touchStartX
+        var moveY = touchMoveY - touchStartY
+        if (Math.sign(moveX) == -1) {
+            moveX = moveX * -1
+        }
+        if (Math.sign(moveY) == -1) {
+            moveY = moveY * -1
+        }
+        if (moveX <= moveY) { // 上下
+            // 向上滑动
+            if (touchMoveY - touchStartY <= -30 && time < 100) {
+                istext = 'top'
+            }
+            // 向下滑动  
+            if (touchMoveY - touchStartY >= 30 && time < 100) {
+                istext = 'down'
+            }
+        } else if (moveX >= moveY) { // 左右
+            // 向左滑动
+            if (touchMoveX - touchStartX <= -30 && time < 100) {
+                istext = 'left'
+            }
+            // 向右滑动  
+            if (touchMoveX - touchStartX >= 30 && time < 100) {
+                istext = 'right'
+            }
+        }
+    } 
+    clearInterval(interval); // 清除setInterval  
+    time = 0;
+     touchStartX = 0; //触摸时的原点  
+     touchStartY = 0; //触摸时的原点  
+     touchMoveX = 0; // x轴方向移动的距离
+     touchMoveY = 0; // y轴方向移动的距离
+    return istext
+}
 
 module.exports = {
-  formatTime: formatTime,
+    formatTime: formatTime,
     screenSize: screenSize,
-    bezier: bezier
+    bezier: bezier,
+    updateManager: updateManager,
+    GetDateStr: GetDateStr,
+    touchStart: touchStart,
+    touchMove: touchMove,
+    touchEnd: touchEnd
 }

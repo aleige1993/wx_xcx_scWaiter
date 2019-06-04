@@ -17,6 +17,7 @@ page {
   padding: 15rpx;
   background: #fff;
   border-radius: 10rpx; 
+  position: relative;
 }
 .laundry-item-inner image {
   width: 100%;

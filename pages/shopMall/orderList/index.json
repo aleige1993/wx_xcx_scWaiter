@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+      "van-popup": "/ui-plugins/vant/popup/index",
+      "van-tree-select": "/ui-plugins/vant/tree-select/index",
+      "van-tab": "/ui-plugins/vant/tab/index",
+    "van-tabs": "/ui-plugins/vant/tabs/index"
+  }
+}

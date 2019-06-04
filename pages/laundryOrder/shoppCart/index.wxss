@@ -23,7 +23,7 @@ page{
     flex-direction: column;
     justify-content: space-around;
     align-content: space-around;
-    margin-left: 20rpx;
+    margin-left: 30rpx;
 }
 .stepper_panl{
     margin-top: 80rpx;

@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "van-icon": "/ui-plugins/vant/icon/index",
-    "van-button": "/ui-plugins/vant/button/index"
+    "van-button": "/ui-plugins/vant/button/index",
+    "van-popup": "/ui-plugins/vant/popup/index",
+    "van-tree-select": "/ui-plugins/vant/tree-select/index"
   }
 }

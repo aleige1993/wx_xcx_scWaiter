@@ -12,12 +12,13 @@
                 <view class='cell_box'>
                     <view class='label'>小站选择</view>
                     <view class='value'>
-                          <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                            <navigator class="picker" hover-class='none' url='/pages/shopList/index?stationType=stationSchool'>{{stationSchool.stationName?stationSchool.stationName : '请选择小站'}}  <icon class='iconfont icon-you1'></icon></navigator>
+                          <!-- <picker bindchange="shoprChange"  value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
                             <view class="picker">
                                 {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
                             <icon class='iconfont icon-you1'></icon>
                             </view>
-                        </picker>
+                        </picker> -->
                     </view>
                 </view>
                   <view class='cell_box'>
@@ -55,12 +56,12 @@
                         </picker>
                     </view>
                 </view>
-                <view class='cell_box'>
+                <!-- <view class='cell_box'>
                     <view class='label'>身份证号</view>
                     <view class='value'>
                             <input value=''  placeholder='请输入学车人的身份证号' name="idcard" />
                      </view>
-                </view>
+                </view> -->
                 <view class='cell_box'>
                     <view class='label'>手机号</view>
                     <view class='value'>
@@ -99,10 +100,10 @@
     title="性别"
     value="{{repeatItem.gender == '1' ? '男' : '女'}}"
   />
-  <van-cell
+  <!-- <van-cell
     title="身份证"
     value="{{repeatItem.card ? repeatItem.card : '未填写'}}"
-  />
+  /> -->
   <van-cell
     title="手机号"
     value="{{repeatItem.mobile}}"

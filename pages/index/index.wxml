@@ -1,114 +1,189 @@
 <!--index.wxml-->
+<!-- <official-account></official-account> -->
 <view class="dashboard">
-  <swiper class='banner' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
-    <block wx:key="{{bannerArr}}" wx:for="{{banner.bannerArr}}">
-      <swiper-item>
-         <image src="{{item.advImage}}" class="slide-image" style='width: 100%' data-url='{{item.advUrl}}' bindtap='goToViewDetails'/>
-      </swiper-item>
-    </block>
-  </swiper>
-
-  <!-- <view class='header-news'>
-    <view class='swiper-news'>
-
-      <view class='img'>
-        <icon class='iconfont icon-iconxx2'></icon>
-      </view>
-      <swiper class="text" circular vertical autoplay="{{headNews.autoplay}}" interval="{{headNews.interval}}" duration="{{headNews.duration}}">
-        <block wx:key="{{headNews.list}}" wx:for="{{headNews.list}}">
-          <swiper-item>
-            <navigator class='c-666' url="/pages/common/webview/index?src={{item.url}}">{{item.title}}</navigator>
-          </swiper-item>
+    <swiper class='banner' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
+        <block wx:key="{{bannerArr}}" wx:for="{{banner.bannerArr}}">
+            <swiper-item class="swiper_item">
+                <image src="{{item.advImage}}" class="slide-image"  data-url='{{item.advUrl}}' bindtap='goToViewDetails' />
+            </swiper-item>
         </block>
-      </swiper>
+    </swiper>
+    <view class='dashboard-grid'>
+        <view class='grid_box'>
+            <navigator url='/pages/myExpress/index' class='icon_one' hover-class="none">
+                <view class='img-box'>
+                    <image src='/static/images/kuaidi.png'></image>
+                    <!-- <icon class='iconfont icon-kuaidi'></icon> -->
+                </view>
+                <view class='icontext'>我的快递</view>
+            </navigator>
+            <navigator class='icon_two' url='/pages/laundryOrder/index/index' hover-class="none">
+                <view class='img-box'>
+                    <image src='/static/images/weiyi.png'></image>
+                </view>
+                <view class='icontext'>小站洗衣</view>
+            </navigator>
+            <navigator class='icon_three' url="/pages/schoolCar/index" hover-class="none">
+                <view class='img-box'>
+                    <image src='/static/images/wanjuqiche.png'></image>
+                </view>
+                <view class='icontext'>小站学车</view>
+            </navigator>
+            <navigator class='icon_four' url="/pages/leaseCar/index" hover-class="none">
+                <view class='img-box'>
+                    <image src='/static/images/levsCar.png'></image>
+                </view>
+                <view class='icontext'>小站租车</view>
+            </navigator>
+        </view>
     </view>
-  </view> -->
+    <swiper wx:if="{{isTest}}" class='meber_box meber_box_two' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.intervaltwo}}" duration="{{banner.duration}}">
+        <block wx:key="{{openmenber}}" wx:for="{{banner.openmenber}}">
+            <swiper-item>
+                <image src="{{item.advImage}}" class="slide-image"   data-url="{{item.advUrl}}" data-name="{{item.advName}}" bindtap="goToViewDetails"></image>
+            </swiper-item>
+        </block>
+    </swiper>
 
-  <view class='dashboard-grid'>
-    <view class='grid_box'>
-      <navigator url='/pages/myExpress/index' class='icon_one' hover-class="none">
-        <view class='img-box'>
-        <image src='/static/images/kuaidi.png'></image>
-          <!-- <icon class='iconfont icon-kuaidi'></icon> -->
-        </view>
-        <view class='icontext'>我的快递</view>
-      </navigator>
-      <navigator class='icon_two' url='/pages/laundryOrder/index/index' hover-class="none">
-        <view class='img-box'>
-          <image src='/static/images/weiyi.png'></image>
-        </view>
-        <view class='icontext'>小站洗衣</view>
-      </navigator>
-      <navigator class='icon_three' url="/pages/schoolCar/index" hover-class="none">
-        <view class='img-box'>
-            <image src='/static/images/wanjuqiche.png'></image>
-        </view>
-        <view class='icontext'>小站学车</view>
-      </navigator>
-      <navigator class='icon_four'   url="/pages/leaseCar/index"  hover-class="none">
-        <view class='img-box'>
-          <image src='/static/images/levsCar.png'></image>
-        </view>
-        <view class='icontext'>小站租车</view>
-      </navigator>
-      <!-- <navigator class='icon_four'  url="/packageA/pages/index"  hover-class="none">
-        <view class='img-box'>
-          <image src='/static/images/shangcheng.png'></image>
-        </view>
-        <view class='icontext'>小站商城</view>
-      </navigator> -->
+
+
+    <view class='imgPanl'>
+        <!-- /pages/laundryOrder/index/index -->
+        <navigator url='{{rightcar[0].advUrl}}' hover-class='none'>
+            <image src='{{rightcar[0].advImage}}'></image>
+        </navigator>
+        <!-- /pages/leaseCar/index -->
+        <navigator url="{{leftwash[0].advUrl}}" hover-class='none'>
+            <image src='{{leftwash[0].advImage}}'></image>
+        </navigator>
     </view>
-  </view>
-
-<view class='meber_box'  bindtap='getIFmenber'>
-    <image src='{{openmenber[0].advImage}}'></image>
-</view>
-
-  <view class='new-express'>
-    <view class='c-violet'>您的新快递</view>
-
-    <view wx:if="{{!isLogin}}" class='new-express-list shadow-just'>
-      <view class="center">
-        <view>亲，您还没登录哦~</view>
-      </view>
+    <view class='getCnpsun' bindtap='getCouponlist'>
+        <image src='/static/images/coupun.png'></image>
     </view>
-
-    <view wx:else>
-      <view wx:if="{{!expressList || !expressList.length}}" class='new-express-list shadow-just'>
-        <view class="center">
-          <view>亲，未收到您的包裹信息哦~</view>
+    <view class='new-express '>
+        <view class='expre_title'>附近的小站超市</view>
+        <view class='station_model' wx:for="{{store_list}}" wx:key="store_list" data-station="{{item}}" bindtap='goToshop'>
+            <view class='imgpanl'>
+                <image src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+            </view>
+            <view class='titlepanl'>
+                <view class='conput_box'>
+                    <view class='title_name'>{{item.st_name}}</view>
+                    <view class='title_text'>
+                        <view class='text_span'>
+                            <label class='bg_hot' wx:if="{{item.free_freight > 0}}">会员满{{item.free_freight}}元免配送费</label>
+                            <label class='bg_hot' wx:if="{{item.free_freight == 0}}"> 免配送费</label>
+                            <text class='c-999'></text>
+                        </view>
+                        <view wx:if="{{item.distance != 0}}" class='mink c-999'>{{item.distance}}</view>
+                    </view>
+                    <view class='title_text'>
+                        <view class='text_span c-999'>
+                            <text>起送￥{{item.start_freight}}</text>
+                            <text>基础运费￥{{item.deliver_money}}</text>
+                        </view>
+                        <!-- <view class='mink c-999'>商家自送</view> -->
+                    </view>
+                </view>
+                <view class='cuopon_panl' wx:if="{{item.coup_info.back || item.coup_info.receive}}">
+                    <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.receive}}">
+                        <label class='box_cuo'>领劵</label>{{item.coup_info.receive}}
+                    </view>
+                    <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.back}}">
+                        <label class='box_fan'>返劵</label>{{item.coup_info.back}}
+                    </view>
+                </view>
+            </view>
         </view>
-      </view>
-      <view wx:else>
-        <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
-          <view class="flex">
-            <view>
-              <text>快递公司：</text>{{item.company}}</view>
-            <view>
-              <text>取件码：</text>{{item.qrcode}}</view>
-          </view>
-          <view>
-            <text>取件地址：</text>
-            <text>{{item.address}}</text>
-          </view>
-          <view>
-            <text>派件人员：</text>
-            <text>{{item.mobile}}</text>
-          </view>
-        </view>
-      </view>
+        <view wx:if="{{store_list.length<=0}}" class='new-express-list shadow-just'>
+            <view class="center" bindtap='getLocation'>
+                <view>亲！定位失败，请点击此处获取~</view>
+            </view>
+        </view> 
     </view>
-
-  </view>
 
 </view>
 
 <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
-  <view class='title_p'>颂小二为你服务</view>
-  <image src='/static/images/index.png'></image>
-  <view class='but_box'>
-    <button class='backg-grad shadow-just' wx:if="{{state==1}}"  open-type="getUserInfo"   bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
-     <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber"  bindgetphonenumber="onGetphonenum">一键登录</button>
-  </view>
+    <view class='title_p'>颂小二为你服务</view>
+    <image src='/static/images/index.png'></image>
+    <view class='but_box'>
+        <button class='backg-grad shadow-just' wx:if="{{state==1}}" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
+        <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber" bindgetphonenumber="onGetphonenum">一键登录</button>
+        <navigator class='touTop' wx:if="{{state==2}}" hover-class='none' url='/pages/login/register'>手机号登录</navigator>
+    </view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
+    <van-tree-select items="{{ multiArray }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+</van-popup>
+
+<!-- 注册优惠券 -->
+<view class='layer' wx:if="{{isConpun}}"></view>
+<view class='coupon_box' wx:if="{{isConpun}}">
+<navigator open-type='switchTab' url='/pages/usCenter/index'>
+     <image class='coupon_bg' src='/static/images/coupon.png' ></image>
+    <view class='coupon_panl'>
+        <view class='hader_text'>恭喜获得注册优惠券</view>
+        <view class='scorll_reg'>
+              <view class='cp_li' wx:for="{{regisCoupList}}" wx:key="regisCoupList">
+            <view class='p_wx'>
+                <text class='cp_big'>{{item.coup_name}}</text>
+                <label class='cp_sl'>
+                    <text class='cp_big'>{{item.reduce_info}}</text>
+                </label>
+            </view>
+             <!-- <view class='p_wx'>
+                <text class='c_c9'>类型：{{item.use_mode}}</text>
+             </view>
+             <view class='p_wx'>
+                <text class='c_c9'>适用平台：{{item.use_st_name}}</text>
+             </view>  -->
+            <view class='p_wx'>
+                <text class='c_c9'>{{item.expiry_date}}</text>
+                <text class='c_c9'>{{item.rule_info}}</text>
+            </view>
+        </view> 
+        </view>
+    </view> 
+</navigator> 
+    <view class='buttom_panl'>
+        <view class='soile'></view>
+        <view class='del' bindtap='changeHide'>×</view>
+    </view>
+</view>
+
+<!-- 领取优惠券 -->
+<view class='layer' wx:if="{{isReceive}}"></view>
+<view class='coupon_box' wx:if="{{isReceive}}">
+   <view class='scorll_view'>
+         <view class='rec_model' wx:for="{{recCoupon}}" wx:key="recCoupon">
+        <view class='rec_top {{item.service==2? "wash_panl":item.service==3?"car_panl":""}}'>
+            <view class='rec_l'>
+                <icon class='iconfont {{item.service==2? "icon-cheliang":item.service==3?"icon-yifu":""}} '></icon>
+                <view class='tima'>
+                    <text class='bg_tt'>{{item.coup_name}}</text>
+                     <text class='sm_tt'>类型：{{item.use_mode}}</text>
+                    <text class='sm_tt'>适用平台：{{item.use_st_name}}</text>
+                </view>
+            </view>
+            <view class='rec_r '>
+                <view class='r_bg_tt'>{{item.reduce_info+item.reduce_info_type}}</view>
+                <view class='r_sm_tt'>{{item.rule_info}}</view>
+            </view>
+            <view class='bot_bg'></view>
+        </view>
+        <view class='rec_bottom'>
+            <view>有效期：{{item.expiry_date}}</view>
+            <view class='bt_rec' wx:if="{{item.status==1}}" data-index="{{index}}" data-service="{{item.service}}" data-id="{{item.coup_id}}" bindtap='getCoupID'>领取</view>
+            <view class='over_rec' wx:else>已领取</view>
+        </view>
+    </view> 
+   
+   </view>
+    <view class='buttom_panl'>
+        <view class='soile'></view>
+        <view class='del' bindtap='changeRec'>×</view>
+    </view>
 </view>

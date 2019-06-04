@@ -37,13 +37,13 @@
                          <text>{{listArr.birth}}</text>
                     </view>
                 </view>
-                  <view class='cell_box'>
+                  <!-- <view class='cell_box'>
                     <view class='label'>地址</view>
                     <view class='value' bindtap='goToadrment' >
                         <text>{{detailAddress }}</text>
                         <icon class='iconfont icon-you1'></icon>
                     </view>
-                </view>
+                </view> -->
             </view>
              <!-- <view class='marig-primary'>
                 <button size="normal" type="primary" round="true"  form-type='submit' class="primary backg-grad" >保存</button>

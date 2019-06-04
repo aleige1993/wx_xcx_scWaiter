@@ -1,0 +1,26 @@
+<!--pages/usCenter/couponInfo/details.wxml-->
+<view class='deta_panl'>
+    <view class='panl_header'>
+        <view class='conte_title'>
+            <view class='p_name'>租车通用券</view>
+            <view class='panl_type'>租车券</view>
+            <view class='p_meny'>¥10</view>
+            <view class='p_text'>满100元可用</view>
+        </view> 
+        <!-- <view class='tag_text bg_red'>
+            将过期
+        </view> -->
+         <view class='tag_text bg_yeller'>
+            新到
+        </view>
+    </view>
+    <view class='panl_bottom'>
+        <view class='border left_border'></view>
+        <view class='border right_border'></view>
+        <view class='wx_li'>• 适用业务：小站租车</view>
+        <view class='wx_li'>• 适用平台：全平台</view>
+        <view class='wx_li'>• 有效期至：2017-08-01</view>
+        <view class='wx_li'>• 详细说明：全场通用，不限条件，不与其他活动叠加使用。</view>
+    </view>
+    <view class='coupon_buttom'>立即使用</view>
+</view>

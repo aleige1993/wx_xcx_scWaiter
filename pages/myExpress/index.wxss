@@ -25,3 +25,25 @@
 .null-data {
   margin-top: 40%;
 }
+.van-tree-select{
+    height: 300px !important;
+}
+.van-tree-select__content{
+    height: 300px !important;
+}
+.changTime{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.changTime icon{
+    margin-top: 4rpx;
+}
+.text-flex-right{
+    display: flex;
+}
+.text-flex-right .icon-you1{
+    margin-top:5rpx;
+}

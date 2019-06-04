@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "新建收货地址",
+    "usingComponents": {
+        "van-field": "/ui-plugins/vant/field/index",
+        "van-cell": "/ui-plugins/vant/cell/index",
+        "van-cell-group": "/ui-plugins/vant/cell-group/index"
+    }
+}

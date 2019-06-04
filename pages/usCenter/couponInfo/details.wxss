@@ -1,0 +1,90 @@
+/* pages/usCenter/couponInfo/details.wxss */
+page{
+    background-color: #f2f2f2;
+}
+.p_name{
+    font-weight: 600;
+    color: #82acff;
+    font-size: 32rpx;
+}
+.panl_type{
+    color: #666;
+    font-weight: 600;
+}
+.p_meny{
+    font-weight: 700;
+    font-size: 50rpx;
+     color: #414141;
+}
+.p_text{
+    color: #999;
+}
+.tag_text{
+    position: absolute;
+    right:-26rpx;
+    top: 20rpx;
+    text-align: center;
+    font-size: 20rpx;
+    color: #fff; 
+    transform: rotateZ(45deg);
+    width: 125rpx;
+    padding: 4rpx 0;
+}
+.bg_red{
+ background-color: #e51a1a;
+}
+.bg_yeller{
+     background-color: #f2af0d;
+}
+.conte_title view{
+    margin-top: 10rpx;
+}
+.deta_panl{
+    padding: 30rpx;
+}
+.panl_header{
+    background-color: #fff;
+    padding: 30rpx;
+    text-align: center;
+    border-bottom: 1px dashed #ccc;
+    position: relative;
+    overflow: hidden;
+}
+.border{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 100%;
+    background-color: #f2f2f2;
+    position: absolute;
+    top: -20rpx;
+    z-index: 2;
+}
+.left_border{
+    left: -20rpx;
+}
+.right_border{
+    right: -20rpx;
+}
+.panl_bottom{
+    background-color: #fff;
+    padding: 30rpx;
+    min-height: 72vh;
+    position: relative;
+}
+.panl_bottom .wx_li{
+    color: #999;
+    line-height: 50rpx;
+}
+.coupon_buttom{
+    position: fixed;
+    z-index: 2;
+    bottom: 100rpx;
+    width: 60%;
+    text-align: center;
+    background-color: #f2f2f2;
+    line-height: 80rpx;
+    border-radius:40rpx;
+    color: #fff;
+   left: 20%; 
+   font-size: 34rpx;
+}

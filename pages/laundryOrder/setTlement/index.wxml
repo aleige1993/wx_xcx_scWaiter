@@ -5,23 +5,34 @@
             <view class='waiter'>
                 <view class='c-333 font-w6'>小站选择</view>
                 <view>
-                    <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
+                    <navigator class="picker" hover-class='none' url='/pages/shopList/index?stationType=stationLaundry'>{{stationLaundry.stationName?stationLaundry.stationName : '请选择小站'}}
+                        <icon class='iconfont icon-you1'></icon>
+                    </navigator>
+                    <!-- <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}" range-key="stationName">
                         <view class="picker">
                             {{shopArr[shopIndex].stationName ? shopArr[shopIndex].stationName : '请选择小站'}}
                             <icon class='iconfont icon-you1'></icon>
                         </view>
-                    </picker>
+                    </picker> -->
                 </view>
             </view>
             <view class='order_box'>
-                <view class='move_box' wx:for="{{listItme.orderGoods}}"  wx:key="orderGoods">
-                    <image src='{{item.picUrl}}'></image>
+                <view class='move_box' wx:for="{{listItme.orderGoods}}" wx:key="orderGoods">
+                    <view class='action_panl'>
+                        <image src='{{item.picUrl}}'></image>
+                        <view class='activity' wx:if="{{item.isBindActivity == 1}}">
+                            <icon class='iconfont icon-huodong'></icon>
+                        </view>
+                    </view>
                     <view class='order_vim'>
                         <view>{{item.goodName}}</view>
-                         <view class='c-ccc decoration'>￥{{item.price}}</view>
+                        <view class='c-ccc decoration'>￥{{item.price}}</view>
                         <view class='c-red'>￥{{item.realPrice}}</view>
                     </view>
-                    <view class='order_num'>×{{item.num}}</view>
+                    <view class='order_num'>
+                        <text>×{{item.num}}</text>
+                        <text class='c-red' wx:if="{{item.isCountActivity == 1}}">已参与活动</text>
+                    </view>
                 </view>
                 <view class='order_price'>
                     <view class='v-li'>
@@ -33,34 +44,103 @@
                         <text>￥0.00</text>
                     </view> -->
                     <view class='v-li'>
-                        <text>优惠折扣</text>
-                        <text>￥{{listItme.discounts}}</text>
+                        <text>商品折扣</text>
+                        <text>-￥{{listItme.discounts}}</text>
                     </view>
-                     <view class='v-li top-border'>
+                    <view class='v-li'>
+                        <view>优惠券</view>
+                        <view class='c-999' wx:if="{{listItme.isCountActivity == 1}}">不可用</view>
+                        <view wx:else class='c-violet flex_Name' bindtap='topConIshow'>
+                            {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
+                            <view class='iconfont icon-you1'></view>
+                        </view>
+                    </view>
+                    <view  class='v-li' wx:if="{{conpunPice}}">
+                          <view>优惠券抵扣金额</view> 
+                           <view class='c-999'>-￥{{conpunPice}}</view>
+                    </view>
+                    <view class='v-li' wx:if="{{listItme.isCountActivity==1}}">
+                        <text>{{listItme.expDiscountActivityVO.name}}</text>
+                        <text>-￥{{listItme.inActDiscount}}</text>
+                    </view>
+                    <view class='v-li top-border'>
                         <text>实付</text>
-                        <text class='c-red'>￥{{listItme.paymentAmount}}</text>
+                        <text class='c-red'>￥{{listItme.paymentAmount2?listItme.paymentAmount2: listItme.paymentAmount}}</text>
+                    </view>
+                    <view class='cuopon_model overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
+                        <label class='box_fan'>返券</label>
+                        <text>{{item}}</text>
                     </view>
                 </view>
             </view>
         </view>
         <view class='ptenm_box'>
             <view class='v-li'>
-                <textarea class='rexrArea' value="{{val}}" bindblur="blurtext" placeholder='备注：特殊要求请与客服协商联系'></textarea>
+                <text class='c-999'>备注：特殊要求请与客服协商联系</text>
+                <textarea class='rexrArea' value="{{val}}" bindblur="blurtext"></textarea>
             </view>
         </view>
 
     </view>
 </view>
 
-  <view class='sumbit_box'>
-        <view class='sumbit_pirce'>
-                  <view class='sumbit_data'>
-                        <view class='c-red'>￥{{listItme.paymentAmount}}</view>
-                        <view class='c-ccc'>已购买￥{{listItme.totalAmount}} 优惠￥{{listItme.discounts}}</view>
-                  </view>
-        </view>
-
-        <view class='sumbit_but'>
-                <view class='r-barg' bindtap='orderAdd'>下单</view>
+<view class='sumbit_box'>
+    <view class='sumbit_pirce'>
+        <view class='sumbit_data'>
+            <view class='c-red'>￥{{listItme.paymentAmount2?listItme.paymentAmount2:listItme.paymentAmount}}</view>
+            <view class='c-ccc'>已购买￥{{listItme.totalAmount}} 优惠￥{{listItme.allDiscount?listItme.allDiscount:listItme.discounts}}</view>
         </view>
     </view>
+
+    <view class='sumbit_but'>
+        <view class='r-barg' bindtap='orderAdd'>下单</view>
+    </view>
+</view>
+<view class='layer' wx:if="{{conpunIshow}}"></view>
+<view class='conpun_model' wx:if="{{conpunIshow}}">
+    <view class='conpun_hd'>
+        <view class='label_title c-blue'>优惠券</view>
+        <view bindtap='hideConIshow' class='iconfont icon-shanchu'></view>
+    </view>
+    <van-tabs active="{{ active }}" bind:change="onChange" sticky>
+        <van-tab title="可用优惠券({{usableList.length}})">
+            <view class='scorll_tab'>
+                <view class='coupon_model' wx:for="{{usableList}}" wx:key="usableList" data-index="{{index}}" bindtap='changCoupon'>
+                    <view class='cou_bg bg_blue'>
+                        <label>{{item.reduce_info}}</label>
+                        <text>{{item.rule_info}}</text>
+                    </view>
+                    <view class='cou_title'>
+                        <view class='title_conter'>
+                            <view class='name_text  text_blue'>{{item.coup_name}}</view>
+                            <view class='type_text'>{{item.use_mode}}</view>
+                            <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                            <view class='p_text'>{{item.expiry_date}}</view>
+                        </view>
+                        <view class='icon_right'>
+                            <icon class='iconfont icon-chenggong' wx:if="{{conpunIndex == index}}"></icon>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="不可用优惠券({{disableList.length}})">
+            <view class='scorll_tab'>
+                <view class='coupon_model' wx:for="{{disableList}}" wx:key="disableList" data-index="{{index}}">
+                    <view class='cou_bg bg_gray'>
+                        <label>{{item.reduce_info}}</label>
+                        <text>{{item.rule_info}}</text>
+                    </view>
+                    <view class='cou_title'>
+                        <view class='title_conter'>
+                            <view class='name_text  text_gray'>{{item.coup_name}}</view>
+                            <view class='type_text text_gray'>{{item.use_mode}}</view>
+                            <view class='p_text'>适用平台：{{item.use_st_name}}</view>
+                            <view class='p_text'>{{item.expiry_date}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>

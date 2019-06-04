@@ -1,124 +1,98 @@
-<!--pages/usCenter/index.wxml-->
-<view>
-  <view class='us-img-box backg-grad'>
-    <view wx:if="{{isLogin}}" class='box-user '>
-      <!-- <image src='{{wxUserInfo.avatarUrl}}'></image> -->
-      <image src="{{wxInfo.avatarUrl ?  wxInfo.avatarUrl : '../../static/images/hader.png'}}"></image>
-      <view>
-        <text class='font-w6'>{{wxUserInfo.mobile}}</text>
-      </view>
-        <image class='vipImg' wx:if="{{rechargeMember == 'true'}}" src='../../static/images/tagVip.png'></image>
-    </view>
-    <!-- <view wx:else class='box-user '>
-      <image src='../../static/images/hader.png'></image>
-      <view>
-        <navigator url='/pages/login/index'>
-          <van-button size="small" type="default">登录/注册</van-button>
-        </navigator>
-      </view>
-    </view> -->
-    <!-- <icon class='iconfont icon-you1'></icon> -->
-  </view>
-
-  <view>
-    <!-- 我的快递 -->
-    <navigator wx:if="{{isLogin}}" url='/pages/myExpress/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>我的快递</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>我的快递</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-
-    <!-- 洗衣订单 -->
-    <navigator wx:if="{{isLogin}}" url='/pages/laundryOrder/orderDetails/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>洗衣订单</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>洗衣订单</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-
-
-    <navigator wx:if="{{isLogin}}" url='/pages/leaseCar/leaseDetails/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>租车订单</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>租车订单</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <!-- 学车申请 -->
-    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
-      <view>
-        <text>学车申请</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <text>学车申请</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator> -->
-
-    <!-- 修改会员信息 -->
-    <navigator wx:if="{{ rechargeMember == 'true'}}" url='/pages/memberInfo/modifyMember/index'  class='glup_box'>
-      <view>
-        <text>修改会员信息</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <!-- 修改手机 -->
-    <!-- <navigator wx:if="{{isLogin}}" class='glup_box'>
-      <view>
-        <text>修改手机</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator>
-    <navigator wx:else url='/pages/login/index' class='glup_box'>
-      <view>
-        <text>修改手机</text>
-      </view>
-      <icon class='iconfont icon-you1'></icon>
-    </navigator> -->
-
-  </view>
-
-  <!-- <view wx:if="{{isLogin}}" class='marig-primary'>
-    <button bindtap='loginout' class="primary  backg-grad shadow-just" form-type='submit' size="normal">退出登录</button>
-  </view> -->
+<!--pages/usCenter/userInfo.wxml-->
+<view class='info_model'>
+    <image class='bg_img' src='/static/images/bg_user.jpg'></image>
+    <view class='flut'>
+        <view class='user_info shadow-just-top'>
+            <image class='aouter_image' src="{{wxInfo.avatarUrl ?  wxInfo.avatarUrl : '/static/images/index.png'}}"></image>
+            <view class='user_name'>
+                <view class='font-w6'>{{wxInfo.nickName}}</view>
+                     <view wx:if="{{rechargeUserInfo.rechargeMember == 'true'}}" class='tiem_text'>{{rechargeUserInfo.endTime}}到期</view>
+                 <view wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'true' }}"> <text>会员已经过期</text><text  class='xufei' bindtap='goPaymenber'>去续费</text></view> 
+                 <view class='tiem_text' wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'false' }}">普通用户</view>
+            </view> 
+            <navigator hover-class='none' wx:if="{{ rechargeMember == 'true' && isTest}}" url='/pages/memberInfo/modifyMember/index'  class='vip_info'> 
+           <image src='/static/images/vip_userinfo.png'></image>
+            </navigator>
+             <navigator hover-class='none'  wx:if="{{rechargeUserInfo.rechargeMember === 'false' && rechargeUserInfo.firstCharge === 'false' && isTest == true }}" url='/pages/memberInfo/openMember/index'  class='vip_info'> 
+            <image src='/static/images/open_userinfo.png'></image>
+            </navigator>
+        </view>
+        <view class='model_info shadow-just-bottom'>
+            <view class='heder_info'>
+                <text>洗衣</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=3'>优惠券</navigator>
+            </view>
+            <view class='coupon_panl'>
+                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=0'>
+                        <icon class='iconfont icon-daifukuan'></icon>
+                        <view class='laber_text'>待付款</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=1'>
+                        <icon class='iconfont icon-gengyishi'></icon>
+                        <view>待取衣</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=2'>
+                        <icon class='iconfont icon-yiwancheng'></icon>
+                        <view class='laber_text'>已完成</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=3'>
+                        <icon class='iconfont icon-yiquxiao'></icon>
+                        <view class='laber_text'>已取消</view>
+                    </navigator>
+            </view>
+        </view>
+          <view class='model_info shadow-just-bottom'>
+            <view class='heder_info'>
+                <text>租车</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=2'>优惠券</navigator>
+            </view>
+            <view class='coupon_panl'>
+                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=0'>
+                        <icon class='iconfont icon-daifukuan'></icon>
+                        <view class='laber_text'>待付款</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=1'>
+                        <icon class='iconfont icon-cheliang'></icon>
+                        <view class='laber_text'>待取车</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=2'>
+                        <icon class='iconfont icon-yiwancheng'></icon>
+                        <view class='laber_text'>已完成</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=3'>
+                        <icon class='iconfont icon-yiquxiao'></icon>
+                        <view class='laber_text'>已取消</view>
+                    </navigator>
+            </view>
+        </view>
+          <view class='model_info shadow-just-bottom'>
+            <view class='heder_info'>
+                <text>超市</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=1'>优惠券</navigator>
+            </view>
+            <view class='coupon_panl'>
+                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=0'>
+                        <icon class='iconfont icon-daifukuan'></icon>
+                        <view class='laber_text'>待付款</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=1'>
+                        <icon class='iconfont icon-qiandai'></icon>
+                        <view class='laber_text'>已支付</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=2'>
+                        <icon class='iconfont icon-ziyuan'></icon>
+                        <view class='laber_text'>待收货</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=3'>
+                        <icon class='iconfont icon-yiwancheng'></icon>
+                        <view class='laber_text'>已完成</view>
+                    </navigator>
+                    <navigator hover-class='none' url = '/pages/shopMall/returnOrder/index'>
+                        <icon class='iconfont icon-tuihuozhong'></icon>
+                        <view class='laber_text'>退货订单</view>
+                    </navigator>
+            </view>
+        </view>
+    </view> 
 
 </view>
-
-<van-dialog id="van-dialog" />
-
-<!-- <view class='layer' wx:if="{{isShow}}"></view>
-<view class='getInfo_box' wx:if="{{isShow}}">
-  <view class='title_p'>颂小二为你服务</view>
-  <image src='/static/images/index.png'></image>
-  <view class='but_box'>
-    <button class='backg-grad shadow-just' open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
-  </view>
-</view> -->

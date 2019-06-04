@@ -1,0 +1,149 @@
+<!--pages/shopMall/orderDetails/details.wxml-->
+<!-- 头部状态 -->
+<view class='main-center'>
+<view class='detahader bg-blue'>
+    <view>
+        <icon class='iconfont icon-Order '></icon>
+         <text  wx:if="{{detailInfo.status == '-1'}}">已拒绝</text>
+        <text  wx:if="{{detailInfo.status == '0'}}">已取消</text>
+        <text  wx:if="{{detailInfo.status == '1'}}">已申请</text>
+        <text  wx:if="{{detailInfo.status == '2'}}">申请受理</text>
+        <text wx:if="{{detailInfo.status == '3'}}">处理完成</text>
+    </view>
+</view>
+<!-- 提货——配送 -->
+<view class='waymode' >
+    <view class='ad_shop' wx:if="{{detailInfo.apply_phone}}">
+        <view><icon class='iconfont icon-wo c-danl'></icon>联系人：{{detailInfo.apply_name}}</view>
+         <view data-phone="{{detailInfo.apply_phone}}" bindtap='clickQuestion'><icon class='iconfont icon-phone-channel c-danl'></icon>电话：{{detailInfo.apply_phone}}</view>
+    </view>
+</view>
+<!-- <view class='waymode' wx:if="{{detailInfo.deliver == 1}}">
+    <view class='ad_info'>
+        <view class='font-w6'> 支付后 {{detailInfo.date}} - {{detailInfo.time}}可至门店提货</view>
+        <view class='c-999'>{{detailInfo.store_address}}</view>
+    </view>
+</view> -->
+<!-- <view class='waymode'>
+    <view class='takeDeliv'>
+            <view>
+                    <image src='/static/images/error.png'></image>
+                    <view class='c-999 maigTop'>请向店员出示提货码：235646485</view>
+            </view>
+    </view>
+    <view class='ad_info'>
+        <view class='font-w6'> {{detailInfo.time}}可至门店提货</view>
+        <view class='c-999'>{{detailInfo.store_address}}</view>
+    </view>
+</view> -->
+<!-- 商品 -->
+    <view class='shopStore'>
+        <view class='shopData'>
+            <view class='shoname'>
+                <icon class='iconfont icon-dingwei2'></icon>{{detailInfo.store_name}}</view>
+            <view class='phoneha' data-phone="{{detailInfo.store_phone}}"  bindtap='clickQuestion'>
+                <view >联系商家
+                    <icon class='iconfont icon-phone-channel'></icon>
+                </view>
+            </view>
+        </view>
+        <view class='goodlist'>
+            <view class='goods'>
+                <view class='good_left'>
+                    <image class='good_img' src="{{detailInfo.good_logo ? detailInfo.good_logo : '/static/images/error.png'}}"></image>
+                    <view class='goodDeta'>
+                        <view class='font-w6 bigfize'>{{detailInfo.good_name}}</view>
+                        <view class='c-999'>{{detailInfo.good_subname}}</view>
+                        <!-- <view class='c-999 decoration'>¥3.98</view> -->
+                        <view class='c-powder'>¥{{detailInfo.pay_fee}}
+                            <!-- <text class='menberPire'>会员价</text> </view> -->
+                        </view>
+                    </view>
+                </view>
+                <view class='good_right'>
+                    <view>×{{detailInfo.amount}}</view>
+                </view>
+            </view>
+            <!-- <view class='goods'>
+                <view class='good_left'>
+                    <image class='good_img' src='/static/images/error.png'></image>
+                    <view class='goodDeta'>
+                        <view class='font-w6 bigfize'>精品西蓝花 500g</view>
+                        <view class='c-999'>有机蔬菜 精挑细选</view>
+                        <view class='c-999 decoration'>¥3.98</view>
+                        <view class='c-powder'>¥2.35
+                            <text class='menberPire'>会员价</text> </view>
+                    </view>
+                </view>
+                <view class='good_right'>
+                      <view>×1</view>
+                    <view class='apply'>申请退货</view>
+                </view>
+            </view> -->
+        </view>
+    </view>
+
+    <!-- 订单信息 -->
+    <view class='orderInfo'>
+        <view class='h2'>订单信息</view>
+        <!-- <view class='infogood'>
+            <view class='li'>
+                    <view>商品合计</view>
+                    <view>¥{{detailInfo.pay_fee}}</view>
+            </view>
+              <view class='li' wx:if="{{detailInfo.order_type == 2}}">
+                    <view>配送费</view>
+                    <view>¥{{detailInfo.freight}}</view>
+            </view>
+              <view class='li'>
+                    <view>活动优惠</view>
+                    <view>{{detailInfo.discount ? detailInfo.discount : '暂无优惠'}}</view>
+            </view> 
+        </view> -->
+        <view class='infoorder'>
+             <view class='li'>
+                    <view>订单编号</view>
+                    <view>{{detailInfo.order_no}}</view>
+            </view>
+             <view class='li'>
+                    <view>申请时间</view>
+                    <view>{{detailInfo.add_tm}}</view>
+            </view>
+             <!-- <view class='li'>
+                    <view>预约时间</view>
+                    <view>{{detailInfo.date}} {{detailInfo.time}}</view>
+            </view> -->
+             <!-- <view class='li' wx:if="{{detailInfo.pay_fee}}">
+                    <view>支付方式</view>
+                    <view>{{detailInfo.pay_mode}}</view>
+            </view> -->
+             <view class='li' wx:if="{{detailInfo.pay_fee}}">
+                    <view>退款金额</view>
+                    <view>¥{{detailInfo.refund_price}}</view>
+            </view>
+            <view class='li' wx:if="{{detailInfo.refund != '0' }}">
+                    <view>退款状态</view>
+                    <view wx:if="{{detailInfo.refund=='-1'}}">退款失败</view>
+                    <view wx:if="{{detailInfo.refund=='1'}}">申请退款中</view>
+                    <view wx:if="{{detailInfo.refund=='2'}}">退款成功</view>
+            </view>
+             <view class='li' wx:if="{{detailInfo.refund_tm}}">
+                    <view>退款时间</view>
+                    <view>{{detailInfo.refund_tm}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+    <!-- 底部 -->
+    <view class='footer'>
+    <view class='order_footer' wx:if="{{detailInfo.status == 1}}">
+        <view class='font-w6'>退款金额：
+            <text class='c-red'>¥{{detailInfo.refund_price}}</text>
+        </view>
+        <view class='but_box'>
+            <button class='but_cancel' wx:if="{{detailInfo.status}}" bindtap='editStatus' data-orderNo="{{detailInfo.cancel_no}}">取消退货</button>
+            
+        </view>
+    </view>
+</view>

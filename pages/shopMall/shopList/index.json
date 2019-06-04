@@ -1,0 +1,6 @@
+{
+"navigationBarTitleText": "小站列表",
+"usingComponents": {
+    "van-search": "/ui-plugins/vant//search/index"
+}
+}

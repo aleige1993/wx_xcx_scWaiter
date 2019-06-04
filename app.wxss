@@ -1,6 +1,6 @@
 /**app.wxss**/
 @import '/static/fonts/iconfont.wxss';
-
+/* @import '/static/fonts/iconfontNew.wxss'; */
 navigator,button,view,input,text,icon,input,label,textarea,radio,switch,:checked,form,picker,rich-text,image{
  font-family:Helvetica Neue,Helvetica,Roboto,Segoe UI,Arial,sans-serif;
  box-sizing: border-box;
@@ -109,13 +109,19 @@ c-orange{
     color: #ff7b20;
 }
 .shadow-just{
-    box-shadow:10rpx 10rpx 10rpx #ccc; 
+    box-shadow:10rpx 10rpx 10rpx #eee; 
 }
 .icon-you1{
     color: #5578f6 !important;
 }
 .font-w6{
     font-weight: 600;
+}
+.font-z16{
+    font-size:32rpx;
+}
+.font-z12{
+    font-size:24rpx;
 }
 /* 省略号... */
 .overflowfont{
@@ -147,7 +153,9 @@ overflow: hidden;
   width:90%;
   margin:0 auto;
 }
-
+.bigfize{
+    font-size: 30rpx;
+}
   /* input 默认颜色修改 */
   .phcolor{
     color: #bfbfbf;
@@ -157,7 +165,7 @@ overflow: hidden;
   position:fixed;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 10;
   top: 0;
   left: 0;
   background: rgba(0,0,0,0.5);
@@ -199,4 +207,87 @@ overflow: hidden;
 .back_view{
     display:block;
     flex-direction: column;
+}
+.menberPire{
+    background-color: #3984FF;
+    color: #fff;
+    font-size: 22rpx;
+    padding: 2rpx 10rpx;
+    border-radius:20rpx; 
+}
+.activity{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40rpx;
+    height: 40rpx;
+    font-size: 16rpx;
+    /* background-color: rgb(254, 119,116); */
+    border-radius:100%;
+    color: #fff;
+    text-align: center;
+    line-height: 40rpx;
+    transform:rotateZ(30deg);
+    z-index: 5;
+} 
+.activity icon{
+    width: 100%;
+    height: 100%;
+    color: rgb(254, 119,116);
+    font-size: 60rpx;
+}  
+.action_panl{
+    position: relative;
+}
+.self_panl{
+    position: relative;
+    overflow: hidden;
+}
+.self{
+position:absolute;
+left:-20px;
+top:5px;
+background-color:#ff4c5e;
+color:#fff;
+font-size:20rpx;
+padding:2rpx 10rpx;
+opacity:0.5;
+width:140rpx;
+transform:rotateZ(-45deg);
+text-align:center;
+}
+.conpun_hd{
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    align-items: center;
+    background-color: #fff;
+}
+.conpun_hd .label_title{
+    font-size: 34rpx;
+}
+.conpun_hd .icon-shanchu{
+    font-size: 50rpx;
+    font-weight: 600;
+    color: #999;
+}
+.scorll_tab{
+    height: 54vh;
+    overflow-y: scroll;
+}
+.box_cuo{
+    padding: 6rpx 10rpx;
+    background-color: #ff5168;
+    color: #fff;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+    border-radius:6rpx; 
+}
+.box_fan{
+    padding: 6rpx 10rpx;
+    background-color: #b55cff;
+    color: #fff;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+    border-radius:6rpx; 
 }

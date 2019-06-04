@@ -1,4 +1,0 @@
-/* pages/webView/viewDetails.wxss */
-.webview{
-    height: 100vh;
-}
