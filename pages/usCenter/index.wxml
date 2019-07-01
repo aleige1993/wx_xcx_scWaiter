@@ -17,6 +17,7 @@
             <image src='/static/images/open_userinfo.png'></image>
             </navigator>
         </view>
+        <image if="{{imageBannr}}" src='{{imageBannr}}' class='fenxImgs' bindtap='fenxYAO'></image>
         <view class='model_info shadow-just-bottom'>
             <view class='heder_info'>
                 <text>洗衣</text>
@@ -65,7 +66,7 @@
                     </navigator>
             </view>
         </view>
-          <view class='model_info shadow-just-bottom'>
+          <view class='model_info shadow-just-bottom cerMagin'>
             <view class='heder_info'>
                 <text>超市</text>
                 <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=1'>优惠券</navigator>

@@ -1,4 +1,10 @@
 
+let app = getApp();
+if (!app) {
+    setTimeout(function () {
+       app = getApp();
+    },3000)
+} 
 let showToast = (title, icon = 'none') => {
   wx.showToast({
     title: title,
@@ -25,8 +31,17 @@ let getObjectFirstArg = (object) => {
   return argName.substring(1, argName.length - 1);
 }
 
+let getFormID = (e) => {
+    console.log('tools',e);
+    let formID = e.detail.formId;
+    app.FormdataPHP.get('/wxapp/mobile/recordFormId', { form_id: formID }, (res) => {
+        if (res.code == '0000') { }
+    });
+} 
+
 module.exports = {
   showToast: showToast,
   timestampToTime: timestampToTime,
-  getObjectFirstArg: getObjectFirstArg
+  getObjectFirstArg: getObjectFirstArg,
+  getFormID: getFormID
 }

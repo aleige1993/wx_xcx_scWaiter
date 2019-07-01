@@ -3,7 +3,7 @@
     <view class='banner'>
         <image src='{{imgArr[0].advImage? imgArr[0].advImage : "../../static/images/error.png" }}'></image>
     </view>
-    <form bindsubmit="formSubmit">
+    <form bindsubmit="formSubmit" report-submit	>
         <view class='schoolInfo'>
             <view class='Info_panl'>
                 <view class='panl_title'>
@@ -41,7 +41,7 @@
                     </view>
                     <view class='whoisDay  c-666'>{{iDays?iDays:0}}天</view>
                     <view class='time_panl'>
-                        <picker class='picker_panl' mode="date" value="" start="{{startTime}}" name="endTime" bindchange="onendChange">
+                        <picker class='picker_panl' mode="date" value="" start="{{startTime}}" end="{{endTimes}}" name="endTime" bindchange="onendChange">
                             <view class="picker">
                                 {{endTime ? endTime: "请选择还车时间"}}
                                 <icon class='iconfont icon-you1'></icon>

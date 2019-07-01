@@ -543,6 +543,7 @@ font-size: 65rpx;
   font-size: 12px;
   font-weight: 700;
   background: #2b333b;
+  border-radius:0; 
 }
 .content-right .pay.enough{
   background: #00b43c;

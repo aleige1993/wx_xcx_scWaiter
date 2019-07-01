@@ -93,7 +93,9 @@
     </view>
 
     <view class='sumbit_but'>
-        <view class='r-barg' bindtap='orderAdd'>下单</view>
+        <form report-submit	 bindsubmit="orderAdd">
+             <button form-type="submit" class='r-barg formBut' >下单</button>
+        </form> 
     </view>
 </view>
 <view class='layer' wx:if="{{conpunIshow}}"></view>

@@ -20,7 +20,7 @@ Page({
     },
     //保存
     formSubmit(e) {
-        console.log('form', e.detail.value)
+        app.Tools.getFormID(e); 
         let _data  = this.data;
         let { addName, addIpone, addDetails, addAddress } = e.detail.value;
         if (addName==''){

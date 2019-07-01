@@ -1,6 +1,6 @@
 <!--pages/shopMall/addressList/addAddress.wxml-->
 <view class='addAddress'>
-    <form bindsubmit="formSubmit">
+    <form bindsubmit="formSubmit" report-submit	>
             <van-cell-group>
                 <van-field
                     v value="{{formInfo.addName}}"

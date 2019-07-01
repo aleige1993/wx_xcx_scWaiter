@@ -23,7 +23,7 @@
                             </view>
                         </view>
                         <view class='stepper_panl'>
-                            <van-stepper value="{{ item.num }}" data-index="{{index}}"  data-goodNo="{{item.productNo}}"   bind:change="onStepper" />
+                            <van-stepper value="{{ item.num }}" data-index="{{index}}"  max="99" data-goodNo="{{item.productNo}}"   bind:change="onStepper" />
                         </view>
                 </view>
         </van-checkbox-group>
@@ -49,10 +49,14 @@
                         <view class='c-ccc'>优惠￥{{discount ? discount == 'NaN' ? '0' : discount : 0}}</view>
                   </view>
         </view>
-
-        <view class='sumbit_but'>
-                <view class='y-barg' bindtap='onCaler'>删除</view>
-                <view class='r-barg' bindtap='setOrder'>去洗衣</view>
-        </view>
+       
+        
+       
+            <view class='sumbit_but'>
+                    <view class='y-barg' bindtap='onCaler'>删除</view>
+                     <form bindsubmit="setOrder" report-submit>
+                        <button form-type="submit" class='r-barg formBut' >去洗衣</button >
+                    </form>
+            </view>
     </view>
 </view>

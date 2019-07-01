@@ -92,6 +92,6 @@
     <van-toast id="van-toast" />
     <van-dialog id="van-dialog" />
 </view>
-<navigator class='flex_bottom shadow-just' hover-class='none' open-type="switchTab" url="/pages/shopMall/index">
+<navigator class='flex_bottom shadow-just' hover-class='none' open-type="redirect" url="/pages/shopMall/index">
     <icon class='iconfont icon-shouye'></icon>
 </navigator>

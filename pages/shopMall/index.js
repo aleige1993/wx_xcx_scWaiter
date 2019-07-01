@@ -101,6 +101,9 @@ Page({
             url: '/pages/shopMall/goodDetails/index?item=' + JSON.stringify(item) + '&store_info=' + JSON.stringify(this.data.store_info) + '&cart_info=' + JSON.stringify(this.data.cart_info),
         })
     },
+    formID(e){
+        app.Tools.getFormID(e); 
+    },
     //结算
     goPayFn(){
         let isFalse = true;

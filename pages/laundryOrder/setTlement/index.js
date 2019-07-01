@@ -47,7 +47,8 @@ Page({
     //         })
     //     })
     // },
-    orderAdd() {
+    orderAdd(e) {
+        app.Tools.getFormID(e); 
         if (!this.data.stationLaundry){
             wx.showToast({
                 title: '请选择小站',

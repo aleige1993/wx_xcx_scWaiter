@@ -98,3 +98,10 @@ page{
     font-size:24rpx;
     color: #666;
 }
+.fenxImgs{
+    width: 100%;
+    height: 140rpx;
+}
+.cerMagin{
+    margin-bottom: 30rpx;
+}

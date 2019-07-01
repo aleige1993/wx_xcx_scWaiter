@@ -4,7 +4,7 @@
         <image class='logo' src='../../static/images/logo.png'></image>
     </view>
     <view class='reg_panl'>
-        <form bindsubmit="formSubmit">
+        <form bindsubmit="formSubmit" >
             <van-cell-group>
                 <van-field value="{{ mobile }}" clearable placeholder="请输入手机号"  name="mobile" data-name="mobile" bind:change="getChange" />
                 <van-field value="{{ code }}" center clearable placeholder="请输入短信验证码" border="{{ false }}" use-button-slot name="code"  data-name="code" bind:change="getChange">

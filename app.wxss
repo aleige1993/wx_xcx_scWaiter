@@ -64,7 +64,7 @@ view{
 .c-gray{
   color: #e5e5e5;
 }
-c-orange{
+.c-orange{
     color: #fd8700;
 }
 .c-gray2{
@@ -290,4 +290,11 @@ text-align:center;
     margin-right: 10rpx;
     font-size: 24rpx;
     border-radius:6rpx; 
+}
+.formBut{
+    border-radius:0;
+    color: #fff; 
+    height: 100%;
+    width: 180rpx;
+    line-height:100rpx;
 }

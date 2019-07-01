@@ -15,6 +15,7 @@ Page({
         startTime:'',
         endTime:'',
         newTime: (new Date()).toLocaleDateString().split('/').join('-'),
+        endTimes:'',
         iDays:'',
         carInfo:'',
         rechargeMember:'',
@@ -164,9 +165,11 @@ Page({
     }, 
     //获取日期
     onstartChange(e) {
+        let enddays = app.Date.addTime(e.detail.value);
         this.setData({
             startTime: e.detail.value,
-            endTime:''
+            endTime:'',
+            endTimes: enddays
         },()=>{
             if (this.data.endTime){
                 this.getDays();
@@ -233,6 +236,7 @@ Page({
     },
     //提交
     formSubmit(e) {
+        app.Tools.getFormID(e); 
         if (this.data.startTime == '') {
             app.Tools.showToast('请选择取车时间');
             return false;

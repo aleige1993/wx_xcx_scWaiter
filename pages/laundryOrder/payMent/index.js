@@ -12,6 +12,7 @@ Page({
         loading:true
     },
     payment(e) {
+        app.Tools.getFormID(e); 
         let _this = this;
         _this.setData({
             loading:false

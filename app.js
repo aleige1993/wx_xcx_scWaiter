@@ -36,7 +36,7 @@ App({
           method: 'GET',
           url: 'https://pos.songchexiaozhan.com/wxapp/config/version',
           data: {
-              'message': JSON.stringify({ "version": '1.1.4' })
+              'message': JSON.stringify({ "version": '1.1.6' })
           },
           header: {
               'content-type': 'application/x-www-form-urlencoded',
@@ -81,6 +81,7 @@ App({
       })
   },
   globalData: {
+    token:null,
     employId:null,
     userInfo: null,
     goodShop:null,

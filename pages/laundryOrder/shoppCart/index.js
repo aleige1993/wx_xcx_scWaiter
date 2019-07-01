@@ -129,8 +129,8 @@ Page({
         }
     },
     //去洗衣
-    setOrder(){
-        console.log(this.data.allPirce)
+    setOrder(e){
+        app.Tools.getFormID(e); 
         if (this.data.allPirce <= 0){
             app.Tools.showToast('金额不正确,请确认勾选的产品');
             return false

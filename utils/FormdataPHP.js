@@ -33,8 +33,7 @@ let post = (url, data, callback) => {
                 data = JSON.parse(data);
             }
             if (data.code === '0004') {
-                // app.UserLogin.remove('userInfo');
-                // app.UserLogin.remove('wxUserInfo');
+                app.UserLogin.remove('userInfo');
                 setTimeout(function () {
                     wx.switchTab({
                         url: '/pages/index/index',
@@ -83,8 +82,7 @@ let get = (url, data, callback) => {
                 data = JSON.parse(data);
             }
             if (data.code === '0004') {
-                // app.UserLogin.remove('userInfo');
-                // app.UserLogin.remove('wxUserInfo');
+                app.UserLogin.remove('userInfo');
                 setTimeout(function () {
                     wx.switchTab({
                         url: '/pages/index/index',

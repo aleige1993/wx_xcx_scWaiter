@@ -80,8 +80,8 @@ Page({
         }
     },
     //提交
-    formSubmit(e) {
-        console.log(e)
+    formSubmit(e) { 
+        app.Tools.getFormID(e); 
         if (this.data.stationSchool.stationNo == '') {
             app.Tools.showToast('请选择小站');
             return false;

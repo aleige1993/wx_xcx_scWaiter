@@ -4,10 +4,10 @@
     <image src='{{imgArr[0].advImage? imgArr[0].advImage : "/static/images/error.png" }}'></image>
 </view>
 <van-tabs  active="{{ activeFirst }}"    bind:change="onChangeFirst">
-    <van-tab   wx:for="{{menuItem}}"  wx:key="menuOne"  title="{{item.categoryName}}">
+    <van-tab   wx:for="{{menuItem}}"  wx:key="{{index}}"  title="{{item.categoryName}}">
         <view class='ceng_box'>
             <van-tabs custom-class="childListStyle" wx:if="{{item.childList.length>0}}"  active="{{ activeSecond }}" bind:change="onChangeSecond" data-childList="{{item.childList}}" >
-                <van-tab   wx:for="{{item.childList}}" wx:for-item="list" wx:key="childList"   title="{{list.categoryName}}" ></van-tab>
+                <van-tab   wx:for="{{item.childList}}" wx:for-item="list" wx:key="{{index}}"   title="{{list.categoryName}}" ></van-tab>
             </van-tabs>
         </view>
     </van-tab>

@@ -106,11 +106,11 @@
 
 <view class='layer' wx:if="{{isShow}}"></view>
 <view class='getInfo_box' wx:if="{{isShow}}">
-    <view class='title_p'>颂小二为你服务</view>
+    <view class='title_p'>颂小二为您服务</view>
     <image src='/static/images/index.png'></image>
     <view class='but_box'>
-        <button class='backg-grad shadow-just' wx:if="{{state==1}}" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权微信用户信息</button>
-        <button class='backg-grad shadow-just' wx:if="{{state==2}}" open-type="getPhoneNumber" bindgetphonenumber="onGetphonenum">一键登录</button>
+        <button class='backg-grad shadow-just' wx:if="{{state==1}}"  disabled='{{isinfo}}' loading="{{isinfo}}" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" bindtap='clickinfo'>授权微信用户信息</button>
+        <button class='backg-grad shadow-just' wx:if="{{state==2}}" disabled='{{iscode}}' loading="{{iscode}}" open-type="getPhoneNumber" bindgetphonenumber="onGetphonenum" bindtap='clickcode'>一键登录</button>
         <navigator class='touTop' wx:if="{{state==2}}" hover-class='none' url='/pages/login/register'>手机号登录</navigator>
     </view>
 </view>

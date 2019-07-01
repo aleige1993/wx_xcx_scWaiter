@@ -3,7 +3,7 @@
     <view class='banner'>
         <image src='{{imgArr[0].advImage? imgArr[0].advImage : "../../static/images/error.png" }}'></image>
     </view>
-    <form  bindsubmit="formSubmit" >
+    <form  bindsubmit="formSubmit"  report-submit>
         <view class='schoolInfo'>
             <view class='Info_panl'>
                 <view class='panl_title'>

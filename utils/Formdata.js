@@ -12,12 +12,7 @@ if (!app) {
     app = getApp();
   })
 }
-
 let post = (url, data, callback) => {
-    if (url.indexOf('https://')  < 0) {
-        
-    }
-    https://sadad/ + /user/login
   wx.request({
     method: 'POST',
     url: HTTPOPENAPIURL + url,
@@ -39,7 +34,7 @@ let post = (url, data, callback) => {
       }
       if (data.code === '0004') {
           app.Tools.showToast(data.message);
-        //   app.UserLogin.remove('userInfo');
+        app.UserLogin.remove('userInfo');
         //   app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
             wx.switchTab({
@@ -59,12 +54,6 @@ let post = (url, data, callback) => {
     fail(e) {
       app.Tools.showToast('网络异常, 请稍后再试');
     }
-    // ,
-    //   complete(data) {
-    //       console.log('post', data)
-    //       console.log(UserLogin.get('userInfo').token)
-
-    //   }
   });
 }
 
@@ -90,7 +79,7 @@ let get = (url, data, callback) => {
       }
       if (data.code === '0004') {
           app.Tools.showToast(data.message);
-        //   app.UserLogin.remove('userInfo');
+            app.UserLogin.remove('userInfo');
         //   app.UserLogin.remove('wxUserInfo');
         setTimeout(function () {
           wx.switchTab({
@@ -114,11 +103,6 @@ let get = (url, data, callback) => {
     fail(e) {
       app.Tools.showToast('网络异常, 请稍后再试');
     }
-    // ,
-    //   complete(data){
-    //       console.log('get',data)
-    //       console.log(UserLogin.get('userInfo').token)
-    //   }
   });
 }
 

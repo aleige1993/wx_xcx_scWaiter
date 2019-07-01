@@ -2,6 +2,7 @@
     "pages": [
         "pages/index/index",
         "pages/usCenter/index",
+        "pages/usCenter/invitation/index",
         "pages/shopMall/orderList/index",
         "pages/usCenter/couponInfo/index",
         "pages/shopMall/index",

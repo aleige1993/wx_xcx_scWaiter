@@ -36,6 +36,7 @@ Page({
   onChangeFirst(e) {
       let index = e.detail.index;
       let childlist = this.data.menuItem[index].childList.length > 0 ? this.data.menuItem[index].childList[0] : false;
+      console.log('onChangeFirst',childlist);
       if (childlist) {
           this.setData({
              'queryList.secondCategoryNo': childlist.categoryNo
@@ -51,6 +52,8 @@ Page({
   onChangeSecond(e) {
       let index = e.detail.index;
       let childlist = e.target.dataset.childlist;
+      console.log('onChangeSecond', childlist);
+      console.log('onChangeSecond', childlist[index].categoryNo);
       this.setData({
         'queryList.secondCategoryNo':childlist[index].categoryNo
       })

@@ -1,6 +1,9 @@
 /* pages/ schoolCar/index.wxss */
 @import '../../pages/login/register.wxss';
 @import '/pages/shopMall/orderList/index.wxss';
+page{
+    background-color: #fff;
+}
 .banner{
     width: 100%;
     height: 9rem;

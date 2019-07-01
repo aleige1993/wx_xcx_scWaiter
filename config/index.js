@@ -1,7 +1,7 @@
 'use strict';
 let app = getApp();
 let DEV_CONFIG = {
-    HTTPOPENAPIURL: 'http://192.168.203.175:10036'//田怀志
+    HTTPOPENAPIURL: 'http://192.168.202.203:10036'//田怀志
 };
 let SIT_CONFIG = {
     HTTPOPENAPIURL: 'https://dev.api.songchejr.com' // 请求OPENAPI的接口

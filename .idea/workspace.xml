@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5496dc1b-cfb9-4aff-bafb-6f36008812ad" name="默认" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/fonts/iconfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/fonts/iconfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/fonts/iconfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/fonts/iconfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/fonts/iconfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/hader.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_home_a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_home_b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_user_a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_user_b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_work_a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tab_work_b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/tagVip.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.wxss" afterPath="$PROJECT_DIR$/app.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index/index.js" afterPath="$PROJECT_DIR$/pages/index/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index/index.json" afterPath="$PROJECT_DIR$/pages/index/index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index/index.wxml" afterPath="$PROJECT_DIR$/pages/index/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index/index.wxss" afterPath="$PROJECT_DIR$/pages/index/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/index/index.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/index/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/index/index.wxss" afterPath="$PROJECT_DIR$/pages/laundryOrder/index/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/details.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/details.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/details.wxss" afterPath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/details.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.js" afterPath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.wxss" afterPath="$PROJECT_DIR$/pages/laundryOrder/orderDetails/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/payMent/resultMsg/index.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/payMent/resultMsg/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/setTlement/index.js" afterPath="$PROJECT_DIR$/pages/laundryOrder/setTlement/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/setTlement/index.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/setTlement/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.js" afterPath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.wxml" afterPath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.wxss" afterPath="$PROJECT_DIR$/pages/laundryOrder/shoppCart/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/leaseCar/index.js" afterPath="$PROJECT_DIR$/pages/leaseCar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/leaseCar/index.wxml" afterPath="$PROJECT_DIR$/pages/leaseCar/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/leaseCar/leaseDetails/index.js" afterPath="$PROJECT_DIR$/pages/leaseCar/leaseDetails/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/leaseCar/leaseDetails/index.wxml" afterPath="$PROJECT_DIR$/pages/leaseCar/leaseDetails/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/login/register.js" afterPath="$PROJECT_DIR$/pages/login/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/login/register.json" afterPath="$PROJECT_DIR$/pages/login/register.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/login/register.wxml" afterPath="$PROJECT_DIR$/pages/login/register.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memberInfo/modifyMember/adrMent.js" afterPath="$PROJECT_DIR$/pages/memberInfo/modifyMember/adrMent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memberInfo/modifyMember/index.wxml" afterPath="$PROJECT_DIR$/pages/memberInfo/modifyMember/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memberInfo/openMember/index.js" afterPath="$PROJECT_DIR$/pages/memberInfo/openMember/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memberInfo/openMember/index.wxml" afterPath="$PROJECT_DIR$/pages/memberInfo/openMember/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/memberInfo/openMember/index.wxss" afterPath="$PROJECT_DIR$/pages/memberInfo/openMember/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myExpress/index.js" afterPath="$PROJECT_DIR$/pages/myExpress/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myExpress/index.json" afterPath="$PROJECT_DIR$/pages/myExpress/index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myExpress/index.wxml" afterPath="$PROJECT_DIR$/pages/myExpress/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/myExpress/index.wxss" afterPath="$PROJECT_DIR$/pages/myExpress/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/schoolCar/index.js" afterPath="$PROJECT_DIR$/pages/schoolCar/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/schoolCar/index.wxml" afterPath="$PROJECT_DIR$/pages/schoolCar/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/usCenter/index.js" afterPath="$PROJECT_DIR$/pages/usCenter/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/usCenter/index.json" afterPath="$PROJECT_DIR$/pages/usCenter/index.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/usCenter/index.wxml" afterPath="$PROJECT_DIR$/pages/usCenter/index.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/usCenter/index.wxss" afterPath="$PROJECT_DIR$/pages/usCenter/index.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/webView/viewAgreement.wxml" afterPath="$PROJECT_DIR$/pages/webView/viewAgreement.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/webView/viewDetails.wxss" afterPath="$PROJECT_DIR$/pages/webView/viewDetails.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.config.json" afterPath="$PROJECT_DIR$/project.config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/fonts/iconfont.wxss" afterPath="$PROJECT_DIR$/static/fonts/iconfont.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/Formdata.js" afterPath="$PROJECT_DIR$/utils/Formdata.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/util.js" afterPath="$PROJECT_DIR$/utils/util.js" />
-    </list>
+    <list default="true" id="5496dc1b-cfb9-4aff-bafb-6f36008812ad" name="默认" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -76,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -123,7 +60,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -136,6 +72,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -190,6 +127,7 @@
       <workItem from="1552448581760" duration="1033000" />
       <workItem from="1555485164579" duration="622000" />
       <workItem from="1558682917651" duration="100000" />
+      <workItem from="1559634028448" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="颂车小二">
       <created>1547625980712</created>
@@ -328,15 +266,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25403000" />
+    <option name="totallyTimeSpent" value="25436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12802951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28938547" sideWeight="0.5553214" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28938547" sideWeight="0.4446786" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28938547" sideWeight="0.5574289" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28938547" sideWeight="0.44257113" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -732,7 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -51,7 +51,7 @@ Page({
             })
         }
     },
-    formSubmit(e){
+    formSubmit(e){ 
         if (!this.WxValidate.checkForm(e)) {
             const error = this.WxValidate.errorList[0];
             wx.showToast({
