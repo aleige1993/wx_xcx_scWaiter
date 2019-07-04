@@ -8,7 +8,7 @@ App({
           method: 'GET',
           url: 'https://openapi.songchewang.com/openapi/common/versions/version/host',
           data: {
-              'message': JSON.stringify({ "versionNo": 100 })
+              'message': JSON.stringify({ "versionNo": 200 })
           },
           header: {
               'appId': '100006',
@@ -36,7 +36,7 @@ App({
           method: 'GET',
           url: 'https://pos.songchexiaozhan.com/wxapp/config/version',
           data: {
-              'message': JSON.stringify({ "version": '1.1.6' })
+              'message': JSON.stringify({ "version": '1.1.7' })
           },
           header: {
               'content-type': 'application/x-www-form-urlencoded',

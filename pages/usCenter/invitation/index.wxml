@@ -3,7 +3,7 @@
     <image class='fenx' src='{{imageBannr}}'></image>
     <view class='invBox'>
         <form bindsubmit="showPoper" report-submit>
-            <button form-type="submit" class='invButon'>发送我的邀请</button>
+            <button form-type="submit" class='invButon'>立即要请好友</button>
         </form>
     </view>
     <view class='couponbox'>
@@ -66,7 +66,7 @@
 
 <view class='layer' wx:if="{{fenxBox}}"></view>
 <view class='fenxBox' wx:if="{{fenxBox}}">
-    <image src='{{fenxImage}}'></image>
+    <image src='{{friendImage}}'></image>
     <view class='fbut'>
         <view class='quxiao' bindtap='fenxClear'>取消</view>
         <view class='quding' bindtap='baoCun'>保存到相册</view>
