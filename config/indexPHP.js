@@ -1,7 +1,7 @@
 'use strict';
 let app = getApp();
 let DEV_CONFIG = {
-    HTTPOPENAPIURL: 'http://192.168.201.167' //李昆韦
+    HTTPOPENAPIURL: 'http://shop.com' //李昆韦
     //HTTPOPENAPIURL: 'http://192.168.201.54' //何鑫
 };
 let SIT_CONFIG = {
@@ -16,7 +16,7 @@ let PROD_CONFIG = {
 let OPEN_API = {
     HTTPOPENAPIURL: app.OPEN_APIPHP //切换域名
 }
-let CONFIG = SIT_CONFIG;// 选取当前环境配置
+let CONFIG = OPEN_API;// 选取当前环境配置
 
 module.exports = {
     PAGE_SIZE: 10,

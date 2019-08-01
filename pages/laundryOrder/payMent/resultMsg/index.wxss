@@ -1,7 +1,4 @@
 /* pages/laundryOrder/payMent/resultMsg/index.wxss */
-page{
-    background-color: #f2f2f2;
-}
 .result_box{
     width: 90%;
     margin: 50rpx auto;
@@ -21,26 +18,31 @@ page{
 }
 .result_box .p1{
     font-weight: 700;
-    font-size: 16px;
-    margin: 20rpx 0;
+    font-size: 34rpx;
+    margin: 40rpx 0;
 }
 .result_box .p2{
     color: #ec7868;
 }
 .order_but navigator{
-    width: 90%;
+    width: 80%;
     background-color: #fff;
     margin: 0 auto;
     margin-bottom: 30rpx;
     text-align: center;
     line-height: 80rpx;
-    border: 1px solid #94b0ff;
-    color: #5f8aff;
-    border-radius: 10rpx;
+    border: 1px solid #FF4949;
+    color: #FF4949;
+    border-radius: 80rpx;
 }
+.backg-grad {
+background-image:linear-gradient(45deg, #FF8687, #FF4949) !important; 
+} 
 .order_but navigator.active{
     background-color: #3984ff;
     color: #fff;
 }
-
-
+.ic_success,.ic_fail{
+width: 300rpx;
+height: 300rpx;
+}

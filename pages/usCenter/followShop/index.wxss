@@ -1,0 +1,5 @@
+/* pages/usCenter/followShop/index.wxss */
+@import '/pages/index/index.wxss';
+.marginTop{
+    margin-top: 20%;
+}

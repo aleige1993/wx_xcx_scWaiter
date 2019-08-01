@@ -1,6 +1,11 @@
 /* pages/laundryOrder/setTlement/index.wxss */
 @import '/pages/laundryOrder/orderDetails/details.wxss';
 @import '/pages/shopMall/orderList/index.wxss';
+.stationIcon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+}
 .sumbit_box{
     display: flex;
     justify-content: space-between;
@@ -64,6 +69,82 @@
 }
 .cuopon_model text{
     line-height: 10rpx;
+}
+.order_price .v-li text{
+    color: #535353;
+}
+.stulet_box{
+    display: flex;
+    padding: 20rpx 30rpx;
+    justify-content: space-between;
+    border-bottom:1px solid #f2f2f2;
+    align-items: center; 
+}
+.stulet_box .yiw{
+    font-weight: 700;
+    font-size: 34rpx;
+    color: #535353;
+}
+.stulet text{
+    color: #7089FF;
+    font-size: 22rpx;
+}
+.stulet icon{
+    color: #7089FF;
+    font-size: 20rpx;
+}
+.m_boxStuel{ 
+    transition:2s;
+    height: auto;
+}
+.move_boxStuel{
+    overflow: hidden;
+    height: 0 !important;
+    transition:2s;
+}
+.cuopon_top{
+  border-top:1px solid #f2f2f2;
+padding-top:20rpx;
+}
+.v-li{
+display:flex;
+justify-content:space-between;
+}
+.allPirce{
+    color: #535353;
+    font-size: 34rpx;
+    font-weight: 600;
+}
+.discount{
+    color: #A0A0A0;
+    font-size: 22rpx;
+}
+.clear{
+    padding: 10rpx 40rpx;
+    background-color: #FF4848;
+    color: #fff;
+    border-radius:50rpx;  
+    height: 60rpx;
+    margin-top: 24rpx;
+    line-height: normal;
+    margin-right: 30rpx;
+}
+.r-barg{
+    background-color: #7089FF !important;
+}
+.ic_coupin{
+    width:36rpx;
+    height:40rpx;
+}
+.coupin_title{
+    display: flex;
+    align-items: center;
+}
+.coupin_title label{
+    color:#535353;
+    font-size: 30rpx;
+    margin-left: 16rpx;
+    font-weight: 600;
 }
 
 /* .conpun_hd{

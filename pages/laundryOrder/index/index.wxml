@@ -3,10 +3,10 @@
 <view class='banner'>
     <image src='{{imgArr[0].advImage? imgArr[0].advImage : "/static/images/error.png" }}'></image>
 </view>
-<van-tabs  active="{{ activeFirst }}"    bind:change="onChangeFirst">
-    <van-tab   wx:for="{{menuItem}}"  wx:key="{{index}}"  title="{{item.categoryName}}">
+<van-tabs  active="{{ activeFirst }}"  custom-class="navCss" color="#C6D0FF" line-width="20" bind:change="onChangeFirst">
+    <van-tab    wx:for="{{menuItem}}"  wx:key="{{index}}"  title="{{item.categoryName}}">
         <view class='ceng_box'>
-            <van-tabs custom-class="childListStyle" wx:if="{{item.childList.length>0}}"  active="{{ activeSecond }}" bind:change="onChangeSecond" data-childList="{{item.childList}}" >
+            <van-tabs   custom-class="childListStyle" wx:if="{{item.childList.length>0}}"  active="{{ activeSecond }}" bind:change="onChangeSecond" data-childList="{{item.childList}}" >
                 <van-tab   wx:for="{{item.childList}}" wx:for-item="list" wx:key="{{index}}"   title="{{list.categoryName}}" ></van-tab>
             </van-tabs>
         </view>
@@ -23,8 +23,8 @@
   >
     <view class='laundry-list' wx:if="{{producList.length>0}}">
     <view class='laundry-item' wx:for="{{producList}}" wx:key="produc" >
-        <view class='laundry-item-inner shadow-just'   >
-            <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
+        <view class='laundry-item-inner shadow-just'   > 
+            <view class='hotfill' wx:if="{{item.isBindActivity == 1}}" ><icon class='iconfont icon-hotfill'></icon><text>活动</text></view>
             <view class='c-333 font-w6'>{{item.goodName}}</view>
             <view>
                 <image src='{{item.picUrl}}' />
@@ -32,7 +32,7 @@
             <view class='pirce_box' >
                 <view>
                       <text class='c-999 decoration'>￥{{item.price}}</text>
-                     <text class='c-yellow'>￥{{item.realPrice}}</text>
+                     <text class='realPrice'>￥{{item.realPrice}}</text>
                 </view>
                 <view>
                      <icon class='iconfont icon-tianjia1' data-goodNo="{{item.goodNo}}" bindtap="touchOnGoods"></icon>
@@ -47,9 +47,9 @@
 </view>
   </scroll-view>
 
-<navigator class="laundry-button backg-grad"  url='/pages/laundryOrder/shoppCart/index'>
-    <icon class='iconfont icon-gouwuchekong'></icon>
-    <text> {{count>0?count:''}}</text>
+<navigator hover-class='none' class="laundry-button"  url='/pages/laundryOrder/shoppCart/index'>
+    <image class='ic_basket' src='/static/images/ic_laundry_basket.png'></image>
+    <text class='moch' wx:if="{{count>0}}"> {{count>0?count:''}}</text>
 </navigator>
 
 <view class="good_box" hidden="{{hide_good_box}}"  style="left: {{bus_x}}px; top: {{bus_y}}px;"> </view>

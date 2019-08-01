@@ -3,6 +3,7 @@
 const app = getApp()
 Page({
             data: {
+                appointment: false,
                 store_list: [],
                 mainActiveIndex: 0,
                 multiArray: [],
@@ -51,6 +52,43 @@ Page({
                     show: false
                 });
             },
+    showMent() {
+        this.setData({
+            appointment: true
+        })
+    },
+    onMent() {
+        let _this = this;
+        let parmes = {
+            mobile: app.UserLogin.get('userInfo') ? app.UserLogin.get('userInfo').mobile : '',
+            nickName: app.UserLogin.get('wxUserInfo') ? app.UserLogin.get('wxUserInfo').nickName : ''
+        }
+        app.Formdata.post('/openapi/express/wechatapplet/express/usersub/add', parmes, (res) => {
+            if (res.code == '0000') {
+                wx.showModal({
+                    title: '预约成功',
+                    content: '请等待客服联系',
+                    showCancel: false,
+                    confirmText: '我知道了',
+                    success() {
+                        _this.setData({
+                            appointment: false
+                        })
+                    }
+                })
+            } else {
+                wx.showToast({
+                    title: res.message,
+                    icon: 'none',
+                    success() {
+                        _this.setData({
+                            appointment: false
+                        })
+                    }
+                })
+            }
+        })
+    },
             getTime() {
                 let myDate = new Date();
                 let hour = myDate.getHours();
@@ -65,22 +103,28 @@ Page({
                 })
             },
             //跳转banner详情
-            goToViewDetails(e) {
-                if (e.currentTarget.dataset.name == '会员权益') {
-                    this.getIFmenber();
-                } else if (e.currentTarget.dataset.url) {
-                    let weburl = e.currentTarget.dataset.url; 
-                    if (weburl.indexOf('https') != -1){
-                        wx.navigateTo({
-                            url: '/pages/webView/viewInstions?url=' + encodeURIComponent(weburl),
-                        })
-                    }else{
-                        wx.navigateTo({
-                            url: weburl,
-                        })
-                    } 
-                }
-            },
+    goToViewDetails(e) {
+        if (e.currentTarget.dataset.name == '会员权益') {
+            this.getIFmenber();
+        } else if (e.currentTarget.dataset.name == '弹窗') {
+            this.setData({
+                appointment: true
+            })
+        } else if (e.currentTarget.dataset.name == '获取优惠券'){
+            this.getCouponlist();
+        }else if (e.currentTarget.dataset.url) {
+            let weburl = e.currentTarget.dataset.url;
+            if (weburl.indexOf('https') != -1) {
+                wx.navigateTo({
+                    url: '/pages/webView/viewInstions?url=' + encodeURIComponent(weburl),
+                })
+            } else {
+                wx.navigateTo({
+                    url: weburl,
+                })
+            }
+        }
+    },
             clickinfo(){
                 this.setData({
                     isinfo: true
@@ -108,7 +152,6 @@ Page({
                 })
             },
             onGetphonenum(e) { 
-                console.log('onGetphonenum', e);
                 let _this = this; 
                 if (e.detail.errMsg == 'getPhoneNumber:user deny') {
                     wx.showModal({
@@ -128,7 +171,6 @@ Page({
                     wx.login({
                         success(codeInfo) {
                             if (codeInfo.code) {
-                                console.log("codeInfo", codeInfo.code); 
                                 app.Formdata.post('/openapi/common/user/login', {
                                     "wxCode": codeInfo.code,
                                     "wxEncData": e.detail.encryptedData,
@@ -140,7 +182,6 @@ Page({
                                     "inviterNo": _this.data.inviterNo,
                                     "avatarUri": app.UserLogin.get('wxUserInfo') ? app.UserLogin.get('wxUserInfo').avatarUrl : ''
                                 }, (res) => {
-                                    console.log('res', res)
                                     if (res.success && res.success === 'true') {
                                         app.UserLogin.set('userInfo', res.data);
                                         _this.setData({
@@ -265,7 +306,8 @@ Page({
                     ['1', 'banner.bannerArr'],
                     ['7', 'banner.openmenber'],
                     ['10', 'rightcar'],
-                    ['11', 'leftwash']
+                    ['11', 'leftwash'],
+                    ['16', 'mentImg']
                 ];
                 if (res.data) {
                     let data = res.data;
@@ -354,7 +396,6 @@ Page({
     },
     isShowTab(){
         if (app.UserLogin.get('userInfo')) {
-            console.log('isShowTab');
             wx.showTabBar({
                 aniamtion:true
             });
@@ -375,7 +416,7 @@ Page({
             })
         } 
         let location = app.UserLogin.get('location') || null;
-        let scene = decodeURIComponent(query.scene); 
+        let scene = decodeURIComponent(query.scene);
         if (scene){
             if (scene.indexOf('no') != -1) {
                 let inviterNo = scene.replace('no', '');
@@ -447,13 +488,20 @@ Page({
     //优惠券
     changeHide() {
         this.setData({
-            isConpun: false
+            isConpun: false,
+            appointment: true
         })
     },
     //注册券
     changeRec() {
         this.setData({
             isReceive: false
+        })
+    },
+    //预约
+    changeMent() {
+        this.setData({
+            appointment: false
         })
     },
     goToshop(e) {
@@ -471,6 +519,7 @@ Page({
                 if (res.data.coup_list.length > 0) {
                     this.setData({
                         isReceive: true,
+                        appointment: false,
                         recCoupon: res.data.coup_list
                     })
                 } else {
@@ -504,12 +553,24 @@ Page({
         let userInfo = app.UserLogin.get('userInfo');
         if (userInfo.isFirstLoginSxe == 1) {
             app.FormdataPHP.post('/wxapp/coupon/registerReceive', {}, (res) => {
-                if (res.data.coup_list.length > 0) {
-                    this.setData({
-                        isConpun: true,
-                        regisCoupList: res.data.coup_list
+                if (res.code == '0000') {
+                    if (res.data.coup_list.length > 0) {
+                        this.setData({
+                            isConpun: true,
+                            appointment: false,
+                            regisCoupList: res.data.coup_list
+                        })
+                    }
+                } else {
+                    wx.showToast({
+                        title: res.message,
+                        icon: 'none'
                     })
                 }
+            })
+        } else {
+            this.setData({
+                appointment: true
             })
         }
     }

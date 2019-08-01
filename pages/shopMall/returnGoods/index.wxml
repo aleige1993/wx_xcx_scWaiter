@@ -41,7 +41,7 @@
         </view>
 
          <view class='marig-primary'>
-                <button size="normal" type="primary" round="true" form-type='submit' class="primary backg-grad shadow-just"> 提交申请</button>
+                <button size="normal" type="primary" round="true" form-type='submit' class="primary  shadow-just newButton"> 提交申请</button>
             </view>
     </form>
     <view class='panl_li'>

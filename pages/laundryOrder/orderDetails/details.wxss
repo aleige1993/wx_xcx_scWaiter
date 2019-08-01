@@ -42,28 +42,37 @@ page{
 }
 
 .ptenm_box .v-li{
-    margin-bottom: 20rpx;
+    margin-bottom: 26rpx;
+    display: flex;
+    justify-content: space-between;
+    color: #535353;
 }
-.ptenm_box .v-li:last-child{
+.ptenm_box .v-li text{
+    font-size: 26rpx;
+    color: #535353;
+}
+/* .ptenm_box .v-li:last-child{
     margin-bottom: 0;
 }
 .ptenm_box .v-li text:last-child{
     color: #999;
-}
+} */
 
 .order_price{
     padding: 20rpx 30rpx;
 }
 .order_price .v-li{
-    margin-bottom: 20rpx;
+    margin-bottom: 26rpx;
     display: flex;
     justify-content: space-between;
+    color: #535353;
+}
+.order_price .v-li text{
+    color: #535353;
+    font-size: 26rpx;
 }
 .order_price .v-li:last-child{
     margin-bottom: 0;
-}
-.order_price .v-li text:last-child{
-    color: #999;
 }
 .footer{
     position: fixed;
@@ -74,7 +83,7 @@ page{
     z-index: 20;
 }
 .main{
-    margin-bottom: 120rpx;
+    margin-bottom: 140rpx;
 }
 .backgColor{
     background-color: rgb(26, 188,156);
@@ -86,4 +95,37 @@ page{
 .type_text{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.wait_img{
+    width: 120rpx;
+    height: 100rpx;
+}
+.c_53{
+    color: #535353;
+}
+.c_A0{
+    color: #A0A0A0;
+}
+.c-red{
+    color: #FF4848;
+}
+.stationIcon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+}
+.paymentAmount_panl{
+    display: flex;
+    flex-direction: column;
+}
+.paymentAmount{
+    color: #535353;
+    font-weight: 700;
+    font-size: 40rpx;
+}
+.paymentAmount_panl label{
+color: #A0A0A0;
+font-size: 22rpx;
 }

@@ -3,7 +3,7 @@
     <image class='fenx' src='{{imageBannr}}'></image>
     <view class='invBox'>
         <form bindsubmit="showPoper" report-submit>
-            <button form-type="submit" class='invButon'>立即要请好友</button>
+            <button form-type="submit" class='invButon'>立即邀请好友</button>
         </form>
     </view>
     <view class='couponbox'>

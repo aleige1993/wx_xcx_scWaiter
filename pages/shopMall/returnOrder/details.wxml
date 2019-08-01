@@ -1,15 +1,13 @@
 <!--pages/shopMall/orderDetails/details.wxml-->
 <!-- 头部状态 -->
 <view class='main-center'>
-<view class='detahader bg-blue'>
-    <view>
-        <icon class='iconfont icon-Order '></icon>
-         <text  wx:if="{{detailInfo.status == '-1'}}">已拒绝</text>
-        <text  wx:if="{{detailInfo.status == '0'}}">已取消</text>
-        <text  wx:if="{{detailInfo.status == '1'}}">已申请</text>
-        <text  wx:if="{{detailInfo.status == '2'}}">申请受理</text>
-        <text wx:if="{{detailInfo.status == '3'}}">处理完成</text>
-    </view>
+<view class='detahader type_text'>
+        <label  wx:if="{{detailInfo.status == '-1'}}">已拒绝</label>
+        <label  wx:if="{{detailInfo.status == '0'}}">已取消</label>
+        <label  wx:if="{{detailInfo.status == '1'}}">已申请</label>
+        <label  wx:if="{{detailInfo.status == '2'}}">申请受理</label>
+        <label wx:if="{{detailInfo.status == '3'}}">处理完成</label>
+        <image class='wait_img' src='/static/images/ic_cancelled.png'></image>
 </view>
 <!-- 提货——配送 -->
 <view class='waymode' >
@@ -85,7 +83,8 @@
 
     <!-- 订单信息 -->
     <view class='orderInfo'>
-        <view class='h2'>订单信息</view>
+       <view class='h2'>
+            <text class='leborder'></text>订单信息</view>
         <!-- <view class='infogood'>
             <view class='li'>
                     <view>商品合计</view>

@@ -1,0 +1,11 @@
+{
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance":80,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "社区",
+  "usingComponents": {
+    "van-tab": "/ui-plugins/vant/tab/index",
+    "van-tabs": "/ui-plugins/vant/tabs/index",
+    "van-loading": "/ui-plugins/vant/loading/index"
+  }
+}

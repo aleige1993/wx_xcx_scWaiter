@@ -4,9 +4,11 @@
         <view data-index="1" catchtap='changTab' class="ind_tab {{indexTab == 1 ? 'active' : '' }}">
             <view data-index="1">配送上门</view>
             <view data-index="1">{{isTest?'会员':''}}订单满{{cart_info.free_freight}}元免费配送</view>
+            <text class='redbordex'></text>
         </view>
         <view data-index="0" catchtap='changTab' class="ind_tab {{indexTab == 0?'active':'' }}">
             <view data-index="0">门店自提</view>
+            <text class='redbordex'></text>
         </view>
     </view>
     <view class='addrDetail'>
@@ -39,11 +41,11 @@
                 </view>
             </view>
         </view>
-         <view class='timeInfo' wx:else>
+        <view class='timeInfo' wx:else>
             <view>营业时间</view>
             <view>
                 <view class='c-violet'>
-                   {{store_info.sale_time}}
+                    {{store_info.sale_time}}
                 </view>
             </view>
         </view>
@@ -53,29 +55,39 @@
             <view class='shoname'>
                 <icon class='iconfont icon-dingwei2'></icon>{{store_info.st_name}}</view>
             <view class='phoneha'>
-                <view data-phone="{{store_info.phone}}" data-phone="{{store_info.phone}}"  bindtap='makePhoneCall'>联系电话
+                <view data-phone="{{store_info.phone}}" data-phone="{{store_info.phone}}" bindtap='makePhoneCall'>联系电话
                     <icon class='iconfont icon-phone-channel'></icon>
                 </view>
             </view>
         </view>
         <view class='goodlist'>
-            <view class='panl_goods' wx:for="{{cart_info.list}}" wx:key="cart_info_list" >
-            <view class='goods_panl  ShopCart_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
-                  <view class='self_panl'>
-                                 <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
-                                  <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
-                           </view> 
-               
+            <view class='panl_goods' wx:for="{{cart_info.list}}" wx:key="cart_info_list">
+                <view class='goods_panl  ShopCart_panl' data-items="{{item}}" bindtap='getGondsDeteil'>
+                    <view class='self_panl'>
+                        <label class='self' wx:if="{{item.is_self == 1}}">直营</label>
+                        <image class='goodimg' src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+                    </view>
 
-                <view class='gooddetail'>
-                    <view class='font-w6'>{{item.name}}</view>
-                      <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
-                         <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
-                    <!-- <view class='c-powder' wx:if="{{!item.can_buy || !item.iscan}}">{{item.can_buy?'':'库存不足'}}</view> -->
-                    <view wx:if="{{is_vip == 1}}">
+
+                    <view class='gooddetail'>
+                        <view class='font-w6'>{{item.name}}</view>
+                        <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
+                        <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
+                        <view class='shopPrice'>
+                            <view class='spricev'>
+                                <label>会员价</label>
+                            </view>
+                            <view class='sprice'>
+                                <label class='vip_price'>￥
+                                    <text>{{item.vip_price}}</text>
+                                </label>
+                                <label class='price'>原价:{{item.price}}</label>
+                            </view>
+                        </view>
+                        <!-- <view class='c-powder' wx:if="{{!item.can_buy || !item.iscan}}">{{item.can_buy?'':'库存不足'}}</view> -->
+                        <!-- <view wx:if="{{is_vip == 1}}">
                         <view class='c-666 decoration'>原价：¥{{item.price}}</view>
                         <view class='c-powder'>¥{{item.vip_price}}
-                            <!-- <text class='menberPire'>会员价</text> -->
                         </view>
                     </view>
                     <view wx:else>
@@ -83,16 +95,16 @@
                             <text class='menberPire'>会员价</text>¥{{item.vip_price}}
                         </view>
                         <view class='c-powder'>¥{{item.price}}</view>
+                    </view> -->
                     </view>
                 </view>
-            </view>
-            <view class='Calcu_panl' wx:if="{{item.can_buy}}">
-                <input value='{{item.num}}' disabled="true"></input>
-                        <!-- <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
+                <view class='Calcu_panl' wx:if="{{item.can_buy}}">
+                    <input value='×{{item.num}}' disabled="true"></input>
+                    <!-- <icon class='iconfont icon-wuuiconsuoxiao reduce' data-item="{{item}}" data-operate="dec" bindtap='addGoods'></icon>
                         <input value='{{item.num}}' disabled="true"></input>
                         <icon wx:if="{{item.num != item.amount}}" class='iconfont icon-out-column outcolumn' data-operate="inc" data-item="{{item}}" bindtap='addGoods'></icon>
                          <icon wx:if="{{item.num == item.amount}}" class='iconfont icon-out-column outcolumn nocolumn' ></icon> -->
-                    </view>
+                </view>
             </view>
         </view>
     </view>
@@ -101,18 +113,20 @@
         <view class='li'>
             <view>优惠券</view>
             <view class='c-violet flex_Name' bindtap='topConIshow'>
-                    {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
-                    <view class='iconfont icon-you1'></view>
-                </view>
+                {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
+                <view class='iconfont icon-you1'></view>
+            </view>
         </view>
-         <view class='li' wx:if="{{conpunPice}}">
+        <view class='li' wx:if="{{conpunPice}}">
             <view>优惠券抵扣金额</view>
-            <view>-￥{{conpunPice}}</view>
+            <view class='c-red'>-￥{{conpunPice}}</view>
         </view>
         <view class='li' wx:if="{{indexTab != 0}}">
             <view>配送费</view>
             <view>
-                <text class='menberPire'>会员满{{settlement_info.free_freight}}元免配送费</text>¥{{settlement_info.freight?settlement_info.freight:'0.00'}}</view>
+                <text class='menberPire'>会员满{{settlement_info.free_freight}}元免配送费</text>
+                <label class='c-red'>¥{{settlement_info.freight?settlement_info.freight:'0.00'}}</label>
+            </view>
         </view>
         <view class='li'>
             <view>活动优惠</view>
@@ -120,7 +134,7 @@
         </view>
         <view class='li'>
             <view>商品合计</view>
-            <view>¥{{settlement_info.total_price2?settlement_info.total_price2:settlement_info.total_price}}</view>
+            <view class='c-red'>¥{{settlement_info.total_price2?settlement_info.total_price2:settlement_info.total_price}}</view>
         </view>
 
     </view>
@@ -150,11 +164,11 @@
 <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
     <van-tree-select items="{{ multiArray }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
 </van-popup>
- 
+
 <view class='layer' wx:if="{{conpunIshow}}"></view>
 <view class='conpun_model' wx:if="{{conpunIshow}}">
     <view class='conpun_hd'>
-        <view class='label_title c-blue'>优惠券</view>
+        <view class='label_title c-red'>优惠券</view>
         <view bindtap='hideConIshow' class='iconfont icon-shanchu'></view>
     </view>
     <van-tabs active="{{ active }}" bind:change="onChange" sticky>

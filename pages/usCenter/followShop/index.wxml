@@ -1,0 +1,44 @@
+<!--pages/usCenter/followShop/index.wxml-->
+<view class='new-express'>
+    <view class='station_model' wx:for="{{storeList}}" wx:key="storeList" data-station="{{item}}" bindtap='goToshop'>
+        <view class='imgpanl'>
+            <image src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
+        </view>
+        <view class='titlepanl'>
+            <view class='conput_box'>
+                <view class='titlex_box'>
+                    <view class='title_name overflowfont'>{{item.st_name}}</view>
+                    <label class='bg_hot' wx:if="{{item.free_freight > 0}}">会员满{{item.free_freight}}元免配送费</label>
+                    <label class='bg_hot' wx:if="{{item.free_freight == 0}}"> 免配送费</label>
+                </view>
+                <view class='title_text'>
+                    <view class='text_span'>
+                        <label>起送
+                            <text>￥{{item.start_freight}}</text>
+                        </label>
+                        <label>基础运费
+                            <text>￥{{item.deliver_money}}</text>
+                        </label>
+                    </view>
+                    <view wx:if="{{item.distance != 0}}" class='mink'>{{item.distance}}</view>
+                </view>
+            </view>
+            <view class='cuopon_panl' wx:if="{{item.coup_info.back || item.coup_info.receive}}">
+                <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.receive}}">
+                    <image class='box_cuo' src='/static/images/ic_coupon.png'></image>
+                    <label>{{item.coup_info.receive}}</label>
+                </view>
+                <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.back}}">
+                    <image class='box_fan' src='/static/images/ic_ticket.png'></image>
+                    <label>{{item.coup_info.back}}</label>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{nodata}}">
+        <view class='null-data marginTop'>
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+            <view>暂无关注~~~</view>
+        </view>
+    </view>
+</view>

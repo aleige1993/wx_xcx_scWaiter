@@ -1,62 +1,66 @@
 <!--pages/laundryOrder/shoppCart/index.wxml-->
 <view>
-    <view>
+    <view class='cart_panl'>
         <van-checkbox-group value="{{ result }}" bind:change="onCheckbox">
-                <view class='change_panl' wx:for="{{resData}}" wx:key="{{index}}">
-                        <view class='check_box'>
-                            <van-checkbox
-                                checked-color="#ea857d"
-                                name="{{item.id}}"
-                            >
-                             </van-checkbox>
-                        </view>
-                        <view class='order_panl'>
-                             <view class='action_panl'>
+            <view class='change_panl' wx:for="{{resData}}" wx:key="{{index}}">
+                <view class='check_box'>
+                    <van-checkbox checked-color="#7089FF" name="{{item.id}}">
+                    </van-checkbox>
+                </view>
+                <view class='order_panl'>
+                    <view class='action_panl'>
                         <image src='{{item.picUrl}}'></image>
-                        <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
+                        <!-- <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view> -->
                     </view>
-                            <!-- <image src='{{item.picUrl}}'></image> -->
-                            <view class='order_data'>
-                                <view>{{item.goodName}}</view>
-                                <view class='c-ccc decoration'>￥{{item.price ? item.price : 0}}</view>
-                                <view class='c-red'>￥{{item.realPrice ? item.realPrice : 0}}</view>
+                    <!-- <image src='{{item.picUrl}}'></image> -->
+                    <!-- wx:if="{{item.isBindActivity == 1}}"  -->
+                    <view class='order_data'>
+                        <view class='goodname'>
+                            <label>{{item.goodName}}</label>
+                            <view wx:if="{{item.isBindActivity == 1}}" class='hotfill'>
+                                <icon class='iconfont icon-hotfill'></icon>
+                                <text>活动</text>
                             </view>
                         </view>
-                        <view class='stepper_panl'>
-                            <van-stepper value="{{ item.num }}" data-index="{{index}}"  max="99" data-goodNo="{{item.productNo}}"   bind:change="onStepper" />
+                        <view>
+                            <view class='c-ccc decoration'>￥{{item.price ? item.price : 0}}</view>
+                            <view class='c-53'>￥{{item.realPrice ? item.realPrice : 0}}</view>
                         </view>
+                    </view>
                 </view>
+                <view class='stepper_panl'>
+                    <van-stepper value="{{ item.num }}" data-index="{{index}}" max="99" data-goodNo="{{item.productNo}}" bind:change="onStepper" />
+                </view>
+            </view>
         </van-checkbox-group>
     </view>
 
-    <view wx:if="{{resData.length<=0}}"  class="resNull">
+    <view wx:if="{{resData.length<=0}}" class="resNull">
         <icon class='iconfont icon-gouwuchekong'></icon>
-       <view class='title'>购物车空空如也，<navigator open-type="navigateBack"  delta="1" url="/pages/laundryOrder/index/index">快快去添加</navigator></view> 
+        <view class='title'>购物车空空如也，
+            <navigator open-type="navigateBack" delta="1" url="/pages/laundryOrder/index/index">快快去添加</navigator>
+        </view>
     </view>
     <view class='sumbit_box'>
         <view class='sumbit_pirce'>
-                <view class=''>
-                                    <van-checkbox
-                                        value="{{ isAll }}"
-                                         checked-color="#ea857d"
-                                         bind:change="allCheckbox"
-                                    >
-                                    全选
-                                    </van-checkbox>
-                </view>
-                  <view class='sumbit_data'>
-                        <view class='c-red'>￥{{allPirce ? allPirce == 'NaN' ? '0' : allPirce : 0 }}</view>
-                        <view class='c-ccc'>优惠￥{{discount ? discount == 'NaN' ? '0' : discount : 0}}</view>
-                  </view>
-        </view>
-       
-        
-       
-            <view class='sumbit_but'>
-                    <view class='y-barg' bindtap='onCaler'>删除</view>
-                     <form bindsubmit="setOrder" report-submit>
-                        <button form-type="submit" class='r-barg formBut' >去洗衣</button >
-                    </form>
+            <view class=''>
+                <van-checkbox value="{{ isAll }}" checked-color="#7089FF" bind:change="allCheckbox">
+                    全选
+                </van-checkbox>
             </view>
+            <view class='sumbit_data'>
+                <view class='allPirce'>￥{{allPirce ? allPirce == 'NaN' ? '0' : allPirce : 0 }}</view>
+                <view class='discount'>优惠￥{{discount ? discount == 'NaN' ? '0' : discount : 0}}</view>
+            </view>
+        </view>
+
+
+
+        <view class='sumbit_but'>
+            <view class='clear  {{allPirce ? allPirce == "NaN" ? "openty" : allPirce : "openty" }}' bindtap='onCaler'>删除</view>
+            <form bindsubmit="setOrder" report-submit>
+                <button form-type="submit" class='r-barg clear {{allPirce ? allPirce == "NaN" ? "openty" : allPirce : "openty" }}'>去洗衣</button>
+            </form>
+        </view>
     </view>
 </view>

@@ -1,30 +1,32 @@
 <!--pages/login/register.wxml-->
 <view>
     <view class='logo_box'>
-        <image class='logo' src='../../static/images/logo.png'></image>
+        <image class='logo' src='/static/images/ic_logo.png'></image>
     </view>
     <view class='reg_panl'>
         <form bindsubmit="formSubmit" >
-            <van-cell-group>
+            <view class='wx_li'>
+                    <image class='logxw' src='/static/images/ic_phone_number.png'></image>
+                    <input type="text" placeholder='请输入手机号'  value="{{ mobile }}"  name="mobile" data-name="mobile" bindinput="getChange"></input>
+            </view>
+            <view class='wx_li'>
+                    <image  class='logxw' src='/static/images/ic_message.png'></image>
+                    <input type="text" placeholder='请输入短信验证码' value="{{ code }}"  name="code"  data-name="code" bindinput="getChange"></input>
+                    <button wx:if="{{ isShow }}"  class='slotBut linear45'  size="small" type="primary" bindtap="onCaptcha">发送验证码</button>
+                     <button wx:else class='slotBut linear45 opacity5'  disabled size="small" type="primary">{{tiemNum}}秒后重发</button>
+            </view>
+
+
+            <!-- <van-cell-group>
                 <van-field value="{{ mobile }}" clearable placeholder="请输入手机号"  name="mobile" data-name="mobile" bind:change="getChange" />
                 <van-field value="{{ code }}" center clearable placeholder="请输入短信验证码" border="{{ false }}" use-button-slot name="code"  data-name="code" bind:change="getChange">
                     <van-button wx:if="{{ isShow }}" slot="button" size="small" type="primary" bind:click="onCaptcha">发送验证码</van-button>
                      <van-button wx:else slot="button"  disabled  size="small" type="primary">{{tiemNum}}秒后重发</van-button>
-                </van-field>
-                <!-- <van-field value="{{ oldPaswd }}" clearable type="password" placeholder="请设置6-20位登录密码" name="oldPaswd"  data-name="oldPaswd" bind:change="getChange"/>
-                <van-field value="{{ newPaswd }}" clearable type="password" data-name="newPaswd" bind:change="getChange" placeholder="请再次输入登录密码" name="newPaswd" /> -->
-            </van-cell-group>
-            <!-- <view class='chebox_box'>
-                <van-checkbox value="{{ checked }}" bind:change="onChange"></van-checkbox>
-                <view class='agre_box'>同意《
-                    <text class='c-blue'  bindtap='goToViewDetails'>用户服务协议</text>》</view>
-            </view> -->
+                </van-field> 
+            </van-cell-group>  -->
             <view class='marig-primary'>
-                <button size="normal" type="primary" class="primary backg-grad shadow-just" form-type="submit">登录</button>
-            </view>
-            <!-- <view class='newlogin'>
-                <navigator class='c-blue' hover-class="none" url="/pages/login/index">已有账户，立即登录</navigator>
-            </view> -->
+                <button size="normal" type="primary" class="primary linear45 logoSub" form-type="submit">登录</button>
+            </view> 
         </form>
     </view>
 </view>

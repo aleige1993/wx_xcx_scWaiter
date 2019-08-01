@@ -65,11 +65,17 @@ Page({
   },
     touchOnGoods(e) {
         const goodNo = e.target.dataset.goodno;
+        let _this = this;
         if (goodNo){
             app.Formdata.post('/openapi/express/wechatapplet/wash/cart/add', { 'productNo': goodNo, 'num': 1 }, (res) => {
                 if (res.success === 'true') {
                     wx.showToast({
                         title: '购物车添加成功~',
+                        success(){
+                            _this.setData({
+                                count: _this.data.count / 1 + 1
+                            })
+                        }
                     })
                 }
             })
@@ -77,44 +83,44 @@ Page({
             return false
         }
         // 如果good_box正在运动
-        if (!this.data.hide_good_box) return;
-        this.finger = {};
-        var topPoint = {};
-        this.finger['x'] = e.touches["0"].clientX;
-        this.finger['y'] = e.touches["0"].clientY;
-        if (this.finger['y'] < this.busPos['y']) {
-            topPoint['y'] = this.finger['y'] - 150;
-        } else {
-            topPoint['y'] = this.busPos['y'] - 150;
-        }
-        topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
-        this.linePos = app.utils.bezier([this.finger, topPoint, this.busPos], 30);
-        this.startAnimation();
+        // if (!this.data.hide_good_box) return;
+        // this.finger = {};
+        // var topPoint = {};
+        // this.finger['x'] = e.touches["0"].clientX;
+        // this.finger['y'] = e.touches["0"].clientY;
+        // if (this.finger['y'] < this.busPos['y']) {
+        //     topPoint['y'] = this.finger['y'] - 150;
+        // } else {
+        //     topPoint['y'] = this.busPos['y'] - 150;
+        // }
+        // topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
+        // this.linePos = app.utils.bezier([this.finger, topPoint, this.busPos], 30);
+        // this.startAnimation();
     },
-    startAnimation: function () {
-        var index = 0,
-            that = this,
-            bezier_points = that.linePos['bezier_points'];
-        this.setData({
-            hide_good_box: false,
-            bus_x: that.finger['x'],
-            bus_y: that.finger['y']
-        })
-        this.timer = setInterval(function () {
-            index++;
-            that.setData({
-                bus_x: bezier_points[index]['x'],
-                bus_y: bezier_points[index]['y']
-            })
-            if (index >= 28) {
-                clearInterval(that.timer);
-                that.setData({
-                    hide_good_box: true,
-                    count:that.data.count/1+1
-                })
-            }
-        }, 33);
-    },
+    // startAnimation: function () {
+    //     var index = 0,
+    //         that = this,
+    //         bezier_points = that.linePos['bezier_points'];
+    //     this.setData({
+    //         hide_good_box: false,
+    //         bus_x: that.finger['x'],
+    //         bus_y: that.finger['y']
+    //     })
+    //     this.timer = setInterval(function () {
+    //         index++;
+    //         that.setData({
+    //             bus_x: bezier_points[index]['x'],
+    //             bus_y: bezier_points[index]['y']
+    //         })
+    //         if (index >= 28) {
+    //             clearInterval(that.timer);
+    //             that.setData({
+    //                 hide_good_box: true,
+    //                 count:that.data.count/1+1
+    //             })
+    //         }
+    //     }, 33);
+    // },
     //上拉刷新
     onUpper(){
         this.setData({
@@ -209,10 +215,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      app.Formdata.get('/openapi/express/wechatapplet/wash/cart/query', { page: 1, limit:15 },(res)=>{
+      app.Formdata.get('/openapi/express/wechatapplet/wash/cart/countCart', { page: 1, limit:15 },(res)=>{
           if(res.code=='0000'){
               this.setData({
-                  count: res.count
+                  count: res.data.cartTotalNum
               })
           }
       })

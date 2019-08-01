@@ -1,0 +1,60 @@
+<!--pages/commSer/details/index.wxml-->
+<view class='detaPanl'>
+        <navigator hover-class='none'  open-type="switchTab" url='/pages/index/index'  wx:if="{{isHome}}" class='backHome'>首页</navigator>
+        <view class='deInfo'>
+            <image class="infoImg" src='{{info.cover_image?info.cover_image:"/static/images/error.png"}}'></image>
+            <view class='titlInfo'>
+                <view class='titles overflowfont2'>
+                    {{info.title}}
+                </view>
+                <view class='shopInfo'>
+                    <view class='dsfont'>
+                        <view class='font-z12 c-666'>  {{info.st_name}}</view>
+                        <view class='c-999'>{{info.add_tm}}</view>
+                    </view>
+                    <view class='gzinfo font-z12 ygzinfo' data-stid="{{info.st_id}}" data-status="0" wx:if="{{info.attention == 1}}" bindtap='getAttention'>已关注</view>
+                    <view class='gzinfo font-z12' data-stid="{{info.st_id}}" data-status="1" wx:if="{{info.attention == 0}}" bindtap='getAttention'>关注</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 循环 渲染-->
+        <view class='centCont'>
+            <view class='infoDetas' wx:for="{{info.detail}}" wx:key="infoDetail">
+                 <rich-text wx:if="{{item.content_type == 'content'}}" nodes="{{item.content}}" ></rich-text>
+                <view  wx:if="{{item.content_type == 'goods'}}" class='goodinfo' bindtap='gotoBack'>
+                    <image class='gdImg' src='{{item.logo?item.logo:"/static/images/error.png"}}'></image>
+                    <view class="goodbox">
+                        <view class='gdname overflowfont2'>{{item.goods_name}}</view>
+                        <view class='czgd'>
+                            <view class='priceall'>
+                                <view class='shopPrice'>
+                                    <view class='spricev'>
+                                        <label>会员价</label>
+                                    </view>
+                                    <view class='sprice'>
+                                        <label class='vip_price'>￥
+                                            <text>{{item.vip_price}}</text>
+                                        </label>
+                                        <label class='price'>原价:{{item.price}}</label>
+                                    </view>
+                                </view>
+                                <!-- <view  class='c-red price'>原价 {{item.price}}元</view>
+                                 <view class='vipprice'>会员 {{item.vip_price}}元</view> -->
+                            </view>
+                            <view data-barcode="{{item.barcode}}" data-stid="{{info.st_id}}" class='pay font-z12' bindtap='newGoods'>去购买</view>
+                        </view>
+                    </view>
+                </view> 
+            </view> 
+        </view> 
+        <view class='deFooter'>
+                <view class='ckZan' >
+                    <icon wx:if="{{info.is_lv == 1}}" data-status="0"   bindtap='getRecordLv' class='zan iconfont icon-dianzan'></icon>
+                    <icon wx:else bindtap='getRecordLv' data-status="1"  class='zan iconfont icon-dianzan1'></icon>
+                    <view  class='c-yellow '>{{info.lv}}</view>
+                </view>
+                <view class='p_text c-999'>文章很不错，为小站点赞！</view>
+                <button open-type="share" class='fxFiend'>分享好友</button>
+        </view>
+</view>

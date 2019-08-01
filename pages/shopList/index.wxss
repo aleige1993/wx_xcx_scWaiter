@@ -2,12 +2,31 @@
 page{
     background-color: #f2f2f2;
 }
+ .van-search{
+     background-color: #fff !important;
+ }
+.ic_map{
+    width: 50rpx;
+    height: 46rpx;
+    margin-top: 14rpx;
+}
 .soso_view{
     display: flex;
+    background-color: #fff;
+    padding: 20rpx 0;
 }
 
+.fieldCss{
+    background-color: #F6F6F6 !important;
+}
+.van-search__field{
+    background-color: #F6F6F6 !important;
+}
 .soso_view .soso{
     flex: 1;
+}
+.van-cell{
+    background-color: #F6F6F6 !important;
 }
 .soso_view .map{
     width: 80rpx;
@@ -20,7 +39,7 @@ page{
 .list_panl{
     background-color: #fff;
     padding: 20rpx;
-    margin-bottom: 20rpx;
+    border-bottom: 1px solid #F6F6F6;
     display: flex;
 }
 .shopName{
@@ -32,6 +51,9 @@ page{
 .shopName view:first-child{
     font-size: 30rpx;
     margin-top: 0;
+}
+.shopList{
+    margin-top: 20rpx;
 }
 .shopList .active{
     background-color: #3984FF;

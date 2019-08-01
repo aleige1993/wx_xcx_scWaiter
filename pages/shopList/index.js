@@ -109,6 +109,9 @@ Page({
         })
     },
     stationQuery(){
+        wx.showLoading({
+            title: '加载中...',
+        })
         let parms=''
         if (this.data.stationType == 'stationRent'){
             parms= {
@@ -135,6 +138,9 @@ Page({
                 })
             }
         })
+        setTimeout(()=>{
+            wx.hideLoading();
+        },1000);
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

@@ -5,7 +5,7 @@
             indicator-dots="{{true}}"
             autoplay="{{true}}"
             interval="3000"
-            indicator-active-color="#3984FF"
+            indicator-active-color="#fff"
             > 
                 <swiper-item wx:for="{{goods_info.image}}" wx:key="image" >
                     <image  mode='aspectFit' src="{{item?item:'/static/images/error.png'}}" />
@@ -19,10 +19,9 @@
             <view class='c-999'>{{goods_info.subname}}</view>
             <!-- <view class='c-999 decoration'>¥{{goods_info.price}}</view>
             <view class='c-powder'>¥{{goods_info.vip_price}}  <text class='menberPire'>会员价</text> </view> -->
-            <view class='goodsmaigto' wx:if="{{user_info.is_vip == 1}}">
+            <!-- <view class='goodsmaigto' wx:if="{{user_info.is_vip == 1}}">
                 <view class='c-666 decoration'>原价：¥{{goods_info.price}}</view>
-                <view class='c-powder'>¥{{goods_info.vip_price}}
-                    <!-- <text class='menberPire'>会员价</text> -->
+                <view class='c-powder'>¥{{goods_info.vip_price}} 
                 </view>
             </view>
             <view  class='goodsmaigto' wx:else>
@@ -30,20 +29,30 @@
                     <text class='menberPire'>会员价</text>¥{{goods_info.vip_price}}
                 </view>
                 <view class='c-powder'>¥{{goods_info.price}}</view>
+            </view> -->
+             <view class='shopPrice'>
+                <view class='spricev'>
+                    <label>会员价</label>
+                </view>
+                <view class='sprice'>
+                    <label class='vip_price'>￥
+                        <text>{{goods_info.vip_price}}</text>
+                    </label>
+                    <label class='price'>原价:{{goods_info.price}}</label>
+                </view>
             </view>
-
 
         </view>
         <view class='detaright'>
-            <view class='addCat' data-operate="inc" data-item="{{goods_info}}" bindtap='addGoods'>+ 加入购物车</view>
-             <view  class='c-999 selleMag'>库存:{{goods_info.amount}}</view>
+            <view  class='c-999 selleMag'>库存:{{goods_info.amount}}</view>
               <view class='c-999 selleMag'>支持退货：{{goods_info.cancel == 1? '是':'否'}}</view>
+            <view class='addCat' data-operate="inc" data-item="{{goods_info}}" bindtap='addGoods'> 加入购物车</view> 
               <!-- <view  class='c-999'>销量:12单</view> -->
         </view> 
     </view>
 
-    <view class='notice_panl' wx:if="{{cart_info.free_freight}}">
-        <icon class='iconfont icon-tongzhi'></icon><text>会员订单满{{cart_info.free_freight}}元提供配送上门服务</text>
+    <view class='notice_panl' wx:if="{{store_info.free_freight}}">
+        <icon class='iconfont icon-tongzhi'></icon><text>会员订单满{{store_info.free_freight}}元提供配送上门服务</text>
     </view>
 
     <view class='shopDeta'>
@@ -52,7 +61,8 @@
             <text>{{store_info.st_name}}</text>
         </view>
         <view class='lianxishop' data-phone="{{store_info.phone}}"  bindtap='makePhoneCall'>
-            <view class='c-666'>联系商家<icon class="iconfont icon-phone-channel"></icon></view>
+            <view class='c-666'>联系商家</view>
+            <!-- <icon class="iconfont icon-phone-channel"></icon> -->
         </view>
     </view>
 
@@ -60,8 +70,12 @@
     <!-- <view class='noData'>
         暂无—商品详情
     </view> -->
-    <view class='goodDetalis'>
-        <view class='tig_text'>商品详情</view>
+    <view class="sigma-content">
+        <view class="sigma-middle-line">
+            <text class="sigma-line-text">宝贝详情</text>
+        </view>
+    </view>
+    <view class='goodDetalis'> 
       <rich-text nodes="{{goods_info.details}}"></rich-text>
     </view>
 </view>
@@ -78,7 +92,7 @@
                 </image>
                 <view class="num" wx:if="{{cart_info.total_num}}">{{cart_info.total_num}}</view>
             </view>
-            <view class="price {{(cart_info.total_price > 0)? 'highlight':''}}">￥{{cart_info.total_price}}</view>
+            <view class="price {{(cart_info.total_price > 0)? 'highlight':''}}">￥{{cart_info.total_price?cart_info.total_price : 0}}</view>
         </view>
         <view class="content-right">
             <view bindtap="goPayFn" class="pay {{(cart_info.total_price > 0) ? 'payClass':''}}">去结算
@@ -107,10 +121,9 @@
                           <view class='c-powder font-z12' wx:if="{{item.amount == 0}}">暂无库存</view>
                          <view class='c-powder font-z12' wx:if="{{item.amount > 0}}">库存数量:{{item.amount}}</view>
                         <!-- <view class='c-666'>{{item.can_buy?'':'暂无库存'}}</view> -->
-                        <view wx:if="{{user_info.is_vip == 1}}">
+                        <!-- <view wx:if="{{user_info.is_vip == 1}}">
                             <view class='c-666 decoration'>原价：¥{{item.price}}</view>
-                            <view class='c-powder'>¥{{item.vip_price}}
-                                <!-- <text class='menberPire'>会员价</text> -->
+                            <view class='c-powder'>¥{{item.vip_price}} 
                             </view>
                         </view>
                         <view wx:else>
@@ -118,6 +131,17 @@
                                 <text class='menberPire'>会员价</text>¥{{item.vip_price}}
                             </view>
                             <view class='c-powder'>¥{{item.price}}</view>
+                        </view> -->
+                         <view class='shopPrice'>
+                            <view class='spricev'>
+                                <label>会员价</label>
+                            </view>
+                            <view class='sprice'>
+                                <label class='vip_price'>￥
+                                    <text>{{item.vip_price}}</text>
+                                </label>
+                                <label class='price'>原价:{{item.price}}</label>
+                            </view>
                         </view>
                     </view>
                 </view>

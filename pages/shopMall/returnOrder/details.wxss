@@ -1,15 +1,8 @@
 /* pages/shopMall/orderDetails/details.wxss */
 @import '/pages/shopMall/orderList/index.wxss';
 @import '/pages/laundryOrder/orderDetails/details.wxss';
+@import '/pages/shopMall/orderDetails/details.wxss';
 
-.detahader{
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    padding: 20rpx;
-    align-content: center;
-    align-items: center;
-}
 .bg-yller{
     background-color: #FFC939;
 }
@@ -52,11 +45,7 @@
     color: #434343;
     margin-top: 20rpx;
 }
-.h2{
-    font-size: 32rpx;
-    margin: 20rpx 0;
-    font-weight: 600;
-}
+ 
 .infogood,infoorder{
   margin:40rpx 0;
 }
@@ -66,23 +55,8 @@
     align-content: center;
     align-items: center;
 }
-.infogood .li view:first-child{
-width: 200rpx;
-color: #000;
-font-weight: 500;
-}
-.infogood .li view:last-child{
-color: #999;
-}
-
-.infoorder .li view:first-child{
-width: 200rpx;
-color: #000;
-font-weight: 500;
-}
-.infoorder .li view:last-child{
-color: #999;
-}
+ 
+ 
 
 .main-center{
     margin-bottom: 120rpx;

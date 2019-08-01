@@ -27,11 +27,12 @@ page{
     flex: 1;
 }
 .addCat{
-    background-color: #FFC939;
-    padding: 6rpx 10rpx;
+    background-image: linear-gradient(45deg,#FF8989,#FF4848);
+    padding: 6rpx 20rpx;
     color: #fff;
     border-radius:30rpx; 
     text-align: center;
+    margin-top: 40rpx;
 }
 .menberPire{
     background-color: #FF3939;
@@ -43,7 +44,7 @@ page{
 .notice_panl{
     display: flex;
     background-color: #fff;
-    color:#3984FF;
+    color:#2ECD91;
     padding: 20rpx 30rpx;
     /* margin-top: 20rpx; */
 }
@@ -66,10 +67,11 @@ page{
     color: #434343;
 }
 .lianxishop{
-    border: 1px solid #434343;
-    color: #434343;
-    padding: 6rpx 10rpx;
-    border-radius:40rpx; 
+    border: 1px solid #717171;
+    color: #717171;
+    padding: 6rpx 30rpx;
+    border-radius:40rpx;
+    font-size: 24rpx; 
 }
 .lianxishop icon{
     color: #FFC939;
@@ -82,11 +84,10 @@ page{
 }
 .goodDetalis{
     background-color: #fff;
-    padding:70rpx 30rpx 30rpx 30rpx;
+    padding:30rpx;
     min-height:20vh;
     position: relative;
     margin-bottom: 120rpx;
-    margin-top: 20rpx;
 }
 .tig_text{
     position: absolute;

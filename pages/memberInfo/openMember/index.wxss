@@ -1,5 +1,11 @@
 /* pages/memberInfo/openMember/index.wxss */
 @import '../../../pages/schoolCar/index.wxss';
 .banner image{
-    height:9.5rem;
+    height:12rem;
+}
+.schoolInfo{
+    margin-top: 30rpx;
+}
+input{
+    color: #BFBFBF;
 }

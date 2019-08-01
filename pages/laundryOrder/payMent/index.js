@@ -83,7 +83,6 @@ Page({
             orderno: options.orderno,
             payType: options.payType
         })
-
     },
 
     /**

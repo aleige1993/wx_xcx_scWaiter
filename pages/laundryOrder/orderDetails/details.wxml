@@ -1,72 +1,82 @@
 <!--pages/laundryOrder/orderDetails/details.wxml-->
 <view class='main'>
     <view class='detaTitle'>
-        <view class='title_type backg-grad' wx:if="{{listItme.status==1}}">
+        <view class='title_type linear45' wx:if="{{listItme.status==1}}">
             <view class='type_text'>
-                <icon class='iconfont icon-shijian'></icon>等待付款
+                <label>等待付款</label>
+                <image class='wait_img' src='/static/images/ic_waiting_for_payment.png'></image>
             </view>
             <!-- <view>剩余：59分59秒</view> -->
-        </view>
-        <view class='title_type backg-grad' wx:if="{{1<listItme.status && listItme.status<=7}}">
-            <view class='type_text' wx:if="{{listItme.status==2}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>已付款
+        </view> 
+        <view class='title_type linear45'  wx:if="{{1<listItme.status && listItme.status<=7}}" >  
+            <view class='type_text'  wx:if="{{listItme.status==2}}"  >
+                <label>已付款</label>
+                <image class='wait_img' src='/static/images/ic_waiting_for_payment.png'></image>
             </view>
             <view class='type_text' wx:if="{{listItme.status==3}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>已接单
+                <label>已接单</label>
+                <image class='wait_img' src='/static/images/ic_waiting_for_payment.png'></image>
             </view>
             <view class='type_text' wx:if="{{listItme.status==4}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>清洗中
+                <label>清洗中</label>
+                <image class='wait_img' src='/static/images/ic_waiting_for_payment.png'></image>
             </view>
             <view class='type_text' wx:if="{{listItme.status==5}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>清洗完成
-            </view>
-            <view class='type_text' wx:if="{{listItme.status==6}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>衣物送至小站
+                <label>清洗完成</label>
+                <image class='wait_img' src='/static/images/ic_completed.png'></image>
+            </view> 
+            <view class='type_text'   wx:if="{{listItme.status==6}}" >
+                <label>衣物送至小站</label>
+                <image class='wait_img' src='/static/images/ic_delivery_of_clothes.png'></image>
             </view>
             <view class='type_text' wx:if="{{listItme.status==7}}">
-                <icon class='iconfont icon-tiaobochuku'></icon>待取衣
+                <label>待取衣</label>
+                <image class='wait_img' src='/static/images/ic_completed.png'></image>
             </view>
-        </view>
-        <view class='title_type backg-grad2 ' wx:if="{{listItme.status==8}}">
+        </view> 
+        <view class='title_type linear45 '  wx:if="{{listItme.status==8}}" >
             <view class='type_text'>
-                <icon class='iconfont icon-wancheng1'></icon>
                 <view>
                     <view>洗衣完成</view>
                     <view>感谢您在颂车小站洗衣，欢迎再次光临</view>
                 </view>
+                <image class='wait_img' src='/static/images/ic_completed.png'></image>
             </view>
-        </view>
-        <view class='title_type  backg-grad2' wx:if="{{listItme.status==10}}">
+        </view> 
+        <view class='title_type  linear45'  wx:if="{{listItme.status==10}}">
             <view class='type_text'>
-                <icon class='iconfont icon-warning'></icon>
-                <view>
-                    <view>交易关闭</view>
-                </view>
+                <label>交易完成</label>
+                <image class='wait_img' src='/static/images/ic_cancelled.png'></image>
             </view>
         </view>
 
         <view class='order_panl'>
             <view class='order_title'>
                 <view>订单编号：{{listItme.orderNo}}</view>
-                <view>
+                <!-- <view>
                     <text class='c-red' wx:if="{{listItme.status==1}}">待付款</text>
-                </view>
+                </view> -->
             </view>
             <view class='order_box'>
                 <view class='move_box' wx:for="{{listItme.orderGoods}}" wx:key="orderGoods">
                     <view class='action_panl'>
                         <image src='{{item.picUrl}}'></image>
-                        <view class='activity' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
+                        <!-- <view class='activity' >
+                            <icon class='iconfont icon-huodong'></icon>
+                        </view> -->
                     </view>
                     <view class='order_vim'>
-                        <view>{{item.goodName}}</view>
+                        <view>
+                            <label class='c_53'>{{item.goodName}}</label>
+                            <view class='hotfill' wx:if="{{item.isBindActivity == 1}}"><icon class='iconfont icon-hotfill'></icon><text>活动</text></view>
+                        </view>
                         <view class='back_view'>
-                            <view class='c-999 decoration'>￥{{item.price}}</view>
+                            <view class='c_53 decoration'>￥{{item.price}}</view>
                             <view class='c-red'>￥{{item.realPrice}}</view>
                         </view>
                     </view>
-                   <view class='order_num'>
-                        <text>×{{item.num}}</text>
+                    <view class='order_num'>
+                        <text class='c_53'>×{{item.num}}</text>
                         <text class='c-red' wx:if="{{item.isCountActivity == 1}}">已参与活动</text>
                     </view>
                 </view>
@@ -83,7 +93,7 @@
                         <text>商品折扣</text>
                         <text>-￥{{listItme.discounts}}</text>
                     </view>
-                     <view class='v-li' wx:if="{{listItme.couponInfo.couponDiscount}}">
+                    <view class='v-li' wx:if="{{listItme.couponInfo.couponDiscount}}">
                         <text>优惠券</text>
                         <text>-￥{{listItme.couponInfo.couponDiscount}}</text>
                     </view>
@@ -96,13 +106,17 @@
         </view>
 
         <view class='waiter' wx:if="{{listItme.status==1}}">
-            <view class='font-w6'>服务小站</view>
+            <view class='font-w6'> 
+                 <image class='stationIcon' src='/static/images/ic_house.png'></image>
+                <label>服务小站</label>
+            </view>
             <view>{{listItme.stationName}}
                 <!-- <icon class='iconfont icon-you1'></icon> -->
             </view>
         </view>
         <view class='waiter' wx:else>
-            <view>洗衣地址：{{listItme.stationAddr}}</view>
+            <view>洗衣地址</view>
+            <view>{{listItme.stationAddr}}</view>
         </view>
 
         <view class='ptenm_box'>
@@ -138,8 +152,9 @@
 </view>
 <view class='footer'>
     <view class='order_footer' wx:if="{{listItme.status==1}}">
-        <view class='font-w6'>应付金额：
-            <text class='c-red'>¥{{listItme.paymentAmount}}</text>
+        <view class='paymentAmount_panl'>
+            <view class='font-w6 paymentAmount'>¥{{listItme.paymentAmount}}</view>
+            <label>应付金额</label> 
         </view>
         <view class='but_box'>
             <button class='but_cancel' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" data-status="10">取消订单</button>
@@ -149,7 +164,7 @@
     <view class='order_footer' wx:if="{{listItme.status==7}}">
         <view></view>
         <view class='but_box'>
-            <button class='but_confirm' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" data-status="8">确认取衣</button>
+            <button class='but_payment' bindtap='editStatus' data-orderNo="{{listItme.orderNo}}" data-status="8">确认取衣</button>
         </view>
     </view>
     <view class='order_footer' wx:if="{{listItme.status==8}}">

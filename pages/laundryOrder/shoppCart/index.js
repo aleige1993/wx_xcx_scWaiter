@@ -65,6 +65,13 @@ Page({
     onStepper(e){
         let goodno = e.target.dataset.goodno;
         let inxNum = e.detail;
+        if (inxNum >99){
+            wx.showToast({
+                title: '单品数量不能超99',
+                icon:'none'
+            })
+            return false;
+        }
         app.Formdata.post('/openapi/express/wechatapplet/wash/cart/update', { 'productNo': goodno, 'num':inxNum},(res)=>{
             if(res.code=='0000'){
                 this.getAllprice();

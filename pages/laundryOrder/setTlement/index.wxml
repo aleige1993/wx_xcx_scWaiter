@@ -3,7 +3,10 @@
     <view class='detaTitle'>
         <view class='order_panl'>
             <view class='waiter'>
-                <view class='c-333 font-w6'>小站选择</view>
+                <view class='c-333 font-w6'>
+                    <image class='stationIcon' src='/static/images/ic_house.png'></image>
+                    <label>小站选择</label>
+                </view>
                 <view>
                     <navigator class="picker" hover-class='none' url='/pages/shopList/index?stationType=stationLaundry'>{{stationLaundry.stationName?stationLaundry.stationName : '请选择小站'}}
                         <icon class='iconfont icon-you1'></icon>
@@ -17,21 +20,40 @@
                 </view>
             </view>
             <view class='order_box'>
-                <view class='move_box' wx:for="{{listItme.orderGoods}}" wx:key="orderGoods">
-                    <view class='action_panl'>
-                        <image src='{{item.picUrl}}'></image>
-                        <view class='activity' wx:if="{{item.isBindActivity == 1}}">
-                            <icon class='iconfont icon-huodong'></icon>
+                <view class='stulet_box'>
+                    <view class='yiw'>衣物</view>
+                    <view class='stulet' wx:if="{{isTule}}" bindtap='onStulet'>
+                        <text>收起</text>
+                        <icon class='iconfont icon-tabshouqi'></icon>
+                    </view>
+                    <view class='stulet' wx:else bindtap='onStulet'>
+                        <text>展开</text>
+                        <icon class='iconfont icon-xiangxia'></icon>
+                    </view>
+                </view>
+                <view class='{{isTule?"m_boxStuel":"move_boxStuel"}}'>
+                    <view class='move_box' wx:for="{{listItme.orderGoods}}" wx:key="orderGoods">
+                        <view class='action_panl'>
+                            <image src='{{item.picUrl}}'></image>
+                            <!-- <view class='activity' wx:if="{{item.isBindActivity == 1}}">
+                                <icon class='iconfont icon-huodong'></icon>
+                            </view> -->
                         </view>
-                    </view>
-                    <view class='order_vim'>
-                        <view>{{item.goodName}}</view>
-                        <view class='c-ccc decoration'>￥{{item.price}}</view>
-                        <view class='c-red'>￥{{item.realPrice}}</view>
-                    </view>
-                    <view class='order_num'>
-                        <text>×{{item.num}}</text>
-                        <text class='c-red' wx:if="{{item.isCountActivity == 1}}">已参与活动</text>
+                        <view class='order_vim'>
+                            <view class='goodname'>
+                                <label>{{item.goodName}}</label>
+                                <view wx:if="{{item.isBindActivity == 1}}" class='hotfill'>
+                                    <icon class='iconfont icon-hotfill'></icon>
+                                    <text>活动</text>
+                                </view>
+                            </view>
+                            <view class='c-ccc decoration'>￥{{item.price}}</view>
+                            <view class='c-red'>￥{{item.realPrice}}</view>
+                        </view>
+                        <view class='order_num'>
+                            <text>×{{item.num}}</text>
+                            <text class='c-red' wx:if="{{item.isCountActivity == 1}}">已参与活动</text>
+                        </view>
                     </view>
                 </view>
                 <view class='order_price'>
@@ -47,35 +69,38 @@
                         <text>商品折扣</text>
                         <text>-￥{{listItme.discounts}}</text>
                     </view>
-                    <view class='v-li'>
-                        <view>优惠券</view>
-                        <view class='c-999' wx:if="{{listItme.isCountActivity == 1}}">不可用</view>
-                        <view wx:else class='c-violet flex_Name' bindtap='topConIshow'>
-                            {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
-                            <view class='iconfont icon-you1'></view>
-                        </view>
-                    </view>
-                    <view  class='v-li' wx:if="{{conpunPice}}">
-                          <view>优惠券抵扣金额</view> 
-                           <view class='c-999'>-￥{{conpunPice}}</view>
+                    <view class='cuopon_model   cuopon_top overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
+                        <image class='box_fan' src='/static/images/ic_ticket.png'></image>
+                        <label>{{item}}</label>
                     </view>
                     <view class='v-li' wx:if="{{listItme.isCountActivity==1}}">
                         <text>{{listItme.expDiscountActivityVO.name}}</text>
                         <text>-￥{{listItme.inActDiscount}}</text>
-                    </view>
-                    <view class='v-li top-border'>
-                        <text>实付</text>
-                        <text class='c-red'>￥{{listItme.paymentAmount2?listItme.paymentAmount2: listItme.paymentAmount}}</text>
-                    </view>
-                    <view class='cuopon_model overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
-                        <label class='box_fan'>返券</label>
-                        <text>{{item}}</text>
                     </view>
                 </view>
             </view>
         </view>
         <view class='ptenm_box'>
             <view class='v-li'>
+                <view class='coupin_title'>
+                    <image class='ic_coupin' src='/static/images/ic_coupin.png'></image>
+                    <label>优惠券</label>
+                </view>
+                <view class='c-999' wx:if="{{listItme.isCountActivity == 1}}">不可用</view>
+                <view wx:else class='c-violet flex_Name' bindtap='topConIshow'>
+                    {{ reduce_info ? reduce_info : '可用优惠券'+conpunNum+'张'}}
+                    <view class='iconfont icon-you1'></view>
+                </view>
+            </view>
+            <view class='v-li' wx:if="{{conpunPice}}">
+                <view>优惠金额</view>
+                <view class='c-999'>-￥{{conpunPice}}</view>
+            </view>
+            <view class='v-li '>
+                <text>实付</text>
+                <text class=''>￥{{listItme.paymentAmount2?listItme.paymentAmount2: listItme.paymentAmount}}</text>
+            </view>
+            <view>
                 <text class='c-999'>备注：特殊要求请与客服协商联系</text>
                 <textarea class='rexrArea' value="{{val}}" bindblur="blurtext"></textarea>
             </view>
@@ -87,15 +112,17 @@
 <view class='sumbit_box'>
     <view class='sumbit_pirce'>
         <view class='sumbit_data'>
-            <view class='c-red'>￥{{listItme.paymentAmount2?listItme.paymentAmount2:listItme.paymentAmount}}</view>
-            <view class='c-ccc'>已购买￥{{listItme.totalAmount}} 优惠￥{{listItme.allDiscount?listItme.allDiscount:listItme.discounts}}</view>
+            <view class='allPirce'>￥{{listItme.paymentAmount2?listItme.paymentAmount2:listItme.paymentAmount}}</view>
+            <view class='discount'>已购买￥{{listItme.totalAmount}} 优惠￥{{listItme.allDiscount?listItme.allDiscount:listItme.discounts}}</view>
         </view>
     </view>
 
     <view class='sumbit_but'>
-        <form report-submit	 bindsubmit="orderAdd">
-             <button form-type="submit" class='r-barg formBut' >下单</button>
-        </form> 
+        <form report-submit bindsubmit="orderAdd">
+            <!-- <button form-type="submit" class='r-barg clear {{allPirce ? allPirce == "NaN" ? "openty" : allPirce : "openty" }}' >去洗衣</button > -->
+
+            <button form-type="submit" class='r-barg clear'>下单</button>
+        </form>
     </view>
 </view>
 <view class='layer' wx:if="{{conpunIshow}}"></view>

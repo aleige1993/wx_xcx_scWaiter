@@ -9,7 +9,7 @@
       class="{{ utils.bem('checkbox__icon', [shape, { disabled, checked: value }]) }}"
       style="{{ checkedColor && value && !disabled ? 'border-color:' + checkedColor + '; background-color:' + checkedColor : '' }}"
       custom-class="icon-class"
-      custom-style="line-height: 20px;"
+      custom-style="line-height: 26px;"
     />
   </view>
   <view class="label-class {{ utils.bem('checkbox__label', [labelPosition, { disabled }]) }}" bindtap="onClickLabel">

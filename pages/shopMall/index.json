@@ -1,3 +1,7 @@
 {
-    "navigationBarTitleText": "小站商城"
+    "navigationBarTitleText": "小站商城",
+    "usingComponents": {
+        "van-tab": "/ui-plugins/vant/tab/index",
+        "van-tabs": "/ui-plugins/vant/tabs/index"
+    }
 }

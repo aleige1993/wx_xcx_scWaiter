@@ -1,0 +1,106 @@
+<!--pages/commSer/index.wxml-->
+<view class='commSer'>
+    <view class='tab_ser'>
+        <van-tabs sticky="{{true}}" swipeable custom-class="childListStyle" active="{{ tabPanl }}" line-width="20" bind:change="onTabpanl">
+            <van-tab wx:for="{{navList}}" wx:key="titles" title="{{item.name}}"> </van-tab>
+        </van-tabs>
+    </view>
+    <view class='scroll_ser' wx:if="{{scroll_ser}}" >
+        <!-- <scroll-view scroll-y class='scrollSer' bindscrolltolower="onLower"  bindscrolltoupper="onUpper" > -->
+            <view class='swper_panl' wx:if="{{navList[tabPanl].banners.length>0}}">
+                <swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                    <block wx:key="banners" wx:for="{{navList[tabPanl].banners}}">
+                        <swiper-item>
+                            <image mode='scaleToFill' src="{{item.image_url}}" class="slide-image"  bindtap='onGoback' data-items="{{item}}"/>
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+            <view class='padlist' wx:for="{{newList}}" wx:key="newList">
+                <view class='newTrend' wx:if="{{item.type == 2}}" data-contentid="{{item.content_id}}" bindtap='newTrend'>
+                    <image class='trenimg' src='{{item.cover_image?item.cover_image:"/static/images/error.png"}}'></image>
+                    <view class='overflowfont2 c_53 trenName'>{{item.title}}</view>
+                    <view class='t_btm'>
+                        <view class='left_btm c-999 s_name overflowfont'> {{item.st_name}} </view>
+                        <view class='t_ttm'>
+                            <view>
+                                <icon class='iconfont c-999 icon-dianzan1'></icon>
+                                <text class='c-999'>{{item.lv}}</text>
+                            </view>
+                            <view>
+                                <icon class='iconfont c-999 icon-yanjing'></icon>
+                                <text class='c-999'>{{item.pv}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='newPanl' wx:if="{{item.type == 1}}" data-contentid='{{item.content_id}}' data-stId="{{item.st_id}}" data-barcode="{{item.barcode}}" bindtap='newGoods'>
+                    <image class='newimg' src='{{item.logo?item.logo:"/static/images/error.png"}}'></image>
+                    <view class='detanews'>
+                        <view class='overflowfont2 c_53 goodsName'>{{item.goods_name}}</view>
+                        <view class='d_btm'>
+                            <view class='priceall'>
+                                <view class='shopPrice'>
+                                    <view class='spricev'>
+                                        <label>会员价</label>
+                                    </view>
+                                    <view class='sprice'>
+                                        <label class='vip_price'>￥
+                                            <text>{{item.vip_price}}</text>
+                                        </label>
+                                        <label class='price'>原价:{{item.price}}</label>
+                                    </view>
+                                </view>
+                                 <view class='pay' >去购买</view>
+                                <!-- <view  class='c-red price'>原价 {{item.price}}元</view>
+                                 <view class='vipprice'>会员 {{item.vip_price}}元</view> -->
+                            </view>
+                            <view class='s_btm'>
+                                <view class='c-999 s_name'>{{item.st_name}}</view>
+                                <view>
+                                     <icon class='iconfont c-999 icon-yanjing'></icon>
+                                    <text class='c-999'>{{item.pv}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+            <view wx:if="{{nodata}}">
+                    <view class='null-data marginTop'>
+                    <icon class='iconfont  icon-tiaobochuku'></icon>
+                    <view>暂无数据唷~~~</view> 
+                </view>
+            </view>
+            <view class='isnull' wx:if="{{isNULL}}">
+                <view class="sigma-content">
+                    <view class="sigma-middle-line">
+                        <text class="sigma-line-text">亲，我是有底线的</text>
+                    </view>
+                </view>
+            </view>
+        <!-- </scroll-view> -->
+    </view>
+    <view class='scroll_ser' wx:else>
+        <view class='overFoll' bindtap='follbank'>完成关注去查看</view>
+        <view class='followShopname c_53'>附近小站推荐</view>
+        <view class='shoptitPanl'>
+            <view wx:for="{{storeList}}" wx:key="storeList" class='foll_box shadow-just'>
+                <image class='follImg' src='{{item.logo?item.logo: "/static/images/error.png"}}'></image>
+                <view class='foll_cent'>
+                    <view class='c_53'>{{item.name}}</view>
+                    <view class='c-999 f24'>{{item.address}}</view>
+                </view>
+                <view class='follcj'>
+                    <icon wx:if='{{item.attention == 0}}' data-index='{{index}}' data-stid="{{item.id}}" data-status="1" bindtap='getAttention' class='gz_clin iconfont icon-guanzhu1 '></icon>
+                    <icon wx:else data-index='{{index}}' data-stid="{{item.id}}" data-status="0" bindtap='getAttention' class='gz_clin iconfont icon-guanzhu '></icon>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='valoadimg' wx:if="{{isloading}}">
+    <van-loading size="20px" />
+    <label class='loadtext'>拼命加载中...</label>
+</view>

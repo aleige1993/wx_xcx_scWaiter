@@ -1,10 +1,25 @@
-/* pages/laundryOrder/index.wxss */
+/* pages/laundryOrder/index.wxss */ 
 page{
     background-color: #f2f2f2;
 }
 .order_panl{
   margin-top:20rpx;
 background-color: #fff;
+}
+.orderNo{
+    color: #535353;
+}
+.c-red{
+    color:#FF4848;
+}
+.carTime{
+    width: 55rpx;
+    height: 26rpx;
+    margin-right: 10rpx;
+}
+.carName{
+    font-weight: 700;
+    color: #535353;
 }
 .order_title{
   padding:20rpx 30rpx;
@@ -19,10 +34,7 @@ background-color: #fff;
 }
 .order_title view:last-child{
   margin-bottom: 0;
-}
-.order_box{
-
-}
+} 
 .move_box{
   display: flex;
   border-bottom: 1px solid #eee;
@@ -31,10 +43,10 @@ background-color: #fff;
 .move_box:last-child{
   border-bottom: 0;
 }
-.move_box image{
+/* .move_box image{
   width:150rpx;
   height:200rpx;
-}
+} */
 .move_box view{
   display: flex;
 }
@@ -66,15 +78,19 @@ background-color: #fff;
 }
 .but_box button{
     margin-left: 30rpx;
+    border-radius: 60rpx;
+    padding: 0 30rpx;
 }
 .but_box .but_question{
     background-color: #06a5ff;
 }
 .but_box .but_cancel{
-    background-color: #ff7b20;
+    border: 1px solid #BFBFBF;
+    color: #A0A0A0;
+    background-color: #fff;
 }
 .but_box .but_payment{
-    background-color: #ff4c5e;
+    background-color: #FF4848;
 }
 .but_box  .but_confirm{
     background-color: #ea857d;
@@ -83,8 +99,8 @@ background-color: #fff;
   color: #fff;
   font-size: 12px;
 }
-.order_soso{
-
+.carName_panl{
+    margin-bottom: 20rpx;
 }
 .marginTop{
     margin-top: 20%;
@@ -97,7 +113,11 @@ background-color: #fff;
 .car_panl view{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20rpx;
+    align-items: center;
+}
+.piceView{
+    display: flex;
+    
 }
 .car_panl view:last-child{
     margin-bottom: 0;
@@ -105,9 +125,58 @@ background-color: #fff;
 .piceView{
     display: flex;
     flex-direction: column;
+    align-items:flex-end  !important;
 }
 .piceView text{
     font-size: 24rpx;
     display: flex;
     justify-content: flex-end;
+}
+.piceView .price{
+    font-size: 30rpx;
+    color: #535353;
+    font-weight: 700;
+}
+.piceView .memberPrice{
+    font-size: 24rpx;
+    color: #535353;
+}
+.van-tabs__wrap{
+    background-color: #fff;
+}
+.van-tabs__line{
+    height: 4px !important;
+    background-color: #FF4848 !important;
+}
+.childListStyle .van-tab--active{
+    color: #FF4848 !important;
+    font-weight:600; 
+}
+.childListStyle .van-tab{
+    color: #7D7D7D;
+}
+.shortTime{
+    color: #535353;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.wx_ul{
+    flex-direction: column;
+    margin-top:30rpx;
+    margin-bottom:10rpx;
+}
+.wx_ul .wx_li{
+    align-items:initial;
+    width: 100%;
+    margin-bottom: 16rpx;
+}
+.wx_ul .wx_li text{
+    color: #A0A0A0;
+    font-size: 26rpx;
+}
+.c_53{
+    color: #535353;
+}
+.c_A0{
+    color: #A0A0A0;
 }

@@ -37,8 +37,10 @@ Page({
         })
     },
     getChange(e){
+        console.log(e);
+        let key = e.currentTarget.dataset.name;
         this.setData({
-            [e.target.dataset.name]: e.detail
+            [key]: e.detail.value
         })
     },
     //跳转web-view详情

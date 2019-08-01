@@ -2,6 +2,44 @@
 page{
     background-color: #f2f2f2;
 }
+.cart_panl{
+    margin-bottom: 120rpx;
+}
+.van-stepper__minus{
+    border:1px solid #B8C4FF;
+    border-radius:100% !important;
+    color: #B8C4FF; 
+    width: 30px !important;
+    height: 30px !important;
+    background-color:#fff !important; 
+}
+.van-stepper__plus{
+    border:1px solid #7089FF;
+    border-radius:100% !important;
+    color: #fff  !important; 
+    width: 30px !important;
+    height: 30px !important;
+    background-color:#7089FF !important; 
+}
+.van-stepper__minus--disabled::after, .van-stepper__minus--disabled::before,
+.van-stepper__plus--disabled::after, .van-stepper__plus--disabled::before {
+    background-color: #B8C4FF;
+}
+
+.van-stepper__minus::after, .van-stepper__minus::before,
+.van-stepper__plus::after, .van-stepper__plus::before {
+    background-color: #7089FF;
+}
+
+.van-stepper__input-wrapper{
+    border: none !important;
+}
+.c-53{
+    color: #535353;
+}
+.goodname{
+    color: #535353;
+}
 .change_panl{
     display: flex;
     align-items: center;
@@ -24,6 +62,7 @@ page{
     justify-content: space-around;
     align-content: space-around;
     margin-left: 30rpx;
+    flex: 1;
 }
 .stepper_panl{
     margin-top: 80rpx;
@@ -47,20 +86,19 @@ page{
     display: flex;
     height: 100rpx;
 }
-.sumbit_but view{
-    width:180rpx;
-    line-height: 100rpx;
+/* .sumbit_but view{
+    width:140rpx; 
     text-align: center;
     color: #fff;
-}
+} */
 .sumbit_data{
-    margin-left: 10rpx;
+    margin-left: 20rpx;
 }
 .y-barg{
     background-color: #ff7b20;
 }
 .r-barg{
-    background-color: #ff4c5e;
+    background-color: #7089FF !important;
 }
 .resNull{
     text-align: center;
@@ -79,4 +117,47 @@ page{
 }
 .resNull .title navigator{
     color: #3984ff;
+}
+.clear{
+    padding: 10rpx 40rpx;
+    background-color: #FF4848;
+    color: #fff;
+    border-radius:50rpx;  
+    height: 60rpx;
+    margin-top: 24rpx;
+    line-height: normal;
+    margin-right: 30rpx;
+}
+.allPirce{
+    color: #535353;
+    font-size: 34rpx;
+    font-weight: 600;
+}
+.discount{
+    color: #A0A0A0;
+    font-size: 22rpx;
+}
+.van-checkbox__label{
+    color: #535353;
+    font-size: 24rpx;
+}
+.openty{
+    opacity: 0.5;
+}
+.hotfill {
+background-color: #FF4848;
+color: #fff;
+border-radius:4rpx;
+padding: 4rpx 10rpx;
+font-size: 22rpx;
+display: inline-block;
+margin-left: 20rpx;
+}
+.hotfill icon{
+    margin-top: -20rpx;
+    font-size: 22rpx;
+}
+.hotfill text{
+    font-size: 22rpx;
+    margin-left: 4rpx;
 }

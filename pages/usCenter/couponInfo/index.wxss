@@ -2,21 +2,39 @@
 page{
     background-color: #f2f2f2;
 }
-.tab_panl{
+.exchange{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    background-color: #fff;
+}
+.exchange input{
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 0 20rpx;
+    border-radius:6rpx; 
+    height: 66rpx;
+}
+.chagetext{
+    margin-left: 30rpx;
+    color: #FF4848;
+}
+.hader_panl{
     position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: 8;   
     left: 0;
     top: 0;
 }
 .scorll_view{
     width: 100%;
-    margin-top: 120rpx;
+    margin-top: 200rpx;
     padding-bottom: 40rpx;
 }
 .coupon_model{
     width: 94%;
-    margin: 30rpx auto 0 auto;
+    margin: 20rpx auto 0 auto;
     display: flex;
 }
 .cou_bg{
@@ -133,4 +151,18 @@ page{
 }
 .marginTop{
     margin-top: 180rpx;
+}
+.van-tabs__wrap{
+    background-color: #fff;
+}
+.van-tabs__line{
+    height: 4px !important;
+    background-color: #FF4848 !important;
+}
+.childListStyle .van-tab--active{
+    color: #FF4848 !important;
+    font-weight:600; 
+}
+.childListStyle .van-tab{
+    color: #7D7D7D;
 }

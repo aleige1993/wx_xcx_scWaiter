@@ -165,10 +165,10 @@ Page({
     },
 
     getIndex(e) {
-        console.log(e);
+        let index = e.currentTarget.dataset.index
         this.setData({
             'sreachForm.page': 1,
-            'sreachForm.status': ++e.detail.index,
+            'sreachForm.status':index,
             'sreachForm.expressNo': '',
             'expressList': []
         })

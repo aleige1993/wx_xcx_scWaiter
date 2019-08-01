@@ -33,3 +33,10 @@ page{
     margin-top: 10rpx;
     font-size: 12px;
 }
+.newButton{
+    line-height: 80rpx;
+    text-align: center;
+    border-radius:80rpx;   
+    color: #fff;
+    background-image: linear-gradient(45deg,#FF7475,#FF4949)
+}

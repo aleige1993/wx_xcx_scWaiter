@@ -1,13 +1,14 @@
 <!--pages/laundryOrder/payMent/index.wxml-->
 <form bindsubmit="payment" report-submit>
-    <view> 
-    <view class='pay shadow-just'>
-        <view class='p1'>支付金额</view>
-        <view class='p2'>￥{{listItme.paymentAmount}}</view>
-    </view>
- 
-    <button  class='payBut backg-grad' form-type="submit" wx:if="{{loading}}">确认支付</button>
-     <view class='payBut backg-grad'  wx:else ><van-loading size="20px" type="spinner" /></view>
-</view>
-</form>
+    <view>
+        <view class='pay'>
+            <view class='p1'>支付金额</view>
+            <view class='p2'>￥{{listItme.paymentAmount}}</view>
+        </view>
 
+        <button class='payBut' form-type="submit" wx:if="{{loading}}">确认支付</button>
+        <view class='payBut ' wx:else>
+            <van-loading size="20px" type="spinner"  color="#535353"/>
+        </view>
+    </view>
+</form>

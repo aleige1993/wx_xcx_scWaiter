@@ -17,7 +17,7 @@
     </view> -->
     <!-- 收货地址 -->
     <view>
-        <view class='title_panl'>可用收货地址</view>
+        <view class='title_panl'><text class='titetag'></text>可用收货地址</view>
         <view class='allList' wx:if="{{can_use.length>0}}" wx:for="{{can_use}}" wx:key="can_use">
             <view class='addressList' data-items="{{item}}"  bindtap="goReturn">
                <view class='font-w6 bigfize'>{{item.location}}</view>
@@ -29,12 +29,12 @@
         </view>
         <view class='null-data' wx:if="{{can_use.length<=0}}">
             <icon class='iconfont  icon-tiaobochuku'></icon>
-            <view>暂无数据~~~</view>
+            <view class='c-999'>请新建收货地址哦~</view>
         </view>
     </view>
 
     <view>
-        <view class='title_panl'>不可用收货地址</view>
+        <view class='title_panl'><text class='titetag'></text>不可用收货地址</view>
         <view class='allList' wx:if="{{forbidden.length>0}}" wx:for="{{forbidden}}" wx:key="forbidden">
             <view class='addressList'>
                  <view class='font-w6 bigfize'>{{item.location}}</view>
@@ -46,11 +46,11 @@
         </view>
         <view class='null-data'  wx:if="{{forbidden.length<=0}}">
             <icon class='iconfont  icon-tiaobochuku'></icon>
-            <view>暂无数据~~~</view>
+            <view class='c-999'>暂无数据~~~</view>
         </view>
     </view>
 </view>
 
 <view class='marig-primary'>
-    <navigator open-type='navigateTo' url='/pages/shopMall/addressList/addAddress?state=1' class="primary  backg-grad shadow-just newButton">+新建收货地址</navigator>
+    <navigator open-type='navigateTo' url='/pages/shopMall/addressList/addAddress?state=1' class="primary  shadow-just newButton"><text class='addbuts'>+</text>新建收货地址</navigator>
 </view>

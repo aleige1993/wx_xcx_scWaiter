@@ -1,20 +1,28 @@
 /* pages/ schoolCar/index.wxss */
 @import '../../pages/login/register.wxss';
+page{
+    background-color: #f2f2f2;
+}
 .banner{
     width: 100%;
 }
 .banner image{
     width: 100%;
-    height: 8rem;
+    height: 14rem;
 }
 .Info_panl{
     width: 100%;
 }
 .panl_title{
+    display: flex;
+    align-items: center;
     padding: 20rpx 30rpx;
-    color: #3984ff;
+    color: #A0A0A0;
     background-color: #f2f2f2;
-    font-weight: 600;
+    font-size: 24rpx;
+}
+.panl_title label{
+    font-size: 24rpx;
 }
 .cell_box{
     display: flex;
@@ -23,17 +31,37 @@
     align-items: center;
     padding: 20rpx 30rpx;
     border-bottom: 1px solid #eee;
+    width: 94%;
+    margin-left: 3%;
+    background-color: #fff;
 }
 
 .cell_box  .label{
     margin-top: 6rpx;
     font-weight: 600;
-    color:#333;
+    color:#535353;
 }
 .cell_box  .value{
     flex: 1;
     text-align: right;
 }
 .cell_box .picker{
-    color: #999;
+    color: #BFBFBF;
+}
+.ic_learning{
+    width: 30rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+.ic_personal{
+    width: 40rpx;
+    height: 30rpx;
+    margin-right: 10rpx;
+}
+.backg-grad{
+    background-image:linear-gradient(45deg, #FF8687, #FF4949) !important;
+}
+.primary{
+    line-height: 80rpx;
+    border-radius:60rpx; 
 }

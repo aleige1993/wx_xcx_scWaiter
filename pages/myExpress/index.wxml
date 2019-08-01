@@ -1,15 +1,26 @@
 <!--pages/checkExpress/index.wxml-->
 
-<van-search value="{{sreachForm.expressNo}}" placeholder="请输入快递单号" use-action-slot bind:change="onChange">
+<van-search value="{{sreachForm.expressNo}}" placeholder="请输入快递单号" use-action-slot field-class="fieldCss" custom-class="customCss" bind:change="onChange">
     <view slot="action" bind:tap="onSearch">搜索</view>
 </van-search>
-<view class='order_panl'>
+<!-- <view class='order_panl'>
     <van-tabs animated bind:click="getIndex">
         <van-tab title="待取件"></van-tab>
         <van-tab title="已签收"></van-tab>
     </van-tabs>
+</view> -->
+<view class='order_panl'>
+    <view class='tabs_panl'>
+        <view data-index="1" bindtap='getIndex' class='tabsbox {{sreachForm.status==1? "daibox" : ""}}'>
+            <view>待取件</view>
+            <label></label>
+        </view>
+        <view data-index="2" bindtap='getIndex' class='tabsbox  {{sreachForm.status==2? "ovebox" : ""}}'>
+            <view>已签收</view>
+            <label></label>
+        </view>
+    </view>
 </view>
-
 <view class='laundry-list null-data marginTop' wx:if="{{expressList && !expressList.length}}">
     <icon class='iconfont  icon-tiaobochuku'></icon>
     <view>暂无数据~~~</view>
@@ -18,25 +29,30 @@
 <view wx:if="{{expressList && expressList.length}}" wx:key="{{index}}" wx:for="{{expressList}}" class='order_box'>
     <view class='order_title'>
         <view class='exName font-w6'>
-            <text>{{item.company}}</text>
-            <text>{{item.expressNo}}</text>
+            <text class='c-53'>▪{{item.company}}</text>
         </view>
         <view>
-            <text wx:if="{{sreachForm.status === 1}}">取件码：<text class='c-red'>{{item.qrcode}}</text></text>
-            <text wx:else class="c-yellow">已取件</text>
+            <view class='c-53' wx:if="{{sreachForm.status == 1}}">取件码：
+                <text class='expess_red'>{{item.qrcode}}</text>
+            </view>
+            <view  wx:if="{{sreachForm.status == 2}}"  class="received_parts">
+                <image class='parts' src='/static/images/ic_received_parts.png'></image>
+            </view>
         </view>
     </view>
     <view class='order_detail'>
+        <view class='v-li'>快递单号：{{item.expressNo}}</view>
         <view class='v-li'>小店名称：{{item.stationName}}</view>
         <view class='v-li'>取件地址：{{item.address}}</view>
         <view class='v-li'>
             <view>
-                派件员：
-                <text class='c-blue'>{{item.mobile}}</text>
+                派件员电话：
+                <text>{{item.mobile}}</text>
             </view>
-            <view wx:if="{{sreachForm.status === 1}}">{{item.inTime}}</view>
-            <view wx:else>{{item.outTime}}</view>
+            <!-- <view wx:if="{{sreachForm.status == 1}}">{{item.inTime}}</view>
+            <view>  {{item.outTime}}</view> -->
         </view>
+        <view class='v-li'>{{sreachForm.status == 1? "入库时间："+item.inTime : "出库时间："+item.outTime}}</view>
         <view wx:if="{{rechargeMember == 'true'}}">
             <view class='v-li' wx:if="{{sreachForm.status === 1 && !item.deliveryId}}">
                 <view class='c-violet' data-index="{{index}}" data-items="{{item}}" bindtap='onshow' class='changTime'>
@@ -49,9 +65,9 @@
             </view>
             <view class='v-li' wx:if="{{item.deliveryId }}">
                 <view>预约送件</view>
-                 <view class='text-flex-right'>
-                        <label class='c-violet'>{{item.text}}</label>
-                    </view>
+                <view class='text-flex-right'>
+                    <label class='c-violet'>{{item.text}}</label>
+                </view>
             </view>
         </view>
 

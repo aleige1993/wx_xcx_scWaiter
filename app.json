@@ -1,14 +1,25 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/usCenter/index",
-        "pages/usCenter/invitation/index",
+        "pages/laundryOrder/payMent/index",
         "pages/shopMall/orderList/index",
-        "pages/usCenter/couponInfo/index",
         "pages/shopMall/index",
-        "pages/usCenter/couponInfo/details",
-        "pages/myExpress/index",
+        "pages/commSer/index",
+        "pages/commSer/details/index",
+        "pages/shopList/index",
+        "pages/leaseCar/leaseDetails/index",
         "pages/login/register",
+        "pages/usCenter/index",
+        "pages/leaseCar/index",
+        "pages/schoolCar/index",
+        "pages/laundryOrder/payMent/resultMsg/index",
+        "pages/laundryOrder/setTlement/index",
+        "pages/laundryOrder/shoppCart/index",
+        "pages/laundryOrder/index/index",
+        "pages/myExpress/index",
+        "pages/usCenter/invitation/index",
+        "pages/usCenter/couponInfo/index",
+        "pages/usCenter/couponInfo/details",
         "pages/shopMall/addressList/index",
         "pages/shopMall/orderDetails/index",
         "pages/shopMall/returnOrder/index",
@@ -17,15 +28,10 @@
         "pages/shopMall/returnGoods/index",
         "pages/shopMall/shopList/map",
         "pages/shopMall/goodDetails/index",
-        "pages/laundryOrder/payMent/index",
         "pages/shopMall/addressList/addAddress",
         "pages/shopMall/shopList/index",
         "pages/shopList/map",
-        "pages/shopList/index",
-        "pages/laundryOrder/index/index",
         "pages/login/freeLogin",
-        "pages/leaseCar/index",
-        "pages/leaseCar/leaseDetails/index",
         "pages/login/index",
         "pages/login/resetPwd",
         "pages/webView/viewInstions",
@@ -34,14 +40,10 @@
         "pages/memberInfo/openMember/index",
         "pages/memberInfo/modifyMember/modify",
         "pages/memberInfo/modifyMember/adrMent",
-        "pages/laundryOrder/setTlement/index",
-        "pages/laundryOrder/shoppCart/index",
-        "pages/schoolCar/index",
         "pages/laundryOrder/orderDetails/index",
         "pages/laundryOrder/orderDetails/details",
         "pages/laundryOrder/orderDetails/searOrder",
         "pages/usCenter/upInfo/index",
-        "pages/laundryOrder/payMent/resultMsg/index",
         "pages/webView/viewDetails"
     ],
     "window": {
@@ -55,18 +57,24 @@
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "selectedIconPath": "/static/images/home_b.png",
-                "iconPath": "/static/images/home_a.png"
+                "selectedIconPath": "/static/images/ic_home_b.png",
+                "iconPath": "/static/images/ic_home_a.png"
+            },
+            {
+                "pagePath": "pages/commSer/index",
+                "text": "社区",
+                "selectedIconPath": "/static/images/comser_b.png",
+                "iconPath": "/static/images/comser_a.png"
             },
             {
                 "pagePath": "pages/usCenter/index",
                 "text": "我的",
-                "selectedIconPath": "/static/images/user_b.png",
-                "iconPath": "/static/images/user_a.png"
+                "selectedIconPath": "/static/images/ic_user_b.png",
+                "iconPath": "/static/images/ic_user_a.png"
             }
         ],
-        "color": "#BFBFBF",
-        "selectedColor": "#3984ff",
+        "color": "#A0A0A0",
+        "selectedColor": "#FF4848",
         "borderStyle": "white"
     },
     "permission": {

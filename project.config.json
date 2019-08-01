@@ -4,17 +4,18 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.2",
+	"libVersion": "2.6.6",
 	"appid": "wxc44c991391834266",
-	"projectname": "wx_xcx_scWaiter",
+	"projectname": "RP_scWaiter",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

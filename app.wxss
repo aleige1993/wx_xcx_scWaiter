@@ -43,6 +43,9 @@ view{
 .c-666{
     color: #666666;
 }
+.c_53{
+    color: #535353;
+}
 .c-bf{
   color: #bfbfbf;
 }
@@ -111,9 +114,9 @@ view{
 .shadow-just{
     box-shadow:10rpx 10rpx 10rpx #eee; 
 }
-.icon-you1{
+/* .icon-you1{
     color: #5578f6 !important;
-}
+} */
 .font-w6{
     font-weight: 600;
 }
@@ -178,11 +181,11 @@ overflow: hidden;
   margin-top: 58rpx;
 }
 .marig-primary{
-  margin:30rpx 0;
+  margin:50rpx 0;
 }
 .primary{
-  width: 90%;
-  margin:0 5%;
+  width: 80%;
+  margin:0 10%;
 }
 
 .fixed-bottom{
@@ -193,7 +196,7 @@ overflow: hidden;
 
 .null-data{
     text-align: center;
-    color: #666;
+    color: #999;
     font-size: 12px;
 }
 
@@ -209,11 +212,10 @@ overflow: hidden;
     flex-direction: column;
 }
 .menberPire{
-    background-color: #3984FF;
-    color: #fff;
+    background-color: #F5FFFB; 
     font-size: 22rpx;
     padding: 2rpx 10rpx;
-    border-radius:20rpx; 
+    color: #2ECD91;
 }
 .activity{
     position: absolute;
@@ -247,7 +249,7 @@ overflow: hidden;
 position:absolute;
 left:-20px;
 top:5px;
-background-color:#ff4c5e;
+background-color:#FF4848;
 color:#fff;
 font-size:20rpx;
 padding:2rpx 10rpx;
@@ -276,20 +278,19 @@ text-align:center;
     overflow-y: scroll;
 }
 .box_cuo{
-    padding: 6rpx 10rpx;
-    background-color: #ff5168;
-    color: #fff;
-    margin-right: 10rpx;
-    font-size: 24rpx;
-    border-radius:6rpx; 
+    width:70rpx;
+    height: 40rpx;
 }
 .box_fan{
-    padding: 6rpx 10rpx;
-    background-color: #b55cff;
-    color: #fff;
-    margin-right: 10rpx;
+    width:70rpx;
+    height: 40rpx;
+}
+.cuopon_model label{
+     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    margin-left: 10rpx;
     font-size: 24rpx;
-    border-radius:6rpx; 
 }
 .formBut{
     border-radius:0;
@@ -297,4 +298,51 @@ text-align:center;
     height: 100%;
     width: 180rpx;
     line-height:100rpx;
+}
+.linear45{
+    background: linear-gradient(45deg,#FF8687,#FF4949);
+}
+.opacity5{
+    opacity: 0.5;
+}
+.hotfill {
+background-color: #FF4848;
+color: #fff;
+border-radius:4rpx;
+padding: 4rpx 10rpx;
+font-size: 22rpx;
+display: inline-block;
+margin-left: 20rpx;
+}
+.hotfill icon{
+    margin-top: -20rpx;
+    font-size: 22rpx;
+}
+.hotfill text{
+    font-size: 22rpx;
+    margin-left: 4rpx;
+}
+.sigma-content{
+    padding:20rpx 20%;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+.sigma-middle-line:before{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #AAAAAA; 
+    position: relative;
+    top: 10px;/*调节线高*/
+    left: 0;
+}
+.sigma-line-text{
+    display: inline-block;
+    background: #f2f2f2;
+    padding: 0 18px 0 18px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    color: #717171;
 }

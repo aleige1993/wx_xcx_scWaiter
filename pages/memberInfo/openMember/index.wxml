@@ -55,7 +55,7 @@
                         <input wx:if="{{rechargeUserInfo.birth}}" value='{{rechargeUserInfo.birth}}' disabled></input>
                         <picker wx:else mode="date" value="" end="{{endTime}}" name="dateTime" bindchange="onDateChange">
                             <view class="picker">
-                                {{dateTime}}
+                                {{dateTime?dateTime:'请选择日期'}}
                                 <icon class='iconfont icon-you1'></icon>
                             </view>
                         </picker>

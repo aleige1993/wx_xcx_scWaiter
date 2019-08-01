@@ -32,7 +32,12 @@ Page({
         couponSn: null,
         memberPrice: 0,
         carPrice: 0,
-        activeTab:0
+        activeTab:0,
+        indicatorDots: true,
+        autoplay: true,
+        interval: 5000,
+        intervaltwo: 8000,
+        duration: 1000
     },
     changAction(e){
         let index = e.currentTarget.dataset.index;
@@ -245,7 +250,7 @@ Page({
             app.Tools.showToast('请选择还车时间');
             return false;
         }
-        if (this.data.stationRent.stationNo == '') {
+        if (this.data.stationRent == '' || this.data.stationRent.stationNo == '') {
             app.Tools.showToast('请选择小站');
             return false;
         }

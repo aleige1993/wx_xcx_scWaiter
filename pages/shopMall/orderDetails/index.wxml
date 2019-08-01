@@ -1,7 +1,7 @@
 <!--pages/laundryOrder/index.wxml-->
 <view class='laundryOrder'>
     <view class='order-panl'>
-        <van-tabs active="{{ active }}"  animated bind:click="getIndex">
+        <van-tabs  custom-class="childListStyle" active="{{ active }}" line-width="20"  animated bind:click="getIndex">
             <van-tab title="全部" data-order="1"> </van-tab>
             <van-tab title="待付款" data-order="2"> </van-tab>
             <van-tab title="待收货" data-order="3"></van-tab>
@@ -15,9 +15,9 @@
                         <view>
                             <view>{{item.store_name}}</view>
                              <view>
-                                 <text wx:if="{{item.deliver == 1}}" class='c-yellow'>【自提】</text> 
-                                 <text  wx:if="{{item.deliver == 2}}" class='c-violet'>【配送】</text>
-                                <text>{{item.add_tm}}</text>
+                                 <text wx:if="{{item.deliver == 1}}" class='c-yellow'>自提</text> 
+                                 <text  wx:if="{{item.deliver == 2}}" class='c-violet'>配送</text>
+                                <text class='add_tm'> {{item.add_tm}}</text>
                             </view>
                         </view>
                         <view>
@@ -92,6 +92,6 @@
     <van-toast id="van-toast" />
     <van-dialog id="van-dialog" />
 </view>
-<navigator class='flex_bottom shadow-just' hover-class='none' open-type="redirect" url="/pages/shopMall/index">
+<!-- <navigator class='flex_bottom ' hover-class='none' open-type="redirect" url="/pages/shopMall/index">
     <icon class='iconfont icon-shouye'></icon>
-</navigator>
+</navigator> -->

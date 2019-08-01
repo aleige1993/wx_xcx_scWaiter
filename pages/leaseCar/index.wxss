@@ -1,26 +1,68 @@
 /* pages/ schoolCar/index.wxss */
 @import '../../pages/login/register.wxss';
 @import '/pages/shopMall/orderList/index.wxss';
+.explainAbout{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    /* position: absolute;
+    top: 30%;
+    right: 0; */
+    /* background-color: #7089FF; */
+    color: #f5965e;
+    /* opacity: 0.6; */
+    font-weight: 500 !important;
+    font-size: 22rpx !important;
+    /* padding: 6rpx 16rpx;
+    border-top-left-radius:30rpx;
+    border-bottom-left-radius:30rpx;  */
+} 
+.explainAbout icon{
+    margin-top: -12rpx;
+    margin-right: 4rpx;
+}
 page{
-    background-color: #fff;
+    background-color: #f2f2f2;
 }
 .banner{
     width: 100%;
-    height: 9rem;
+    height: 10rem;
+    position: relative;
 }
 .banner image{
     width: 100%;
-    height: 9rem;
+    height: 10rem;
+}
+.carTime{
+    width: 55rpx;
+    height: 26rpx;
+    margin-right: 10rpx;
+}
+.carName{
+    font-weight: 700;
+    color: #535353;
 }
 .Info_panl{
     width: 100%;
+    margin-bottom: 160rpx;
 }
 .panl_title{
     display: flex;
     justify-content: space-between;
-    padding: 20rpx 30rpx;
-    background-color: #f2f2f2;
+    padding: 20rpx 30rpx; 
     font-weight: 600;
+    color: #535353;
+    align-items: center;
+    background-color: #fff;
+}
+.ic_time{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 10rpx;
+}
+.ictimebox{
+    display: flex;
+    align-items: center;
 }
 .panl_title .explain{
      color: #f5a74f;
@@ -39,16 +81,17 @@ page{
     align-items: center;
     padding: 20rpx 30rpx;
     border-bottom: 1px solid #eee;
+    background-color: #fff;
 }
 
 .cell_box  .label{
     margin-top: 6rpx;
-    font-weight: 600;
-    color:#666;
+    color:#535353;
 }
 .cell_box  .value{
     flex: 1;
     text-align: right;
+    align-items: center;
 }
 .cell_box .picker{
     color: #999;
@@ -57,20 +100,44 @@ page{
     padding:  30rpx;
     display: flex;
     justify-content: space-between;
+    border-bottom:1px solid #f2f2f2; 
+    background-color: #fff;
 }
 .tilte_benl{
     flex: 1;
 }
+.title_p1{
+    display: flex;
+    align-items: center;
+}
+.panlreduc{
+    margin: 20rpx  0;
+}
 .tilte_benl .title_p1 text{
-    background-color: #3984ff;
-    color: #fff;
-    border-radius:20rpx;
-    font-size: 22rpx;
-    padding: 4rpx 10rpx;
+    border: 1px solid #7089FF;
+    color: #7089FF;
+    border-radius:6rpx;
+    font-size: 20rpx;
+    padding: 2rpx 15rpx;
     margin-left: 20rpx;
 }
 .tilte_benl .title_p2{
     margin-top: 20rpx;
+    margin-left: 60rpx;
+    font-size: 22rpx;
+}
+.title_p2 text{
+    margin: 0 16rpx;
+}
+.carprice{
+    font-weight: 600;
+    color: #FF4848;
+    font-size: 36rpx;
+}
+.cramemberPrice{
+    color: #535353;
+    margin-top: 14rpx;
+    font-size: 24rpx;
 }
 
 .panl_ben  .pice{
@@ -85,6 +152,7 @@ page{
     padding:30rpx 20rpx;
     display: flex;
     justify-content: space-between;
+      background-color: #fff;
 }
 .changeTime .time_panl{
     width: 40%;
@@ -98,19 +166,46 @@ page{
 }
 .picker_panl{
     text-align: center;
-    padding:10rpx 20rpx 26rpx 20rpx;
-    border: 1px solid #fd8700;
-    border-radius:5px; 
+    padding:0rpx 20rpx 16rpx 20rpx;
+    border-radius:50rpx; 
 }
-.picker_panl .picker{
-    color: #fd8700;
+.pickerstart{
+    border:1px solid #7089FF; 
 }
-.picker_panl .picker  .icon-you1 {
-        color:#fd8700 !important;
+.pickerend{
+ border:1px solid #FF4848; 
 }
-
+.pickerstart .picker{
+    color: #7089FF;
+}
+.pickerend .picker{
+    color: #FF4848;
+}
+.pickerstart .picker  .icon-xiangxia {
+        color:#7089FF !important;
+        font-size:20rpx;
+}
+.pickerend .picker  .icon-xiangxia {
+        color:#FF4848 !important;
+        font-size:20rpx;
+} 
 .magtext{
     padding: 20rpx;
+    display: flex;
+    color:#A0A0A0;
+    font-size: 24rpx;
+}
+.tishi{
+    width: 130rpx;
+}
+.sgzz{
+    flex: 1;
+    line-height: 50rpx;
+}
+.icon-gantanhao-yuankuang{
+    color: #FFC90E;
+    margin-right: 10rpx;
+    margin-top: -6rpx;
 }
 .cuopon_model{
     margin-top: 10rpx;
@@ -121,4 +216,46 @@ page{
 }
 .cuopon_model text{
     line-height: 10rpx;
+}
+.icon-you1{
+    margin-top: -10rpx;
+}
+input{
+    color: #A0A0A0;
+}
+.bg_fff{
+    padding-top:30rpx; 
+    background-color: #fff;
+}
+.cuopon_model{
+    margin-top: 0;
+}
+.flePrice{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding:30rpx;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    z-index: 6;
+    align-items: center;
+}
+.subPrice{
+    color: #535353;
+    font-size: 36rpx;
+    font-weight: 700;
+}
+.ButPrice{
+    background: linear-gradient(45deg,#FF8687,#FF4949);
+    border-radius:50rpx;
+    color: #fff;
+    padding:  0 50rpx;
+}
+.optButPrice{
+    opacity: 0.5;
+}
+button[disabled] {
+    color: #fff !important;
 }

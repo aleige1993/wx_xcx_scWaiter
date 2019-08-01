@@ -4,7 +4,8 @@
         <van-search  value=""  bind:change="onSearc" placeholder="输入小站名称  " />
     </view>
     <view class='map' bindtap='goBack'>
-        <icon class='iconfont icon-Map-'></icon>
+        <image class='mapimg' src='/static/images/ic_map.png'></image>
+        <!-- <icon class='iconfont icon-Map-'></icon> -->
     </view>
 </view>
 <view class='shopList' wx:if="{{store_list.length>0}}">

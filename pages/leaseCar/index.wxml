@@ -1,71 +1,94 @@
 <!--pages/schoolCar/index.wxml-->
 <view>
     <view class='banner'>
-        <image src='{{imgArr[0].advImage? imgArr[0].advImage : "../../static/images/error.png" }}'></image>
+        <!-- <image src='{{imgArr[0].advImage? imgArr[0].advImage : "../../static/images/error.png" }}'></image> -->
+        <swiper class='banner' circular indicator-active-color="#fff" indicator-dots="{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:key="imgArr" wx:for="{{imgArr}}">
+            <swiper-item class="swiper_item">
+                <image src="{{item.advImage}}" class="slide-image"  data-url='{{item.advUrl}}'  />
+            </swiper-item>
+        </block>
+    </swiper>
+        <!-- <view class='explainAbout' bindtap='goToViewDetails'>
+            <icon class='iconfont icon-icon-question'></icon>
+            <text>业务说明</text>
+        </view> -->
     </view>
-    <form bindsubmit="formSubmit" report-submit	>
+    <form bindsubmit="formSubmit" report-submit>
         <view class='schoolInfo'>
             <view class='Info_panl'>
-                <view class='panl_title'>
+                <!-- <view class='panl_title'>
                     <view>租车信息</view>
                     <view class='explain' hover-class='none' bindtap='goToViewDetails'>业务说明
                         <icon type='info' size="14" color="#e6ae6d"></icon>
                     </view>
-                </view>
+                </view> -->
                 <view class='panl_ben'>
                     <view class='tilte_benl'>
-                        <view class="title_p1">{{carInfo.carName}}
-                            <text>{{carInfo.attr1}}</text>
+                        <view class="title_p1">
+                            <image class='carTime' src='/static/images/ic_car_time.png'></image>
+                            <label class='carName'>{{carInfo.carName}}</label>
+                            <text class='carAttr1'>{{carInfo.attr1}}</text>
                         </view>
-                        <view class='c-999 title_p2'>{{carInfo.attr2}} {{carInfo.attr3}} {{carInfo.attr4}}{{carInfo.attr5}}</view>
+                        <view class='c-999 title_p2'>{{carInfo.attr2}}
+                            <text>|</text>{{carInfo.attr3}}
+                            <text>|</text> {{carInfo.attr4}}
+                            <text>|</text>{{carInfo.attr5}}</view>
                     </view>
                     <view class='pice' wx:if="{{!isTest}}">
-                        <view class=' c-red'>￥{{carInfo.price}}/日</view>
+                        <view class='carprice'>￥{{carInfo.price}}/日</view>
                     </view>
                     <view class='pice' wx:if="{{isTest}}">
-                        <view class=' c-red'>非会员：￥{{carInfo.price}}/日</view>
-                        <view class='c-violet'>会员：￥{{carInfo.memberPrice}}/日</view>
+                        <view class='carprice'>￥{{carInfo.price}}/日</view>
+                        <view class='cramemberPrice'>会员:￥{{carInfo.memberPrice}}/日</view>
                     </view>
                 </view>
                 <view class='panl_title'>
-                    选择租车时间
+                    <view class='ictimebox'>
+                        <image class='ic_time' src='/static/images/ic_time.png'></image>选择租车时间
+                    </view>
+                   <view class='explainAbout' bindtap='goToViewDetails'>
+                        <icon class='iconfont icon-icon-question'></icon>
+                        <text>业务说明</text>
+                    </view>
                 </view>
                 <view class='changeTime'>
                     <view class='time_panl'>
-                        <picker class='picker_panl' mode="date" value="" start="{{newTime}}" name="startTime" bindchange="onstartChange">
+                        <picker class='picker_panl pickerstart' mode="date" value="" start="{{newTime}}" name="startTime" bindchange="onstartChange">
                             <view class="picker">
                                 {{startTime ? startTime : "请选择取车时间"}}
-                                <icon class='iconfont icon-you1'></icon>
+                                <icon class='iconfont icon-xiangxia'></icon>
                             </view>
                         </picker>
                     </view>
                     <view class='whoisDay  c-666'>{{iDays?iDays:0}}天</view>
                     <view class='time_panl'>
-                        <picker class='picker_panl' mode="date" value="" start="{{startTime}}" end="{{endTimes}}" name="endTime" bindchange="onendChange">
+                        <picker class='picker_panl pickerend' mode="date" value="" start="{{startTime}}" end="{{endTimes}}" name="endTime" bindchange="onendChange">
                             <view class="picker">
                                 {{endTime ? endTime: "请选择还车时间"}}
-                                <icon class='iconfont icon-you1'></icon>
+                                <icon class='iconfont icon-xiangxia'></icon>
                             </view>
                         </picker>
                     </view>
                 </view>
 
-                <view class='panl_title'>
+                <!-- <view class='panl_title'>
                     小站信息
-                </view>
-                <view class='cell_box'>
-                    <view class='label'>优惠券</view>
-                    <view class='value'>
-                        <view class="picker" bindtap='getSettlement'>{{reduce_info ? reduce_info :'请选择优惠券'}}
-                            <icon class='iconfont icon-you1'></icon>
+                </view> -->
+                <view class='panlreduc'>
+                    <view class='cell_box'>
+                        <view class='label'>优惠券</view>
+                        <view class='value'>
+                            <view class="picker" bindtap='getSettlement'>{{reduce_info ? reduce_info :'请选择优惠券'}}
+                                <icon class='iconfont icon-you1'></icon>
+                            </view>
                         </view>
-
+                    </view>
+                    <view class='cell_box' wx:if="{{conpunPice}}">
+                        <view class='label'>优惠金额</view>
+                        <view class='value'>-￥{{conpunPice}}</view>
                     </view>
                 </view>
-                 <view class='cell_box' wx:if="{{conpunPice}}">
-                    <view class='label'>优惠券抵扣金额</view>
-                    <view class='value'>-￥{{conpunPice}}</view>
-                </view> 
                 <view class='cell_box'>
                     <view class='label'>小站选择</view>
                     <view class='value'>
@@ -98,21 +121,38 @@
                         <input value='09:00 ~ 21:00' disabled='true' name="shopTims" />
                     </view>
                 </view>
-                <view class='cuopon_model overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
+                <view class='bg_fff'>
+                    <view class='cuopon_model   overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
+                        <image class='box_fan' src='/static/images/ic_ticket.png'></image>
+                        <label>{{item}}</label>
+                    </view>
+                    <view class='magtext'>
+                        <view class='tishi'>
+                            <icon class='iconfont  icon-gantanhao-yuankuang'></icon>提示：</view>
+                        <label class='sgzz'>请携带本人身份证、驾驶证前往小站取车; 此订单为租车费用，租车押金499元到店支付;</label>
+                    </view>
+                </view>
+
+                <!-- <view class='cuopon_model overflowfont' wx:if="{{coup_list.length>0}}" wx:for="{{coup_list}}" wx:key="back">
                     <label class='box_fan'>返券</label>
                     <text>{{item}}</text>
-                </view>
+                </view> -->
             </view>
 
-            <view class='c-yellow magtext'>
-                提示：请携带本人身份证、驾驶证前往小站取车; 此订单为租车费用，租车押金499元到店支付;
+            <view class='flePrice' wx:if="{{rechargeMember == 'true' && isTest}}">
+                <view class='subPrice'>￥{{memberPrice?memberPrice:'0.00'}}</view>
+                <button size="normal" form-type='submit' disabled='{{memberPrice?false:true}}' class="ButPrice {{memberPrice?'':'optButPrice'}}">会员租车</button>
             </view>
-            <view class='marig-primary' wx:if="{{rechargeMember == 'true' && isTest}}">
+            <view class='flePrice' wx:else>
+                <view class='subPrice'>￥{{carPrice?carPrice:'0.00'}}</view>
+                <button size="normal" form-type='submit' disabled='{{carPrice?false:true}}' class="ButPrice '{{carPrice?'':'optButPrice'}}">立即租车</button>
+            </view>
+            <!-- <view class='marig-primary' wx:if="{{rechargeMember == 'true' && isTest}}">
                 <button size="normal" type="primary" round="true" form-type='submit' class="primary backg-grad shadow-just">会员租车（合计金额：￥{{memberPrice}}）</button>
             </view>
             <view class='marig-primary' wx:else>
                 <button size="normal" type="primary" round="true" form-type='submit' class="primary backg-grad shadow-just">立即租车（合计金额：￥{{carPrice}}）</button>
-            </view>
+            </view> -->
         </view>
     </form>
 

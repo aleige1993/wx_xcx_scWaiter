@@ -1,7 +1,4 @@
 /* pages/shopMall/addressList/index.wxss */
-page{
-    background-color: #f2f2f2;
-}
 .thisAddress{
     display: flex;
     justify-content: space-between;
@@ -22,10 +19,11 @@ page{
 .title_panl{
     color: #A0A0A0;
     padding: 30rpx 20rpx;
+    display: flex;
 }
 .addressList{
     background-color: #fff;
-    padding: 20rpx;
+    padding: 30rpx;
     position: relative;
     border-bottom:1px solid #f2f2f2; 
 }
@@ -35,13 +33,14 @@ page{
 }
 .addressList view:last-child{
     margin-bottom: 0;
+    font-size: 22rpx;
 }
 .icon-bianji{
     position: absolute;
     z-index: 2;
     top: 20rpx;
     right: 20rpx;
-    font-size: 40rpx;
+    font-size: 50rpx;
     color: #434343;
 }
 .icon-shanchu1{
@@ -49,7 +48,7 @@ page{
     z-index: 2;
     bottom: 20rpx;
     right: 20rpx;
-    font-size: 45rpx;
+    font-size: 50rpx;
     color: #434343;
 }
 .c-43{
@@ -59,12 +58,27 @@ page{
     margin-bottom: 160rpx;
 }
 .newButton{
-    line-height: 70rpx;
+    line-height: 80rpx;
     text-align: center;
-    border-radius:10rpx; 
+    border-radius:80rpx; 
     position: fixed;
-    bottom:40rpx;
+    bottom:70rpx;
+    color: #fff;
+    background-image: linear-gradient(45deg,#FF7475,#FF4949)
 }
 .allList{
     position: relative;
+}
+.addbuts{
+    font-size: 40rpx;
+    font-weight: 700;
+    margin-right: 10rpx;
+}
+.titetag{
+    margin-right: 20rpx;
+    height: 30rpx;
+    width: 8rpx;
+    background-color: #FF4949;
+    display: inline-block;
+    margin-top: 4rpx;
 }

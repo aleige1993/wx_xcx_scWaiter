@@ -66,15 +66,19 @@ background-color: #fff;
 }
 .but_box button{
     margin-left: 30rpx;
+    border-radius: 60rpx;
+    padding: 0 30rpx;
 }
 .but_box .but_question{
     background-color: #06a5ff;
 }
 .but_box .but_cancel{
-    background-color: #ff7b20;
+    border: 1px solid #BFBFBF;
+    color: #A0A0A0;
+    background-color: #fff;
 }
 .but_box .but_payment{
-    background-color: #ff4c5e;
+    background-color: #FF4848;
 }
 .but_box  .but_confirm{
     background-color: #ea857d;
@@ -104,4 +108,25 @@ background-color: #fff;
 }
 .flex_bottom icon{
     font-size: 22px;
+}
+
+.van-tabs__wrap{
+    background-color: #fff;
+}
+.van-tabs__line{
+    height: 4px !important;
+    background-color: #FF4848 !important;
+}
+.childListStyle .van-tab--active{
+    color: #FF4848 !important;
+    font-weight:600; 
+}
+.childListStyle .van-tab{
+    color: #7D7D7D;
+}
+.c-red{
+    color: #FF4848;
+}
+.add_tm{
+    margin-left: 10rpx;
 }

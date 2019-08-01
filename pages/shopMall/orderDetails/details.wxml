@@ -1,38 +1,28 @@
 <!--pages/shopMall/orderDetails/details.wxml-->
 <!-- 头部状态 -->
 <view class='main-center'>
-    <view class='detahader bg-yller' wx:if="{{detailInfo.status == 1}}">
-        <view>
-            <icon class='iconfont icon-shijian1 '></icon>
-            <text>等待付款...</text>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 1}}">
+        <view class='doubel'>
+            <label>等待付款</label>
+            <text class='detaText'>剩余{{detaText}}</text>
         </view>
-        <view>
-            <text>剩余{{detaText}}</text>
-        </view>
+        <image class='wait_img' src='/static/images/ic_waiting_for_payment.png'></image>
     </view>
-    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 2}}">
-        <view>
-            <icon class='iconfont icon-shijian1 '></icon>
-            <text>等待收货...</text>
-        </view>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 2}}">
+        <label>等待收货</label>
+        <image class='wait_img' src='/static/images/ic_delivery_of_clothes.png'></image>
     </view>
-    <view class='detahader bg-red' wx:if="{{detailInfo.status == 3}}">
-        <view>
-            <icon class='iconfont icon-gouxuan '></icon>
-            <text>订单退款中...</text>
-        </view>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 3}}">
+        <label>订单退款中</label>
+        <image class='wait_img' src='/static/images/ic_completed.png'></image>
     </view>
-    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 4}}">
-        <view>
-            <icon class='iconfont icon-gouxuan '></icon>
-            <text>订单退款完成...</text>
-        </view>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 4}}">
+        <label>订单退款完成</label>
+        <image class='wait_img' src='/static/images/ic_cancelled.png'></image>
     </view>
-    <view class='detahader bg-blue' wx:if="{{detailInfo.status == 5}}">
-        <view>
-            <icon class='iconfont icon-gouxuan '></icon>
-            <text>订单已完成...</text>
-        </view>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 5}}">
+        <label>订单已完成</label>
+        <image class='wait_img' src='/static/images/ic_cancelled.png'></image>
     </view>
 
     <!-- <view class='detahader bg-blue'  wx:if="{{detailInfo.type == 4}}">
@@ -41,30 +31,43 @@
         <text>退货订单</text>
     </view>
 </view> -->
-    <view class='detahader bg-gray' wx:if="{{detailInfo.status == 0}}">
-        <view>
+    <view class='detahader type_text' wx:if="{{detailInfo.status == 0}}">
+        <label>订单已取消</label>
+        <image class='wait_img' src='/static/images/ic_cancelled.png'></image>
+        <!-- <view>
             <icon class='iconfont icon-guanbi '></icon>
             <text>订单已取消...</text>
-        </view>
+        </view> -->
     </view>
 
     <!-- 提货——配送 -->
     <view class='waymode' wx:if="{{detailInfo.deliver == 2}}">
         <view class='ad_info'>
-            <view class='font-w6'> {{detailInfo.addr.name}} {{detailInfo.addr.phone}}</view>
-            <view class='c-999'>{{detailInfo.addr.address}}</view>
+            <image class='ic_add' src='/static/images/ic_addres.png'></image>
+            <view>
+                <view class='font-w6'> {{detailInfo.addr.name}} {{detailInfo.addr.phone}}</view>
+                <view class='c-999'>{{detailInfo.addr.address}}</view>
+            </view>
         </view>
         <view class='ad_shop' wx:if="{{detailInfo.derse_phone}}">
+            <image class='ic_add' src='/static/images/ic_worker.png'></image>
             <view>
-                <icon class='iconfont icon-wo c-danl'></icon>配送员：{{detailInfo.derse_name}}</view>
-            <view data-phone="{{detailInfo.derse_phone}}" bindtap='clickQuestion'>
-                <icon class='iconfont icon-phone-channel c-danl'></icon>电话：{{detailInfo.derse_phone}}</view>
+                <view>
+                    <icon class='iconfont icon-wo c-danl'></icon>配送员：{{detailInfo.derse_name}}
+                </view>
+                <view data-phone="{{detailInfo.derse_phone}}" bindtap='clickQuestion'>
+                    <icon class='iconfont icon-phone-channel c-danl'></icon>电话：{{detailInfo.derse_phone}} </view>
+            </view>
+
         </view>
     </view>
     <view class='waymode' wx:if="{{detailInfo.deliver == 1}}">
         <view class='ad_info'>
-            <view class='font-w6'> 支付后 {{detailInfo.date}} - {{detailInfo.time}}可至门店提货</view>
-            <view class='c-999'>{{detailInfo.store_address}}</view>
+            <image class='ic_add' src='/static/images/ic_addres.png'></image>
+            <view>
+                <view class='font-w6'> 支付后 {{detailInfo.date}} - {{detailInfo.time}}可至门店提货</view>
+                <view class='c-999'>{{detailInfo.store_address}}</view>
+            </view>
         </view>
     </view>
     <!-- <view class='waymode'>
@@ -118,10 +121,10 @@
                     <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '2'}}" class='active apply'>
                         审核已受理
                     </view>
-                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '3'}}" class='active apply'>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '3'}}" class='apply refundRef'>
                         退货已完成
                     </view>
-                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '-1'}}" class='active apply'>
+                    <view data-orderno="{{item.cancel_no}}" bindtap='goToRefund' wx:if="{{item.refund_status == '-1'}}" class='refundRef apply'>
                         退货已拒绝
                     </view>
                 </view>
@@ -147,7 +150,8 @@
 
     <!-- 订单信息 -->
     <view class='orderInfo'>
-        <view class='h2'>订单信息</view>
+        <view class='h2'>
+            <text class='leborder'></text>订单信息</view>
         <view class='infogood'>
             <view class='li'>
                 <view>商品合计</view>

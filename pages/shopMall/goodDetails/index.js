@@ -6,7 +6,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        html:'<div>我是详情信息</div>',//富文本
+        st_id: null,
+        barcode: null,
+        types: null,
+        html: '<div>我是详情信息</div>',//富文本
         layer: false,//遮罩
         shopcart_panl: false,//购物车结果
         store_info: null,//店铺
@@ -14,10 +17,10 @@ Page({
         cart_info: null,//购物车
         goods_info: null,//商品详情
         user_info: null,//是否为会员
-        aaa:''
+        aaa: ''
     },
     //拨打电话
-    makePhoneCall(e){
+    makePhoneCall(e) {
         let phone = e.currentTarget.dataset.phone
         wx.makePhoneCall({
             phoneNumber: phone
@@ -139,36 +142,55 @@ Page({
      * 生命周期函数--监听页面加载
      */
     //获取商品
-    getGoodsInfo(){
+    getGoodsInfo() {
+        let parms = "";
         wx.showLoading({
             title: '加载中...',
         })
-        let parms = {
-            st_id: this.data.store_info.st_id,
-            barcode: this.data.goods_list.barcode
+        if (this.data.types == 1) {
+            parms = {
+                st_id: this.data.st_id,
+                barcode: this.data.barcode
+            }
+        } else {
+            parms = {
+                st_id: this.data.store_info.st_id,
+                barcode: this.data.goods_list.barcode
+            }
         }
-        app.FormdataPHP.get('/wxapp/mobile/goodsInfo', parms,(res)=>{
-            if(res.code == '0000'){
+        app.FormdataPHP.get('/wxapp/mobile/goodsInfo', parms, (res) => {
+            if (res.code == '0000') {
                 this.setData({
                     goods_info: res.data.goods_info,
-                    user_info: res.data.user_info
+                    user_info: res.data.user_info,
+                    store_info: res.data.store_info
                 })
                 wx.hideLoading();
-            }else{
+            } else {
                 wx.hideLoading();
             }
         })
     },
     onLoad: function (options) {
-        console.log('goodDetails',options)
-        if (options){
-            this.setData({
-                cart_info: JSON.parse(options.cart_info),
-                goods_list: JSON.parse(options.item),
-                store_info: JSON.parse(options.store_info) 
-            },()=>{
-                this.getGoodsInfo();
-            })
+        console.log('goodDetails', options)
+        if (options) {
+            if (options.types == 1) {
+                this.setData({
+                    types: 1,
+                    st_id: options.stid,
+                    barcode: options.barcode
+                }, () => {
+                    this.getGoodsInfo();
+                })
+            } else {
+                this.setData({
+                    cart_info: JSON.parse(options.cart_info),
+                    goods_list: JSON.parse(options.item),
+                    store_info: JSON.parse(options.store_info)
+                }, () => {
+                    this.getGoodsInfo();
+                })
+            }
         }
     },
 

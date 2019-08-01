@@ -1,99 +1,114 @@
 <!--pages/usCenter/userInfo.wxml-->
 <view class='info_model'>
-    <image class='bg_img' src='/static/images/bg_user.jpg'></image>
+    <view class='bgUser'>
+        <image class='img_lamp' src='/static/images/img_lamp.png'></image>
+    </view>
+    <!-- <image class='bg_img' src='/static/images/bg_user.jpg'></image> -->
     <view class='flut'>
         <view class='user_info shadow-just-top'>
             <image class='aouter_image' src="{{wxInfo.avatarUrl ?  wxInfo.avatarUrl : '/static/images/index.png'}}"></image>
             <view class='user_name'>
                 <view class='font-w6'>{{wxInfo.nickName}}</view>
-                     <view wx:if="{{rechargeUserInfo.rechargeMember == 'true'}}" class='tiem_text'>{{rechargeUserInfo.endTime}}到期</view>
-                 <view wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'true' }}"> <text>会员已经过期</text><text  class='xufei' bindtap='goPaymenber'>去续费</text></view> 
-                 <view class='tiem_text' wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'false' }}">普通用户</view>
-            </view> 
-            <navigator hover-class='none' wx:if="{{ rechargeMember == 'true' && isTest}}" url='/pages/memberInfo/modifyMember/index'  class='vip_info'> 
-           <image src='/static/images/vip_userinfo.png'></image>
+                <view wx:if="{{rechargeUserInfo.rechargeMember == 'true'}}" class='tiem_text'>{{rechargeUserInfo.endTime}}到期</view>
+                <view wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'true' }}">
+                    <text>会员已经过期</text>
+                    <text class='xufei' bindtap='goPaymenber'>去续费</text>
+                </view>
+                <view class='tiem_text' wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'false' }}">普通用户</view>
+            </view>
+            <navigator hover-class='none' wx:if="{{ rechargeMember == 'true' && isTest}}" url='/pages/memberInfo/modifyMember/index' class='vip_info'>
+                <image class='ic_vip' src='/static/images/ic_vip.png'></image>
+                <label>小站会员</label>
             </navigator>
-             <navigator hover-class='none'  wx:if="{{rechargeUserInfo.rechargeMember === 'false' && rechargeUserInfo.firstCharge === 'false' && isTest == true }}" url='/pages/memberInfo/openMember/index'  class='vip_info'> 
-            <image src='/static/images/open_userinfo.png'></image>
-            </navigator>
+            <!-- <navigator hover-class='none' wx:if="{{rechargeUserInfo.rechargeMember === 'false' && rechargeUserInfo.firstCharge === 'false' && isTest == true }}" url='/pages/memberInfo/openMember/index' class='vip_info'>
+                <image class='ic_vip' src='/static/images/ic_vip.png'></image>
+                <label>开通会员</label>
+            </navigator> -->
+        </view>
+        <view class='follow_panl'>
+            <navigator hover-class='none' url='/pages/usCenter/followShop/index' class='follbat'>我的关注</navigator>
+             <navigator hover-class='none'  wx:if="{{ rechargeMember == 'true' && isTest}}" url='/pages/memberInfo/modifyMember/index'  class='openbat'>会员信息</navigator>
+            <navigator hover-class='none' wx:if="{{rechargeUserInfo.rechargeMember === 'false' && rechargeUserInfo.firstCharge === 'false' && isTest == true }}" url='/pages/memberInfo/openMember/index' class='openbat'>开通会员</navigator> 
+             <navigator hover-class='none' wx:if="{{rechargeUserInfo.rechargeMember != 'true' && rechargeUserInfo.firstCharge == 'true' }}" url='/pages/memberInfo/openMember/index' class='openbat'>会员续费</navigator> 
         </view>
         <image if="{{imageBannr}}" src='{{imageBannr}}' class='fenxImgs' bindtap='fenxYAO'></image>
+
         <view class='model_info shadow-just-bottom'>
             <view class='heder_info'>
-                <text>洗衣</text>
-                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=3'>优惠券</navigator>
+                <text class='title_hd'>洗衣</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=3'>优惠券>></navigator>
             </view>
             <view class='coupon_panl'>
-                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=0'>
-                        <icon class='iconfont icon-daifukuan'></icon>
-                        <view class='laber_text'>待付款</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=1'>
-                        <icon class='iconfont icon-gengyishi'></icon>
-                        <view>待取衣</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=2'>
-                        <icon class='iconfont icon-yiwancheng'></icon>
-                        <view class='laber_text'>已完成</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/laundryOrder/orderDetails/index?active=3'>
-                        <icon class='iconfont icon-yiquxiao'></icon>
-                        <view class='laber_text'>已取消</view>
-                    </navigator>
+                <navigator hover-class='none' url='/pages/laundryOrder/orderDetails/index?active=0'>
+                    <image src='/static/images/ic_laundry_payme.png'></image>
+                    <view class='laber_text'>待付款</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/laundryOrder/orderDetails/index?active=1'>
+                    <image src='/static/images/ic_laundry_com.png'></image>
+                    <view>待取衣</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/laundryOrder/orderDetails/index?active=2'>
+                    <image src='/static/images/ic_rent_a_car_complete.png'></image>
+                    <view class='laber_text'>已完成</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/laundryOrder/orderDetails/index?active=3'>
+                    <image src='/static/images/ic_rent_a_car_cancelled.png'></image>
+                    <view class='laber_text'>已取消</view>
+                </navigator>
             </view>
         </view>
-          <view class='model_info shadow-just-bottom'>
+        <view class='model_info shadow-just-bottom'>
             <view class='heder_info'>
-                <text>租车</text>
-                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=2'>优惠券</navigator>
+                <text class='title_hd'>租车</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=2'>优惠券>></navigator>
             </view>
             <view class='coupon_panl'>
-                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=0'>
-                        <icon class='iconfont icon-daifukuan'></icon>
-                        <view class='laber_text'>待付款</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=1'>
-                        <icon class='iconfont icon-cheliang'></icon>
-                        <view class='laber_text'>待取车</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=2'>
-                        <icon class='iconfont icon-yiwancheng'></icon>
-                        <view class='laber_text'>已完成</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/leaseCar/leaseDetails/index?active=3'>
-                        <icon class='iconfont icon-yiquxiao'></icon>
-                        <view class='laber_text'>已取消</view>
-                    </navigator>
+                <navigator hover-class='none' url='/pages/leaseCar/leaseDetails/index?active=0'>
+                    <image src='/static/images/ic_laundry_payme.png'></image>
+                    <view class='laber_text'>待付款</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/leaseCar/leaseDetails/index?active=1'>
+                    <image src='/static/images/ic_rent_picked.png'></image>
+                    <view class='laber_text'>待取车</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/leaseCar/leaseDetails/index?active=2'>
+                    <image src='/static/images/ic_rent_a_car_complete.png'></image>
+                    <view class='laber_text'>已完成</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/leaseCar/leaseDetails/index?active=3'>
+                    <image src='/static/images/ic_rent_a_car_cancelled.png'></image>
+                    <view class='laber_text'>已取消</view>
+                </navigator>
             </view>
         </view>
-          <view class='model_info shadow-just-bottom cerMagin'>
+        <view class='model_info shadow-just-bottom cerMagin'>
             <view class='heder_info'>
-                <text>超市</text>
-                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=1'>优惠券</navigator>
+                <text class='title_hd'>超市</text>
+                <navigator class='c-red' url='/pages/usCenter/couponInfo/index?service=1'>优惠券>></navigator>
             </view>
             <view class='coupon_panl'>
-                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=0'>
-                        <icon class='iconfont icon-daifukuan'></icon>
-                        <view class='laber_text'>待付款</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=1'>
-                        <icon class='iconfont icon-qiandai'></icon>
-                        <view class='laber_text'>已支付</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=2'>
-                        <icon class='iconfont icon-ziyuan'></icon>
-                        <view class='laber_text'>待收货</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/shopMall/orderDetails/index?active=3'>
-                        <icon class='iconfont icon-yiwancheng'></icon>
-                        <view class='laber_text'>已完成</view>
-                    </navigator>
-                    <navigator hover-class='none' url = '/pages/shopMall/returnOrder/index'>
-                        <icon class='iconfont icon-tuihuozhong'></icon>
-                        <view class='laber_text'>退货订单</view>
-                    </navigator>
+                <navigator hover-class='none' url='/pages/shopMall/orderDetails/index?active=0'>
+                    <image src='/static/images/ic_laundry_payme.png'></image>
+                    <view class='laber_text'>待付款</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/shopMall/orderDetails/index?active=1'>
+                    <image src='/static/images/ic_supermarket_paymented.png'></image>
+                    <view class='laber_text'>已支付</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/shopMall/orderDetails/index?active=2'>
+                    <image src='/static/images/ic_supermarket.png'></image>
+                    <view class='laber_text'>待收货</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/shopMall/orderDetails/index?active=3'>
+                    <image src='/static/images/ic_rent_a_car_complete.png'></image>
+                    <view class='laber_text'>已完成</view>
+                </navigator>
+                <navigator hover-class='none' url='/pages/shopMall/returnOrder/index'>
+                    <image src='/static/images/ic_rent_a_car_cancelled.png'></image>
+                    <view class='laber_text'>退货订单</view>
+                </navigator>
             </view>
         </view>
-    </view> 
+    </view>
 
 </view>

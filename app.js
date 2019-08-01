@@ -34,9 +34,9 @@ App({
       });
       Promis.wxPromisify(wx.request)({
           method: 'GET',
-          url: 'https://pos.songchexiaozhan.com/wxapp/config/version',
+          url: 'https://api.songchexiaozhan.com/conf.version/miniApp',
           data: {
-              'message': JSON.stringify({ "version": '1.1.7' })
+              'message': JSON.stringify({ "version": '2.1' })
           },
           header: {
               'content-type': 'application/x-www-form-urlencoded',
@@ -45,9 +45,12 @@ App({
           let data = res.data;
           if (data.code == '0000') {
               console.log('domain', data.data.domain)
-              this.OPEN_APIPHP = data.data.domain;
+              this.OPEN_APIPHP = data.data.domain.shop;
+              this.OPEN_APINewPHP = data.data.domain.system;
               this.ConfigPHP = require('/config/indexPHP.js');
               this.FormdataPHP = require('/utils/FormdataPHP.js');
+              this.ConfigNewPHP = require('/config/indexNewPHP.js');
+              this.FormdataNewPHP = require('/utils/FormdataNewPHP.js');
               this.globalData.employId = 2;
               if (this.employIdCallback) {
                   this.employIdCallback(2);
@@ -62,10 +65,10 @@ App({
     //   this.Config = require('/config/index.js');
     //   this.Formdata = require('/utils/Formdata.js');
     // this.ConfigPHP = require('/config/indexPHP.js');
-    // this.FormdataPHP = require('/utils/FormdataPHP.js');
+    // this.FormdataPHP = require('/utils/FormdataPHP.js'); 
+    this.UserLogin = require('/utils/UserLogin.js');
     this.utils = require('/utils/util.js');
     this.Bezier = require('/utils/Bezier.js');
-    this.UserLogin = require('/utils/UserLogin.js');
     //this.Http = require('/utils/http.js');
     this.Tools = require('/utils/Tools.js');
     this.Date = require('/utils/Date.js');

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <!-- <official-account></official-account> -->
 <view class="dashboard">
-    <swiper class='banner' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
+    <swiper class='banner' circular indicator-active-color="#fff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.interval}}" duration="{{banner.duration}}">
         <block wx:key="{{bannerArr}}" wx:for="{{banner.bannerArr}}">
             <swiper-item class="swiper_item">
                 <image src="{{item.advImage}}" class="slide-image"  data-url='{{item.advUrl}}' bindtap='goToViewDetails' />
@@ -12,41 +12,31 @@
         <view class='grid_box'>
             <navigator url='/pages/myExpress/index' class='icon_one' hover-class="none">
                 <view class='img-box'>
-                    <image src='/static/images/kuaidi.png'></image>
+                    <image src='/static/images/ic_express.png'></image>
                     <!-- <icon class='iconfont icon-kuaidi'></icon> -->
                 </view>
                 <view class='icontext'>我的快递</view>
             </navigator>
             <navigator class='icon_two' url='/pages/laundryOrder/index/index' hover-class="none">
                 <view class='img-box'>
-                    <image src='/static/images/weiyi.png'></image>
+                    <image src='/static/images/ic_laundry.png'></image>
                 </view>
                 <view class='icontext'>小站洗衣</view>
             </navigator>
             <navigator class='icon_three' url="/pages/schoolCar/index" hover-class="none">
                 <view class='img-box'>
-                    <image src='/static/images/wanjuqiche.png'></image>
+                    <image src='/static/images/ic_scholar.png'></image>
                 </view>
                 <view class='icontext'>小站学车</view>
             </navigator>
             <navigator class='icon_four' url="/pages/leaseCar/index" hover-class="none">
                 <view class='img-box'>
-                    <image src='/static/images/levsCar.png'></image>
+                    <image src='/static/images/ic_car.png'></image>
                 </view>
                 <view class='icontext'>小站租车</view>
             </navigator>
         </view>
-    </view>
-    <swiper wx:if="{{isTest}}" class='meber_box meber_box_two' circular indicator-active-color="#5f8aff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.intervaltwo}}" duration="{{banner.duration}}">
-        <block wx:key="{{openmenber}}" wx:for="{{banner.openmenber}}">
-            <swiper-item>
-                <image src="{{item.advImage}}" class="slide-image"   data-url="{{item.advUrl}}" data-name="{{item.advName}}" bindtap="goToViewDetails"></image>
-            </swiper-item>
-        </block>
-    </swiper>
-
-
-
+    </view> 
     <view class='imgPanl'>
         <!-- /pages/laundryOrder/index/index -->
         <navigator url='{{rightcar[0].advUrl}}' hover-class='none'>
@@ -57,40 +47,45 @@
             <image src='{{leftwash[0].advImage}}'></image>
         </navigator>
     </view>
-    <view class='getCnpsun' bindtap='getCouponlist'>
+        <swiper wx:if="{{isTest}}" class='meber_box meber_box_two' circular indicator-active-color="#fff" indicator-dots="{{banner.indicatorDots}}" autoplay="{{banner.autoplay}}" interval="{{banner.intervaltwo}}" duration="{{banner.duration}}">
+        <block wx:key="{{openmenber}}" wx:for="{{banner.openmenber}}">
+            <swiper-item>
+                <image src="{{item.advImage}}" class="slide-image"   data-url="{{item.advUrl}}" data-name="{{item.advName}}" bindtap="goToViewDetails"></image>
+            </swiper-item>
+        </block>
+    </swiper>  
+    <!-- <view class='getCnpsun' bindtap='getCouponlist'>
         <image src='/static/images/coupun.png'></image>
-    </view>
+    </view> -->
     <view class='new-express '>
-        <view class='expre_title'>附近的小站超市</view>
+        <view class='expre_title'>附近的小站</view>
         <view class='station_model' wx:for="{{store_list}}" wx:key="store_list" data-station="{{item}}" bindtap='goToshop'>
             <view class='imgpanl'>
                 <image src="{{item.logo?item.logo:'/static/images/error.png'}}"></image>
             </view>
             <view class='titlepanl'>
                 <view class='conput_box'>
-                    <view class='title_name'>{{item.st_name}}</view>
+                    <view class='titlex_box'>
+                     <view class='title_name overflowfont'>{{item.st_name}}</view>
+                    <label class='bg_hot' wx:if="{{item.free_freight > 0}}">会员满{{item.free_freight}}元免配送费</label>
+                    <label class='bg_hot' wx:if="{{item.free_freight == 0}}"> 免配送费</label>
+                    </view> 
                     <view class='title_text'>
-                        <view class='text_span'>
-                            <label class='bg_hot' wx:if="{{item.free_freight > 0}}">会员满{{item.free_freight}}元免配送费</label>
-                            <label class='bg_hot' wx:if="{{item.free_freight == 0}}"> 免配送费</label>
-                            <text class='c-999'></text>
+                       <view class='text_span'>
+                            <label>起送 <text>￥{{item.start_freight}}</text></label>
+                            <label>基础运费<text>￥{{item.deliver_money}}</text></label>
                         </view>
-                        <view wx:if="{{item.distance != 0}}" class='mink c-999'>{{item.distance}}</view>
-                    </view>
-                    <view class='title_text'>
-                        <view class='text_span c-999'>
-                            <text>起送￥{{item.start_freight}}</text>
-                            <text>基础运费￥{{item.deliver_money}}</text>
-                        </view>
-                        <!-- <view class='mink c-999'>商家自送</view> -->
-                    </view>
+                        <view wx:if="{{item.distance != 0}}" class='mink'>{{item.distance}}</view>
+                    </view> 
                 </view>
                 <view class='cuopon_panl' wx:if="{{item.coup_info.back || item.coup_info.receive}}">
                     <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.receive}}">
-                        <label class='box_cuo'>领劵</label>{{item.coup_info.receive}}
+                        <image class='box_cuo' src='/static/images/ic_coupon.png'></image>
+                        <label>{{item.coup_info.receive}}</label> 
                     </view>
                     <view class='cuopon_model overflowfont' wx:if="{{item.coup_info.back}}">
-                        <label class='box_fan'>返劵</label>{{item.coup_info.back}}
+                    <image class='box_fan' src='/static/images/ic_ticket.png'></image>
+                        <label>{{item.coup_info.back}}</label>
                     </view>
                 </view>
             </view>
@@ -185,5 +180,19 @@
     <view class='buttom_panl'>
         <view class='soile'></view>
         <view class='del' bindtap='changeRec'>×</view>
+    </view>
+</view>
+
+
+<!-- 我要预约-->
+<view class='layer' wx:if="{{appointment}}"></view>
+<view class='coupon_box' wx:if="{{appointment}}">
+   <view class='ment_panl'> 
+            <image class='imgment' src='{{mentImg[0].advImage }}' data-url='{{mentImg[0].advUrl}}' bindtap='goToViewDetails'></image> 
+      <view class='butment' bindtap='onMent'>参加活动</view>
+   </view>
+    <view class='buttom_panl'> 
+         <view class='soile'></view>
+        <view class='del' bindtap='changeMent'>×</view>
     </view>
 </view>

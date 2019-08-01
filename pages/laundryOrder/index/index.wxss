@@ -3,6 +3,28 @@ page {
   background: #f2f2f2;
 }
 
+.navCss{
+    background-color: #7089FF !important;
+}
+.van-tabs__nav{
+background-color: #7089FF !important;
+}
+.van-tabs__line{
+    height: 4px !important;
+    background-color: #fff !important;
+}
+.childListStyle .van-tabs__nav{
+   background-color: #fff !important;
+}
+.childListStyle .van-tab{
+    color: #BFBFBF;
+}
+.navCss .van-tab--active{
+    color: #fff !important;
+}
+.childListStyle .van-tab--active{
+    color: #535353 !important;
+}
 .laundry-list {
   padding: 15rpx;
 }
@@ -32,16 +54,8 @@ page {
 .laundry-button {
   position: fixed;
   right: 0;
-  bottom: 18%;
-  padding:15rpx 20rpx;
-  color: #fff;
-  /* background: #ea857d; */
-  border-top-left-radius: 50rpx;
-  border-bottom-left-radius: 50rpx;
-  z-index: 100;
-  /* min-width: 140rpx; */
-    display: flex;
-    align-items: center;
+  bottom: 15vh;
+  z-index: 5;  
 }
 .laundry-button icon{
     font-size: 24px;
@@ -49,12 +63,11 @@ page {
 }
 .laundry-button text{
     font-size: 16px;
-    margin-top: 10rpx;
     font-weight: 600;
+    text-align: center;
 }
 
 .ceng_box{
-    margin-top: 10rpx;
     background-color: #fff;
 }
 .pirce_box{
@@ -65,11 +78,13 @@ page {
     display: block;
     font-size: 12px;
 }
-
+.pirce_box text.realPrice{
+    color: #7089FF !important;
+}
 .pirce_box icon{
     /* margin-top: -20rpx; */
-    color: #ff0000;
-    font-size:18px; 
+    color: #7089FF;
+    font-size:26px; 
 }
 .good_box {
   width: 20px;
@@ -82,8 +97,16 @@ page {
   z-index: 99;
   background-image: linear-gradient(45deg, #5578f6, #35e1c8); 
 }
+.childListStyle{
+    background-color: #fff !important;
+}
 .childListStyle .van-tabs__line{
     display: none  !important;
+}
+.childListStyle .van-tab--active .van-ellipsis text{
+    padding: 10rpx 20rpx;
+    border: 1px solid #E5E5E5;
+    border-radius:30rpx; 
 }
 .null-data{
     text-align: center;
@@ -96,9 +119,44 @@ page {
     color: #999;
 }
 .banner{
-    width: 100%;
+    width: 100%; 
+    height: 32vh;
 }
 .banner image{
     width: 100%;
-    height: 8rem;
+    height: 100%;
+}
+.ic_basket{
+    width: 120rpx;
+    height: 120rpx;
+}
+.moch{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background-color: #FF4848;
+    color: #fff;
+    border-radius:100%;
+    min-width: 40rpx;
+    min-height: 40rpx;
+    padding: 4rpx;
+}
+.hotfill {
+position: absolute;
+left: -10rpx;
+top: 80rpx;
+background-color: #FF4848;
+color: #fff;
+border-radius:4rpx;
+padding: 4rpx 10rpx;
+font-size: 22rpx;
+}
+.hotfill icon{
+    margin-top: -20rpx;
+    font-size: 22rpx;
+}
+.hotfill text{
+    font-size: 22rpx;
+    margin-left: 4rpx;
 }

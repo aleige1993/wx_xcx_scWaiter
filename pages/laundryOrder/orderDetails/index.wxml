@@ -1,7 +1,7 @@
 <!--pages/laundryOrder/index.wxml-->
 <view class='laundryOrder'>
     <view class='order-panl'>
-        <van-tabs active="{{ active }}" animated bind:click="getIndex">
+        <van-tabs custom-class="childListStyle" active="{{ active }}" line-width="20" animated bind:click="getIndex">
             <van-tab title="待付款" data-order="1"> </van-tab>
             <van-tab title="待取衣" data-order="2"></van-tab>
             <van-tab title="已完成"></van-tab>
@@ -14,15 +14,15 @@
                            <view class='order_title'  >
                         <view>订单编号：{{item.orderNo}}</view>
                         <view>
-                            <text class='c-red' wx:if="{{item.status==1}}">等待付款</text>
-                             <text class='c-red' wx:if="{{item.status==2}}">清洗中</text>
-                              <text class='c-red' wx:if="{{item.status==3}}">清洗中</text>
-                                <text class='c-red' wx:if="{{item.status==4}}">清洗中</text>
-                                 <text class='c-red' wx:if="{{item.status==5}}">清洗中</text>
-                                  <text class='c-red' wx:if="{{item.status==6}}">清洗中</text>
-                                    <text class='c-red' wx:if="{{item.status==7}}">待取衣</text>
-                              <text class='c-red' wx:if="{{item.status==8}}">交易成功</text>
-                               <text class='c-red' wx:if="{{item.status==10}}">交易关闭</text>
+                            <text class='c-F9' wx:if="{{item.status==1}}">等待付款</text>
+                             <text class='c-F9' wx:if="{{item.status==2}}">清洗中</text>
+                              <text class='c-F9' wx:if="{{item.status==3}}">清洗中</text>
+                                <text class='c-F9' wx:if="{{item.status==4}}">清洗中</text>
+                                 <text class='c-F9' wx:if="{{item.status==5}}">清洗中</text>
+                                  <text class='c-F9' wx:if="{{item.status==6}}">清洗中</text>
+                                    <text class='c-F9' wx:if="{{item.status==7}}">待取衣</text>
+                              <text class='c_53' wx:if="{{item.status==8}}">交易成功</text>
+                               <text class='c_A0' wx:if="{{item.status==10}}">交易关闭</text>
                         </view>
                     </view>
                     
@@ -30,29 +30,29 @@
                         <view class='move_box' wx:for="{{item.orderGoods}}"  wx:for-item="itemGoods"  wx:key="orderGoods">
                           <view class='action_panl'>
                         <image src='{{itemGoods.picUrl}}'></image>
-                        <view class='activity' wx:if="{{itemGoods.isBindActivity == 1}}"><icon class='iconfont icon-huodong'></icon></view>
-                    </view>
-                            <!-- <image src='{{itemGoods.picUrl}}'></image> -->
+                         <!-- wx:if="{{itemGoods.isBindActivity == 1}}" -->
+                        <!-- <view class='activity'><icon class='iconfont icon-huodong'></icon></view> -->
+                    </view> 
                             <view class='order_vim'>
-                                <view>{{itemGoods.goodName}}</view>
-                                <view class='back_view'>
-                                    <view class='c-999 decoration'>￥{{itemGoods.price}}</view>
-                                     <view class='c-red'>￥{{itemGoods.realPrice}}</view>
+                                <view class='c_53'>{{itemGoods.goodName}}   <view  wx:if="{{itemGoods.isBindActivity == 1}}" class='hotfill' ><icon class='iconfont icon-hotfill'></icon><text>活动</text></view>
                                 </view>
-                               
+                                <view class='back_view'>
+                                 <view class='c_53 decoration'>￥{{itemGoods.price}}</view>
+                                <view class='c-red'>￥{{itemGoods.realPrice}}</view> 
+                                </view> 
                             </view>
                              <view class='order_num'>
-                        <text>×{{itemGoods.num}}</text>
-                        <text class='c-red' wx:if="{{itemGoods.isCountActivity == 1}}">已参与活动</text>
-                    </view>
+                                <text class='c_A0'>×{{itemGoods.num}}</text>
+                                <text class='c_A0' wx:if="{{itemGoods.isCountActivity == 1}}">已参与活动</text>
+                            </view>
                            
                         </view>
                       
                     </view>
                  </view>
                     <view class='order_footer' wx:if="{{item.status==1}}">
-                        <view class='font-w6'>应付金额：
-                            <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        <view class='font-w6 c_53'>应付金额：
+                            <text class='font-w6 c_53'>¥{{item.paymentAmount}}</text>
                         </view>
                         <view class='but_box'>
                             <button class='but_cancel' bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="10" >取消订单</button>
@@ -65,7 +65,7 @@
                         </view>
                         <view class='but_box'>
                             <button class='but_question' data-mobile="{{item.stationMobile}}" bindtap='clickQuestion'>清洗问题</button>
-                            <button class='but_confirm'  bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="8" >确认取衣</button>
+                            <button class='but_cancel'  bindtap='editStatus' data-orderNo="{{item.orderNo}}" data-status="8" >确认取衣</button>
                         </view>
                     </view>
                      <view class='order_footer' wx:if="{{item.status==8}}">
@@ -90,7 +90,7 @@
 
         <view class='laundry-list null-data marginTop'  wx:else>
             <icon class='iconfont  icon-tiaobochuku'></icon>
-        <view>暂无数据~~~</view> 
+            <view>暂无数据~~~</view> 
         </view>
     </view>
     <van-toast id="van-toast" />

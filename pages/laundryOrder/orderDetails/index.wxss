@@ -8,8 +8,8 @@ background-color: #fff;
 }
 .order_title{
   padding:20rpx 30rpx;
-  border-top:1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top:1px solid #f6f6f6;
+  border-bottom: 1px solid #f6f6f6;
   color: #666;
   display: flex;
   justify-content: space-between;
@@ -20,12 +20,9 @@ background-color: #fff;
 .order_title view:last-child{
   margin-bottom: 0;
 }
-.order_box{
-
-}
 .move_box{
   display: flex;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f6f6f6;
   padding:30rpx;
   position: relative;
 }
@@ -35,9 +32,6 @@ background-color: #fff;
 .move_box image{
   width:150rpx;
   height:200rpx;
-}
-.move_box view{
-  /* display: flex; */
 }
 .move_box view.order_vim{
   display: flex;
@@ -64,23 +58,30 @@ background-color: #fff;
   padding:20rpx 30rpx;
   justify-content:space-between;
   align-items: center;
-   border-top: 1px  solid #eee;
-  border-bottom: 1px  solid #eee;
+   border-top: 1px  solid #f6f6f6;
+  border-bottom: 1px  solid #f6f6f6;
 }
 .but_box{
     display: flex;
 }
 .but_box button{
     margin-left: 30rpx;
+    border-radius: 60rpx;
+    padding: 0 30rpx;
 }
 .but_box .but_question{
     background-color: #06a5ff;
 }
 .but_box .but_cancel{
-    background-color: #ff7b20;
+    border: 1px solid #BFBFBF;
+    color: #A0A0A0;
+    background-color: #fff;
 }
 .but_box .but_payment{
-    background-color: #ff4c5e;
+    background-color: #FF4848;
+}
+.c-red{
+    color: #FF4848;
 }
 .but_box  .but_confirm{
     background-color: #ea857d;
@@ -89,9 +90,29 @@ background-color: #fff;
   color: #fff;
   font-size: 12px;
 }
-.order_soso{
-
-}
 .marginTop{
     margin-top: 20%;
+}
+.van-tabs__wrap{
+    background-color: #fff;
+}
+.van-tabs__line{
+    height: 4px !important;
+    background-color: #FF4848 !important;
+}
+.childListStyle .van-tab--active{
+    color: #FF4848 !important;
+    font-weight:600; 
+}
+.childListStyle .van-tab{
+    color: #7D7D7D;
+}
+.c-F9{
+    color: #7089FF;
+}
+.c_53{
+    color: #535353;
+}
+.c_A0{
+    color: #A0A0A0;
 }

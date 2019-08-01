@@ -31,7 +31,7 @@
                 />
                 </van-cell-group>
             <view class='marig-primary'>
-                <button  class="primary  backg-grad shadow-just newButton"  form-type='submit' size="normal" >保  存</button>
+                <button  class="primary   newButton"  form-type='submit' size="normal" >保  存</button>
             </view>
     </form>
 </view>

@@ -8,10 +8,11 @@ page{
 }
 .menber-tabs{
 display: flex;
-margin: 20rpx;
- border: 1px solid #3984FF;
- border-radius:8rpx;
+/* padding: 20rpx; */
+ /* border: 1px solid #3984FF;
+ border-radius:8rpx; */
  overflow: hidden;  
+ background-color: #fff;
 }
 .ind_tab{
     width: 50%;
@@ -21,30 +22,33 @@ margin: 20rpx;
     justify-content: center;
     align-content: center;
     align-items: center;
-    background-color: #F5F5F5;
     color: #434343;
-    /* border: 1px solid #3984FF; 
-    border-top-left-radius:40rpx; 
-    border-top-right-radius:40rpx;  */
-
+    position: relative;
+    padding-bottom: 20rpx; 
 }
 .ind_tab view:first-child{
     font-weight: 600;
     font-size: 28rpx;
 }
-.menber-tabs .ind_tab.active{
+.menber-tabs .active .redbordex{
     transition: 0.3s;
-    background-color: #3984FF;
-    color: #fff !important;
+     position: absolute;
+    bottom:0; 
+    border-bottom: 10rpx solid #FF533C; 
+    width: 200rpx;
+    border-radius:10rpx; 
 }
-.menber-tabs .ind_tab.active view{
+/* .menber-tabs .ind_tab.active view{
      color: #fff !important;
-}
+}  */
 .addrDetail{
     background-color: #fff;
     display: flex;
     flex-direction: column;
-   
+   margin-top: 20rpx; 
+width:94%;
+margin-left:3%;
+
 }
 .addrInfo,.timeInfo{
     display: flex;
@@ -65,6 +69,8 @@ margin: 20rpx;
     margin-top: 20rpx;
     background-color: #fff;
     padding: 20rpx;
+    margin-left:3%;
+    width: 94%;
 }
 .shopData{
     display: flex;
@@ -119,6 +125,8 @@ margin: 20rpx;
 .shangpin{
     margin-top: 20rpx;
     background-color: #fff;
+    width: 94%;
+    margin-left: 3%;
 }
 .shangpin .li{
     display: flex;
@@ -151,10 +159,11 @@ margin: 20rpx;
 .bottom_view .prie text{
     font-size: 20px;
     font-weight: 600;
+    color: #FF4848;
 }
 .one_but{
     width: 30%;
-    background-color: #3984FF;
+    background-image: linear-gradient(45deg,#FF8989,#FF4A49);
     color: #fff;
     font-size:16px;
     text-align: center;
@@ -172,6 +181,7 @@ margin: 20rpx;
 }
 .flex_Name{
     display: flex;
+    font-size:24rpx;
 }
 .conpun_model{
     position: fixed;
@@ -199,4 +209,13 @@ margin: 20rpx;
 .icon-chenggong{
     color: #FF3939 !important;
     font-size: 50rpx
+}
+.redbordex{
+    position: absolute;
+    bottom:0;
+    border-bottom: 10rpx solid #fff; 
+    width: 200rpx;
+}
+.c-red{
+    color: #FF533C;
 }

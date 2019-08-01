@@ -9,7 +9,41 @@ Page({
         service:1,
         status:1,
         couponList: [],
-
+        excNum: ''
+    },
+    getExcnum(e) {
+        console.log(e);
+        let excNum = e.detail.value;
+        this.setData({
+            excNum: excNum
+        })
+    },
+    onExcNum(e) {
+        let _this = this;
+        let excNum = _this.data.excNum;
+        if (_this.data.excNum == '') {
+            wx.showToast({
+                title: '请输入兑换码',
+                icon: 'none'
+            })
+        } else {
+            app.FormdataPHP.post('/wxapp/coupon/exchangeReceive', { redeem_code: excNum }, (res) => {
+                console.log(res);
+                if (res.code == '0000') {
+                    wx.showToast({
+                        title: '兑换成功',
+                    })
+                } else {
+                    wx.showToast({
+                        title: res.message,
+                        icon: 'none'
+                    })
+                }
+                _this.setData({
+                    excNum: ''
+                })
+            })
+        }
     },
     getBackDetails(e){ 
         let id = e.currentTarget.dataset.id

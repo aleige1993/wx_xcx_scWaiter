@@ -2,16 +2,25 @@
 @import '/pages/shopMall/orderList/index.wxss';
 @import '/pages/laundryOrder/orderDetails/details.wxss';
 .goodDeta{
+    display: flex;
     flex: 1;
     margin-left: 20rpx;
+    height: 140rpx;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.goodDeta view{
+    margin-top: 10rpx;
 }
 .detahader{
     color: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 20rpx;
+    padding: 30rpx;
     align-content: center;
     align-items: center;
+    background-image: linear-gradient(45deg,#FF7475,#FF4949);
 }
 .bg-yller{
     background-color: #FFC939;
@@ -40,6 +49,7 @@
     background-color: #fff;
 }
 .ad_info{
+    display: flex;
     padding: 20rpx 0;
 }
 .c-danl{
@@ -48,7 +58,7 @@
 .ad_shop{
     display: flex;
     color: #434343;
-    justify-content: space-between;
+    align-items: center;
 }
 .ad_shop icon{
     margin-right: 10rpx;
@@ -58,11 +68,14 @@
     background-color: #fff;
     color: #434343;
     margin-top: 20rpx;
+    width: 94%;
+    margin-left: 3%;
 }
 .h2{
-    font-size: 32rpx;
-    margin: 20rpx 0;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    margin: 20rpx 0; 
 }
 .infogood,infoorder{
   margin:40rpx 0;
@@ -75,22 +88,21 @@
 }
 .infogood .li view:first-child{
 width: 200rpx;
-color: #000;
-font-weight: 500;
+font-size: 26rpx;
+color: #AAAAAA;
 }
 .infogood .li view:last-child{
-color: #999;
+color: #AAAAAA;
 }
 
 .infoorder .li view:first-child{
 width: 200rpx;
-color: #000;
-font-weight: 500;
+color: #AAAAAA; 
+font-size: 26rpx;
 }
 .infoorder .li view:last-child{
-color: #999;
-}
-
+color: #AAAAAA;
+} 
 .main-center{
     margin-bottom: 120rpx;
 }
@@ -108,13 +120,12 @@ color: #999;
 .good_right{
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     align-items: center;
 }
 .good_right .apply{
     border-radius:30rpx;
-    border: 1px solid #E5E5E5;
-    padding:4rpx 16rpx; 
+    border: 1px solid #FF3939;
+    padding:6rpx 20rpx; 
     color: #434343;
     margin-top: 30rpx;
 }
@@ -125,4 +136,27 @@ color: #999;
 }
 .good_right  view.refuse{
     color: #FF3939;
+}
+.doubel{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.detaText{
+    font-size: 22rpx;
+}
+.ic_add{
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 10rpx;
+}
+.leborder{
+    width: 8rpx;
+    height: 30rpx;
+    background-color: #FF4949;
+    margin-right: 10rpx;
+}
+.refundRef{
+   border:1px solid #2ECD90 !important;
+   color: #2ECD90 !important;
 }

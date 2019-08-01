@@ -20,8 +20,9 @@ page{
 .list_panl{
     background-color: #fff;
     padding: 20rpx;
-    margin-bottom: 20rpx;
+    /* margin-bottom: 20rpx; */
     display: flex;
+    border-bottom: 1px solid #f2f2f2;
 }
 .shopName{
     flex: 1;
@@ -41,4 +42,9 @@ page{
 }
 .shopList view.active .shopKm{
     color: #fff;
+}
+.mapimg{
+    width:58rpx;
+    height:50rpx;
+    margin-top:16rpx;
 }

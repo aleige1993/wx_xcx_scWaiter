@@ -1,10 +1,10 @@
 <!--pages/shopMall/shopList/index.wxml-->
 <view class='soso_view'>
     <view class='soso'>
-        <van-search  value=""  bind:change="onSearc" placeholder="输入小站名称  " />
+        <van-search field-class="fieldCss"  value=""  bind:change="onSearc" placeholder="输入小站名称  " />
     </view>
     <view class='map' bindtap='goBack'>
-        <icon class='iconfont icon-Map-'></icon>
+        <image  class='ic_map' src='/static/images/ic_map.png'></image>
     </view>
 </view>
 <view class='shopList' wx:if="{{shopArr.length>0}}">
@@ -14,7 +14,7 @@
             <view class='font-w6'>{{item.stationName}}</view>
             <view class='c-999'>{{item.address}}</view>
         </view>
-        <view class='shopKm c-666'>
+        <view class='shopKm c-999'>
             {{item.distance}}km
         </view>
     </view>

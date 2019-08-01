@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isTule:true,
         shopArr: [],
         shopIndex: '',
         listItme:[],
@@ -21,6 +22,11 @@ Page({
         couponSn:null,
         disableList:[],
         reduce_info:null,
+    },
+    onStulet(){
+        this.setData({
+            isTule: !this.data.isTule
+        })
     },
     // 选择店铺
     shoprChange(e) {

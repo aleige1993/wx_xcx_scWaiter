@@ -220,7 +220,7 @@ color: #6bdda6;
     left:41%;
 }
 .font-z20{
-    font-size: 40rpx;
+    font-size: 34rpx;
 }
 .nodata{
     text-align: center;

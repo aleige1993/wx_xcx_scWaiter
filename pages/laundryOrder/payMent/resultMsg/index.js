@@ -7,7 +7,7 @@ Page({
     data: {
         isShow:true,
         orderno:'',
-        payType:'',
+        payType:'2',
         result:''
     },
     goOrderDetails(e) {
